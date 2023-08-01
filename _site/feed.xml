@@ -1,0 +1,899 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-08-01T22:33:20+02:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Uros Stojkovic</title><subtitle>Personal website with primarily math/physics content</subtitle><author><name>Uros Stojkovic</name></author><entry><title type="html">Normal distribution and its derivatives</title><link href="http://localhost:4000/posts/normal-dist-and-its-derivatives" rel="alternate" type="text/html" title="Normal distribution and its derivatives" /><published>2023-08-01T00:00:00+02:00</published><updated>2023-08-01T00:00:00+02:00</updated><id>http://localhost:4000/posts/Normal-distribution-and-its-derivatives</id><content type="html" xml:base="http://localhost:4000/posts/normal-dist-and-its-derivatives"><![CDATA[<h2 id="elementary-area-and-volume-in-the-spherical-coordinate-system">Elementary area and volume in the spherical coordinate system</h2>
+<p>In the spherical coordinate system, the points of $n$ dimensional space are determined by the Euclidean distance from the coordinate origin $r$, along $n-1$ angles $\phi_{i}$. Indeed, if we start from the orthogonal base $(u_{1},\cdots, u_{n})$, the coordinate $r$ is simply the square root of the sum of squares of coordinates in that orthogonal base. Next, we define $\phi_{n-1}$ as the angle between the position vector of the point and the basis vector $u_{n}$ such that $x_{n} = r\cos{\phi_{n-1}}$. When we fix this angle, with the already fixed radius, we can examine the projection of the hypersphere on the subspace determined by the remaining base vectors $u_{1},\cdots,u_{n-1}$. That projection is also a hypersphere, only in a space one dimension smaller and with a radius scaled by $\sin{\phi_{n-1}}$ . Therefore, we can repeat the same process until we reach a simple circle in 2D. So, the transformation from Cartesian to spherical coordinates looks like this:</p>
+
+\[\begin{align*}
+     x_{i} &amp;= r\cos{\phi_{i-1}}\prod_{j=i}^{n-1}\sin^{j-i+1}{\phi_{j}},\quad i=2,\cdots,n \\
+     x_{1} &amp;= r\prod_{j=1}^{n-1}\sin^{j}{\phi_{j}}
+\end{align*}\]
+
+<p>If $dA_{n}(r)$ denotes the elementary surface of a sphere of radius $r$ on which points can be determined using $n$ angles (thus, the sphere itself is located in $n+1$-dimensional space), then the following recursive relation hold:</p>
+
+\[\begin{equation*}
+     dA_{n}(r) = rd\phi_{n}\,dA_{n-1}(r\sin{\phi_{n}})
+\end{equation*}\]
+
+<p>with the condition $dA_{1}(r) = rd\phi_{1}$. From there it follows:</p>
+
+\[\begin{equation*}
+     dA_{n}(r) = r^{n}\prod_{i=1}^{n}d\phi_{i}\sin^{i-1}{\phi_{i}}
+\end{equation*}\]
+
+<p>For $n = 2$, which represents an ordinary sphere (in 3D), the polar angle $\phi_{2}$ is usually denoted in physics by $\theta$, and the azimuth $\phi_{1}$ by $\phi$ , the formula $dA = r^{2}\sin{\theta}$ is obtained, which corresponds to the known expression.
+The elementary volume in $n$-dimensional space is obtained as:</p>
+
+\[\begin{equation*}
+     dV_{n}(r) = drA_{n-1}(r)
+\end{equation*}\]
+
+<h2 id="estimation-of-standard-deviation-given-mean-is-known">Estimation of standard deviation given mean is known</h2>
+<p>Suppose we analyze the random variable $X \sim \mathcal{N}(\mu, \sigma^{2})$. Let’s explore what distribution the following statistic has:</p>
+
+\[\begin{equation*}
+     S = \frac{\sqrt{\sum_{i=1}^{n}(X_{i}-\mu)^{2}}}{\sigma}
+\end{equation*}\]
+
+<p>Introducing change of variables:</p>
+
+\[\begin{align*}
+     z_{i} &amp;= \frac{x_{i}-\mu}{\sigma} \\
+     dz_{i} &amp;= \frac{dx_{i}}{\sigma}
+\end{align*}\]
+
+<p>the probability that the value of the statistic $S$ belongs to the interval $(s, s+ds)$ is equal to:</p>
+
+\[\begin{equation*}
+     P(s \leq S &lt; s+ds) = \underset{s &lt; \sqrt{\sum_{i=1}^{n}z_{i}^{2}} &lt; s + ds }{\int\cdots \int}\frac{1}{\sqrt{2\pi}^{n}}e^{-\frac{z_{1}^{2}+\cdots+z_{n}^{2}}{ 2}}dz_{1}\cdots dz_{n}
+\end{equation*}\]
+
+<p>Then we switch to spherical coordinates:</p>
+
+\[\begin{align*}P(s \leq S &lt; s + ds) &amp;= \int_{s}^{s+ds}\int_{0}^{\pi}\int_{0}^{\pi} \cdots \int_{0}^{2\pi}\frac{1}{\sqrt{2\pi}^{n}}e^{-\frac{r^{2}}{2}}r^ {n-1}\prod_{i=1}^{n-1}d\phi_{i}\sin^{i-1}{\phi_{i}}dr \\ &amp;=\int_{s}^ {s+ds}e^{-\frac{r^{2}}{2}}r^{n-1}\left(\int_{0}^{\pi}\int_{0}^{\pi}\cdots \int_{0}^{2\pi}\frac{1}{\sqrt{2\pi}^{n}}\prod_{i=1}^{n-1}d\phi_{ i}\sin^{i-1}{\phi_{i}}\right) dr \\ &amp;\propto e^{-\frac{s^{2}}{2}}s^{n-1} ds\end{align*}\]
+
+<p>For further analysis it will be useful to analyze the following integral:</p>
+
+\[\begin{align*}I_{n} &amp;= \int_{0}^{\infty}e^{-\frac{s^{2}}{2}}s^{n}ds \\ &amp;= \int_{0}^{\infty}e^{-u}\left(2u\right)^{\frac{n-1}{2}}du \\ &amp;= 2^{\frac{n-1} {2}}\Gamma\left ( \frac{n+1}{2} \right ) &amp;\end{align*}\]
+
+<p>We get the proportionality coefficient from the condition that the probabilities of all non-overlapping intervals add up to unity:</p>
+
+\[\begin{align*}1 &amp;= \int_{0}^{\infty}Ae^{-\frac{s^{2}}{2}}s^{n-1}ds \\ A &amp;= \frac{1}{I_{n-1}}\end{align*}\]
+
+<p>Also, in this way we have effectively calculated the integral in the parenthesis:</p>
+
+\[\begin{equation*}
+     \int_{0}^{\pi}\int_{0}^{\pi}\cdots \int_{0}^{2\pi}\frac{1}{\sqrt{2\pi}^{n} }\prod_{i=1}^{n-1}d\phi_{i}\sin^{i-1}{\phi_{i}} = \frac{1}{I_{n-1}} = \frac{1}{2^{\frac{n}{2}-1}\Gamma\left ( \frac{n}{2} \right )}
+\end{equation*}\]
+
+<p>So finally we have:</p>
+
+\[\begin{equation*}
+     \frac{d}{ds}P(S&lt;s) = \frac{1}{2^{\frac{n}{2}-1}\Gamma\left ( \frac{n}{2} \right )}e^{-\frac{s^{2}}{2}}s^{n-1}
+\end{equation*}\]
+
+<p>Expectation and other moments can also be expressed using the mentioned integral:</p>
+
+\[\begin{align*}E[S] &amp;= \frac{1}{I_{n-1}}\int_{0}^{\infty}se^{-\frac{s^{2}}{2 }}s^{n-1}ds = \frac{I_{n}}{I_{n-1}} = \sqrt{2}\frac{\Gamma\left ( \frac{n+1}{2 } \right )}{\Gamma\left ( \frac{n}{2} \right )} \\ E[S^{2}] &amp;= \frac{1}{I_{n-1}}\int_ {0}^{\infty}s^{2}e^{-\frac{s^{2}}{2}}s^{n-1}ds = \frac{I_{n+1}}{ I_{n-1}} = 2\frac{\Gamma\left ( \frac{n}{2} +1\right )}{\Gamma\left ( \frac{n}{2} \right )} = n\end{align*}\]
+
+<p>It should be noted that the probability distribution characterized by the mentioned law is called Chi distribution.
+In the literature, the so-called Chi-square distribution which represents the distribution of the squares of previously analyzed statistics - so $S^{2}$. We can easily reach it:</p>
+
+\[\begin{align*}\frac{d}{d(s^{2})}P(S^{2} &lt; s^{2}) &amp;= \frac{ds}{d(s^{2} )}\frac{d}{ds}P(S &lt; s) \\ &amp;= \frac{1}{2s} \frac{1}{2^{\frac{n}{2}-1}\Gamma \left(\frac{n}{2}\right)}e^{-\frac{s^{2}}{2}}s^{n-1} \\ \frac{d}{d(s ^{2})}P(S^{2} &lt; s^{2}) &amp;= \frac{1}{2^{\frac{n}{2}}\Gamma\left(\frac{n} {2}\right)}e^{-\frac{ns^{2}}{2}}(s^{2})^{\frac{n}{2}-1}\end{align*}\]
+
+<h2 id="estimation-of-standard-deviation-given-mean-is-unknown">Estimation of standard deviation given mean is unknown</h2>
+<p>We still analyze the random variable $X \sim \mathcal{N}(\mu, \sigma^{2})$. This time we look at the statistics:</p>
+
+\[\begin{equation*}
+     S = \frac{\sqrt{\sum_{i=1}^{n}\left(X_{i} - \overline{X_{n}}\right)^{2}}}{\sigma}
+\end{equation*}\]
+
+<p>The probability that the value of the statistic $S$ belongs to the interval $(s, s+ds)$ is equal to:</p>
+
+\[\begin{equation*}
+     P(s \leq S &lt; s+ds) = \underset{s &lt; \frac{\sqrt{\sum_{i=1}^{n}\left(x_{i} - \overline{x_{n}} \right)^{2}}}{\sigma} &lt; s + ds }{\int\cdots\int}\frac{1}{\sqrt{2\pi}^{n}\sigma^{n}} e^{-\frac{(x_{1}-\mu)^{2}+\cdots+(x_{n}-\mu)^{2}}{2\sigma^{2}}}dx_{1 }\cdots dx_{n}
+\end{equation*}\]
+
+<p>Introducing change of variables:</p>
+
+\[\begin{align*}
+     z_{i} &amp;= \frac{x_{i}-\mu}{\sigma} \\
+     dz_{i} &amp;= \frac{dx_{i}}{\sigma}
+\end{align*}\]
+
+<p>the integral is simplified:</p>
+
+\[\begin{equation*}
+     P(s \leq S &lt; s+ds) = \underset{s &lt; \sqrt{\sum_{i=1}^{n}\left(z_{i} - \overline{z_{n}}\right) ^{2}} &lt; s + ds }{\int\cdots\int}\frac{1}{\sqrt{2\pi}^{n}}e^{-\frac{z_{1}^{2 }+\cdots+z_{n}^{2}}{2}}dz_{1}\cdots dz_{n}
+\end{equation*}\]
+
+<p>Bearing in mind that the mean value $\overline{z_{n}}$ can be written via the scalar product:</p>
+
+\[\begin{equation*}
+     \overline{z_{n}} = \frac{e^Tz}{e^{T}e}
+\end{equation*}\]
+
+<p>The statistics themselves can also be expressed in vector notation:</p>
+
+\[\begin{equation*}
+     S = \left\|\left(I-\frac{ee^{T}}{e^{T}e}\right)z\right\|
+\end{equation*}\]
+
+<p>Therefore, if we consider $z$ as a random vector in the $n$-dimensional space, then the statistic $S$ is the length of the projection of that vector onto the plane perpendicular to the vector $e$. If we perform change of variables corresponding to the rotation $\zeta = R^{T}z$ so that the first column of the matrix $R$ is the unit vector $e$, we get:</p>
+
+\[\begin{align*}P(s \leq S &lt; s+ds) &amp;= \underset{s &lt; \sqrt{\sum_{i=2}^{n}\zeta_{i}^{2}} &lt; s + ds }{\int\cdots\int}\frac{1}{\sqrt{2\pi}^{n}}e^{-\frac{\zeta_{1}^{2}+\cdots+\zeta_ {n}^{2}}{2}}d\zeta_{1}\cdots d\zeta_{n} \\ &amp;= \underset{s &lt; \sqrt{\sum_{i=2}^{n}\zeta_{i}^{2}} &lt; s + ds }{\int\cdots\int}\frac{1}{\sqrt{2\pi}^{n-1}}e^{-\frac{\zeta_{2}^{2}+\cdots+\zeta_{n}^{2}}{2}}\left ( \int_{-\infty}^{\infty}\frac{1}{\sqrt{2 \pi}}e^{-\frac{\zeta_{1}^{2}}{2}} d\zeta_{1}\right )d\zeta_{2}\cdots d\zeta_{n} \\ &amp;= \underset{s &lt; \sqrt{\sum_{i=2}^{n}\zeta_{i}^{2}} &lt; s + ds }{\int\cdots\int}\frac{1}{ \sqrt{2\pi}^{n-1}}e^{-\frac{\zeta_{2}^{2}+\cdots+\zeta_{n}^{2}}{2}}d\zeta_ {2}\cdots d\zeta_{n}\end{align*}\]
+
+<p>This is the same integral as in the previous case when the deviation from the true expectation was calculated, except that $n-1$ appears everywhere instead of $n$. So, it is a Chi distribution, this time with $n-1$ degrees of freedom. Using the previous results, we can immediately write:</p>
+
+\[\begin{align*} \frac{d}{ds}P(S&lt;s) &amp;= \frac{1}{2^{\frac{n}{2}-1}\Gamma\left ( \frac{ n}{2} \right )}e^{-\frac{s^{2}}{2}}s^{n-2} \\ E[S] &amp;= \sqrt{2}\frac{\Gamma\left ( \frac{n}{2} \right )}{\Gamma\left ( \frac{n-1}{2} \right )} \\ E[S^{2}] &amp; = n- 1\end{align*}\]
+
+<p>Because the expectation of the squared statistic is $n-1$ and not $n$, the corrected sample variance is a better estimate of the true variance in the sense that its expectation is equal to the true variance:</p>
+
+\[\begin{align*} E\left [ \frac{1}{n-1}\sum_{i=1}^{n}\left(X_{i} - \overline{X_{n}}\right) ^{2}\right ] &amp;= E\left [ \frac{\sigma}{n-1} S^{2}\right ] \\ &amp;= \frac{\sigma}{n-1}E[S ^{2}] \\ &amp;= \sigma\end{align*}\]
+
+<h2 id="estimation-of-mean-given-standard-deviation-is-unknown">Estimation of mean given standard deviation is unknown</h2>
+<p>We once again consider the random variable $X \sim \mathcal{N}(\mu, \sigma)$. The subject of our analysis this time is statistics:</p>
+
+\[\begin{equation*}
+     S = \sqrt{n}\frac{\overline{X_{n}}-\mu}{\sqrt{\frac{1}{n-1}\sum_{i=1}^{n}\left( X_{i}-\overline{X_{n}}\right)^{2}}}
+\end{equation*}\]
+
+<p>The probability that the value of the statistic $S$ belongs to the interval $(s, s+ds)$ is equal to:</p>
+
+\[\begin{equation*}
+     P(s \leq S &lt; s+ds) = \underset{s &lt; \sqrt{n}\frac{\overline{x_{n}}-\mu}{\sqrt{\frac{1}{n-1 }\sum_{i=1}^{n}\left(x_{i}-\overline{x_{n}}\right)^{2}}} &lt; s + ds }{\int\cdots\int} \frac{1}{\sqrt{2\pi}^{n}\sigma^{n}}e^{-\frac{(x_{1}-\mu)^{2}+\cdots+(x_{ n}-\mu)^{2}}{2\sigma^{2}}}dx_{1}\cdots dx_{n}
+\end{equation*}\]
+
+<p>If we introduce a change of variables:</p>
+
+\[\begin{align*}
+     z_{i} &amp;= \frac{x_{i}-\mu}{\sigma} \\
+     dz_{i} &amp;= \frac{dx_{i}}{\sigma}
+\end{align*}\]
+
+<p>the above integral simplifies to:</p>
+
+\[\begin{equation*}
+     P(s \leq S &lt; s+ds) = \underset{s &lt; \sqrt{n}\frac{\overline{z_{n}}}{\sqrt{\frac{1}{n-1}\sum_ {i=1}^{n}\left(z_{i}-\overline{z_{n}}\right)^{2}}} &lt; s + ds }{\int\cdots\int}\frac{ 1}{\sqrt{2\pi}^{n}}e^{-\frac{z_{1}^{2}+\cdots+z_{n}^{2}}{2}}dz_{1 }\cdots dz_{n}
+\end{equation*}\]
+
+<p>We can present the numerator and denominator in vector form:</p>
+
+\[\begin{align*}\sqrt{n}\overline{z_{n}} &amp;= \sqrt{e^{T}e}\frac{e^{T}z}{e^{T}e} = \frac{e^{T}z}{\left\| e\right\|} = z_{e} \\ \sqrt{\sum_{i=1}^{n}\left(z_{i}-\overline{z_{n}}\right)^{2} } &amp;= \left\|\left(I-\frac{ee^{T}}{e^{T}e}\right)z\right\|\end{align*}\]
+
+<p>Considering that the numerator of the projections on the direction is determined by the vector $e$, and the denominator of the projections on the plane perpendicular to this direction, if we mark the angle between the vector $z$ and the vector $e$ with $\theta$, for the probability we get:</p>
+
+\[\begin{equation*}
+     P(s \leq S &lt; s+ds) = \underset{s &lt; \sqrt{n-1}\cot{\theta} &lt; s + ds }{\int\cdots\int}\frac{1}{\sqrt{2\pi}^{n}}e^{-\frac{z_{1}^{2}+\cdots+z_{n}^{2}}{2}}dz_{1}\cdots dz_ {n}
+\end{equation*}\]
+
+<p>We can find the distribution for the angle $\theta$ by switching to spherical coordinates:</p>
+
+\[\begin{align*}P(\theta \leq \Theta &lt; \theta + d\theta) &amp;= \int_{\theta}^{\theta+d\theta}\int_{0}^{\pi}\cdots \int_{0}^{2\pi}\int_{0}^{\infty}\frac{1}{\sqrt{2\pi}^{n}}e^{-\frac{r^{ 2}}{2}}r^{n-1}dr\prod_{i=1}^{n-1}d\phi_{i}\sin^{i-1}{\phi_{i}} \\ &amp;=\int_{\theta}^{\theta+d\theta}\sin^{n-2}{\phi_{n-1}} \left(\int_{0}^{\pi}\cdots \int_{0}^{2\pi}\int_{0}^{\infty}\frac{1}{\sqrt{2\pi}^{n}}e^{-\frac{r^{2 }}{2}}r^{n-1}dr\prod_{i=1}^{n-2}d\phi_{i}\sin^{i-1}{\phi_{i}}\right ) d\phi_{n-1} \\ &amp;\propto \sin^{n-2}{\theta}d\theta\end{align*}\]
+
+<p>Then we easily find the distribution for the statistic $S$ itself:</p>
+
+\[\begin{align*}\frac{d}{ds}P(S &lt; s) &amp;\propto \left|\frac{d\theta}{ds}\right| \frac{d}{d\theta}P(\Theta &lt; \theta) \\ &amp;= \frac{d\theta}{\sqrt{n-1}\frac{d\theta}{\sin^{2 }{\theta}}}\sin^{n-2}{\theta} \\ &amp;= \frac{1}{\sqrt{n-1}}\sin^{n}{\theta} \\ \frac{d}{ds}P(S &lt; s) &amp;\propto \frac{1}{\sqrt{n-1}}\left ( 1+\frac{s^{2}}{n-1} \right )^{-\frac{n}{2}}\end{align*}\]
+
+<p>The number $n-1$ represents the so-called the number of degrees of freedom is denoted by $\nu$ and it often appears in the literature:</p>
+
+\[\begin{equation*}
+    \frac{d}{ds}P(S &lt; s) \propto \frac{1}{\sqrt{\nu}}\left (1+s^{2}/\nu\right)^{-\frac {\nu+1}{2}}
+\end{equation*}\]
+
+<p>This probability density distribution law represents the well-known Student’s t distribution. In order to calculate the normalization coefficient, we need to either calculate the integral of the density distribution function or calculate the integral in the parentheses. We will do the latter:</p>
+
+\[\begin{align*}&amp;\int_{0}^{\pi}\cdots \int_{0}^{2\pi}\frac{1}{\sqrt{2\pi}^{n}}\left (\int_{0}^{\infty}e^{-\frac{r^{2}}{2}}r^{n-1}dr\right)\prod_{i=1}^{n- 2}d\phi_{i}\sin^{i-1}{\phi_{i}} \\ &amp;= \frac{I_{n-1}}{\sqrt{2\pi}}\int_{0 }^{\pi}\cdots \int_{0}^{2\pi}\frac{1}{\sqrt{2\pi}^{n-1}}\prod_{i=1}^{n- 2}d\phi_{i}\sin^{i-1}{\phi_{i}} \\ &amp;= \frac{I_{n-1}}{\sqrt{2\pi}I_{n-2 }} \\ &amp;= \frac{2^{\frac{n}{2}-1}\Gamma\left ( \frac{n}{2} \right )}{\sqrt{2\pi}2^ {\frac{n-3}{2}}\Gamma\left ( \frac{n-1}{2} \right )} \\ &amp;= \frac{\Gamma\left ( \frac{n}{2 } \right )}{\sqrt{\pi}\Gamma\left ( \frac{n-1}{2} \right )} \end{align*}\]
+
+<p>Here is the result:</p>
+
+\[\begin{equation*}
+     \int_{-\infty}^{\infty}\frac{1}{\sqrt{\nu}}\left (1+s^{2}/\nu\right)^{-\frac{\nu+ 1}{2}} ds= \frac{\sqrt{\pi}\Gamma\left ( \frac{\nu}{2} \right )}{\Gamma\left ( \frac{\nu+1}{2 } \right )}
+\end{equation*}\]
+
+<p>For $\nu=1$ the integral is elementary (the indefinite integral is $\arctan{s}$) and is equal to $\pi$. This means that we can indirectly calculate the value of the gamma function at the point $1/2$:</p>
+
+\[\begin{align*}\pi &amp;= \frac{\sqrt{\pi}\Gamma\left ( \frac{1}{2} \right )}{\Gamma\left (1 \right )} \\ \Gamma\left ( \frac{1}{2} \right ) &amp;= \sqrt{\pi}\end{align*}\]
+
+<p>Going back to the Student’s distribution, we finally have:</p>
+
+\[\begin{equation*}
+   \frac{d}{ds}P(S &lt; s) =  \frac{\Gamma\left ( \frac{\nu+1}{2} \right )}{\sqrt{\nu\pi}\Gamma\left ( \frac{\nu}{2} \right )}\left (1+s^{2}/\nu\right)^{-\frac{\nu+1}{2}}
+\end{equation*}\]
+
+<p>It is interesting that the Student’s distribution tends to the normal distribution when $n\to\infty$:</p>
+
+\[\begin{equation*}
+     \displaystyle \lim_{\nu \to \infty}\left (1+s^{2}/\nu\right)^{-\frac{\nu+1}{2}} = e^{-\frac{ s^{2}}{2}}
+\end{equation*}\]
+
+<p>From here we can also conclude something about the Gamma function:</p>
+
+\[\begin{equation*}
+     \displaystyle \lim_{\nu \to \infty}\frac{\Gamma\left ( \frac{\nu+1}{2} \right )}{\sqrt{\nu}\Gamma\left ( \frac{ \nu}{2} \right )} = \frac{1}{\sqrt{2}}
+\end{equation*}\]
+
+<h2 id="discussion">Discussion</h2>
+<p>The previous chapters may have been too abundant with mathematical formulas, symbols and expressions in which the reader can lose the idea of the very essence of the performance and the results reached. That’s why it’s always good to try to use a less formal and rigorous, but more comprehensible language to clarify what was meant to be conveyed by mathematical notation.</p>
+
+<p>In the previous chapters, we considered certain statistics, that is, functions of several random variables where each of them had a normal probability distribution. The main subject of our research was the probability distribution of those statistics. In each of them, we treated a series of random variables as a vector in a high-dimensional space.</p>
+
+<p>The first statistic we considered was the mean of the random variables. We have shown that the mean value can be represented as a projection onto the direction determined by the vector $e = \begin{bmatrix}1 &amp; \cdots &amp; 1 \end{bmatrix}$ divided by $\sqrt{n}$. Since the normal distribution (Gaussian function) is spherically symmetric, each projection also has a normal probability distribution. However, considering that the required statistic is obtained when the projection is divided by $\sqrt{n}$, the resulting distribution is narrower for that factor, i.e. the standard deviation of the distribution is smaller $\sqrt{n}$ times. This is why statisticians can get better estimates of the true mean of a population the larger the sample.</p>
+
+<p>Another statistic we covered is the square root of the sum of squares of the random variables. This statistic is used in estimating the standard deviation. It geometrically represents the norm (length) of a vector of random variables. Again, taking into account the spherical symmetry of the Gaussian function, we arrive at a probability distribution density function that is proportional to $r^{n-1}\exp{(r^{2}/2)}$. The first factor comes from the fact that the volume of the thin spherical shell is proportional to exactly $r^{n-1}$. Although the Gaussian distribution gives a higher probability to smaller norm vectors, the more distant are more numerous so that the mode of the distribution (most likely value) is greater than zero.</p>
+
+<p>The third statistic was the square root of the sum of the squares of the deviations of the variable values from their mean value. We have shown that this corresponds geometrically to the norm of the projection of the vector of random variables onto the space orthogonal to the vector $e = \begin{bmatrix}1 &amp; \cdots &amp; 1 \end{bmatrix}$. Considering that, we got almost the same probability distribution function, except that $n-1$ occured instead of $n$, considering that it is the length of the vector with one less dimension.</p>
+
+<p>The fourth statistic, like the first, concerns the mean value of the random variables, but this time taking the corrected dispersion estimate instead of the true dispersion. We have shown that this statistic corresponds to the cotangent of the angle between the vector of random variables and the vector $e = \begin{bmatrix}1 &amp; \cdots &amp; 1 \end{bmatrix}$. Given that all vectors of fixed length that overlap the same angle $\theta$ form some kind of hypersphere (in 3 dimensions, it is a ring) whose radius is proportional to $\sin^{n-2}\theta$, that is, having in view of the spherical symmetry of the Gaussian function, the density of the distribution of the cotangent of the angle $\theta$ is proportional to $\sin^{n}\theta$. The resulting probability distribution is known as the Student’s distribution.</p>
+<h2 id="volume-of-hypersphere">Volume of Hypersphere</h2>
+<p>Using the results from the previous chapters, one can easily calculate the volume of a ball in a space of any number of dimensions:</p>
+
+\[\begin{align*}V_{n} &amp;= \int_{0}^{R}\int_{0}^{\pi}\cdots\int_{0}^{2\pi}r^{n-1 }dr\prod_{i=1}^{n-1}d\phi_{i}\sin^{i-1}{\phi_{i}} \\ &amp;= \frac{\sqrt{2\pi} ^{n}}{I_{n-1}}\int_{0}^{R}r^{n-1}dr \\ &amp;= \frac{\pi^{\frac{n}{2}} 2^{\frac{n}{2}}}{2^{\frac{n}{2}-1}\Gamma\left ( \frac{n}{2} \right )}\frac{R^ {n}}{n}\\ &amp;= \frac{\pi^{\frac{n}{2}}}{\Gamma\left ( \frac{n}{2}+1 \right )}R^ {n}\end{align*}\]]]></content><author><name>Uros Stojkovic</name></author><summary type="html"><![CDATA[Elementary area and volume in the spherical coordinate system In the spherical coordinate system, the points of $n$ dimensional space are determined by the Euclidean distance from the coordinate origin $r$, along $n-1$ angles $\phi_{i}$. Indeed, if we start from the orthogonal base $(u_{1},\cdots, u_{n})$, the coordinate $r$ is simply the square root of the sum of squares of coordinates in that orthogonal base. Next, we define $\phi_{n-1}$ as the angle between the position vector of the point and the basis vector $u_{n}$ such that $x_{n} = r\cos{\phi_{n-1}}$. When we fix this angle, with the already fixed radius, we can examine the projection of the hypersphere on the subspace determined by the remaining base vectors $u_{1},\cdots,u_{n-1}$. That projection is also a hypersphere, only in a space one dimension smaller and with a radius scaled by $\sin{\phi_{n-1}}$ . Therefore, we can repeat the same process until we reach a simple circle in 2D. So, the transformation from Cartesian to spherical coordinates looks like this:]]></summary></entry><entry><title type="html">Operator approach to solving differential equations</title><link href="http://localhost:4000/posts/odes" rel="alternate" type="text/html" title="Operator approach to solving differential equations" /><published>2023-08-01T00:00:00+02:00</published><updated>2023-08-01T00:00:00+02:00</updated><id>http://localhost:4000/posts/ODEs</id><content type="html" xml:base="http://localhost:4000/posts/odes"><![CDATA[<p>We will start by solving the following equation:</p>
+
+\[\begin{equation*}
+    \frac{dx}{dt} - ax = b
+\end{equation*}\]
+
+<p>When solving this equation, a well-known “trick” is usually used. The trick is to multiply the equation by an expression that will make the left side a complete derivative. That expression is called the integrating factor:</p>
+
+\[\begin{align*}
+
+     \frac{dx}{dt} - ax &amp;= b \quad \big{/}\cdot e^{-\int a\,dt} \\
+
+     \left(e^{-\int a\,dt}\right)\frac{dx}{dt} + \left(-ae^{-\int a\,dt}\right)x &amp;= be^{- \int a\,dt}\\
+
+     \frac{d}{dt}\left(xe^{-\int a\,dt}\right) &amp;= be^{-\int a\,dt} \\
+
+     xe^{-\int a\,dt} &amp;= \int be^{-\int a\,dt}\,dt \\
+
+     x &amp;= e^{\int a\,dt}\int be^{-\int a\,dt}\,dt
+
+\end{align*}\]
+
+<p>When $a = \text{const.}$ then the solution reduces to:</p>
+
+\[\begin{equation*}
+
+     x = e^{at}\int be^{-at}\,dt
+
+\end{equation*}\]
+
+<h2 id="operators">Operators</h2>
+
+<p>It turns out that treating differentiation and integration operations as operator applications is very useful. An operator in this sense maps (converts) one function to another. Let’s define the following two operators representing the derivative and the indefinite integral, respectively:</p>
+
+\[\begin{align*}
+
+     Dx &amp;\equiv \frac{dx}{dt} \\
+
+     \frac{1}{D}x &amp;\equiv \int x\,dt
+
+\end{align*}\]
+
+<p>Obviously, both operators are linear:</p>
+
+\[\begin{align*}
+
+     D(\alpha x + \alpha y) = \alpha Dx + \beta Dy \\
+
+     \frac{1}{D}(\alpha x + \alpha y) = \alpha \frac{1}{D}x + \beta \frac{1}{D}y
+
+\end{align*}\]
+
+<p>Also, the following symbolic equalities apply:</p>
+
+\[\begin{align*}
+
+     D^{n+1} = D^{n}D \\
+
+     D\frac{1}{D} = 1
+
+\end{align*}\]
+
+<p>The equation \ref{eq:first-order} can be written using the operator as:</p>
+
+\[\begin{align*}
+
+     dx-ax&amp;=b \\
+
+     (D-a)x&amp;=b
+
+\end{align*}\]
+
+<p>previously we could write it symbolically as $b/(D-a)$, having:</p>
+
+\[\begin{equation*}
+
+     \frac{1}{D-a}b = e^{at}\frac{1}{D}e^{-at}\,b
+
+\end{equation*}\]
+
+<h2 id="factorization">Factorization</h2>
+
+<p>Differential equations are usually given in the following form:</p>
+
+\[\begin{equation*}
+
+     \frac{d^{n}x}{dt^{n}}+a_{n-1}\frac{d^{n-1}x}{dt^{n-1}} + \cdots + a_ {1}\frac{dx}{dt}+a_{0}x = b
+
+\end{equation*}\]
+
+<p>or written operatorically:</p>
+
+\[\begin{equation*}
+
+     \left ( D^{n}+a_{n-1}D^{n-1} + \cdots + a_{1}D+a_{0}\right )x = b
+
+\end{equation*}\]
+
+<p>The expression in parentheses resembles a polynomial where instead of a variable an operator appears. Since the operator $D$ follows the same rules for addition, multiplication, and exponentiation as the variable, this is a polynomial. Actually, if we wanted to be mathematically rigorous, it is possible to show that such expressions form a ring of polynomials in $D$ over the set of real (or complex) numbers, which allows us to use results from polynomial theory. This means that it is possible to factorize:</p>
+
+\[\begin{equation*}
+
+     (D-\alpha_{1})(D-\alpha_{2})\cdots(D-\alpha_{n})x = b
+
+\end{equation*}\]
+
+<p>With this, we have presented a complex operator consisting of higher-order derivatives as a composition of simple operators consisting at most of the first derivative. It is useful to note that the order of application of the operators in the parentheses is not important. Integrating this equation represents a gradual “removal” of the operator from the left side. The final solution is reached after all simple operators are removed.</p>
+
+\[\begin{align*}(D-\alpha_{2})\cdots(D-\alpha_{n})x &amp;= \frac{1}{D-\alpha_{1}}\,b \\
+
+(D-\alpha_{2})\cdots(D-\alpha_{n})x &amp;= e^{\alpha_{1}t}\frac{1}{D}e^{-\alpha_{1} t}\,b \\
+
+&amp;\cdots \\ x&amp;= e^{\alpha_{n}t}\frac{1}{D}e^{(\alpha_{n-1}-\alpha_{n})t}\cdots e^{ (\alpha_{1}-\alpha_{2})t}\frac{1}{D}e^{-\alpha_{1}t}\,b\end{align*}\]
+
+<p>Therefore, the solution is reached by alternating multiplication and integration. In the general case, when some roots are multiple:</p>
+
+\[\begin{equation*}
+
+     \left [ \prod_{k=1}^{m}(D-\alpha_{k})^{\nu_{k}}\right ]x = b
+
+\end{equation*}\]
+
+<p>the solution is:</p>
+
+\[\begin{equation*}
+
+     x = \left [ \prod_{k=1}^{m}e^{\alpha_{k}t}\frac{1}{D^{\nu_{k}}}e^{-\alpha_{k }t}\right ]b
+
+\end{equation*}\]
+
+<p>Assume that the $x_{j}$ solutions of the equation $(D-\alpha_{j})^{\nu_{j}}x = b$ for $j=1,2,\cdots, m$. Let’s observe how the linear combination of these solutions behaves:</p>
+
+\[\begin{align*}\left [ \prod_{k=1}^{m}(D-\alpha_{k})^{\nu_{k}}\right ]\left [ \sum_{j=1} ^{m}\xi_{j}x_{j}\right ] &amp;= b \\
+
+\sum_{j=1}^{m}\xi_{j}\left [ \prod_{k=1}^{m}(D-\alpha_{k})^{\nu_{k}}\right ] x_{j} &amp;= b \\
+
+\sum_{j=1}^{m}\xi_{j}\left [ \prod_{k\neq j}(D-\alpha_{k})^{\nu_{k}}\right ](D- \alpha_{j})^{\nu_{j}}x_{j} &amp;= b \\ \sum_{j=1}^{m}\xi_{j}\left [ \prod_{k\neq j} (D-\alpha_{k})^{\nu_{k}}\right ]b &amp;= b\end{align*}\]
+
+<p>From here it is possible to determine the coefficients $\xi_{j}$:</p>
+
+\[\begin{align*}\sum_{j=1}^{m}\xi_{j}\left [ \prod_{k\neq j}(D-\alpha_{k})^{\nu_{k}} \right ] &amp;= 1\end{align*}\]
+
+<p>Interestingly, the mentioned equation can also be arrived at by breaking it down into partial fractions:</p>
+
+\[\begin{align*}\frac{1}{ \prod_{k=1}^{m}(D-\alpha_{k})^{\nu_{k}}} = \sum_{k=1}^ {m}\frac{\xi_{k}}{(D-\alpha_{k})^{\nu_{k}}}\end{align*}\]]]></content><author><name>Uros Stojkovic</name></author><summary type="html"><![CDATA[We will start by solving the following equation:]]></summary></entry><entry><title type="html">Fourier series, Fourier transforms and all that</title><link href="http://localhost:4000/posts/fourier-analysis" rel="alternate" type="text/html" title="Fourier series, Fourier transforms and all that" /><published>2023-08-01T00:00:00+02:00</published><updated>2023-08-01T00:00:00+02:00</updated><id>http://localhost:4000/posts/Fourier-analysis</id><content type="html" xml:base="http://localhost:4000/posts/fourier-analysis"><![CDATA[<h2 id="review-of-trigonometric-identities">Review of trigonometric identities</h2>
+
+<p>Let’s start by deriving a couple of trigonometric identities that will be of crucial use to us. The most beautiful thing about trigonometry is that everything can be reduced to triangles and simple Euclidean geometry. Let’s first consider the mean value of the cosine of two angles:</p>
+
+\[\frac{\cos{\alpha}+\cos{\beta}}{2}\]
+
+<p><img src="/assets/images/2023-08-02-fourier/trig-sum-identity.png" alt="Trig-sum-identity" /></p>
+
+<p>It can be seen from the picture that the required value is given by the length of $OF$, that is, by the projection of the length of $OE$ on the x-axis. The point $E$, according to Thales’ theorem, is located halfway along the length $CD$. Since both $C$ and $D$ are on the unit circle, it is an isosceles triangle $\Delta OCD$, which implies that the angle $\measuredangle OED$ is right, as well as that along $OE$ the poles of the angle $\measuredangle COD$ . It follows:</p>
+
+\[\overline{OE} = \cos{\frac{\alpha-\beta}{2}},\]
+
+<p>and finally:</p>
+
+\[\frac{\cos{\alpha}+\cos{\beta}}{2} = \cos{\frac{\alpha-\beta}{2}}\cos{\frac{\alpha+\beta} {2}}\]
+
+<p>This is a well-known formula for converting a sum to a product, and although it is shown using the example of the angles of the first quadrant, it is valid for all angles, which is relatively easy to demonstrate. Analogously, the mean value of the sines of two angles is:</p>
+
+\[\frac{\sin{\alpha}+\sin{\beta}}{2} = \cos{\frac{\alpha-\beta}{2}}\sin{\frac{\alpha+\beta} {2}}\]
+
+<p>Let us now consider the difference of cosines of two angles:</p>
+
+\[\cos{\alpha}-\cos{\beta}\]
+
+<p><img src="/assets/images/2023-08-02-fourier/trig-diff-identity.png" alt="Trig-diff-identity" /></p>
+
+<p>It can be seen from the picture that it is a length of length $GH$, with a negative sign in front, and it is concluded that it is a projection of length $CE$ on the h-axis. Since $CE$ is the base of an isosceles triangle with the vertex angle $\alpha-\beta$ and legs of length one, it is easy to calculate:</p>
+
+\[\overline{OE} = 2\sin{\frac{\alpha-\beta}{2}}\]
+
+<p>Further, looking at the triangle $\Delta CEO$ it can be found that:</p>
+
+\[\measuredangle OCE = \frac{\alpha+\beta}{2}\]
+
+<p>whence follows:</p>
+
+\[\begin{align*}
+
+     \cos{\alpha}-\cos{\beta} &amp;= -2\sin{\frac{\alpha-\beta}{2}}\sin{\frac{\alpha+\beta}{2}} \\ &amp;= 2\sin{\frac{\beta-\alpha}{2}}\sin{\frac{\alpha+\beta}{2}}
+
+\end{align*}\]
+
+<p>And similarly:</p>
+
+\[\sin{\alpha}-\sin{\beta} = 2\sin{\frac{\alpha-\beta}{2}}\cos{\frac{\alpha+\beta}{2}}\]
+
+<p>It should be noted that the last formula could be obtained from the sum formula if the sign of $\beta$ were changed. For further work, we will actually need a slightly different form of the previous formulas - the transformation of the product into the sum. With shifts:</p>
+
+\[\begin{align*}
+
+     x &amp;= \frac{\alpha+\beta}{2} \\
+
+     y &amp;= \frac{\alpha-\beta}{2}
+
+\end{align*}\]
+
+<p>the identities are obtained:</p>
+
+\[\begin{align*}
+
+     \cos{x}\cos{y} &amp;= \frac{\cos{\left ( x + y \right )}+\cos{\left ( x - y \right )}}{2} \\ \sin {x}\cos{y} &amp;= \frac{\sin{\left ( x + y \right )}+\sin{\left ( x - y \right )}}{2} \\ \sin{x }\sin{y} &amp;= -\frac{\cos{\left ( x + y \right )}-\cos{\left ( x - y \right )}}{2}
+
+\end{align*}\]
+
+<h2 id="fourier-series">Fourier series</h2>
+
+<p>Our interest shifts to periodic functions - functions for which $f(t) = f(t+T)$ holds for every $t$. The smallest non-negative number $T$ for which this equality holds is called the period of the function. The most famous periodic functions are certainly trigonometric functions - sine and cosine above all. The question arises whether it is possible to represent an arbitrary periodic function, such as the one in the picture below, as a weighted sum of sines and cosines.</p>
+
+<p><img src="/assets/images/2023-08-02-fourier/periodic-signal.png" alt="Periodic signal" /></p>
+
+<p>Let’s assume it’s possible. It is obvious that in that case only sine and cosine functions with a period that is an integer part of $T$ could participate in the sum. The circular frequency corresponding to the period $T/n$ is:</p>
+
+\[\omega_{n} = \frac{2\pi n}{T}\]
+
+<p>Therefore, according to our assumption, it is possible to write:</p>
+
+\[f(t) = \frac{A_{0}}{2} + \sum_{n = 1}^{\infty} A_{n}\cos{\omega_{n}t} + B_{n} \sin{\omega_{n}t}\]
+
+<p>This form is called the Fourier series. The basic problem consists in determining the coefficients $A_{n}$ and $B_{n}$. For this purpose, the specificity of integrating the product of sine and cosine along one period is used. Let’s look at the integral first:</p>
+
+\[\begin{align*}&amp;\int_{-T/2}^{T/2}\cos{\left ( \frac{2\pi it}{T} \right )}\cos{\left ( \frac {2\pi jt}{T} \right )}\, dt \\ \frac{1}{2}&amp;\int_{-T/2}^{T/2} \left [ \cos{\left ( \frac{2\pi (i+j)t}{T} \right )}+\cos{\left ( \frac{2\pi (i-j)t}{T} \right )}\right ]\, dt\end{align*}\]
+
+<p>for positive numbers $i,\,j$.</p>
+
+<p>When $i = j$, the integral is equal to $T/2$, otherwise it is equal to 0. The integral behaves in the same way:</p>
+
+\[\int_{-T/2}^{T/2}\sin{\left ( \frac{2\pi it}{T} \right )}\sin{\left ( \frac{2\pi jt }{T} \right )}\, dt,\]
+
+<p>while for each $i, j$ the following applies:</p>
+
+\[\int_{-T/2}^{T/2}\sin{\left ( \frac{2\pi it}{T} \right )}\cos{\left ( \frac{2\pi jt }{T} \right )}\, dt = 0.\]
+
+<p>If we integrate an arbitrary periodic function multiplied by a cosine function of circular frequency $\omega_{n}$ on the same interval, using the previous results we get:</p>
+
+\[\begin{align*} &amp;\int_{-T/2}^{T/2}f(t)\cos{\omega_{n}t}\,dt \\ =&amp;\int_{-T/2} ^{T/2}\left ( \frac{A_{0}}{2} + \sum_{k=1}^{\infty}A_{k}\cos{\omega_{k}t} + B_{ k}\sin{\omega_{k}t}\right )\cos{\omega_{n}t} \\=&amp;\frac{A_{0}}{2}\int_{-T/2}^{ T/2}\cos{\omega_{n}t}\,dt \\ &amp;+ \sum_{k = 1}^{n}\left [A_{k}\int_{-T/2}^{T /2}\cos{\omega_{k}t}\cos{\omega_{n}t}\,dt+B_{k}\int_{-T/2}^{T/2}\sin{\omega_ {k}t}\cos{\omega_{n}t}\,dt\right] \\ =&amp;\frac{A_{n}T}{2}.\end{align*}\]
+
+<p>The same is true in the case of the sine function. Integration operations defined in this way, therefore, cancel all components of the Fourier series up to one. Hence, we conclude that the following formulas are valid:</p>
+
+\[\begin{align*}A_{n} &amp;= \frac{2}{T}\int_{-T/2}^{T/2}f(t)\cos{\omega_{n}t}\, dt, \\ B_{n} &amp;= \frac{2}{T}\int_{-T/2}^{T/2}f(t)\sin{\omega_{n}t}\,dt. \end{align*}\]
+
+<p>With this, the problem was solved - the weights corresponding to different frequencies were found, that is, the spectrum of the periodic function was determined. For the purpose of testing and studying the spectrum of different periodic functions, a simple program can be written using the methods of numerical integration.</p>
+
+<p>As we have moved into the field of analysis, it would be ideal to move to exponential functions which are much easier to maneuver and we will do so with a heavy heart. Using the formulas:</p>
+
+\[\begin{align*}\cos{x} &amp;= \frac{e^{ix}+e^{-ix}}{2} \\ \sin{x} &amp;= \frac{e^{ix}- e^{-ix}}{2i}\end{align*}\]
+
+<p>We will write the Fourier series as:</p>
+
+\[\begin{align*}f(t) &amp;= \frac{A_{0}}{2} + \sum_{n = 1}^{\infty} A_{n}\frac{e^{i\omega_{ n}t}+e^{-i\omega_{n}t}}{2} + B_{n}\frac{e^{i\omega_{n}t}-e^{-i\omega_{n }t}}{2i} \\ &amp;= \frac{A_{0}}{2} + \sum_{n = 1}^{\infty}\left [ \frac{A_{n} - iB_{n} }{2} e^{i\omega_{n}t} + \frac{A_{n} + iB_{n}}{2} e^{-i\omega_{n}t}\right] \\ &amp; = \sum_{n = -\infty}^{\infty}C_{n}e^{i\omega_{n}t},\end{align*}\]
+
+<p>where $C_{n} = \left(A_{n}-iB_{n}\right)/2$ and $\overline{C_{n}} = C_{-n}$. The coefficients of $C$ are, in general, complex numbers which, in the case of real functions, come in conjugate complex pairs. This way of notation allows the generalization of Fourier series of functions of a complex variable. It remains to transfer the formulas for determining the spectrum to this form:</p>
+
+\[\begin{align*}C_{n} &amp;= \frac{A_{n} - iB_{n}}{2} \\&amp;= \frac{1}{T}\int_{-T/2}^{ T/2}f(t)\left ( \cos{\omega_{n}t} \ -i\sin{\omega_{n}t}\right )\,dt \\ &amp;= \frac{1}{ T}\int_{-T/2}^{T/2}f(t)e^{-i\omega_{n}t}\,dt\end{align*}\]
+
+<p>Often, the frequency is taken instead of the circular frequency This ends the story about Fourier series. Things are just about to get nasty. Hold tight!</p>
+
+<h2 id="fourier-transform">Fourier transform</h2>
+
+<p>The Fourier transform can be seen as a formula for determining the spectrum of arbitrary functions, including non-periodic ones, relying on the assumption that non-periodic functions can be represented as the limit value of periodic ones with a period tending to infinity. Given that frequency and period are inversely proportional, it is true that the fundamental frequency tends to zero. This means that the spectrum will become more and more dense with the growth of the period and in the limiting case it will tend towards the continuum (although it will never really be a continuum just as the infinitesimal never reaches zero, the essence is a limiting process). Accordingly, from now on we will talk about the spectral density so that the infinitesimal frequency interval around $\omega$ has the weight $\hat{f}_{\omega}(\omega)d\omega$. Therefore, converting the sum into a Riemann integral, we write the function as:</p>
+
+\[f(t) = \int_{-\infty}^{\infty}\hat{f}_{\omega}(\omega)e^{i\omega t}d\omega\]
+
+<p>This is the inverse Fourier transform - it regenerates the function from the spectrum. The Fourier transform works in reverse - it determines the spectrum based on the function - and is a modification of the already mentioned expression for the coefficients of the Fourier series when the period tends to infinity:</p>
+
+\[\hat{f}_{\omega}(\omega) = \frac{1}{2\pi}\int_{-\infty}^{\infty}f(t)e^{-i\omega t}dt\]
+
+<p>Notice how we used the fact that $\lim_{T\to\infty} 2\pi/T = d\omega$ and then switched to the density function $\hat{f}_{\omega}(\omega)$. However, the most popular convention is that the Fourier transform implies the frequency density $\xi$ instead of the circular frequency density $\omega$. Of course, the difference is only in the factor $2\pi$, i.e. the following formulas hold true:</p>
+
+\[\begin{align*} f(t) &amp;= \int_{-\infty}^{\infty}\hat{f}(\xi)e^{i2\pi\xi t}d\xi \\ \hat {f}(\xi) &amp;= \int_{-\infty}^{\infty}f(t)e^{-i2\pi\xi t}dt \end{align*}\]
+
+<p>Note that the first formula has not changed because $\hat{f}(\xi)d\xi = \hat{f}_{\omega}(\omega)d\omega$ holds. The advantage of this notation is that it is symmetric and therefore easier to remember<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>.</p>
+
+<p>In general, the good thing about this way of defining the Fourier transform is the ease with which the formulas can be derived because they follow as a natural generalization of the formulas we encountered with Fourier series. This also bypasses awkward integrals and complex mathematical arguments. As long as we take into account the process of transition from the discrete to the continuous domain, there are no problems.</p>
+
+<h2 id="brief-review">Brief Review</h2>
+
+<p>It is a good moment to pause and comment on previous research. In the previous sections, we showed how it is possible to represent an arbitrary function<sup id="fnref:2" role="doc-noteref"><a href="#fn:2" class="footnote" rel="footnote">2</a></sup> by a unique superposition of simple periodic functions - sines and cosines. Let’s try to make an analogy with geometric vectors. Each vector can be represented as a linear combination of base vectors. In the case of periodic functions, for example, that basis consists of sines and cosines of precisely determined frequencies - there are infinitely many of them, of course, but countably many. In the case of geometric vectors, we obtain the components of the vector by the scalar product, which is defined as the product of the length of the vector and the cosine of the angle between them. In our case, the components are obtained by a somewhat more complex procedure - integration. Actually, the structure we built should correspond to what mathematicians call a unitary vector space.</p>
+
+<p>One of the advantages of the Fourier transform, that is, the representation of functions by the sum of simple periodic functions, is that the latter are suitable for solving various problems. Differential equations are one obvious example; Fourier himself “invented” Fourier series to find solutions to the heat equation. Here is a closer example. In the first year of electrical engineering, we studied the basics of electrical circuits and the concept of impedance was key. Impedance is, of course, unlike resistance, inductance and capacitance, which are physical terms, a purely mathematical construct that is useful in the case of periodic excitation, i.e. of alternating current and voltage sources with sinusoidal dependence on time. In that case, the differential equations describing the dynamics of the circuit can be reduced to algebraic equations over complex numbers and easily solved. In electrical engineering, especially power engineering, one often works with simple periodic excitation, so this technique is certainly useful. On the other hand, in the case of an arbitrary periodic or aperiodic signal, the Fourier transform can be useful to us. The strategy consists in representing the original signal with sines and cosines, then finding a solution for each of the frequencies, and later superimposing where each solution participates with the appropriate weight.</p>
+
+<p>Another well-known example is the characteristic function in probability theory, which is defined as:</p>
+
+\[\varphi_{X}(t) = \mathbb{E}\left [ e^{itX} \right ]\]
+
+<p>which for continuous random variables reduces to:</p>
+
+\[\varphi_{X}(t) = \int_{-\infty}^{\infty}f_{X}(x)e^{itx}\,dx\]
+
+<p>Due to a somewhat unfortunate definition, the characteristic function can be viewed as either a Fourier transform or an inverse Fourier transform. In the modest part of the literature that I have read, this first point of view is generally taken. In my opinion, the justification for such a choice can be found in the fact that the distribution density function is real and can be viewed as a signal. On the other hand, the advantage of the second point of view lies in the fact that the nature of the distribution density function corresponds to the nature of the Fourier transform - in both cases, we are talking about densities of some measure. In that case, the signal that is obtained as a reconstruction is complex, except for the distribution density functions which are symmetrical around zero. Be that as it may, it is known that working with the characteristic function is often much easier than with the distribution density function itself.</p>
+
+<h2 id="discrete-fourier-transform">Discrete Fourier Transform</h2>
+
+<p>It is time to go over the discrete domain as well - we will no longer talk about continuous signals (functions), but we will deal with sequences of values. These strings can be created as a consequence of sampling a continuous signal. We, having so far become inclined to see and look for simple periodic signals in everything, will try the same this time. Let’s start with a sequence $x_{n}$ of period $N$ (valid $x_{n} = x_{n+N}$) and assume that it can be written as:</p>
+
+\[\begin{align*}x_{n} &amp;= \frac{A_{0}}{2} + \sum_{k=1}^{\left \lfloor \frac{N}{2} \right \rfloor} A_{k}\cos{\omega_{k}n}+B_{k}\sin{\omega_{k}n} \\ &amp;= \sum_{k=-\left \lfloor \frac{N}{2 } \right \rfloor}^{\left \lfloor \frac{N}{2} \right \rfloor}C_{k}e^{i\omega_{k}n}\end{align*}\]
+
+<p>where among the coefficients $A_{k},B_{k},C_{k}$ already known relations apply, while $\omega_{k} = \frac{2\pi k}{N}$. The question arises why the highest frequency we allow is $\omega_{\left \lfloor \frac{N}{2} \right \rfloor}$ and not $\omega_{N-1}$. Assume that the sum can contain summands corresponding to the frequency $\omega_{k}$ for $k &gt; \frac{N}{2}$; the sum would also contain summands corresponding to the frequency $\omega_{N-k}$ and $\cos{\omega_{k}n}=\cos{\omega_{N-k}}$ would hold as well as $\sin{\omega_{ k}}=-\sin{\omega_{N-k}}$. If we look only at the summands mentioned, we would have:</p>
+
+\[\begin{align*}
+
+     &amp;A_{N-k}\cos{\omega_{N-k}n}+A_{k}\cos{\omega_{N-k}n}+B_{N-k}\sin{\omega_{N-k}n}-B_{k}\sin{\omega_{ N-k}n} \\ &amp;=\left(A_{N-k}+A_{k}\right)\cos{\omega_{N-k}n} + \left(B_{N-k}-B_{k}\right)\ sin{\omega_{N-k}n}
+
+\end{align*}\]
+
+<p>From here it is obvious that it is sufficient to include only the frequency $\omega_{N-k}$ in the sum. This result can further be used to derive Shannon’s sampling theorem. In the literature, the equivalent form of the sum, where the indices go from 0 to $N-1$, is more present:</p>
+
+\[\begin{equation}
+
+     x_{n} = \sum_{k=0}^{N-1}C_{k}e^{i\omega_{k}n}
+
+\end{equation}\]
+
+<p>It should be emphasized here that in the case of even $N$, $C_{N/2} = A_{N/2}$ applies instead of the standard expression.</p>
+
+<p>The coefficients $C_{k}$ are obtained by a similar procedure, relying on essentially the same properties that we have already mentioned, but it is not out of place to repeat:</p>
+
+\[\begin{align*}&amp;\sum_{n=0}^{N-1}e^{iw_{j}n}e^{-i\omega_{k}n} \\ =&amp;\sum_{n= 0}^{N-1}e^{i\frac{2\pi}{N}(j-k)n} \\=&amp; \left\{\begin{matrix}
+
+N, &amp; i=j \\
+
+\frac{e^{i2\pi(j-k)}-1}{e^{i2\pi(j-k)/N}-1}=0, &amp; i\neq j \\
+
+\end{matrix}\right.\end{align*}\]
+
+<p>along the way using the sum of the geometric progression. Based on this, the formula for determining the coefficients reads:</p>
+
+\[C_{k} = \frac{1}{N}\sum_{n=0}^{N-1}x_{n}e^{-i\omega_{k}n}\]
+
+<p>In the literature, we most often find the quantity $X_{k} = NC_{k}$ (which corresponds to the density of weights) and then the formulas read:</p>
+
+\[\begin{align*} x_{n} &amp;= \frac{1}{N}\sum_{k=0}^{N-1}X_{k}e^{i\omega_{k}n} \\ X_{n} &amp;= \sum_{n=0}^{N-1}x_{n}e^{-i\omega_{k}n}\end{align*}\]
+
+<p>The preceding considerations are related to what is abbreviated as DTFS (\textit{Discrete Time Fourier Series}. The Discrete Fourier Transform (DFT) is formally defined for a finite series as the DTFS for a corresponding periodic series. On the other hand, the Discrete Cosine Transform (DCT) for a finite series, it is generally defined as the DTFS of the even expansion of that series (there are 4 variants of the expansion that draw different formulas for the calculation).The even expansion is considered better than the periodic expansion in some applications because with the latter at the boundary between two periods sudden jumps may occur that lead to a wider spectrum (a larger number of frequencies is needed to faithfully describe the signal).</p>
+
+<p>\subsubsection{Fourier transform in 2D}</p>
+
+<p>Let us now turn our attention to the two-dimensional function $f(x,y)$ where $x,y$ are the coordinates of the Cartesian coordinate system defined on a square with the center at the coordinate origin and the edges parallel to the coordinate axes. Protoperiodic functions in 2D, apart from the frequency, also have the property of the propagation direction (along one of the axes or a line between them). Let the vector that determines the direction of propagation of sinusoidal waves be determined by the angle $\theta$ that coincides with the positive direction of the x-axis, i.e. the unit vector $(\cos{\theta}, \sin{\theta})$, and the frequency by $\xi$. Then the wave, let’s say a sinusoid, along that direction is analytically written as:</p>
+
+\[\begin{align*}
+
+     &amp;\sin{2\pi\xi\left(x\cos{\theta}+y\sin{\theta}\right)} = \\
+
+     &amp;\sin{2\pi\left(ux+vy\right)}
+
+\end{align*}\]
+
+<p><img src="/assets/images/2023-08-02-fourier/sine-2d.png" alt="Sine-2d" /></p>
+
+<p>where $u=\xi \cos{\theta},\,v=\xi\sin{\theta}$.</p>
+
+<p>The expression in parentheses in the first row represents the projection of the position vector onto the direction determined by the angle $\theta$, and the equation itself $x\cos{\theta}+y\sin{\theta} = \text{const.}$ represents the equation of the wave front .</p>
+
+<p>On this occasion, we will deal with a discrete case that finds application in digital image processing. If the square is $M\times N$ in size (let’s say an image of that resolution), we are looking for the following representation:</p>
+
+\[f(x,y) = \frac{1}{MN}\sum_{u}\sum_{v}X_{u,v}e^{i2\pi\left ( \frac{ux}{M} +\frac{vy}{N} \right )},\]
+
+<p>with ranges $u = 0, \cdots, M-1$ and $v = 0, \cdots, N-1$. The coefficients $X_{u,v}$ are obtained according to an already known scheme (the reader is encouraged to derive the formula for himself):</p>
+
+\[X_{u,v} = \sum_{x}\sum_{y}f(u,v)e^{-i2\pi\left ( \frac{ux}{M}+\frac{vy}{ N} \right )}\]
+
+<p>which represents the Fourier transform in two dimensions.</p>
+
+<h2 id="digital-filters">Digital Filters</h2>
+
+<p>It is often necessary to remove a part of the spectrum from a signal, and filters are used for this purpose. Before we say something about them, let’s show how multiplication in the frequency domain is equivalent to convolution in the time or space domain (whichever definition makes more sense in the specific application), i.e. let’s show that the inverse Fourier transform of the product is equal to the convolution of the original signals:</p>
+
+\[\begin{align*}
+
+     &amp;\sum_{k}C_{k}'C_{k}''e^{i\omega_{k}n} \\ = &amp;\sum_{k}C_{k}'\left(\frac{1} {N}\sum_{l}x''_{l}e^{-i\omega_{k}l}\right)e^{i\omega_{k}n} \\ =
+
+     &amp;\frac{1}{N}\sum_{l}x''_{l}\left(\sum_{k}C_{k}'e^{i\omega_{k}(n-l)}\right) \\ =
+
+     &amp;\frac{1}{N}\sum_{l}x''_{l}x'_{n-l}
+
+\end{align*}\]
+
+<p>We have chosen a one-dimensional discrete domain to derive this result, although it holds in both the continuous and multidimensional cases.</p>
+
+<p>Low-pass filters, for example, as their name suggests, retain low frequencies while attenuating high frequencies. The most intuitive way to achieve this is only to cut off frequencies higher than a certain limit, which means that the Fourier transform is multiplied by the so-called by a rectangular function defined as:</p>
+
+\[\Pi_{\omega}(x) = \left\{\begin{matrix}
+
+0 &amp; |x|&gt;\omega \\
+
+\frac{1}{2} &amp; |x|=\omega\\
+
+1 &amp; |x|&lt;\omega\\
+
+\end{matrix}\right.\]
+
+<p>Since multiplication in the frequency domain corresponds to convolution in the time domain, it means that the convolution of the original signal and the inverse Fourier transform of the rectangular function, which is the $\text{sinc}$ function, should be performed. However, this is quite difficult in practice, which is easy to see from the graph.</p>
+
+<p>Actually, it’s often the other way around - the convolution is done with a rectangular function (the popular box), which means the spectrum is multiplied by a $\text{sinc}$ function - that’s a mean filter. Its flaws can be seen from its spectrum: some higher frequencies will be less damped than some lower ones, some frequencies will have a phase shift of $180^{\circ}$ corresponding to negative values.</p>
+
+<p>Another frequently encountered filter is the Gaussian filter, which in the frequency domain has the form of a normal distribution, or Gaussian. What’s interesting is that the Fourier transform of the Gaussian is Gaussian again (it’s one of those nice analytical properties of the normal distribution) so the convolution of the original signal is also Gaussian. The rule is that the widths (read standard deviations) of those two Gaussians are inversely proportional, so the smaller the range of frequencies we want to keep, the more weight the surrounding points would have when filtering, which makes sense intuitively.</p>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>In the literature, including Wikipedia, one finds a formula containing $2\pi$ in the expression for the inverse Fourier transform. In that case, $\hat{f}_{\omega}$ and $\hat{f}$ are identical functions, but the meaning of the density for the circular frequency is lost. Normally, I use my own notation. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:2" role="doc-endnote">
+      <p>This is not entirely correct, but for all intents and purposes, it is. <a href="#fnref:2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>]]></content><author><name>Uros Stojkovic</name></author><summary type="html"><![CDATA[Review of trigonometric identities]]></summary></entry><entry><title type="html">Frenet formulas</title><link href="http://localhost:4000/posts/frenet-formulas" rel="alternate" type="text/html" title="Frenet formulas" /><published>2023-07-31T00:00:00+02:00</published><updated>2023-07-31T00:00:00+02:00</updated><id>http://localhost:4000/posts/Frenet-formulas</id><content type="html" xml:base="http://localhost:4000/posts/frenet-formulas"><![CDATA[<p>In kinematics, the so-called natural coordinate system fixed to the moving body has base vectors (axes) defined as follows:</p>
+
+<ul>
+  <li>$\mathbf{T}$ is the unit vector in the direction of the tangent of motion and in the direction of motion of the material point</li>
+  <li>$\mathbf{N}$ is a unit vector whose direction and direction coincide with the centripetal (normal) acceleration of the material point.</li>
+  <li>$\mathbf{B}$ is a unit vector obtained as a vector product $\mathbf{T}\times\mathbf{N}$. Thus, the vector obtained when $\mathbf{N}$ is rotated 90 degrees around $\mathbf{T}$ counterclockwise.</li>
+</ul>
+
+<p>So, if we start from the parametric equation of motion of a material point, we get the tangential vector as the limiting value of the ratio of differential of the displacement vector and the length of the path traveled during that differential displacement, when the path length tends to zero:</p>
+
+\[\begin{equation*}
+     \mathbf{T} = \frac{d\mathbf{r}}{ds}
+\end{equation*}\]
+
+<p>As the displacement vector coincides with the traveled path in this limiting case, the upper vector is unit.</p>
+
+<p>The normal vector is proportional to the limit value of the difference of tangential vectors in two adjacent points and the length of the path traveled between those two points, when the path length tends to zero:</p>
+
+\[\begin{equation*}
+     \frac{d\mathbf{T}}{ds} = \kappa \mathbf{N}
+\end{equation*}\]
+
+<p>The proportionality coefficient is called the curvature of the curve and tells how abrupt the change in tangent is. This coefficient has a very interesting meaning because it serves to compare the curve drawn by the material point with its movement to a circle. Here is what is obtained when the above derivative is calculated for a circle of radius $r$.</p>
+
+\[\begin{align*}\frac{d}{ds}\left&lt; \cos{\theta}, \sin{\theta}\right&gt; &amp;= \frac{d\theta}{ds}\left&lt; -\sin{\theta}, \cos{\theta}\right&gt; \\ &amp;= \frac{1}{r}\left&lt; -\sin{\theta}, \cos{\theta}\right&gt; \end{align*}\]
+
+<p>So, in the case of a circle, the curvature of the curve is equal to the reciprocal of the radius of the circle. Therefore, we can introduce the more general notion of radius of curvature as the reciprocal of the curvature of a curve, which can be calculated for an arbitrary curve. This measure tells us about the local affinity of the curve with a circle with the corresponding radius. Indeed, if we were to develop the displacement into the Taylor series and stick only to the second order terms, we would get:</p>
+
+\[\begin{align*}d\mathbf{r} &amp;= \frac{d\mathbf{r}}{ds} ds + \frac{1}{2}\frac{d^{2}\mathbf{r} }{ds^{2}}ds^{2} + \mathcal{O}(ds^{3}) \\ &amp;= \mathbf{T}\,ds + \frac{\kappa}{2}\mathbf {N}\,ds^{2} + \mathcal{O}(ds^{3})\end{align*}\]
+
+<p>Therefore, the curve itself could be approximated around some point $P$ by a circle of radius $1/\kappa$ with the center in the direction and direction determined by the unit vector $\mathbf{N}$.</p>
+
+<p>The vector $\mathbf{N}$ is indeed normal to the vector $\mathbf{T}$ which is easily proved:</p>
+
+\[\begin{equation*}
+     \frac{d}{ds}\left (\mathbf{T}\cdot \mathbf{T} \right ) = 2\frac{d\mathbf{T}}{ds}\cdot \mathbf{T} = 0
+\end{equation*}\]
+
+<p>The length of the vector $\mathbf{T}$ is equal to zero at all points of the curve, so the derivative on the left side is also equal to zero at all points. This argument obviously works for all vectors of constant intensity.</p>
+
+<p>The vectors $\mathbf{T}$ and $\mathbf{N}$ determine the plane that is parallel to the curve at a certain point. That plane is called the osculation plane, and its normal vector, which we mark with $\mathbf{B}$, so called binormal vector, is obtained as the vector product of the previous two unit vectors of the vector and completes the vector base.</p>
+
+\[\begin{equation*}
+     \mathbf{B} = \mathbf{T} \times \mathbf{N}
+\end{equation*}\]
+
+<p>If we look for the derivative of this vector by the distance traveled, $s$, we will get:</p>
+
+\[\begin{align*}\frac{d\mathbf{B}}{ds} &amp;= \frac{d\mathbf{T}}{ds}\times \mathbf{N} + \mathbf{T}\times \frac{d\mathbf{N}}{ds} \\ &amp;= \kappa \mathbf{N} \times \mathbf{N} + \mathbf{T}\times \frac{d\mathbf{N}}{ds } \\ &amp;= \mathbf{T}\times \frac{d\mathbf{N}}{ds}\end{align*}\]
+
+<p>Since $d\mathbf{N}/ds$ is normal to $\mathbf{N}$, it follows that it lies in the plane determined by $\mathbf{T}$ and $\mathbf{B}$, i.e. it represents a linear the combination of these two vectors. It follows that $d\mathbf{B}/ds$ must be parallel to $\mathbf{N}$:</p>
+
+\[\begin{equation*}
+     \frac{d\mathbf{B}}{ds} = -\tau \mathbf{N},
+\end{equation*}\]
+
+<p>The coefficient $\tau$ determines how fast the binormal changes and is called the torsion of the curve. The minus sign is a matter of convention and is taken so that for a helix following the right-hand rule, the torsion is a positive value. <br />
+On the other hand, for the vector $\mathbf{N}$:</p>
+
+\[\begin{equation*}
+     \mathbf{N} = \mathbf{B}\times\mathbf{T},
+\end{equation*}\]
+
+<p>and if we look for its derivative in terms of $s$, we get:</p>
+
+\[\begin{align*}\frac{d\mathbf{N}}{ds} &amp;= \frac{d\mathbf{B}}{ds}\times \mathbf{T} + \mathbf{B}\times \frac{d\mathbf{T}}{ds} \\ &amp;= -\tau \mathbf{N}\times \mathbf{T} + \mathbf{B}\times \kappa\mathbf{N} \\ &amp;= \tau\mathbf{B} - \kappa \mathbf{T}\end{align*}\]
+
+<p>Finally, the so-called Frenet formulas read:</p>
+
+\[\begin{align*} \frac{d\mathbf{T}}{ds} &amp;= \kappa \mathbf{N} \\ \frac{d\mathbf{N}}{ds} &amp;= \tau\mathbf{ B} - \kappa \mathbf{T} \\ \frac{d\mathbf{B}}{ds}&amp;= -\tau\mathbf{N}\end{align*}\]]]></content><author><name>Uros Stojkovic</name></author><summary type="html"><![CDATA[In kinematics, the so-called natural coordinate system fixed to the moving body has base vectors (axes) defined as follows:]]></summary></entry><entry><title type="html">Ellipse</title><link href="http://localhost:4000/posts/ellipse" rel="alternate" type="text/html" title="Ellipse" /><published>2023-07-30T00:00:00+02:00</published><updated>2023-07-30T00:00:00+02:00</updated><id>http://localhost:4000/posts/Ellipse</id><content type="html" xml:base="http://localhost:4000/posts/ellipse"><![CDATA[<p>Ellipse can be defined in several ways. One of them is that an ellipse represents the locus of all points whose sum of distances from two fixed points - foci - is a constant. Here is the derivation of the equation of an ellipse in polar coordinates. If we place the origin of the coordinate system at one of the foci, denote the sum of distances with $l$, the distance between the two foci with $2f$, and use the cosine theorem, we have:</p>
+
+\[\begin{align*}
+&amp;\sqrt{r^{2}+4f^{2}-4rf\cos{\theta}} + r = l \\
+&amp;r^{2}-4f^{2}-4rf\cos{\theta} = l^{2} + r^{2} - 2lr \\
+&amp;2r(l-2f\cos{\theta}) = l^{2}-4f^{2}
+\end{align*}\]
+
+<p><img src="/assets/images/2023-07-30-conics/ellipse.png" alt="Ellipse" />
+If the length of the major axis is equal to $2a$, then we have $l=2a$, and if we introduce the ratio $e=f/a$ as the eccentricity of the ellipse, we get:</p>
+
+\[\begin{align*}
+&amp;4ar(1-e\cos{\theta})=4a^{2}(1-e^{2}) \\
+&amp;r = a\dfrac{1-e^{2}}{1-e\cos{\theta}}
+\end{align*}\]
+
+<p>If we consider the reciprocal value $\rho = 1/r$ and seek its derivative with respect to $\theta$, we get:</p>
+
+\[\begin{align*}\rho &amp;= \frac{1-e\cos{\theta}}{a(1-e^{2})} \\
+\frac{d\rho}{d\theta} &amp;= \frac{e\sin{\theta}}{a(1-e^{2})} \\
+\left(\frac{d\rho}{d\theta}\right)^{2}+\rho^{2} &amp;= \frac{1-2e\cos\theta+e^{2}}{a^{2}(1-e^{2})^{2}} \\
+\left(\frac{d\rho}{d\theta}\right)^{2}+\rho^{2} &amp;= 2\frac{1-e\cos\theta}{a^{2}(1-e^{2})^{2}} + \frac{e^{2}-1}{a^{2}(1-e^{2})^{2}} \\
+\left(\frac{d\rho}{d\theta}\right)^{2}+\rho^{2} &amp;= \frac{1}{a(1-e^{2})}\left(2\rho-\frac{1}{a}\right)\end{align*}\]
+
+<p>These equations can be further simplified if we introduce the constant $1/C = a(1-e^{2})$:</p>
+
+\[\begin{align*}
+\left(\frac{d\rho}{d\theta}\right)^{2}+\rho^{2} &amp;= C\left(2\rho-\frac{1}{a}\right) \\
+\left(\frac{d\rho}{d\theta}\right)^{2}+ (\rho - C)^{2} &amp;= C\left(C-\frac{1}{a}\right)\end{align*}\]]]></content><author><name>Uros Stojkovic</name></author><category term="geometry" /><summary type="html"><![CDATA[Ellipse can be defined in several ways. One of them is that an ellipse represents the locus of all points whose sum of distances from two fixed points - foci - is a constant. Here is the derivation of the equation of an ellipse in polar coordinates. If we place the origin of the coordinate system at one of the foci, denote the sum of distances with $l$, the distance between the two foci with $2f$, and use the cosine theorem, we have:]]></summary></entry><entry><title type="html">Kepler’s problem</title><link href="http://localhost:4000/posts/keplers-problem" rel="alternate" type="text/html" title="Kepler’s problem" /><published>2023-07-30T00:00:00+02:00</published><updated>2023-07-30T00:00:00+02:00</updated><id>http://localhost:4000/posts/Keplers-problem</id><content type="html" xml:base="http://localhost:4000/posts/keplers-problem"><![CDATA[<p>Assuming that a gravitational force acts on a material point (oriented towards the origin of, inversely proportional to the square of the distance), the acceleration of the material point is given by:</p>
+
+\[\begin{equation*}
+\frac{d^{2}\vec{r}}{dt^{2}} = -G\frac{M}{r^{2}}\hat{r}
+\end{equation*}\]
+
+<p>where $M$ is the mass of the body fixed at the coordinate origin.
+The acceleration on the right-hand side can be written as a gradient:</p>
+
+\[\begin{align*}\hat{r} &amp;= \nabla r\\
+-G\frac{M}{r^{2}}\hat{r} &amp;= \nabla \left(\frac{GM}{r}\right)\end{align*}\]
+
+<p>If we project the above equation onto the direction of the tangent and multiply it by the velocity (effectively taking a dot product of both sides with the velocity vector), we get:</p>
+
+\[\begin{align*}\frac{d^{2}\vec{r}}{dt^{2}}\cdot \frac{d\vec{r}}{dt} &amp;= \nabla \left(\frac{GM}{r}\right)\cdot \frac{d\vec{r}}{dt}\\
+\frac{d}{dt}\left(\frac{1}{2}\left(\frac{d\vec{r}}{dt}\cdot \frac{d\vec{r}}{dt}\right) \right) &amp;= \frac{d}{dt}\left(\frac{GM}{r}\right)\\
+\frac{v^{2}}{2}-\frac{GM}{r} &amp;= \text{const.}\end{align*}\]
+
+<p>This represents the conservation of energy.
+On the other hand, if we multiply the above equation vectorially with the position vector, the right-hand side of the equation is zero, and we get:</p>
+
+\[\begin{align*}\vec{r}\times\frac{d^{2}\vec{r}}{dt^{2}} &amp;= -\vec{r}\times G\frac{M}{r^{2}}\hat{r}\\
+\frac{d}{dt}\left(\vec{r}\times \frac{d\vec{r}}{dt}\right)-\frac{d\vec{r}}{dt}\times \frac{d\vec{r}}{dt} &amp;= 0\\
+\vec{r}\times \frac{d\vec{r}}{dt} &amp;= \text{const.}\end{align*}\]
+
+<p>This is the conservation of angular momentum. Since we only used the fact that the force field is central to cancel out the right-hand side, this result holds for all central fields, including those that do not follow Newtonian form. From this, we can conclude that during the motion, the material point remains in a plane whose normal is represented by the angular momentum vector. If we now introduce a cylindrical coordinate system whose $z$-axis coincides with the normal to the plane of motion, the above equation becomes:</p>
+
+\[\begin{align*}r\hat{r}\times \left(\dot{r}\hat{r}+r\dot{\theta}\hat{\theta}\right) &amp;= h\hat{z} \\r^{2}\dot{\theta} &amp;= h\end{align*}\]
+
+<p>The product of the square of the distance and the angular velocity, which represents both the double sectoral velocity and the moment of momentum, is constant during motion. The law of conservation of energy in cylindrical coordinates is:</p>
+
+\[\begin{equation*}
+\frac{1}{2}\left(\dot{r}^{2}+r^{2}\dot{\theta}^{2}\right)-\frac{GM}{r} = E
+\end{equation*}\]
+
+<p>Using the law of conservation of momentum, we can eliminate the angular velocity from the equation, so we get:</p>
+
+\[\begin{equation*}
+\frac{\dot{r}^{2}}{2} + \underbrace{\frac{h^{2}}{2r^{2}}-\frac{GM}{r}}_{U_{eff}} = E
+\end{equation*}\]
+
+<p>This reduces the problem to a one-dimensional problem with a different potential energy function (see Figure \ref{fig:pot_well}). The energy of the material point determines the limits of its motion.</p>
+
+<p><img src="../assets/images/2023-07-30-central-field-dynamics/potential-well.png" alt="Potential well" /></p>
+
+<p>To study the geometry of motion, it is necessary to eliminate time from the equations (i.e. differentiate with respect to time). The radial velocity can be written as:</p>
+
+\[\dot{r}=\frac{dr}{d\theta}\dot{\theta}\]
+
+<p>This is only possible when the angular velocity is zero, but then the trajectory is trivial - a straight line connecting the material point and the center.</p>
+
+<p>Substituting in the conservation of energy equation, we get:</p>
+
+\[\begin{align*}\frac{1}{2}\left(\left(\frac{dr}{d\theta}\right)^{2}+r^{2}\right)\frac{h^{2}}{r^{4}}-\frac{GM}{r} &amp;= E \\
+\frac{h^{2}}{2}\left(\left(\frac{1}{r^{2}}\frac{dr}{d\theta}\right)^{2}+\frac{1}{r^{2}}\right)-\frac{GM}{r} &amp;= E \\
+\frac{h^{2}}{2}\left ( \left ( \frac{d}{d\theta}\frac{1}{r} \right )^{2}+\frac{1}{r^{2}} \right )-\frac{GM}{r} &amp;= E\end{align*}\]
+
+<p>The last equation provides us with a reason to consider the reciprocal value of the distance and introduce:</p>
+
+\[\begin{equation*}
+\rho = \frac{1}{r}
+\end{equation*}\]
+
+<p>and the equation becomes:</p>
+
+\[\begin{align*}\frac{h^{2}}{2}\left(\left(\frac{d\rho}{d\theta}\right)^{2}+\rho^{2}\right)-GM\rho &amp;= E \\
+\left(\frac{d\rho}{d\theta}\right)^{2}+\rho^{2}-2\frac{GM}{h^{2}}\rho &amp;= \frac{2E}{h^{2}} \\
+\left(\frac{d\rho}{d\theta}\right)^{2}+\left(\rho-\frac{GM}{h^{2}}\right)^{2} &amp;= \frac{1}{h^{2}}\left(2E+\frac{G^{2}M^{2}}{h^{2}}\right)\end{align*}\]
+
+<p>The last equation represents a circle in the coordinate system $\left(\rho, d\rho/d\theta\right)$ with a center at point $\left(GM/h^{2}, 0\right)$. If we put:</p>
+
+\[\begin{equation*}
+\rho-\frac{GM}{h^{2}} = \frac{1}{h}\sqrt{2E+\frac{G^{2}M^{2}}{h^{2}}}\cos{\theta}
+\end{equation*}\]
+
+<p>then it follows:</p>
+
+\[\begin{equation*}
+\frac{d\rho}{d\theta} = -\frac{1}{h}\sqrt{2E+\frac{G^{2}M^{2}}{h^{2}}}\sin{\theta}
+\end{equation*}\]
+
+<p>and the above equation is indeed satisfied. Therefore, one of the possible solutions is:</p>
+
+\[\begin{align*} \rho&amp;=\frac{GM}{h^{2}} + \frac{1}{h}\sqrt{2E+\frac{G^{2}M^{2}}{h^{2}}}\cos{\theta} \\\frac{1}{r} &amp;= \frac{1+\sqrt{\frac{2Eh^{2}}{G^{2}M^{2}}+1}\cos{\theta}}{\frac{h^{2}}{GM}}\end{align*}\]
+
+<p>This is the equation of a conic section (see <a href="/posts/ellipse">this article</a>). We can read off its eccentricity from it:</p>
+
+\[\begin{equation*}
+e = \sqrt{\frac{2Eh^{2}}{G^{2}M^{2}}+1}
+\end{equation*}\]
+
+<p>And indeed, the fraction inside the square root is a dimensionless quantity (all units cancel out). When the energy of the particle is less than zero, the eccentricity is less than one, so the path is an ellipse. When the energy is equal to zero, the path is a parabola, while in the opposite case, it is a hyperbola. In each of these cases, one of the foci lies at the origin of the coordinate system. The length of the longer semiaxis can also be calculated using the well-known expression for an ellipse:</p>
+
+\[\begin{align*}a(1-e^{2}) &amp;= \frac{h^{2}}{GM} \\-a\frac{2Eh^{2}}{G^{2}M^{2}} &amp;= \frac{h^{2}}{GM} \\a &amp;= -\frac{GM}{2E}\end{align*}\]
+
+<p>By inserting this result into the formula for the period, we obtain:</p>
+
+\[\begin{align*}
+T &amp;= \frac{2\pi ab}{h} \\
+T &amp;= \frac{2\pi a}{h} \sqrt{\frac{ah^{2}}{GM}} \\
+T &amp;= 2\pi \sqrt{\frac{a^{3}}{GM}}
+\end{align*}\]
+
+<h2 id="mechanical-similarity">Mechanical similarity</h2>
+<p>Let us continue to consider Kepler’s problem, i.e., the motion of a material point in a central force field whose intensity is inversely proportional to the square of the distance:</p>
+
+\[\begin{equation*}
+
+\frac{d^{2}\vec{r}}{dt^{2}} = -G\frac{M}{r^{2}}\hat{r}
+
+\end{equation*}\]
+
+<p>As we have seen, this law leads (in certain cases) to a path in the shape of an ellipse. Let there be a trajectory for which the length of the major axis is $a$ meters, and the period of a complete circle is $T$ seconds. If we were to use other units, such that $a$ and $T$ correspond to $\alpha a$ and $\beta T$ of the new units, the above law would become:</p>
+
+\[\begin{equation*}
+
+\alpha \frac{d^{2}\vec{r}}{\beta^{2}dt^{2}} = -G\frac{M}{\alpha^{2} r^{2}}\hat{r}
+
+\end{equation*}\]
+
+<p>Only if:</p>
+
+\[\begin{align*}\frac{\alpha}{\beta^{2}} &amp;= \frac{1}{\alpha^{2}}  \\
+
+\alpha^{3} &amp;= \beta^{2}\end{align*}\]
+
+<p>would the law retain the same form as in natural units<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>. This means that the same numerical solutions would hold for units selected in this way. Therefore, there would also exist a trajectory for which the length of the major axis would be $a$ of the new spatial units, and the period of a complete circle would be $T$ of the new temporal units. In standard units, these values would be $a/\alpha$ and $T/\beta$, respectively, or when the substitution $\beta = \alpha^{3/2}$ is introduced, we obtain pairs of values:</p>
+
+\[\begin{equation*}
+
+\frac{a}{\alpha},\frac{T}{\alpha^{3/2}}
+
+\end{equation*}\]
+
+<p>Since $\alpha$ is arbitrary (it is only important to determine the corresponding $\beta$ that does not change the equations of motion), we can conclude the relationship between the period and the length of the major axis.</p>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>Note that the numerical value of the gravitational constant depends on the units used. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>]]></content><author><name>Uros Stojkovic</name></author><summary type="html"><![CDATA[Assuming that a gravitational force acts on a material point (oriented towards the origin of, inversely proportional to the square of the distance), the acceleration of the material point is given by:]]></summary></entry><entry><title type="html">Great books I’ve read</title><link href="http://localhost:4000/blog/Great-books/" rel="alternate" type="text/html" title="Great books I’ve read" /><published>2023-04-12T00:00:00+02:00</published><updated>2023-04-12T00:00:00+02:00</updated><id>http://localhost:4000/blog/Great-books</id><content type="html" xml:base="http://localhost:4000/blog/Great-books/"><![CDATA[<p>On Computer Systems:</p>
+<ul>
+  <li><a href="http://csapp.cs.cmu.edu/">Computer Systems: A Programmer’s Perspective</a>. This is a book every programmer should read.</li>
+</ul>
+
+<p>On Operating Systems:</p>
+<ul>
+  <li><a href="https://pages.cs.wisc.edu/~remzi/OSTEP/">Operating Systems - Three Easy Pieces</a>. Very good introductory book available for free online.</li>
+</ul>
+
+<p>On Computer Networks:</p>
+<ul>
+  <li><a href="https://gaia.cs.umass.edu/kurose_ross/index.php">Computer Networking: a Top Down Approach</a>. Very good introductory book. Unlike other books on Computer Networks, authors start their exposition from the application level instead of the link layer. For a more in-depth material, Steven’s books are classics.</li>
+</ul>
+
+<p>On Probability Theory:</p>
+<ul>
+  <li><a href="https://bayes.wustl.edu/">Probability Theory: The Logic of Science, Jaynes</a>. Very interesting exposition of Bayesian approach to probability theory. Requires basic knowledge of probability and uni-level math. Definitely not for beginners.</li>
+</ul>
+
+<p>On Classical Mechanics:</p>
+<ul>
+  <li><a href="https://archive.org/details/scienceofmechani005860mbp">Science of Mechanics, Mach</a>. Insightful book on the history of the development of mechanics. Interesting critique of Newton’s ideas. Not for complete beginners. English translation is a bit archaic.</li>
+</ul>]]></content><author><name>Uros Stojkovic</name></author><category term="blog" /><summary type="html"><![CDATA[On Computer Systems: Computer Systems: A Programmer’s Perspective. This is a book every programmer should read.]]></summary></entry></feed>

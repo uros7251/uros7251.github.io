@@ -1,0 +1,842 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Fourier series, Fourier transforms and all that - Uros Stojkovic</title>
+<meta name="description" content="Review of trigonometric identities">
+
+
+  <meta name="author" content="Uros Stojkovic">
+  
+  <meta property="article:author" content="Uros Stojkovic">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Uros Stojkovic">
+<meta property="og:title" content="Fourier series, Fourier transforms and all that">
+<meta property="og:url" content="http://localhost:4000/posts/fourier-analysis">
+
+
+  <meta property="og:description" content="Review of trigonometric identities">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2023-08-01T00:00:00+02:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/posts/fourier-analysis">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Uros Stojkovic",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Uros Stojkovic Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Uros Stojkovic
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/posts">Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about">About</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Uros Stojkovic</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>Master student of Data Engineering and Analytics at Technical University of Munich</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Munich, Germany</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:uros.stojkovich@outlook.com" rel="nofollow noopener noreferrer me"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/uros7251" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">uros7251</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Fourier series, Fourier transforms and all that">
+    <meta itemprop="description" content="Review of trigonometric identities">
+    <meta itemprop="datePublished" content="2023-08-01T00:00:00+02:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/posts/fourier-analysis" class="u-url" itemprop="url">Fourier series, Fourier transforms and all that
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          63 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+        <h2 id="review-of-trigonometric-identities">Review of trigonometric identities</h2>
+
+<p>Let’s start by deriving a couple of trigonometric identities that will be of crucial use to us. The most beautiful thing about trigonometry is that everything can be reduced to triangles and simple Euclidean geometry. Let’s first consider the mean value of the cosine of two angles:</p>
+
+\[\frac{\cos{\alpha}+\cos{\beta}}{2}\]
+
+<p><img src="/assets/images/2023-08-02-fourier/trig-sum-identity.png" alt="Trig-sum-identity" /></p>
+
+<p>It can be seen from the picture that the required value is given by the length of $OF$, that is, by the projection of the length of $OE$ on the x-axis. The point $E$, according to Thales’ theorem, is located halfway along the length $CD$. Since both $C$ and $D$ are on the unit circle, it is an isosceles triangle $\Delta OCD$, which implies that the angle $\measuredangle OED$ is right, as well as that along $OE$ the poles of the angle $\measuredangle COD$ . It follows:</p>
+
+\[\overline{OE} = \cos{\frac{\alpha-\beta}{2}},\]
+
+<p>and finally:</p>
+
+\[\frac{\cos{\alpha}+\cos{\beta}}{2} = \cos{\frac{\alpha-\beta}{2}}\cos{\frac{\alpha+\beta} {2}}\]
+
+<p>This is a well-known formula for converting a sum to a product, and although it is shown using the example of the angles of the first quadrant, it is valid for all angles, which is relatively easy to demonstrate. Analogously, the mean value of the sines of two angles is:</p>
+
+\[\frac{\sin{\alpha}+\sin{\beta}}{2} = \cos{\frac{\alpha-\beta}{2}}\sin{\frac{\alpha+\beta} {2}}\]
+
+<p>Let us now consider the difference of cosines of two angles:</p>
+
+\[\cos{\alpha}-\cos{\beta}\]
+
+<p><img src="/assets/images/2023-08-02-fourier/trig-diff-identity.png" alt="Trig-diff-identity" /></p>
+
+<p>It can be seen from the picture that it is a length of length $GH$, with a negative sign in front, and it is concluded that it is a projection of length $CE$ on the h-axis. Since $CE$ is the base of an isosceles triangle with the vertex angle $\alpha-\beta$ and legs of length one, it is easy to calculate:</p>
+
+\[\overline{OE} = 2\sin{\frac{\alpha-\beta}{2}}\]
+
+<p>Further, looking at the triangle $\Delta CEO$ it can be found that:</p>
+
+\[\measuredangle OCE = \frac{\alpha+\beta}{2}\]
+
+<p>whence follows:</p>
+
+\[\begin{align*}
+
+     \cos{\alpha}-\cos{\beta} &amp;= -2\sin{\frac{\alpha-\beta}{2}}\sin{\frac{\alpha+\beta}{2}} \\ &amp;= 2\sin{\frac{\beta-\alpha}{2}}\sin{\frac{\alpha+\beta}{2}}
+
+\end{align*}\]
+
+<p>And similarly:</p>
+
+\[\sin{\alpha}-\sin{\beta} = 2\sin{\frac{\alpha-\beta}{2}}\cos{\frac{\alpha+\beta}{2}}\]
+
+<p>It should be noted that the last formula could be obtained from the sum formula if the sign of $\beta$ were changed. For further work, we will actually need a slightly different form of the previous formulas - the transformation of the product into the sum. With shifts:</p>
+
+\[\begin{align*}
+
+     x &amp;= \frac{\alpha+\beta}{2} \\
+
+     y &amp;= \frac{\alpha-\beta}{2}
+
+\end{align*}\]
+
+<p>the identities are obtained:</p>
+
+\[\begin{align*}
+
+     \cos{x}\cos{y} &amp;= \frac{\cos{\left ( x + y \right )}+\cos{\left ( x - y \right )}}{2} \\ \sin {x}\cos{y} &amp;= \frac{\sin{\left ( x + y \right )}+\sin{\left ( x - y \right )}}{2} \\ \sin{x }\sin{y} &amp;= -\frac{\cos{\left ( x + y \right )}-\cos{\left ( x - y \right )}}{2}
+
+\end{align*}\]
+
+<h2 id="fourier-series">Fourier series</h2>
+
+<p>Our interest shifts to periodic functions - functions for which $f(t) = f(t+T)$ holds for every $t$. The smallest non-negative number $T$ for which this equality holds is called the period of the function. The most famous periodic functions are certainly trigonometric functions - sine and cosine above all. The question arises whether it is possible to represent an arbitrary periodic function, such as the one in the picture below, as a weighted sum of sines and cosines.</p>
+
+<p><img src="/assets/images/2023-08-02-fourier/periodic-signal.png" alt="Periodic signal" /></p>
+
+<p>Let’s assume it’s possible. It is obvious that in that case only sine and cosine functions with a period that is an integer part of $T$ could participate in the sum. The circular frequency corresponding to the period $T/n$ is:</p>
+
+\[\omega_{n} = \frac{2\pi n}{T}\]
+
+<p>Therefore, according to our assumption, it is possible to write:</p>
+
+\[f(t) = \frac{A_{0}}{2} + \sum_{n = 1}^{\infty} A_{n}\cos{\omega_{n}t} + B_{n} \sin{\omega_{n}t}\]
+
+<p>This form is called the Fourier series. The basic problem consists in determining the coefficients $A_{n}$ and $B_{n}$. For this purpose, the specificity of integrating the product of sine and cosine along one period is used. Let’s look at the integral first:</p>
+
+\[\begin{align*}&amp;\int_{-T/2}^{T/2}\cos{\left ( \frac{2\pi it}{T} \right )}\cos{\left ( \frac {2\pi jt}{T} \right )}\, dt \\ \frac{1}{2}&amp;\int_{-T/2}^{T/2} \left [ \cos{\left ( \frac{2\pi (i+j)t}{T} \right )}+\cos{\left ( \frac{2\pi (i-j)t}{T} \right )}\right ]\, dt\end{align*}\]
+
+<p>for positive numbers $i,\,j$.</p>
+
+<p>When $i = j$, the integral is equal to $T/2$, otherwise it is equal to 0. The integral behaves in the same way:</p>
+
+\[\int_{-T/2}^{T/2}\sin{\left ( \frac{2\pi it}{T} \right )}\sin{\left ( \frac{2\pi jt }{T} \right )}\, dt,\]
+
+<p>while for each $i, j$ the following applies:</p>
+
+\[\int_{-T/2}^{T/2}\sin{\left ( \frac{2\pi it}{T} \right )}\cos{\left ( \frac{2\pi jt }{T} \right )}\, dt = 0.\]
+
+<p>If we integrate an arbitrary periodic function multiplied by a cosine function of circular frequency $\omega_{n}$ on the same interval, using the previous results we get:</p>
+
+\[\begin{align*} &amp;\int_{-T/2}^{T/2}f(t)\cos{\omega_{n}t}\,dt \\ =&amp;\int_{-T/2} ^{T/2}\left ( \frac{A_{0}}{2} + \sum_{k=1}^{\infty}A_{k}\cos{\omega_{k}t} + B_{ k}\sin{\omega_{k}t}\right )\cos{\omega_{n}t} \\=&amp;\frac{A_{0}}{2}\int_{-T/2}^{ T/2}\cos{\omega_{n}t}\,dt \\ &amp;+ \sum_{k = 1}^{n}\left [A_{k}\int_{-T/2}^{T /2}\cos{\omega_{k}t}\cos{\omega_{n}t}\,dt+B_{k}\int_{-T/2}^{T/2}\sin{\omega_ {k}t}\cos{\omega_{n}t}\,dt\right] \\ =&amp;\frac{A_{n}T}{2}.\end{align*}\]
+
+<p>The same is true in the case of the sine function. Integration operations defined in this way, therefore, cancel all components of the Fourier series up to one. Hence, we conclude that the following formulas are valid:</p>
+
+\[\begin{align*}A_{n} &amp;= \frac{2}{T}\int_{-T/2}^{T/2}f(t)\cos{\omega_{n}t}\, dt, \\ B_{n} &amp;= \frac{2}{T}\int_{-T/2}^{T/2}f(t)\sin{\omega_{n}t}\,dt. \end{align*}\]
+
+<p>With this, the problem was solved - the weights corresponding to different frequencies were found, that is, the spectrum of the periodic function was determined. For the purpose of testing and studying the spectrum of different periodic functions, a simple program can be written using the methods of numerical integration.</p>
+
+<p>As we have moved into the field of analysis, it would be ideal to move to exponential functions which are much easier to maneuver and we will do so with a heavy heart. Using the formulas:</p>
+
+\[\begin{align*}\cos{x} &amp;= \frac{e^{ix}+e^{-ix}}{2} \\ \sin{x} &amp;= \frac{e^{ix}- e^{-ix}}{2i}\end{align*}\]
+
+<p>We will write the Fourier series as:</p>
+
+\[\begin{align*}f(t) &amp;= \frac{A_{0}}{2} + \sum_{n = 1}^{\infty} A_{n}\frac{e^{i\omega_{ n}t}+e^{-i\omega_{n}t}}{2} + B_{n}\frac{e^{i\omega_{n}t}-e^{-i\omega_{n }t}}{2i} \\ &amp;= \frac{A_{0}}{2} + \sum_{n = 1}^{\infty}\left [ \frac{A_{n} - iB_{n} }{2} e^{i\omega_{n}t} + \frac{A_{n} + iB_{n}}{2} e^{-i\omega_{n}t}\right] \\ &amp; = \sum_{n = -\infty}^{\infty}C_{n}e^{i\omega_{n}t},\end{align*}\]
+
+<p>where $C_{n} = \left(A_{n}-iB_{n}\right)/2$ and $\overline{C_{n}} = C_{-n}$. The coefficients of $C$ are, in general, complex numbers which, in the case of real functions, come in conjugate complex pairs. This way of notation allows the generalization of Fourier series of functions of a complex variable. It remains to transfer the formulas for determining the spectrum to this form:</p>
+
+\[\begin{align*}C_{n} &amp;= \frac{A_{n} - iB_{n}}{2} \\&amp;= \frac{1}{T}\int_{-T/2}^{ T/2}f(t)\left ( \cos{\omega_{n}t} \ -i\sin{\omega_{n}t}\right )\,dt \\ &amp;= \frac{1}{ T}\int_{-T/2}^{T/2}f(t)e^{-i\omega_{n}t}\,dt\end{align*}\]
+
+<p>Often, the frequency is taken instead of the circular frequency This ends the story about Fourier series. Things are just about to get nasty. Hold tight!</p>
+
+<h2 id="fourier-transform">Fourier transform</h2>
+
+<p>The Fourier transform can be seen as a formula for determining the spectrum of arbitrary functions, including non-periodic ones, relying on the assumption that non-periodic functions can be represented as the limit value of periodic ones with a period tending to infinity. Given that frequency and period are inversely proportional, it is true that the fundamental frequency tends to zero. This means that the spectrum will become more and more dense with the growth of the period and in the limiting case it will tend towards the continuum (although it will never really be a continuum just as the infinitesimal never reaches zero, the essence is a limiting process). Accordingly, from now on we will talk about the spectral density so that the infinitesimal frequency interval around $\omega$ has the weight $\hat{f}_{\omega}(\omega)d\omega$. Therefore, converting the sum into a Riemann integral, we write the function as:</p>
+
+\[f(t) = \int_{-\infty}^{\infty}\hat{f}_{\omega}(\omega)e^{i\omega t}d\omega\]
+
+<p>This is the inverse Fourier transform - it regenerates the function from the spectrum. The Fourier transform works in reverse - it determines the spectrum based on the function - and is a modification of the already mentioned expression for the coefficients of the Fourier series when the period tends to infinity:</p>
+
+\[\hat{f}_{\omega}(\omega) = \frac{1}{2\pi}\int_{-\infty}^{\infty}f(t)e^{-i\omega t}dt\]
+
+<p>Notice how we used the fact that $\lim_{T\to\infty} 2\pi/T = d\omega$ and then switched to the density function $\hat{f}_{\omega}(\omega)$. However, the most popular convention is that the Fourier transform implies the frequency density $\xi$ instead of the circular frequency density $\omega$. Of course, the difference is only in the factor $2\pi$, i.e. the following formulas hold true:</p>
+
+\[\begin{align*} f(t) &amp;= \int_{-\infty}^{\infty}\hat{f}(\xi)e^{i2\pi\xi t}d\xi \\ \hat {f}(\xi) &amp;= \int_{-\infty}^{\infty}f(t)e^{-i2\pi\xi t}dt \end{align*}\]
+
+<p>Note that the first formula has not changed because $\hat{f}(\xi)d\xi = \hat{f}_{\omega}(\omega)d\omega$ holds. The advantage of this notation is that it is symmetric and therefore easier to remember<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>.</p>
+
+<p>In general, the good thing about this way of defining the Fourier transform is the ease with which the formulas can be derived because they follow as a natural generalization of the formulas we encountered with Fourier series. This also bypasses awkward integrals and complex mathematical arguments. As long as we take into account the process of transition from the discrete to the continuous domain, there are no problems.</p>
+
+<h2 id="brief-review">Brief Review</h2>
+
+<p>It is a good moment to pause and comment on previous research. In the previous sections, we showed how it is possible to represent an arbitrary function<sup id="fnref:2" role="doc-noteref"><a href="#fn:2" class="footnote" rel="footnote">2</a></sup> by a unique superposition of simple periodic functions - sines and cosines. Let’s try to make an analogy with geometric vectors. Each vector can be represented as a linear combination of base vectors. In the case of periodic functions, for example, that basis consists of sines and cosines of precisely determined frequencies - there are infinitely many of them, of course, but countably many. In the case of geometric vectors, we obtain the components of the vector by the scalar product, which is defined as the product of the length of the vector and the cosine of the angle between them. In our case, the components are obtained by a somewhat more complex procedure - integration. Actually, the structure we built should correspond to what mathematicians call a unitary vector space.</p>
+
+<p>One of the advantages of the Fourier transform, that is, the representation of functions by the sum of simple periodic functions, is that the latter are suitable for solving various problems. Differential equations are one obvious example; Fourier himself “invented” Fourier series to find solutions to the heat equation. Here is a closer example. In the first year of electrical engineering, we studied the basics of electrical circuits and the concept of impedance was key. Impedance is, of course, unlike resistance, inductance and capacitance, which are physical terms, a purely mathematical construct that is useful in the case of periodic excitation, i.e. of alternating current and voltage sources with sinusoidal dependence on time. In that case, the differential equations describing the dynamics of the circuit can be reduced to algebraic equations over complex numbers and easily solved. In electrical engineering, especially power engineering, one often works with simple periodic excitation, so this technique is certainly useful. On the other hand, in the case of an arbitrary periodic or aperiodic signal, the Fourier transform can be useful to us. The strategy consists in representing the original signal with sines and cosines, then finding a solution for each of the frequencies, and later superimposing where each solution participates with the appropriate weight.</p>
+
+<p>Another well-known example is the characteristic function in probability theory, which is defined as:</p>
+
+\[\varphi_{X}(t) = \mathbb{E}\left [ e^{itX} \right ]\]
+
+<p>which for continuous random variables reduces to:</p>
+
+\[\varphi_{X}(t) = \int_{-\infty}^{\infty}f_{X}(x)e^{itx}\,dx\]
+
+<p>Due to a somewhat unfortunate definition, the characteristic function can be viewed as either a Fourier transform or an inverse Fourier transform. In the modest part of the literature that I have read, this first point of view is generally taken. In my opinion, the justification for such a choice can be found in the fact that the distribution density function is real and can be viewed as a signal. On the other hand, the advantage of the second point of view lies in the fact that the nature of the distribution density function corresponds to the nature of the Fourier transform - in both cases, we are talking about densities of some measure. In that case, the signal that is obtained as a reconstruction is complex, except for the distribution density functions which are symmetrical around zero. Be that as it may, it is known that working with the characteristic function is often much easier than with the distribution density function itself.</p>
+
+<h2 id="discrete-fourier-transform">Discrete Fourier Transform</h2>
+
+<p>It is time to go over the discrete domain as well - we will no longer talk about continuous signals (functions), but we will deal with sequences of values. These strings can be created as a consequence of sampling a continuous signal. We, having so far become inclined to see and look for simple periodic signals in everything, will try the same this time. Let’s start with a sequence $x_{n}$ of period $N$ (valid $x_{n} = x_{n+N}$) and assume that it can be written as:</p>
+
+\[\begin{align*}x_{n} &amp;= \frac{A_{0}}{2} + \sum_{k=1}^{\left \lfloor \frac{N}{2} \right \rfloor} A_{k}\cos{\omega_{k}n}+B_{k}\sin{\omega_{k}n} \\ &amp;= \sum_{k=-\left \lfloor \frac{N}{2 } \right \rfloor}^{\left \lfloor \frac{N}{2} \right \rfloor}C_{k}e^{i\omega_{k}n}\end{align*}\]
+
+<p>where among the coefficients $A_{k},B_{k},C_{k}$ already known relations apply, while $\omega_{k} = \frac{2\pi k}{N}$. The question arises why the highest frequency we allow is $\omega_{\left \lfloor \frac{N}{2} \right \rfloor}$ and not $\omega_{N-1}$. Assume that the sum can contain summands corresponding to the frequency $\omega_{k}$ for $k &gt; \frac{N}{2}$; the sum would also contain summands corresponding to the frequency $\omega_{N-k}$ and $\cos{\omega_{k}n}=\cos{\omega_{N-k}}$ would hold as well as $\sin{\omega_{ k}}=-\sin{\omega_{N-k}}$. If we look only at the summands mentioned, we would have:</p>
+
+\[\begin{align*}
+
+     &amp;A_{N-k}\cos{\omega_{N-k}n}+A_{k}\cos{\omega_{N-k}n}+B_{N-k}\sin{\omega_{N-k}n}-B_{k}\sin{\omega_{ N-k}n} \\ &amp;=\left(A_{N-k}+A_{k}\right)\cos{\omega_{N-k}n} + \left(B_{N-k}-B_{k}\right)\ sin{\omega_{N-k}n}
+
+\end{align*}\]
+
+<p>From here it is obvious that it is sufficient to include only the frequency $\omega_{N-k}$ in the sum. This result can further be used to derive Shannon’s sampling theorem. In the literature, the equivalent form of the sum, where the indices go from 0 to $N-1$, is more present:</p>
+
+\[\begin{equation}
+
+     x_{n} = \sum_{k=0}^{N-1}C_{k}e^{i\omega_{k}n}
+
+\end{equation}\]
+
+<p>It should be emphasized here that in the case of even $N$, $C_{N/2} = A_{N/2}$ applies instead of the standard expression.</p>
+
+<p>The coefficients $C_{k}$ are obtained by a similar procedure, relying on essentially the same properties that we have already mentioned, but it is not out of place to repeat:</p>
+
+\[\begin{align*}&amp;\sum_{n=0}^{N-1}e^{iw_{j}n}e^{-i\omega_{k}n} \\ =&amp;\sum_{n= 0}^{N-1}e^{i\frac{2\pi}{N}(j-k)n} \\=&amp; \left\{\begin{matrix}
+
+N, &amp; i=j \\
+
+\frac{e^{i2\pi(j-k)}-1}{e^{i2\pi(j-k)/N}-1}=0, &amp; i\neq j \\
+
+\end{matrix}\right.\end{align*}\]
+
+<p>along the way using the sum of the geometric progression. Based on this, the formula for determining the coefficients reads:</p>
+
+\[C_{k} = \frac{1}{N}\sum_{n=0}^{N-1}x_{n}e^{-i\omega_{k}n}\]
+
+<p>In the literature, we most often find the quantity $X_{k} = NC_{k}$ (which corresponds to the density of weights) and then the formulas read:</p>
+
+\[\begin{align*} x_{n} &amp;= \frac{1}{N}\sum_{k=0}^{N-1}X_{k}e^{i\omega_{k}n} \\ X_{n} &amp;= \sum_{n=0}^{N-1}x_{n}e^{-i\omega_{k}n}\end{align*}\]
+
+<p>The preceding considerations are related to what is abbreviated as DTFS (\textit{Discrete Time Fourier Series}. The Discrete Fourier Transform (DFT) is formally defined for a finite series as the DTFS for a corresponding periodic series. On the other hand, the Discrete Cosine Transform (DCT) for a finite series, it is generally defined as the DTFS of the even expansion of that series (there are 4 variants of the expansion that draw different formulas for the calculation).The even expansion is considered better than the periodic expansion in some applications because with the latter at the boundary between two periods sudden jumps may occur that lead to a wider spectrum (a larger number of frequencies is needed to faithfully describe the signal).</p>
+
+<p>\subsubsection{Fourier transform in 2D}</p>
+
+<p>Let us now turn our attention to the two-dimensional function $f(x,y)$ where $x,y$ are the coordinates of the Cartesian coordinate system defined on a square with the center at the coordinate origin and the edges parallel to the coordinate axes. Protoperiodic functions in 2D, apart from the frequency, also have the property of the propagation direction (along one of the axes or a line between them). Let the vector that determines the direction of propagation of sinusoidal waves be determined by the angle $\theta$ that coincides with the positive direction of the x-axis, i.e. the unit vector $(\cos{\theta}, \sin{\theta})$, and the frequency by $\xi$. Then the wave, let’s say a sinusoid, along that direction is analytically written as:</p>
+
+\[\begin{align*}
+
+     &amp;\sin{2\pi\xi\left(x\cos{\theta}+y\sin{\theta}\right)} = \\
+
+     &amp;\sin{2\pi\left(ux+vy\right)}
+
+\end{align*}\]
+
+<p><img src="/assets/images/2023-08-02-fourier/sine-2d.png" alt="Sine-2d" /></p>
+
+<p>where $u=\xi \cos{\theta},\,v=\xi\sin{\theta}$.</p>
+
+<p>The expression in parentheses in the first row represents the projection of the position vector onto the direction determined by the angle $\theta$, and the equation itself $x\cos{\theta}+y\sin{\theta} = \text{const.}$ represents the equation of the wave front .</p>
+
+<p>On this occasion, we will deal with a discrete case that finds application in digital image processing. If the square is $M\times N$ in size (let’s say an image of that resolution), we are looking for the following representation:</p>
+
+\[f(x,y) = \frac{1}{MN}\sum_{u}\sum_{v}X_{u,v}e^{i2\pi\left ( \frac{ux}{M} +\frac{vy}{N} \right )},\]
+
+<p>with ranges $u = 0, \cdots, M-1$ and $v = 0, \cdots, N-1$. The coefficients $X_{u,v}$ are obtained according to an already known scheme (the reader is encouraged to derive the formula for himself):</p>
+
+\[X_{u,v} = \sum_{x}\sum_{y}f(u,v)e^{-i2\pi\left ( \frac{ux}{M}+\frac{vy}{ N} \right )}\]
+
+<p>which represents the Fourier transform in two dimensions.</p>
+
+<h2 id="digital-filters">Digital Filters</h2>
+
+<p>It is often necessary to remove a part of the spectrum from a signal, and filters are used for this purpose. Before we say something about them, let’s show how multiplication in the frequency domain is equivalent to convolution in the time or space domain (whichever definition makes more sense in the specific application), i.e. let’s show that the inverse Fourier transform of the product is equal to the convolution of the original signals:</p>
+
+\[\begin{align*}
+
+     &amp;\sum_{k}C_{k}'C_{k}''e^{i\omega_{k}n} \\ = &amp;\sum_{k}C_{k}'\left(\frac{1} {N}\sum_{l}x''_{l}e^{-i\omega_{k}l}\right)e^{i\omega_{k}n} \\ =
+
+     &amp;\frac{1}{N}\sum_{l}x''_{l}\left(\sum_{k}C_{k}'e^{i\omega_{k}(n-l)}\right) \\ =
+
+     &amp;\frac{1}{N}\sum_{l}x''_{l}x'_{n-l}
+
+\end{align*}\]
+
+<p>We have chosen a one-dimensional discrete domain to derive this result, although it holds in both the continuous and multidimensional cases.</p>
+
+<p>Low-pass filters, for example, as their name suggests, retain low frequencies while attenuating high frequencies. The most intuitive way to achieve this is only to cut off frequencies higher than a certain limit, which means that the Fourier transform is multiplied by the so-called by a rectangular function defined as:</p>
+
+\[\Pi_{\omega}(x) = \left\{\begin{matrix}
+
+0 &amp; |x|&gt;\omega \\
+
+\frac{1}{2} &amp; |x|=\omega\\
+
+1 &amp; |x|&lt;\omega\\
+
+\end{matrix}\right.\]
+
+<p>Since multiplication in the frequency domain corresponds to convolution in the time domain, it means that the convolution of the original signal and the inverse Fourier transform of the rectangular function, which is the $\text{sinc}$ function, should be performed. However, this is quite difficult in practice, which is easy to see from the graph.</p>
+
+<p>Actually, it’s often the other way around - the convolution is done with a rectangular function (the popular box), which means the spectrum is multiplied by a $\text{sinc}$ function - that’s a mean filter. Its flaws can be seen from its spectrum: some higher frequencies will be less damped than some lower ones, some frequencies will have a phase shift of $180^{\circ}$ corresponding to negative values.</p>
+
+<p>Another frequently encountered filter is the Gaussian filter, which in the frequency domain has the form of a normal distribution, or Gaussian. What’s interesting is that the Fourier transform of the Gaussian is Gaussian again (it’s one of those nice analytical properties of the normal distribution) so the convolution of the original signal is also Gaussian. The rule is that the widths (read standard deviations) of those two Gaussians are inversely proportional, so the smaller the range of frequencies we want to keep, the more weight the surrounding points would have when filtering, which makes sense intuitively.</p>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>In the literature, including Wikipedia, one finds a formula containing $2\pi$ in the expression for the inverse Fourier transform. In that case, $\hat{f}_{\omega}$ and $\hat{f}$ are identical functions, but the meaning of the density for the circular frequency is lost. Normally, I use my own notation. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:2" role="doc-endnote">
+      <p>This is not entirely correct, but for all intents and purposes, it is. <a href="#fnref:2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2023-08-01T00:00:00+02:00">August 1, 2023</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Fourier+series%2C+Fourier+transforms+and+all+that%20http%3A%2F%2Flocalhost%3A4000%2Fposts%2Ffourier-analysis" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fposts%2Ffourier-analysis" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2Ffourier-analysis" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/posts/odes" class="pagination--pager" title="Operator approach to solving differential equations
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">You may also enjoy</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/odes" rel="permalink">Operator approach to solving differential equations
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          11 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">We will start by solving the following equation:
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/normal-dist-and-its-derivatives" rel="permalink">Normal distribution and its derivatives
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          42 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Elementary area and volume in the spherical coordinate system
+In the spherical coordinate system, the points of $n$ dimensional space are determined by the E...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/frenet-formulas" rel="permalink">Frenet formulas
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          14 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">In kinematics, the so-called natural coordinate system fixed to the moving body has base vectors (axes) defined as follows:
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/keplers-problem" rel="permalink">Kepler’s problem
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          19 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Assuming that a gravitational force acts on a material point (oriented towards the origin of, inversely proportional to the square of the distance), the acce...</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$']]
+        }
+      };
+    </script>
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2023 Uros Stojkovic. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

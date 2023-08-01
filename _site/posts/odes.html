@@ -1,0 +1,722 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Operator approach to solving differential equations - Uros Stojkovic</title>
+<meta name="description" content="We will start by solving the following equation:">
+
+
+  <meta name="author" content="Uros Stojkovic">
+  
+  <meta property="article:author" content="Uros Stojkovic">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Uros Stojkovic">
+<meta property="og:title" content="Operator approach to solving differential equations">
+<meta property="og:url" content="http://localhost:4000/posts/odes">
+
+
+  <meta property="og:description" content="We will start by solving the following equation:">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2023-08-01T00:00:00+02:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/posts/odes">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Uros Stojkovic",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Uros Stojkovic Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Uros Stojkovic
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/posts">Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about">About</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Uros Stojkovic</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>Master student of Data Engineering and Analytics at Technical University of Munich</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Munich, Germany</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:uros.stojkovich@outlook.com" rel="nofollow noopener noreferrer me"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/uros7251" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">uros7251</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Operator approach to solving differential equations">
+    <meta itemprop="description" content="We will start by solving the following equation:">
+    <meta itemprop="datePublished" content="2023-08-01T00:00:00+02:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/posts/odes" class="u-url" itemprop="url">Operator approach to solving differential equations
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          11 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+        <p>We will start by solving the following equation:</p>
+
+\[\begin{equation*}
+    \frac{dx}{dt} - ax = b
+\end{equation*}\]
+
+<p>When solving this equation, a well-known “trick” is usually used. The trick is to multiply the equation by an expression that will make the left side a complete derivative. That expression is called the integrating factor:</p>
+
+\[\begin{align*}
+
+     \frac{dx}{dt} - ax &amp;= b \quad \big{/}\cdot e^{-\int a\,dt} \\
+
+     \left(e^{-\int a\,dt}\right)\frac{dx}{dt} + \left(-ae^{-\int a\,dt}\right)x &amp;= be^{- \int a\,dt}\\
+
+     \frac{d}{dt}\left(xe^{-\int a\,dt}\right) &amp;= be^{-\int a\,dt} \\
+
+     xe^{-\int a\,dt} &amp;= \int be^{-\int a\,dt}\,dt \\
+
+     x &amp;= e^{\int a\,dt}\int be^{-\int a\,dt}\,dt
+
+\end{align*}\]
+
+<p>When $a = \text{const.}$ then the solution reduces to:</p>
+
+\[\begin{equation*}
+
+     x = e^{at}\int be^{-at}\,dt
+
+\end{equation*}\]
+
+<h2 id="operators">Operators</h2>
+
+<p>It turns out that treating differentiation and integration operations as operator applications is very useful. An operator in this sense maps (converts) one function to another. Let’s define the following two operators representing the derivative and the indefinite integral, respectively:</p>
+
+\[\begin{align*}
+
+     Dx &amp;\equiv \frac{dx}{dt} \\
+
+     \frac{1}{D}x &amp;\equiv \int x\,dt
+
+\end{align*}\]
+
+<p>Obviously, both operators are linear:</p>
+
+\[\begin{align*}
+
+     D(\alpha x + \alpha y) = \alpha Dx + \beta Dy \\
+
+     \frac{1}{D}(\alpha x + \alpha y) = \alpha \frac{1}{D}x + \beta \frac{1}{D}y
+
+\end{align*}\]
+
+<p>Also, the following symbolic equalities apply:</p>
+
+\[\begin{align*}
+
+     D^{n+1} = D^{n}D \\
+
+     D\frac{1}{D} = 1
+
+\end{align*}\]
+
+<p>The equation \ref{eq:first-order} can be written using the operator as:</p>
+
+\[\begin{align*}
+
+     dx-ax&amp;=b \\
+
+     (D-a)x&amp;=b
+
+\end{align*}\]
+
+<p>previously we could write it symbolically as $b/(D-a)$, having:</p>
+
+\[\begin{equation*}
+
+     \frac{1}{D-a}b = e^{at}\frac{1}{D}e^{-at}\,b
+
+\end{equation*}\]
+
+<h2 id="factorization">Factorization</h2>
+
+<p>Differential equations are usually given in the following form:</p>
+
+\[\begin{equation*}
+
+     \frac{d^{n}x}{dt^{n}}+a_{n-1}\frac{d^{n-1}x}{dt^{n-1}} + \cdots + a_ {1}\frac{dx}{dt}+a_{0}x = b
+
+\end{equation*}\]
+
+<p>or written operatorically:</p>
+
+\[\begin{equation*}
+
+     \left ( D^{n}+a_{n-1}D^{n-1} + \cdots + a_{1}D+a_{0}\right )x = b
+
+\end{equation*}\]
+
+<p>The expression in parentheses resembles a polynomial where instead of a variable an operator appears. Since the operator $D$ follows the same rules for addition, multiplication, and exponentiation as the variable, this is a polynomial. Actually, if we wanted to be mathematically rigorous, it is possible to show that such expressions form a ring of polynomials in $D$ over the set of real (or complex) numbers, which allows us to use results from polynomial theory. This means that it is possible to factorize:</p>
+
+\[\begin{equation*}
+
+     (D-\alpha_{1})(D-\alpha_{2})\cdots(D-\alpha_{n})x = b
+
+\end{equation*}\]
+
+<p>With this, we have presented a complex operator consisting of higher-order derivatives as a composition of simple operators consisting at most of the first derivative. It is useful to note that the order of application of the operators in the parentheses is not important. Integrating this equation represents a gradual “removal” of the operator from the left side. The final solution is reached after all simple operators are removed.</p>
+
+\[\begin{align*}(D-\alpha_{2})\cdots(D-\alpha_{n})x &amp;= \frac{1}{D-\alpha_{1}}\,b \\
+
+(D-\alpha_{2})\cdots(D-\alpha_{n})x &amp;= e^{\alpha_{1}t}\frac{1}{D}e^{-\alpha_{1} t}\,b \\
+
+&amp;\cdots \\ x&amp;= e^{\alpha_{n}t}\frac{1}{D}e^{(\alpha_{n-1}-\alpha_{n})t}\cdots e^{ (\alpha_{1}-\alpha_{2})t}\frac{1}{D}e^{-\alpha_{1}t}\,b\end{align*}\]
+
+<p>Therefore, the solution is reached by alternating multiplication and integration. In the general case, when some roots are multiple:</p>
+
+\[\begin{equation*}
+
+     \left [ \prod_{k=1}^{m}(D-\alpha_{k})^{\nu_{k}}\right ]x = b
+
+\end{equation*}\]
+
+<p>the solution is:</p>
+
+\[\begin{equation*}
+
+     x = \left [ \prod_{k=1}^{m}e^{\alpha_{k}t}\frac{1}{D^{\nu_{k}}}e^{-\alpha_{k }t}\right ]b
+
+\end{equation*}\]
+
+<p>Assume that the $x_{j}$ solutions of the equation $(D-\alpha_{j})^{\nu_{j}}x = b$ for $j=1,2,\cdots, m$. Let’s observe how the linear combination of these solutions behaves:</p>
+
+\[\begin{align*}\left [ \prod_{k=1}^{m}(D-\alpha_{k})^{\nu_{k}}\right ]\left [ \sum_{j=1} ^{m}\xi_{j}x_{j}\right ] &amp;= b \\
+
+\sum_{j=1}^{m}\xi_{j}\left [ \prod_{k=1}^{m}(D-\alpha_{k})^{\nu_{k}}\right ] x_{j} &amp;= b \\
+
+\sum_{j=1}^{m}\xi_{j}\left [ \prod_{k\neq j}(D-\alpha_{k})^{\nu_{k}}\right ](D- \alpha_{j})^{\nu_{j}}x_{j} &amp;= b \\ \sum_{j=1}^{m}\xi_{j}\left [ \prod_{k\neq j} (D-\alpha_{k})^{\nu_{k}}\right ]b &amp;= b\end{align*}\]
+
+<p>From here it is possible to determine the coefficients $\xi_{j}$:</p>
+
+\[\begin{align*}\sum_{j=1}^{m}\xi_{j}\left [ \prod_{k\neq j}(D-\alpha_{k})^{\nu_{k}} \right ] &amp;= 1\end{align*}\]
+
+<p>Interestingly, the mentioned equation can also be arrived at by breaking it down into partial fractions:</p>
+
+\[\begin{align*}\frac{1}{ \prod_{k=1}^{m}(D-\alpha_{k})^{\nu_{k}}} = \sum_{k=1}^ {m}\frac{\xi_{k}}{(D-\alpha_{k})^{\nu_{k}}}\end{align*}\]
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2023-08-01T00:00:00+02:00">August 1, 2023</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Operator+approach+to+solving+differential+equations%20http%3A%2F%2Flocalhost%3A4000%2Fposts%2Fodes" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fposts%2Fodes" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2Fodes" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/posts/normal-dist-and-its-derivatives" class="pagination--pager" title="Normal distribution and its derivatives
+">Previous</a>
+    
+    
+      <a href="/posts/fourier-analysis" class="pagination--pager" title="Fourier series, Fourier transforms and all that
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">You may also enjoy</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/fourier-analysis" rel="permalink">Fourier series, Fourier transforms and all that
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          63 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Review of trigonometric identities
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/normal-dist-and-its-derivatives" rel="permalink">Normal distribution and its derivatives
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          42 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Elementary area and volume in the spherical coordinate system
+In the spherical coordinate system, the points of $n$ dimensional space are determined by the E...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/frenet-formulas" rel="permalink">Frenet formulas
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          14 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">In kinematics, the so-called natural coordinate system fixed to the moving body has base vectors (axes) defined as follows:
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/keplers-problem" rel="permalink">Kepler’s problem
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          19 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Assuming that a gravitational force acts on a material point (oriented towards the origin of, inversely proportional to the square of the distance), the acce...</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$']]
+        }
+      };
+    </script>
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2023 Uros Stojkovic. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

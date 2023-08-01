@@ -1,0 +1,721 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Kepler’s problem - Uros Stojkovic</title>
+<meta name="description" content="Assuming that a gravitational force acts on a material point (oriented towards the origin of, inversely proportional to the square of the distance), the acceleration of the material point is given by:">
+
+
+  <meta name="author" content="Uros Stojkovic">
+  
+  <meta property="article:author" content="Uros Stojkovic">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Uros Stojkovic">
+<meta property="og:title" content="Kepler’s problem">
+<meta property="og:url" content="http://localhost:4000/posts/keplers-problem">
+
+
+  <meta property="og:description" content="Assuming that a gravitational force acts on a material point (oriented towards the origin of, inversely proportional to the square of the distance), the acceleration of the material point is given by:">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2023-07-30T00:00:00+02:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/posts/keplers-problem">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Uros Stojkovic",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Uros Stojkovic Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Uros Stojkovic
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/posts">Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about">About</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Uros Stojkovic</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>Master student of Data Engineering and Analytics at Technical University of Munich</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Munich, Germany</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:uros.stojkovich@outlook.com" rel="nofollow noopener noreferrer me"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/uros7251" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">uros7251</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Kepler’s problem">
+    <meta itemprop="description" content="Assuming that a gravitational force acts on a material point (oriented towards the origin of, inversely proportional to the square of the distance), the acceleration of the material point is given by:">
+    <meta itemprop="datePublished" content="2023-07-30T00:00:00+02:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/posts/keplers-problem" class="u-url" itemprop="url">Kepler’s problem
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          19 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+        <p>Assuming that a gravitational force acts on a material point (oriented towards the origin of, inversely proportional to the square of the distance), the acceleration of the material point is given by:</p>
+
+\[\begin{equation*}
+\frac{d^{2}\vec{r}}{dt^{2}} = -G\frac{M}{r^{2}}\hat{r}
+\end{equation*}\]
+
+<p>where $M$ is the mass of the body fixed at the coordinate origin.
+The acceleration on the right-hand side can be written as a gradient:</p>
+
+\[\begin{align*}\hat{r} &amp;= \nabla r\\
+-G\frac{M}{r^{2}}\hat{r} &amp;= \nabla \left(\frac{GM}{r}\right)\end{align*}\]
+
+<p>If we project the above equation onto the direction of the tangent and multiply it by the velocity (effectively taking a dot product of both sides with the velocity vector), we get:</p>
+
+\[\begin{align*}\frac{d^{2}\vec{r}}{dt^{2}}\cdot \frac{d\vec{r}}{dt} &amp;= \nabla \left(\frac{GM}{r}\right)\cdot \frac{d\vec{r}}{dt}\\
+\frac{d}{dt}\left(\frac{1}{2}\left(\frac{d\vec{r}}{dt}\cdot \frac{d\vec{r}}{dt}\right) \right) &amp;= \frac{d}{dt}\left(\frac{GM}{r}\right)\\
+\frac{v^{2}}{2}-\frac{GM}{r} &amp;= \text{const.}\end{align*}\]
+
+<p>This represents the conservation of energy.
+On the other hand, if we multiply the above equation vectorially with the position vector, the right-hand side of the equation is zero, and we get:</p>
+
+\[\begin{align*}\vec{r}\times\frac{d^{2}\vec{r}}{dt^{2}} &amp;= -\vec{r}\times G\frac{M}{r^{2}}\hat{r}\\
+\frac{d}{dt}\left(\vec{r}\times \frac{d\vec{r}}{dt}\right)-\frac{d\vec{r}}{dt}\times \frac{d\vec{r}}{dt} &amp;= 0\\
+\vec{r}\times \frac{d\vec{r}}{dt} &amp;= \text{const.}\end{align*}\]
+
+<p>This is the conservation of angular momentum. Since we only used the fact that the force field is central to cancel out the right-hand side, this result holds for all central fields, including those that do not follow Newtonian form. From this, we can conclude that during the motion, the material point remains in a plane whose normal is represented by the angular momentum vector. If we now introduce a cylindrical coordinate system whose $z$-axis coincides with the normal to the plane of motion, the above equation becomes:</p>
+
+\[\begin{align*}r\hat{r}\times \left(\dot{r}\hat{r}+r\dot{\theta}\hat{\theta}\right) &amp;= h\hat{z} \\r^{2}\dot{\theta} &amp;= h\end{align*}\]
+
+<p>The product of the square of the distance and the angular velocity, which represents both the double sectoral velocity and the moment of momentum, is constant during motion. The law of conservation of energy in cylindrical coordinates is:</p>
+
+\[\begin{equation*}
+\frac{1}{2}\left(\dot{r}^{2}+r^{2}\dot{\theta}^{2}\right)-\frac{GM}{r} = E
+\end{equation*}\]
+
+<p>Using the law of conservation of momentum, we can eliminate the angular velocity from the equation, so we get:</p>
+
+\[\begin{equation*}
+\frac{\dot{r}^{2}}{2} + \underbrace{\frac{h^{2}}{2r^{2}}-\frac{GM}{r}}_{U_{eff}} = E
+\end{equation*}\]
+
+<p>This reduces the problem to a one-dimensional problem with a different potential energy function (see Figure \ref{fig:pot_well}). The energy of the material point determines the limits of its motion.</p>
+
+<p><img src="../assets/images/2023-07-30-central-field-dynamics/potential-well.png" alt="Potential well" /></p>
+
+<p>To study the geometry of motion, it is necessary to eliminate time from the equations (i.e. differentiate with respect to time). The radial velocity can be written as:</p>
+
+\[\dot{r}=\frac{dr}{d\theta}\dot{\theta}\]
+
+<p>This is only possible when the angular velocity is zero, but then the trajectory is trivial - a straight line connecting the material point and the center.</p>
+
+<p>Substituting in the conservation of energy equation, we get:</p>
+
+\[\begin{align*}\frac{1}{2}\left(\left(\frac{dr}{d\theta}\right)^{2}+r^{2}\right)\frac{h^{2}}{r^{4}}-\frac{GM}{r} &amp;= E \\
+\frac{h^{2}}{2}\left(\left(\frac{1}{r^{2}}\frac{dr}{d\theta}\right)^{2}+\frac{1}{r^{2}}\right)-\frac{GM}{r} &amp;= E \\
+\frac{h^{2}}{2}\left ( \left ( \frac{d}{d\theta}\frac{1}{r} \right )^{2}+\frac{1}{r^{2}} \right )-\frac{GM}{r} &amp;= E\end{align*}\]
+
+<p>The last equation provides us with a reason to consider the reciprocal value of the distance and introduce:</p>
+
+\[\begin{equation*}
+\rho = \frac{1}{r}
+\end{equation*}\]
+
+<p>and the equation becomes:</p>
+
+\[\begin{align*}\frac{h^{2}}{2}\left(\left(\frac{d\rho}{d\theta}\right)^{2}+\rho^{2}\right)-GM\rho &amp;= E \\
+\left(\frac{d\rho}{d\theta}\right)^{2}+\rho^{2}-2\frac{GM}{h^{2}}\rho &amp;= \frac{2E}{h^{2}} \\
+\left(\frac{d\rho}{d\theta}\right)^{2}+\left(\rho-\frac{GM}{h^{2}}\right)^{2} &amp;= \frac{1}{h^{2}}\left(2E+\frac{G^{2}M^{2}}{h^{2}}\right)\end{align*}\]
+
+<p>The last equation represents a circle in the coordinate system $\left(\rho, d\rho/d\theta\right)$ with a center at point $\left(GM/h^{2}, 0\right)$. If we put:</p>
+
+\[\begin{equation*}
+\rho-\frac{GM}{h^{2}} = \frac{1}{h}\sqrt{2E+\frac{G^{2}M^{2}}{h^{2}}}\cos{\theta}
+\end{equation*}\]
+
+<p>then it follows:</p>
+
+\[\begin{equation*}
+\frac{d\rho}{d\theta} = -\frac{1}{h}\sqrt{2E+\frac{G^{2}M^{2}}{h^{2}}}\sin{\theta}
+\end{equation*}\]
+
+<p>and the above equation is indeed satisfied. Therefore, one of the possible solutions is:</p>
+
+\[\begin{align*} \rho&amp;=\frac{GM}{h^{2}} + \frac{1}{h}\sqrt{2E+\frac{G^{2}M^{2}}{h^{2}}}\cos{\theta} \\\frac{1}{r} &amp;= \frac{1+\sqrt{\frac{2Eh^{2}}{G^{2}M^{2}}+1}\cos{\theta}}{\frac{h^{2}}{GM}}\end{align*}\]
+
+<p>This is the equation of a conic section (see <a href="/posts/ellipse">this article</a>). We can read off its eccentricity from it:</p>
+
+\[\begin{equation*}
+e = \sqrt{\frac{2Eh^{2}}{G^{2}M^{2}}+1}
+\end{equation*}\]
+
+<p>And indeed, the fraction inside the square root is a dimensionless quantity (all units cancel out). When the energy of the particle is less than zero, the eccentricity is less than one, so the path is an ellipse. When the energy is equal to zero, the path is a parabola, while in the opposite case, it is a hyperbola. In each of these cases, one of the foci lies at the origin of the coordinate system. The length of the longer semiaxis can also be calculated using the well-known expression for an ellipse:</p>
+
+\[\begin{align*}a(1-e^{2}) &amp;= \frac{h^{2}}{GM} \\-a\frac{2Eh^{2}}{G^{2}M^{2}} &amp;= \frac{h^{2}}{GM} \\a &amp;= -\frac{GM}{2E}\end{align*}\]
+
+<p>By inserting this result into the formula for the period, we obtain:</p>
+
+\[\begin{align*}
+T &amp;= \frac{2\pi ab}{h} \\
+T &amp;= \frac{2\pi a}{h} \sqrt{\frac{ah^{2}}{GM}} \\
+T &amp;= 2\pi \sqrt{\frac{a^{3}}{GM}}
+\end{align*}\]
+
+<h2 id="mechanical-similarity">Mechanical similarity</h2>
+<p>Let us continue to consider Kepler’s problem, i.e., the motion of a material point in a central force field whose intensity is inversely proportional to the square of the distance:</p>
+
+\[\begin{equation*}
+
+\frac{d^{2}\vec{r}}{dt^{2}} = -G\frac{M}{r^{2}}\hat{r}
+
+\end{equation*}\]
+
+<p>As we have seen, this law leads (in certain cases) to a path in the shape of an ellipse. Let there be a trajectory for which the length of the major axis is $a$ meters, and the period of a complete circle is $T$ seconds. If we were to use other units, such that $a$ and $T$ correspond to $\alpha a$ and $\beta T$ of the new units, the above law would become:</p>
+
+\[\begin{equation*}
+
+\alpha \frac{d^{2}\vec{r}}{\beta^{2}dt^{2}} = -G\frac{M}{\alpha^{2} r^{2}}\hat{r}
+
+\end{equation*}\]
+
+<p>Only if:</p>
+
+\[\begin{align*}\frac{\alpha}{\beta^{2}} &amp;= \frac{1}{\alpha^{2}}  \\
+
+\alpha^{3} &amp;= \beta^{2}\end{align*}\]
+
+<p>would the law retain the same form as in natural units<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>. This means that the same numerical solutions would hold for units selected in this way. Therefore, there would also exist a trajectory for which the length of the major axis would be $a$ of the new spatial units, and the period of a complete circle would be $T$ of the new temporal units. In standard units, these values would be $a/\alpha$ and $T/\beta$, respectively, or when the substitution $\beta = \alpha^{3/2}$ is introduced, we obtain pairs of values:</p>
+
+\[\begin{equation*}
+
+\frac{a}{\alpha},\frac{T}{\alpha^{3/2}}
+
+\end{equation*}\]
+
+<p>Since $\alpha$ is arbitrary (it is only important to determine the corresponding $\beta$ that does not change the equations of motion), we can conclude the relationship between the period and the length of the major axis.</p>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>Note that the numerical value of the gravitational constant depends on the units used. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2023-07-30T00:00:00+02:00">July 30, 2023</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Kepler%27s+problem%20http%3A%2F%2Flocalhost%3A4000%2Fposts%2Fkeplers-problem" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fposts%2Fkeplers-problem" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2Fkeplers-problem" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/posts/ellipse" class="pagination--pager" title="Ellipse
+">Previous</a>
+    
+    
+      <a href="/posts/frenet-formulas" class="pagination--pager" title="Frenet formulas
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">You may also enjoy</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/fourier-analysis" rel="permalink">Fourier series, Fourier transforms and all that
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          63 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Review of trigonometric identities
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/odes" rel="permalink">Operator approach to solving differential equations
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          11 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">We will start by solving the following equation:
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/normal-dist-and-its-derivatives" rel="permalink">Normal distribution and its derivatives
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          42 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Elementary area and volume in the spherical coordinate system
+In the spherical coordinate system, the points of $n$ dimensional space are determined by the E...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/frenet-formulas" rel="permalink">Frenet formulas
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          14 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">In kinematics, the so-called natural coordinate system fixed to the moving body has base vectors (axes) defined as follows:
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$']]
+        }
+      };
+    </script>
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2023 Uros Stojkovic. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

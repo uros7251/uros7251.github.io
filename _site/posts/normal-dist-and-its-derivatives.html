@@ -1,0 +1,806 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Normal distribution and its derivatives - Uros Stojkovic</title>
+<meta name="description" content="Elementary area and volume in the spherical coordinate system In the spherical coordinate system, the points of $n$ dimensional space are determined by the Euclidean distance from the coordinate origin $r$, along $n-1$ angles $\phi_{i}$. Indeed, if we start from the orthogonal base $(u_{1},\cdots, u_{n})$, the coordinate $r$ is simply the square root of the sum of squares of coordinates in that orthogonal base. Next, we define $\phi_{n-1}$ as the angle between the position vector of the point and the basis vector $u_{n}$ such that $x_{n} = r\cos{\phi_{n-1}}$. When we fix this angle, with the already fixed radius, we can examine the projection of the hypersphere on the subspace determined by the remaining base vectors $u_{1},\cdots,u_{n-1}$. That projection is also a hypersphere, only in a space one dimension smaller and with a radius scaled by $\sin{\phi_{n-1}}$ . Therefore, we can repeat the same process until we reach a simple circle in 2D. So, the transformation from Cartesian to spherical coordinates looks like this:">
+
+
+  <meta name="author" content="Uros Stojkovic">
+  
+  <meta property="article:author" content="Uros Stojkovic">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Uros Stojkovic">
+<meta property="og:title" content="Normal distribution and its derivatives">
+<meta property="og:url" content="http://localhost:4000/posts/normal-dist-and-its-derivatives">
+
+
+  <meta property="og:description" content="Elementary area and volume in the spherical coordinate system In the spherical coordinate system, the points of $n$ dimensional space are determined by the Euclidean distance from the coordinate origin $r$, along $n-1$ angles $\phi_{i}$. Indeed, if we start from the orthogonal base $(u_{1},\cdots, u_{n})$, the coordinate $r$ is simply the square root of the sum of squares of coordinates in that orthogonal base. Next, we define $\phi_{n-1}$ as the angle between the position vector of the point and the basis vector $u_{n}$ such that $x_{n} = r\cos{\phi_{n-1}}$. When we fix this angle, with the already fixed radius, we can examine the projection of the hypersphere on the subspace determined by the remaining base vectors $u_{1},\cdots,u_{n-1}$. That projection is also a hypersphere, only in a space one dimension smaller and with a radius scaled by $\sin{\phi_{n-1}}$ . Therefore, we can repeat the same process until we reach a simple circle in 2D. So, the transformation from Cartesian to spherical coordinates looks like this:">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2023-08-01T00:00:00+02:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/posts/normal-dist-and-its-derivatives">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Uros Stojkovic",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Uros Stojkovic Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Uros Stojkovic
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/posts">Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about">About</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Uros Stojkovic</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>Master student of Data Engineering and Analytics at Technical University of Munich</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Munich, Germany</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:uros.stojkovich@outlook.com" rel="nofollow noopener noreferrer me"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/uros7251" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">uros7251</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Normal distribution and its derivatives">
+    <meta itemprop="description" content="Elementary area and volume in the spherical coordinate systemIn the spherical coordinate system, the points of $n$ dimensional space are determined by the Euclidean distance from the coordinate origin $r$, along $n-1$ angles $\phi_{i}$. Indeed, if we start from the orthogonal base $(u_{1},\cdots, u_{n})$, the coordinate $r$ is simply the square root of the sum of squares of coordinates in that orthogonal base. Next, we define $\phi_{n-1}$ as the angle between the position vector of the point and the basis vector $u_{n}$ such that $x_{n} = r\cos{\phi_{n-1}}$. When we fix this angle, with the already fixed radius, we can examine the projection of the hypersphere on the subspace determined by the remaining base vectors $u_{1},\cdots,u_{n-1}$. That projection is also a hypersphere, only in a space one dimension smaller and with a radius scaled by $\sin{\phi_{n-1}}$ . Therefore, we can repeat the same process until we reach a simple circle in 2D. So, the transformation from Cartesian to spherical coordinates looks like this:">
+    <meta itemprop="datePublished" content="2023-08-01T00:00:00+02:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/posts/normal-dist-and-its-derivatives" class="u-url" itemprop="url">Normal distribution and its derivatives
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          42 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+        <h2 id="elementary-area-and-volume-in-the-spherical-coordinate-system">Elementary area and volume in the spherical coordinate system</h2>
+<p>In the spherical coordinate system, the points of $n$ dimensional space are determined by the Euclidean distance from the coordinate origin $r$, along $n-1$ angles $\phi_{i}$. Indeed, if we start from the orthogonal base $(u_{1},\cdots, u_{n})$, the coordinate $r$ is simply the square root of the sum of squares of coordinates in that orthogonal base. Next, we define $\phi_{n-1}$ as the angle between the position vector of the point and the basis vector $u_{n}$ such that $x_{n} = r\cos{\phi_{n-1}}$. When we fix this angle, with the already fixed radius, we can examine the projection of the hypersphere on the subspace determined by the remaining base vectors $u_{1},\cdots,u_{n-1}$. That projection is also a hypersphere, only in a space one dimension smaller and with a radius scaled by $\sin{\phi_{n-1}}$ . Therefore, we can repeat the same process until we reach a simple circle in 2D. So, the transformation from Cartesian to spherical coordinates looks like this:</p>
+
+\[\begin{align*}
+     x_{i} &amp;= r\cos{\phi_{i-1}}\prod_{j=i}^{n-1}\sin^{j-i+1}{\phi_{j}},\quad i=2,\cdots,n \\
+     x_{1} &amp;= r\prod_{j=1}^{n-1}\sin^{j}{\phi_{j}}
+\end{align*}\]
+
+<p>If $dA_{n}(r)$ denotes the elementary surface of a sphere of radius $r$ on which points can be determined using $n$ angles (thus, the sphere itself is located in $n+1$-dimensional space), then the following recursive relation hold:</p>
+
+\[\begin{equation*}
+     dA_{n}(r) = rd\phi_{n}\,dA_{n-1}(r\sin{\phi_{n}})
+\end{equation*}\]
+
+<p>with the condition $dA_{1}(r) = rd\phi_{1}$. From there it follows:</p>
+
+\[\begin{equation*}
+     dA_{n}(r) = r^{n}\prod_{i=1}^{n}d\phi_{i}\sin^{i-1}{\phi_{i}}
+\end{equation*}\]
+
+<p>For $n = 2$, which represents an ordinary sphere (in 3D), the polar angle $\phi_{2}$ is usually denoted in physics by $\theta$, and the azimuth $\phi_{1}$ by $\phi$ , the formula $dA = r^{2}\sin{\theta}$ is obtained, which corresponds to the known expression.
+The elementary volume in $n$-dimensional space is obtained as:</p>
+
+\[\begin{equation*}
+     dV_{n}(r) = drA_{n-1}(r)
+\end{equation*}\]
+
+<h2 id="estimation-of-standard-deviation-given-mean-is-known">Estimation of standard deviation given mean is known</h2>
+<p>Suppose we analyze the random variable $X \sim \mathcal{N}(\mu, \sigma^{2})$. Let’s explore what distribution the following statistic has:</p>
+
+\[\begin{equation*}
+     S = \frac{\sqrt{\sum_{i=1}^{n}(X_{i}-\mu)^{2}}}{\sigma}
+\end{equation*}\]
+
+<p>Introducing change of variables:</p>
+
+\[\begin{align*}
+     z_{i} &amp;= \frac{x_{i}-\mu}{\sigma} \\
+     dz_{i} &amp;= \frac{dx_{i}}{\sigma}
+\end{align*}\]
+
+<p>the probability that the value of the statistic $S$ belongs to the interval $(s, s+ds)$ is equal to:</p>
+
+\[\begin{equation*}
+     P(s \leq S &lt; s+ds) = \underset{s &lt; \sqrt{\sum_{i=1}^{n}z_{i}^{2}} &lt; s + ds }{\int\cdots \int}\frac{1}{\sqrt{2\pi}^{n}}e^{-\frac{z_{1}^{2}+\cdots+z_{n}^{2}}{ 2}}dz_{1}\cdots dz_{n}
+\end{equation*}\]
+
+<p>Then we switch to spherical coordinates:</p>
+
+\[\begin{align*}P(s \leq S &lt; s + ds) &amp;= \int_{s}^{s+ds}\int_{0}^{\pi}\int_{0}^{\pi} \cdots \int_{0}^{2\pi}\frac{1}{\sqrt{2\pi}^{n}}e^{-\frac{r^{2}}{2}}r^ {n-1}\prod_{i=1}^{n-1}d\phi_{i}\sin^{i-1}{\phi_{i}}dr \\ &amp;=\int_{s}^ {s+ds}e^{-\frac{r^{2}}{2}}r^{n-1}\left(\int_{0}^{\pi}\int_{0}^{\pi}\cdots \int_{0}^{2\pi}\frac{1}{\sqrt{2\pi}^{n}}\prod_{i=1}^{n-1}d\phi_{ i}\sin^{i-1}{\phi_{i}}\right) dr \\ &amp;\propto e^{-\frac{s^{2}}{2}}s^{n-1} ds\end{align*}\]
+
+<p>For further analysis it will be useful to analyze the following integral:</p>
+
+\[\begin{align*}I_{n} &amp;= \int_{0}^{\infty}e^{-\frac{s^{2}}{2}}s^{n}ds \\ &amp;= \int_{0}^{\infty}e^{-u}\left(2u\right)^{\frac{n-1}{2}}du \\ &amp;= 2^{\frac{n-1} {2}}\Gamma\left ( \frac{n+1}{2} \right ) &amp;\end{align*}\]
+
+<p>We get the proportionality coefficient from the condition that the probabilities of all non-overlapping intervals add up to unity:</p>
+
+\[\begin{align*}1 &amp;= \int_{0}^{\infty}Ae^{-\frac{s^{2}}{2}}s^{n-1}ds \\ A &amp;= \frac{1}{I_{n-1}}\end{align*}\]
+
+<p>Also, in this way we have effectively calculated the integral in the parenthesis:</p>
+
+\[\begin{equation*}
+     \int_{0}^{\pi}\int_{0}^{\pi}\cdots \int_{0}^{2\pi}\frac{1}{\sqrt{2\pi}^{n} }\prod_{i=1}^{n-1}d\phi_{i}\sin^{i-1}{\phi_{i}} = \frac{1}{I_{n-1}} = \frac{1}{2^{\frac{n}{2}-1}\Gamma\left ( \frac{n}{2} \right )}
+\end{equation*}\]
+
+<p>So finally we have:</p>
+
+\[\begin{equation*}
+     \frac{d}{ds}P(S&lt;s) = \frac{1}{2^{\frac{n}{2}-1}\Gamma\left ( \frac{n}{2} \right )}e^{-\frac{s^{2}}{2}}s^{n-1}
+\end{equation*}\]
+
+<p>Expectation and other moments can also be expressed using the mentioned integral:</p>
+
+\[\begin{align*}E[S] &amp;= \frac{1}{I_{n-1}}\int_{0}^{\infty}se^{-\frac{s^{2}}{2 }}s^{n-1}ds = \frac{I_{n}}{I_{n-1}} = \sqrt{2}\frac{\Gamma\left ( \frac{n+1}{2 } \right )}{\Gamma\left ( \frac{n}{2} \right )} \\ E[S^{2}] &amp;= \frac{1}{I_{n-1}}\int_ {0}^{\infty}s^{2}e^{-\frac{s^{2}}{2}}s^{n-1}ds = \frac{I_{n+1}}{ I_{n-1}} = 2\frac{\Gamma\left ( \frac{n}{2} +1\right )}{\Gamma\left ( \frac{n}{2} \right )} = n\end{align*}\]
+
+<p>It should be noted that the probability distribution characterized by the mentioned law is called Chi distribution.
+In the literature, the so-called Chi-square distribution which represents the distribution of the squares of previously analyzed statistics - so $S^{2}$. We can easily reach it:</p>
+
+\[\begin{align*}\frac{d}{d(s^{2})}P(S^{2} &lt; s^{2}) &amp;= \frac{ds}{d(s^{2} )}\frac{d}{ds}P(S &lt; s) \\ &amp;= \frac{1}{2s} \frac{1}{2^{\frac{n}{2}-1}\Gamma \left(\frac{n}{2}\right)}e^{-\frac{s^{2}}{2}}s^{n-1} \\ \frac{d}{d(s ^{2})}P(S^{2} &lt; s^{2}) &amp;= \frac{1}{2^{\frac{n}{2}}\Gamma\left(\frac{n} {2}\right)}e^{-\frac{ns^{2}}{2}}(s^{2})^{\frac{n}{2}-1}\end{align*}\]
+
+<h2 id="estimation-of-standard-deviation-given-mean-is-unknown">Estimation of standard deviation given mean is unknown</h2>
+<p>We still analyze the random variable $X \sim \mathcal{N}(\mu, \sigma^{2})$. This time we look at the statistics:</p>
+
+\[\begin{equation*}
+     S = \frac{\sqrt{\sum_{i=1}^{n}\left(X_{i} - \overline{X_{n}}\right)^{2}}}{\sigma}
+\end{equation*}\]
+
+<p>The probability that the value of the statistic $S$ belongs to the interval $(s, s+ds)$ is equal to:</p>
+
+\[\begin{equation*}
+     P(s \leq S &lt; s+ds) = \underset{s &lt; \frac{\sqrt{\sum_{i=1}^{n}\left(x_{i} - \overline{x_{n}} \right)^{2}}}{\sigma} &lt; s + ds }{\int\cdots\int}\frac{1}{\sqrt{2\pi}^{n}\sigma^{n}} e^{-\frac{(x_{1}-\mu)^{2}+\cdots+(x_{n}-\mu)^{2}}{2\sigma^{2}}}dx_{1 }\cdots dx_{n}
+\end{equation*}\]
+
+<p>Introducing change of variables:</p>
+
+\[\begin{align*}
+     z_{i} &amp;= \frac{x_{i}-\mu}{\sigma} \\
+     dz_{i} &amp;= \frac{dx_{i}}{\sigma}
+\end{align*}\]
+
+<p>the integral is simplified:</p>
+
+\[\begin{equation*}
+     P(s \leq S &lt; s+ds) = \underset{s &lt; \sqrt{\sum_{i=1}^{n}\left(z_{i} - \overline{z_{n}}\right) ^{2}} &lt; s + ds }{\int\cdots\int}\frac{1}{\sqrt{2\pi}^{n}}e^{-\frac{z_{1}^{2 }+\cdots+z_{n}^{2}}{2}}dz_{1}\cdots dz_{n}
+\end{equation*}\]
+
+<p>Bearing in mind that the mean value $\overline{z_{n}}$ can be written via the scalar product:</p>
+
+\[\begin{equation*}
+     \overline{z_{n}} = \frac{e^Tz}{e^{T}e}
+\end{equation*}\]
+
+<p>The statistics themselves can also be expressed in vector notation:</p>
+
+\[\begin{equation*}
+     S = \left\|\left(I-\frac{ee^{T}}{e^{T}e}\right)z\right\|
+\end{equation*}\]
+
+<p>Therefore, if we consider $z$ as a random vector in the $n$-dimensional space, then the statistic $S$ is the length of the projection of that vector onto the plane perpendicular to the vector $e$. If we perform change of variables corresponding to the rotation $\zeta = R^{T}z$ so that the first column of the matrix $R$ is the unit vector $e$, we get:</p>
+
+\[\begin{align*}P(s \leq S &lt; s+ds) &amp;= \underset{s &lt; \sqrt{\sum_{i=2}^{n}\zeta_{i}^{2}} &lt; s + ds }{\int\cdots\int}\frac{1}{\sqrt{2\pi}^{n}}e^{-\frac{\zeta_{1}^{2}+\cdots+\zeta_ {n}^{2}}{2}}d\zeta_{1}\cdots d\zeta_{n} \\ &amp;= \underset{s &lt; \sqrt{\sum_{i=2}^{n}\zeta_{i}^{2}} &lt; s + ds }{\int\cdots\int}\frac{1}{\sqrt{2\pi}^{n-1}}e^{-\frac{\zeta_{2}^{2}+\cdots+\zeta_{n}^{2}}{2}}\left ( \int_{-\infty}^{\infty}\frac{1}{\sqrt{2 \pi}}e^{-\frac{\zeta_{1}^{2}}{2}} d\zeta_{1}\right )d\zeta_{2}\cdots d\zeta_{n} \\ &amp;= \underset{s &lt; \sqrt{\sum_{i=2}^{n}\zeta_{i}^{2}} &lt; s + ds }{\int\cdots\int}\frac{1}{ \sqrt{2\pi}^{n-1}}e^{-\frac{\zeta_{2}^{2}+\cdots+\zeta_{n}^{2}}{2}}d\zeta_ {2}\cdots d\zeta_{n}\end{align*}\]
+
+<p>This is the same integral as in the previous case when the deviation from the true expectation was calculated, except that $n-1$ appears everywhere instead of $n$. So, it is a Chi distribution, this time with $n-1$ degrees of freedom. Using the previous results, we can immediately write:</p>
+
+\[\begin{align*} \frac{d}{ds}P(S&lt;s) &amp;= \frac{1}{2^{\frac{n}{2}-1}\Gamma\left ( \frac{ n}{2} \right )}e^{-\frac{s^{2}}{2}}s^{n-2} \\ E[S] &amp;= \sqrt{2}\frac{\Gamma\left ( \frac{n}{2} \right )}{\Gamma\left ( \frac{n-1}{2} \right )} \\ E[S^{2}] &amp; = n- 1\end{align*}\]
+
+<p>Because the expectation of the squared statistic is $n-1$ and not $n$, the corrected sample variance is a better estimate of the true variance in the sense that its expectation is equal to the true variance:</p>
+
+\[\begin{align*} E\left [ \frac{1}{n-1}\sum_{i=1}^{n}\left(X_{i} - \overline{X_{n}}\right) ^{2}\right ] &amp;= E\left [ \frac{\sigma}{n-1} S^{2}\right ] \\ &amp;= \frac{\sigma}{n-1}E[S ^{2}] \\ &amp;= \sigma\end{align*}\]
+
+<h2 id="estimation-of-mean-given-standard-deviation-is-unknown">Estimation of mean given standard deviation is unknown</h2>
+<p>We once again consider the random variable $X \sim \mathcal{N}(\mu, \sigma)$. The subject of our analysis this time is statistics:</p>
+
+\[\begin{equation*}
+     S = \sqrt{n}\frac{\overline{X_{n}}-\mu}{\sqrt{\frac{1}{n-1}\sum_{i=1}^{n}\left( X_{i}-\overline{X_{n}}\right)^{2}}}
+\end{equation*}\]
+
+<p>The probability that the value of the statistic $S$ belongs to the interval $(s, s+ds)$ is equal to:</p>
+
+\[\begin{equation*}
+     P(s \leq S &lt; s+ds) = \underset{s &lt; \sqrt{n}\frac{\overline{x_{n}}-\mu}{\sqrt{\frac{1}{n-1 }\sum_{i=1}^{n}\left(x_{i}-\overline{x_{n}}\right)^{2}}} &lt; s + ds }{\int\cdots\int} \frac{1}{\sqrt{2\pi}^{n}\sigma^{n}}e^{-\frac{(x_{1}-\mu)^{2}+\cdots+(x_{ n}-\mu)^{2}}{2\sigma^{2}}}dx_{1}\cdots dx_{n}
+\end{equation*}\]
+
+<p>If we introduce a change of variables:</p>
+
+\[\begin{align*}
+     z_{i} &amp;= \frac{x_{i}-\mu}{\sigma} \\
+     dz_{i} &amp;= \frac{dx_{i}}{\sigma}
+\end{align*}\]
+
+<p>the above integral simplifies to:</p>
+
+\[\begin{equation*}
+     P(s \leq S &lt; s+ds) = \underset{s &lt; \sqrt{n}\frac{\overline{z_{n}}}{\sqrt{\frac{1}{n-1}\sum_ {i=1}^{n}\left(z_{i}-\overline{z_{n}}\right)^{2}}} &lt; s + ds }{\int\cdots\int}\frac{ 1}{\sqrt{2\pi}^{n}}e^{-\frac{z_{1}^{2}+\cdots+z_{n}^{2}}{2}}dz_{1 }\cdots dz_{n}
+\end{equation*}\]
+
+<p>We can present the numerator and denominator in vector form:</p>
+
+\[\begin{align*}\sqrt{n}\overline{z_{n}} &amp;= \sqrt{e^{T}e}\frac{e^{T}z}{e^{T}e} = \frac{e^{T}z}{\left\| e\right\|} = z_{e} \\ \sqrt{\sum_{i=1}^{n}\left(z_{i}-\overline{z_{n}}\right)^{2} } &amp;= \left\|\left(I-\frac{ee^{T}}{e^{T}e}\right)z\right\|\end{align*}\]
+
+<p>Considering that the numerator of the projections on the direction is determined by the vector $e$, and the denominator of the projections on the plane perpendicular to this direction, if we mark the angle between the vector $z$ and the vector $e$ with $\theta$, for the probability we get:</p>
+
+\[\begin{equation*}
+     P(s \leq S &lt; s+ds) = \underset{s &lt; \sqrt{n-1}\cot{\theta} &lt; s + ds }{\int\cdots\int}\frac{1}{\sqrt{2\pi}^{n}}e^{-\frac{z_{1}^{2}+\cdots+z_{n}^{2}}{2}}dz_{1}\cdots dz_ {n}
+\end{equation*}\]
+
+<p>We can find the distribution for the angle $\theta$ by switching to spherical coordinates:</p>
+
+\[\begin{align*}P(\theta \leq \Theta &lt; \theta + d\theta) &amp;= \int_{\theta}^{\theta+d\theta}\int_{0}^{\pi}\cdots \int_{0}^{2\pi}\int_{0}^{\infty}\frac{1}{\sqrt{2\pi}^{n}}e^{-\frac{r^{ 2}}{2}}r^{n-1}dr\prod_{i=1}^{n-1}d\phi_{i}\sin^{i-1}{\phi_{i}} \\ &amp;=\int_{\theta}^{\theta+d\theta}\sin^{n-2}{\phi_{n-1}} \left(\int_{0}^{\pi}\cdots \int_{0}^{2\pi}\int_{0}^{\infty}\frac{1}{\sqrt{2\pi}^{n}}e^{-\frac{r^{2 }}{2}}r^{n-1}dr\prod_{i=1}^{n-2}d\phi_{i}\sin^{i-1}{\phi_{i}}\right ) d\phi_{n-1} \\ &amp;\propto \sin^{n-2}{\theta}d\theta\end{align*}\]
+
+<p>Then we easily find the distribution for the statistic $S$ itself:</p>
+
+\[\begin{align*}\frac{d}{ds}P(S &lt; s) &amp;\propto \left|\frac{d\theta}{ds}\right| \frac{d}{d\theta}P(\Theta &lt; \theta) \\ &amp;= \frac{d\theta}{\sqrt{n-1}\frac{d\theta}{\sin^{2 }{\theta}}}\sin^{n-2}{\theta} \\ &amp;= \frac{1}{\sqrt{n-1}}\sin^{n}{\theta} \\ \frac{d}{ds}P(S &lt; s) &amp;\propto \frac{1}{\sqrt{n-1}}\left ( 1+\frac{s^{2}}{n-1} \right )^{-\frac{n}{2}}\end{align*}\]
+
+<p>The number $n-1$ represents the so-called the number of degrees of freedom is denoted by $\nu$ and it often appears in the literature:</p>
+
+\[\begin{equation*}
+    \frac{d}{ds}P(S &lt; s) \propto \frac{1}{\sqrt{\nu}}\left (1+s^{2}/\nu\right)^{-\frac {\nu+1}{2}}
+\end{equation*}\]
+
+<p>This probability density distribution law represents the well-known Student’s t distribution. In order to calculate the normalization coefficient, we need to either calculate the integral of the density distribution function or calculate the integral in the parentheses. We will do the latter:</p>
+
+\[\begin{align*}&amp;\int_{0}^{\pi}\cdots \int_{0}^{2\pi}\frac{1}{\sqrt{2\pi}^{n}}\left (\int_{0}^{\infty}e^{-\frac{r^{2}}{2}}r^{n-1}dr\right)\prod_{i=1}^{n- 2}d\phi_{i}\sin^{i-1}{\phi_{i}} \\ &amp;= \frac{I_{n-1}}{\sqrt{2\pi}}\int_{0 }^{\pi}\cdots \int_{0}^{2\pi}\frac{1}{\sqrt{2\pi}^{n-1}}\prod_{i=1}^{n- 2}d\phi_{i}\sin^{i-1}{\phi_{i}} \\ &amp;= \frac{I_{n-1}}{\sqrt{2\pi}I_{n-2 }} \\ &amp;= \frac{2^{\frac{n}{2}-1}\Gamma\left ( \frac{n}{2} \right )}{\sqrt{2\pi}2^ {\frac{n-3}{2}}\Gamma\left ( \frac{n-1}{2} \right )} \\ &amp;= \frac{\Gamma\left ( \frac{n}{2 } \right )}{\sqrt{\pi}\Gamma\left ( \frac{n-1}{2} \right )} \end{align*}\]
+
+<p>Here is the result:</p>
+
+\[\begin{equation*}
+     \int_{-\infty}^{\infty}\frac{1}{\sqrt{\nu}}\left (1+s^{2}/\nu\right)^{-\frac{\nu+ 1}{2}} ds= \frac{\sqrt{\pi}\Gamma\left ( \frac{\nu}{2} \right )}{\Gamma\left ( \frac{\nu+1}{2 } \right )}
+\end{equation*}\]
+
+<p>For $\nu=1$ the integral is elementary (the indefinite integral is $\arctan{s}$) and is equal to $\pi$. This means that we can indirectly calculate the value of the gamma function at the point $1/2$:</p>
+
+\[\begin{align*}\pi &amp;= \frac{\sqrt{\pi}\Gamma\left ( \frac{1}{2} \right )}{\Gamma\left (1 \right )} \\ \Gamma\left ( \frac{1}{2} \right ) &amp;= \sqrt{\pi}\end{align*}\]
+
+<p>Going back to the Student’s distribution, we finally have:</p>
+
+\[\begin{equation*}
+   \frac{d}{ds}P(S &lt; s) =  \frac{\Gamma\left ( \frac{\nu+1}{2} \right )}{\sqrt{\nu\pi}\Gamma\left ( \frac{\nu}{2} \right )}\left (1+s^{2}/\nu\right)^{-\frac{\nu+1}{2}}
+\end{equation*}\]
+
+<p>It is interesting that the Student’s distribution tends to the normal distribution when $n\to\infty$:</p>
+
+\[\begin{equation*}
+     \displaystyle \lim_{\nu \to \infty}\left (1+s^{2}/\nu\right)^{-\frac{\nu+1}{2}} = e^{-\frac{ s^{2}}{2}}
+\end{equation*}\]
+
+<p>From here we can also conclude something about the Gamma function:</p>
+
+\[\begin{equation*}
+     \displaystyle \lim_{\nu \to \infty}\frac{\Gamma\left ( \frac{\nu+1}{2} \right )}{\sqrt{\nu}\Gamma\left ( \frac{ \nu}{2} \right )} = \frac{1}{\sqrt{2}}
+\end{equation*}\]
+
+<h2 id="discussion">Discussion</h2>
+<p>The previous chapters may have been too abundant with mathematical formulas, symbols and expressions in which the reader can lose the idea of the very essence of the performance and the results reached. That’s why it’s always good to try to use a less formal and rigorous, but more comprehensible language to clarify what was meant to be conveyed by mathematical notation.</p>
+
+<p>In the previous chapters, we considered certain statistics, that is, functions of several random variables where each of them had a normal probability distribution. The main subject of our research was the probability distribution of those statistics. In each of them, we treated a series of random variables as a vector in a high-dimensional space.</p>
+
+<p>The first statistic we considered was the mean of the random variables. We have shown that the mean value can be represented as a projection onto the direction determined by the vector $e = \begin{bmatrix}1 &amp; \cdots &amp; 1 \end{bmatrix}$ divided by $\sqrt{n}$. Since the normal distribution (Gaussian function) is spherically symmetric, each projection also has a normal probability distribution. However, considering that the required statistic is obtained when the projection is divided by $\sqrt{n}$, the resulting distribution is narrower for that factor, i.e. the standard deviation of the distribution is smaller $\sqrt{n}$ times. This is why statisticians can get better estimates of the true mean of a population the larger the sample.</p>
+
+<p>Another statistic we covered is the square root of the sum of squares of the random variables. This statistic is used in estimating the standard deviation. It geometrically represents the norm (length) of a vector of random variables. Again, taking into account the spherical symmetry of the Gaussian function, we arrive at a probability distribution density function that is proportional to $r^{n-1}\exp{(r^{2}/2)}$. The first factor comes from the fact that the volume of the thin spherical shell is proportional to exactly $r^{n-1}$. Although the Gaussian distribution gives a higher probability to smaller norm vectors, the more distant are more numerous so that the mode of the distribution (most likely value) is greater than zero.</p>
+
+<p>The third statistic was the square root of the sum of the squares of the deviations of the variable values from their mean value. We have shown that this corresponds geometrically to the norm of the projection of the vector of random variables onto the space orthogonal to the vector $e = \begin{bmatrix}1 &amp; \cdots &amp; 1 \end{bmatrix}$. Considering that, we got almost the same probability distribution function, except that $n-1$ occured instead of $n$, considering that it is the length of the vector with one less dimension.</p>
+
+<p>The fourth statistic, like the first, concerns the mean value of the random variables, but this time taking the corrected dispersion estimate instead of the true dispersion. We have shown that this statistic corresponds to the cotangent of the angle between the vector of random variables and the vector $e = \begin{bmatrix}1 &amp; \cdots &amp; 1 \end{bmatrix}$. Given that all vectors of fixed length that overlap the same angle $\theta$ form some kind of hypersphere (in 3 dimensions, it is a ring) whose radius is proportional to $\sin^{n-2}\theta$, that is, having in view of the spherical symmetry of the Gaussian function, the density of the distribution of the cotangent of the angle $\theta$ is proportional to $\sin^{n}\theta$. The resulting probability distribution is known as the Student’s distribution.</p>
+<h2 id="volume-of-hypersphere">Volume of Hypersphere</h2>
+<p>Using the results from the previous chapters, one can easily calculate the volume of a ball in a space of any number of dimensions:</p>
+
+\[\begin{align*}V_{n} &amp;= \int_{0}^{R}\int_{0}^{\pi}\cdots\int_{0}^{2\pi}r^{n-1 }dr\prod_{i=1}^{n-1}d\phi_{i}\sin^{i-1}{\phi_{i}} \\ &amp;= \frac{\sqrt{2\pi} ^{n}}{I_{n-1}}\int_{0}^{R}r^{n-1}dr \\ &amp;= \frac{\pi^{\frac{n}{2}} 2^{\frac{n}{2}}}{2^{\frac{n}{2}-1}\Gamma\left ( \frac{n}{2} \right )}\frac{R^ {n}}{n}\\ &amp;= \frac{\pi^{\frac{n}{2}}}{\Gamma\left ( \frac{n}{2}+1 \right )}R^ {n}\end{align*}\]
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2023-08-01T00:00:00+02:00">August 1, 2023</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Normal+distribution+and+its+derivatives%20http%3A%2F%2Flocalhost%3A4000%2Fposts%2Fnormal-dist-and-its-derivatives" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fposts%2Fnormal-dist-and-its-derivatives" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2Fnormal-dist-and-its-derivatives" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/posts/frenet-formulas" class="pagination--pager" title="Frenet formulas
+">Previous</a>
+    
+    
+      <a href="/posts/odes" class="pagination--pager" title="Operator approach to solving differential equations
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">You may also enjoy</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/fourier-analysis" rel="permalink">Fourier series, Fourier transforms and all that
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          63 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Review of trigonometric identities
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/odes" rel="permalink">Operator approach to solving differential equations
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          11 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">We will start by solving the following equation:
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/frenet-formulas" rel="permalink">Frenet formulas
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          14 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">In kinematics, the so-called natural coordinate system fixed to the moving body has base vectors (axes) defined as follows:
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/keplers-problem" rel="permalink">Kepler’s problem
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          19 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Assuming that a gravitational force acts on a material point (oriented towards the origin of, inversely proportional to the square of the distance), the acce...</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$']]
+        }
+      };
+    </script>
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2023 Uros Stojkovic. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
