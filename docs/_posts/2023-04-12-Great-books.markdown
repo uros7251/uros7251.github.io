@@ -1,7 +1,7 @@
 ---
 title:  "Great books I've read"
 date:   2023-04-12
-categories: blog
+permalink: posts/great-books
 ---
 
 On Computer Systems:

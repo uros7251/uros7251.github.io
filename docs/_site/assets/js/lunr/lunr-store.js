@@ -1,8 +1,8 @@
 var store = [{
         "title": "Great books I've read",
-        "excerpt":"On Computer Systems: Computer Systems: A Programmer’s Perspective. This is a book every programmer should read. On Operating Systems: Operating Systems - Three Easy Pieces. Very good introductory book available for free online. On Computer Networks: Computer Networking: a Top Down Approach. Very good introductory book. Unlike other books on...","categories": ["blog"],
+        "excerpt":"On Computer Systems: Computer Systems: A Programmer’s Perspective. This is a book every programmer should read. On Operating Systems: Operating Systems - Three Easy Pieces. Very good introductory book available for free online. On Computer Networks: Computer Networking: a Top Down Approach. Very good introductory book. Unlike other books on...","categories": [],
         "tags": [],
-        "url": "/blog/Great-books/",
+        "url": "/posts/great-books",
         "teaser": null
       },{
         "title": "Ellipse",
