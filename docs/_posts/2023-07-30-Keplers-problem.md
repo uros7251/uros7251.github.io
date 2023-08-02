@@ -3,14 +3,14 @@ title:  "Kepler's problem"
 date:   2023-07-30
 permalink: posts/keplers-problem
 ---
-Assuming that a gravitational force acts on a material point (oriented towards the origin of, inversely proportional to the square of the distance), the acceleration of the material point is given by:
+Assuming that a gravitational force acts on a material point (oriented towards the origin of coordinate system, inversely proportional to the square of the distance), the acceleration of the material point is given by:
 
 $$\begin{equation*}
 \frac{d^{2}\vec{r}}{dt^{2}} = -G\frac{M}{r^{2}}\hat{r}
 \end{equation*}$$
 
 where $M$ is the mass of the body fixed at the coordinate origin.
-The acceleration on the right-hand side can be written as a gradient:
+Right-hand side can be written as a gradient:
 
 $$\begin{align*}\hat{r} &= \nabla r\\
 -G\frac{M}{r^{2}}\hat{r} &= \nabla \left(\frac{GM}{r}\right)\end{align*}$$
@@ -22,7 +22,7 @@ $$\begin{align*}\frac{d^{2}\vec{r}}{dt^{2}}\cdot \frac{d\vec{r}}{dt} &= \nabla \
 \frac{v^{2}}{2}-\frac{GM}{r} &= \text{const.}\end{align*}$$
 
 This represents the conservation of energy.
-On the other hand, if we multiply the above equation vectorially with the position vector, the right-hand side of the equation is zero, and we get:
+On the other hand, if we take a vector product of the above equation with the position vector, the right-hand side of the equation is zero, and we get:
 
 
 $$\begin{align*}\vec{r}\times\frac{d^{2}\vec{r}}{dt^{2}} &= -\vec{r}\times G\frac{M}{r^{2}}\hat{r}\\
@@ -35,7 +35,7 @@ This is the conservation of angular momentum. Since we only used the fact that t
 $$\begin{align*}r\hat{r}\times \left(\dot{r}\hat{r}+r\dot{\theta}\hat{\theta}\right) &= h\hat{z} \\r^{2}\dot{\theta} &= h\end{align*}$$
 
 
-The product of the square of the distance and the angular velocity, which represents both the double sectoral velocity and the moment of momentum, is constant during motion. The law of conservation of energy in cylindrical coordinates is:
+The product of the square of the distance and the angular velocity, which represents both double sectorial velocity and the moment of momentum, is constant during motion. The law of conservation of energy in cylindrical coordinates is:
 
 
 $$\begin{equation*}
@@ -51,17 +51,17 @@ $$\begin{equation*}
 \end{equation*}$$
 
 
-This reduces the problem to a one-dimensional problem with a different potential energy function (see Figure \ref{fig:pot_well}). The energy of the material point determines the limits of its motion.
+This reduces the problem to a one-dimensional problem with a different potential energy function(see figure). The energy of the material point determines the limits of its motion.
 
 ![Potential well](../assets/images/2023-07-30-central-field-dynamics/potential-well.png)
 
-To study the geometry of motion, it is necessary to eliminate time from the equations (i.e. differentiate with respect to time). The radial velocity can be written as:
+To study the geometry of motion, it is necessary to eliminate time from the equations (i.e. derivatives with respect to time). The radial velocity can be written as:
 
 
 $$\dot{r}=\frac{dr}{d\theta}\dot{\theta}$$
 
 
-This is only possible when the angular velocity is zero, but then the trajectory is trivial - a straight line connecting the material point and the center.
+This is not possible only when the angular velocity is zero, but then the trajectory is trivial - a straight line connecting the material point and the center.
 
 Substituting in the conservation of energy equation, we get:
 
@@ -108,16 +108,17 @@ And indeed, the fraction inside the square root is a dimensionless quantity (all
 
 $$\begin{align*}a(1-e^{2}) &= \frac{h^{2}}{GM} \\-a\frac{2Eh^{2}}{G^{2}M^{2}} &= \frac{h^{2}}{GM} \\a &= -\frac{GM}{2E}\end{align*}$$
 
-By inserting this result into the formula for the period, we obtain:
+Recall that we have established that sectorial velocity is a constant, so the period of revolution can be calculated by dividing the area of the ellipse by this value. We obtain:
 
 $$\begin{align*}
 T &= \frac{2\pi ab}{h} \\
+T &= \frac{2\pi a^{2}\sqrt{1-e^2}}{h}\\
 T &= \frac{2\pi a}{h} \sqrt{\frac{ah^{2}}{GM}} \\
 T &= 2\pi \sqrt{\frac{a^{3}}{GM}}
 \end{align*}$$
 
 ## Mechanical similarity
-Let us continue to consider Kepler's problem, i.e., the motion of a material point in a central force field whose intensity is inversely proportional to the square of the distance:
+Let us continue with our analysis of Kepler's problem, i.e. the motion of a material point in a central force field whose intensity is inversely proportional to the square of the distance:
 
 $$\begin{equation*}
 
@@ -125,7 +126,7 @@ $$\begin{equation*}
 
 \end{equation*}$$
 
-As we have seen, this law leads (in certain cases) to a path in the shape of an ellipse. Let there be a trajectory for which the length of the major axis is $a$ meters, and the period of a complete circle is $T$ seconds. If we were to use other units, such that $a$ and $T$ correspond to $\alpha a$ and $\beta T$ of the new units, the above law would become:
+As we have seen, this law leads (in certain cases) to a path in the shape of an ellipse. Let there be a trajectory for which the length of the major axis is $a$ meters, and the period of a complete circle is $T$ seconds. If we were to use other units, such that $a$ and $T$ of old units correspond to $\alpha a$ and $\beta T$ of new units, respectively, the above law would become:
 
 $$\begin{equation*}
 
@@ -147,6 +148,8 @@ $$\begin{equation*}
 
 \end{equation*}$$
 
-Since $\alpha$ is arbitrary (it is only important to determine the corresponding $\beta$ that does not change the equations of motion), we can conclude the relationship between the period and the length of the major axis.
+Since $\alpha$ is arbitrary (it is only important to determine the corresponding $\beta$ that does not change the equations of motion), we can infer the relationship between the period and the length of the major axis - namely the one suggested by the third Kepler's law.
+
+To provide a rather silly example, say that Earth completes its revolution around the Sun in 1 second tracing an ellipse with major-semiaxis of length 1 meter. It turns out that the governing equation of motion remains unchanged if we instead decide to measure distance and time in centimeters and milliseconds, respectively. Thus, they "allow" existence of another planet which goes around the Sun in 1 ms along the ellipse with major semi-axis of lenght 1 cm.
 
 [^1]: Note that the numerical value of the gravitational constant depends on the units used.

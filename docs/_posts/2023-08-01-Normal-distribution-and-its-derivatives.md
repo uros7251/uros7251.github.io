@@ -5,7 +5,7 @@ permalink: /posts/normal-dist-and-its-derivatives
 ---
 
 ## Elementary area and volume in the spherical coordinate system
-In the spherical coordinate system, the points of $n$ dimensional space are determined by the Euclidean distance from the coordinate origin $r$, along $n-1$ angles $\phi_{i}$. Indeed, if we start from the orthogonal base $(u_{1},\cdots, u_{n})$, the coordinate $r$ is simply the square root of the sum of squares of coordinates in that orthogonal base. Next, we define $\phi_{n-1}$ as the angle between the position vector of the point and the basis vector $u_{n}$ such that $x_{n} = r\cos{\phi_{n-1}}$. When we fix this angle, with the already fixed radius, we can examine the projection of the hypersphere on the subspace determined by the remaining base vectors $u_{1},\cdots,u_{n-1}$. That projection is also a hypersphere, only in a space one dimension smaller and with a radius scaled by $\sin{\phi_{n-1}}$ . Therefore, we can repeat the same process until we reach a simple circle in 2D. So, the transformation from Cartesian to spherical coordinates looks like this:
+In the spherical coordinate system, the points of $n$ dimensional space are determined by the Euclidean distance from the coordinate origin $r$ and $n-1$ angles $\phi_{i}$. Indeed, if we start from the orthogonal base $(u_{1},\cdots, u_{n})$, the coordinate $r$ is simply the square root of the sum of squares of coordinates in that orthogonal base. Next, we define $\phi_{n-1}$ as the angle between the position vector of the point and the basis vector $u_{n}$ such that $x_{n} = r\cos{\phi_{n-1}}$. When we fix this angle, with the already fixed radius, we can examine the projection of the hypersphere on the subspace determined by the remaining base vectors $u_{1},\cdots,u_{n-1}$. That projection is also a hypersphere, only in a space one dimension smaller and with a radius scaled by $\sin{\phi_{n-1}}$ . Therefore, we can repeat the same process until we reach a simple circle in 2D. So, the transformation from Cartesian to spherical coordinates looks like this:
 
 
 $$\begin{align*}
@@ -22,7 +22,7 @@ $$\begin{equation*}
 \end{equation*}$$
 
 
-with the condition $dA_{1}(r) = rd\phi_{1}$. From there it follows:
+with the initial condition $dA_{1}(r) = rd\phi_{1}$. From there it follows:
 
 
 $$\begin{equation*}
@@ -106,10 +106,10 @@ $$\begin{align*}E[S] &= \frac{1}{I_{n-1}}\int_{0}^{\infty}se^{-\frac{s^{2}}{2 }}
 
 
 It should be noted that the probability distribution characterized by the mentioned law is called Chi distribution.
-In the literature, the so-called Chi-square distribution which represents the distribution of the squares of previously analyzed statistics - so $S^{2}$. We can easily reach it:
+In the literature, the so-called Chi-square distribution which represents the distribution of the squares of previously analyzed statistics - so $S^{2}$. We can easily derive it:
 
 
-$$\begin{align*}\frac{d}{d(s^{2})}P(S^{2} < s^{2}) &= \frac{ds}{d(s^{2} )}\frac{d}{ds}P(S < s) \\ &= \frac{1}{2s} \frac{1}{2^{\frac{n}{2}-1}\Gamma \left(\frac{n}{2}\right)}e^{-\frac{s^{2}}{2}}s^{n-1} \\ \frac{d}{d(s ^{2})}P(S^{2} < s^{2}) &= \frac{1}{2^{\frac{n}{2}}\Gamma\left(\frac{n} {2}\right)}e^{-\frac{ns^{2}}{2}}(s^{2})^{\frac{n}{2}-1}\end{align*}$$
+$$\begin{align*}\frac{d}{d(s^{2})}P(S^{2} < s^{2}) &= \frac{ds}{d(s^{2} )}\frac{d}{ds}P(S < s) \\ &= \frac{1}{2s} \frac{1}{2^{\frac{n}{2}-1}\Gamma \left(\frac{n}{2}\right)}e^{-\frac{s^{2}}{2}}s^{n-1} \\ \frac{d}{d(s ^{2})}P(S^{2} < s^{2}) &= \frac{1}{2^{\frac{n}{2}}\Gamma\left(\frac{n} {2}\right)}e^{-\frac{s^{2}}{2}}(s^{2})^{\frac{n}{2}-1}\end{align*}$$
 
 
 ## Estimation of standard deviation given mean is unknown
@@ -220,7 +220,7 @@ We can present the numerator and denominator in vector form:
 $$\begin{align*}\sqrt{n}\overline{z_{n}} &= \sqrt{e^{T}e}\frac{e^{T}z}{e^{T}e} = \frac{e^{T}z}{\left\| e\right\|} = z_{e} \\ \sqrt{\sum_{i=1}^{n}\left(z_{i}-\overline{z_{n}}\right)^{2} } &= \left\|\left(I-\frac{ee^{T}}{e^{T}e}\right)z\right\|\end{align*}$$
 
 
-Considering that the numerator of the projections on the direction is determined by the vector $e$, and the denominator of the projections on the plane perpendicular to this direction, if we mark the angle between the vector $z$ and the vector $e$ with $\theta$, for the probability we get:
+Considering that the numerator is the projection of the vector $z$ onto the direction of vector $e$, and the denominator is the magnitude of the projection onto the hyperplane perpendicular to this direction, if we mark the angle between the vector $z$ and the vector $e$ with $\theta$, we get:
 
 
 $$\begin{equation*}
@@ -240,7 +240,7 @@ Then we easily find the distribution for the statistic $S$ itself:
 $$\begin{align*}\frac{d}{ds}P(S < s) &\propto \left|\frac{d\theta}{ds}\right| \frac{d}{d\theta}P(\Theta < \theta) \\ &= \frac{d\theta}{\sqrt{n-1}\frac{d\theta}{\sin^{2 }{\theta}}}\sin^{n-2}{\theta} \\ &= \frac{1}{\sqrt{n-1}}\sin^{n}{\theta} \\ \frac{d}{ds}P(S < s) &\propto \frac{1}{\sqrt{n-1}}\left ( 1+\frac{s^{2}}{n-1} \right )^{-\frac{n}{2}}\end{align*}$$
 
 
-The number $n-1$ represents the so-called the number of degrees of freedom is denoted by $\nu$ and it often appears in the literature:
+The number $n-1$ represents number of degrees of freedom and it often appears in literature denoted by $\nu$:
 
 
 $$\begin{equation*}
@@ -248,7 +248,7 @@ $$\begin{equation*}
 \end{equation*}$$
 
 
-This probability density distribution law represents the well-known Student's t distribution. In order to calculate the normalization coefficient, we need to either calculate the integral of the density distribution function or calculate the integral in the parentheses. We will do the latter:
+This probability density distribution law represents the well-known Student's t distribution. In order to calculate the normalization coefficient, we need either to calculate the integral of the density distribution function or calculate the integral in the parentheses. We will do the latter:
 
 
 $$\begin{align*}&\int_{0}^{\pi}\cdots \int_{0}^{2\pi}\frac{1}{\sqrt{2\pi}^{n}}\left (\int_{0}^{\infty}e^{-\frac{r^{2}}{2}}r^{n-1}dr\right)\prod_{i=1}^{n- 2}d\phi_{i}\sin^{i-1}{\phi_{i}} \\ &= \frac{I_{n-1}}{\sqrt{2\pi}}\int_{0 }^{\pi}\cdots \int_{0}^{2\pi}\frac{1}{\sqrt{2\pi}^{n-1}}\prod_{i=1}^{n- 2}d\phi_{i}\sin^{i-1}{\phi_{i}} \\ &= \frac{I_{n-1}}{\sqrt{2\pi}I_{n-2 }} \\ &= \frac{2^{\frac{n}{2}-1}\Gamma\left ( \frac{n}{2} \right )}{\sqrt{2\pi}2^ {\frac{n-3}{2}}\Gamma\left ( \frac{n-1}{2} \right )} \\ &= \frac{\Gamma\left ( \frac{n}{2 } \right )}{\sqrt{\pi}\Gamma\left ( \frac{n-1}{2} \right )} \end{align*}$$
@@ -284,7 +284,7 @@ $$\begin{equation*}
 \end{equation*}$$
 
 
-From here we can also conclude something about the Gamma function:
+From here we can also infer something else about the Gamma function:
 
 
 $$\begin{equation*}
@@ -303,7 +303,7 @@ Another statistic we covered is the square root of the sum of squares of the ran
 
 The third statistic was the square root of the sum of the squares of the deviations of the variable values from their mean value. We have shown that this corresponds geometrically to the norm of the projection of the vector of random variables onto the space orthogonal to the vector $e = \begin{bmatrix}1 & \cdots & 1 \end{bmatrix}$. Considering that, we got almost the same probability distribution function, except that $n-1$ occured instead of $n$, considering that it is the length of the vector with one less dimension.
 
-The fourth statistic, like the first, concerns the mean value of the random variables, but this time taking the corrected dispersion estimate instead of the true dispersion. We have shown that this statistic corresponds to the cotangent of the angle between the vector of random variables and the vector $e = \begin{bmatrix}1 & \cdots & 1 \end{bmatrix}$. Given that all vectors of fixed length that overlap the same angle $\theta$ form some kind of hypersphere (in 3 dimensions, it is a ring) whose radius is proportional to $\sin^{n-2}\theta$, that is, having in view of the spherical symmetry of the Gaussian function, the density of the distribution of the cotangent of the angle $\theta$ is proportional to $\sin^{n}\theta$. The resulting probability distribution is known as the Student's distribution.
+The fourth statistic, like the first, concerns the mean value of the random variables, but this time taking the corrected dispersion estimate instead of the true dispersion. We have shown that this statistic corresponds to the cotangent of the angle between the vector of random variables and the vector $e = \begin{bmatrix}1 & \cdots & 1 \end{bmatrix}$. Given that all vectors of fixed length that subtend the same angle $\theta$ form some kind of hypersphere (in 3 dimensions, it is a ring) whose radius is proportional to $\sin^{n-2}\theta$, the density of probability distribution of cotangent of the angle $\theta$ is proportional to $\sin^{n}\theta$. The resulting probability distribution is known as the Student's distribution.
 ## Volume of Hypersphere
 Using the results from the previous chapters, one can easily calculate the volume of a ball in a space of any number of dimensions:
 
