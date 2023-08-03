@@ -1,5 +1,5 @@
 ---
-title:  "Normal distribution and its derivatives"
+title:  "Normal distribution and its derivatives (+ volume of an n-ball)"
 date:   2023-08-01
 permalink: /posts/normal-dist-and-its-derivatives
 ---
