@@ -16,9 +16,9 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Poincare > Hilbert"
-title_separator          : "-"
-subtitle                 : # site tagline that appears below site title in masthead
+title                    : "Uros Stojkovic"
+title_separator          : "i don't like infinite sets"
+subtitle                 : "Notes in math and physics" # site tagline that appears below site title in masthead
 name                     : "Uros Stojkovic"
 description              : "Personal website with primarily math/physics content"
 url                      : "https://uros7251.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
@@ -26,7 +26,7 @@ baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 logo                     : # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
-masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
+masthead_title           : "Poincare > Hilbert" # overrides the website title displayed in the masthead, use " " for no title
 # breadcrumbs            : false # true, false (default)
 words_per_minute         : 50
 comments:
@@ -74,7 +74,7 @@ google:
   instant_search         : # false (default), true
 # SEO Related
 google_site_verification :
-bing_site_verification   :
+bing_site_verification   : "796E42E6193A45A893E19381B8760CE4"
 naver_site_verification  :
 yandex_site_verification :
 baidu_site_verification  :

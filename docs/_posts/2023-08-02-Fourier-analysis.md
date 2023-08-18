@@ -159,15 +159,15 @@ Due to a somewhat unfortunate definition, the characteristic function can be vie
 
 ## Discrete Fourier Transform
 
-It is time to go over the discrete domain as well - we will no longer talk about continuous signals (functions), but we will deal with sequences of values. These strings can be created as a consequence of sampling a continuous signal. We, having so far become inclined to see and look for simple periodic signals in everything, will try the same this time. Let's start with a sequence $x_{n}$ of period $N$ (valid $x_{n} = x_{n+N}$) and assume that it can be written as:
+It is time to go over the discrete domain as well - we will no longer talk about continuous signals (functions), but we will deal with sequences of values. These strings can be created as a consequence of sampling a continuous signal. We, having so far become inclined to see and look for simple periodic signals in everything, will try the same this time. Let's start with a sequence $x_{n}$ of period $N$ ($x_{n} = x_{n+N}$) and assume that it can be written as:
 
 $$\begin{align*}x_{n} &= \frac{A_{0}}{2} + \sum_{k=1}^{\left \lfloor \frac{N}{2} \right \rfloor} A_{k}\cos{\omega_{k}n}+B_{k}\sin{\omega_{k}n} \\ &= \sum_{k=-\left \lfloor \frac{N}{2 } \right \rfloor}^{\left \lfloor \frac{N}{2} \right \rfloor}C_{k}e^{i\omega_{k}n}\end{align*}$$
 
-where among the coefficients $A_{k},B_{k},C_{k}$ already known relations apply, while $\omega_{k} = \frac{2\pi k}{N}$. The question arises why the highest frequency we allow is $\omega_{\left \lfloor \frac{N}{2} \right \rfloor}$ and not $\omega_{N-1}$. Assume that the sum can contain summands corresponding to the frequency $\omega_{k}$ for $k > \frac{N}{2}$; the sum would also contain summands corresponding to the frequency $\omega_{N-k}$ and $\cos{\omega_{k}n}=\cos{\omega_{N-k}}$ would hold as well as $\sin{\omega_{ k}}=-\sin{\omega_{N-k}}$. If we look only at the summands mentioned, we would have:
+where among the coefficients $A_{k},B_{k},C_{k}$ already known relations apply, while $\omega_{k} = \frac{2\pi k}{N}$. The question arises why the highest frequency we allow is $\omega_{\left \lfloor \frac{N}{2} \right \rfloor}$ and not $\omega_{N-1}$. Assume that the sum can contain summands corresponding to the frequency $\omega_{k}$ for $k > \frac{N}{2}$; the sum would also contain summands corresponding to the frequency $\omega_{N-k}$ and $\cos{\omega_{k}n}=\cos{\omega_{N-k}n}$ would hold as well as $\sin{\omega_{ k}n}=-\sin{\omega_{N-k}n}$. If we look only at the summands mentioned, we would have:
 
 $$\begin{align*}
 
-     &A_{N-k}\cos{\omega_{N-k}n}+A_{k}\cos{\omega_{N-k}n}+B_{N-k}\sin{\omega_{N-k}n}-B_{k}\sin{\omega_{ N-k}n} \\ &=\left(A_{N-k}+A_{k}\right)\cos{\omega_{N-k}n} + \left(B_{N-k}-B_{k}\right)\ sin{\omega_{N-k}n}
+     &A_{N-k}\cos{\omega_{N-k}n}+A_{k}\cos{\omega_{N-k}n}+B_{N-k}\sin{\omega_{N-k}n}-B_{k}\sin{\omega_{ N-k}n} \\ &=\left(A_{N-k}+A_{k}\right)\cos{\omega_{N-k}n} + \left(B_{N-k}-B_{k}\right)\sin{\omega_{N-k}n}
 
 \end{align*}$$
 
@@ -199,9 +199,9 @@ In the literature, we most often find the quantity $X_{k} = NC_{k}$ (which corre
 
 $$\begin{align*} x_{n} &= \frac{1}{N}\sum_{k=0}^{N-1}X_{k}e^{i\omega_{k}n} \\ X_{n} &= \sum_{n=0}^{N-1}x_{n}e^{-i\omega_{k}n}\end{align*}$$
 
-The preceding considerations are related to what is abbreviated as DTFS (\textit{Discrete Time Fourier Series}. The Discrete Fourier Transform (DFT) is formally defined for a finite series as the DTFS for a corresponding periodic series. On the other hand, the Discrete Cosine Transform (DCT) for a finite series, it is generally defined as the DTFS of the even expansion of that series (there are 4 variants of the expansion that draw different formulas for the calculation).The even expansion is considered better than the periodic expansion in some applications because with the latter at the boundary between two periods sudden jumps may occur that lead to a wider spectrum (a larger number of frequencies is needed to faithfully describe the signal).
+The preceding considerations are related to what is abbreviated as DTFS *Discrete Time Fourier Series*. The Discrete Fourier Transform (DFT) is formally defined for a finite series as the DTFS for a corresponding periodic series. On the other hand, the Discrete Cosine Transform (DCT) for a finite series, it is generally defined as the DTFS of the even expansion of that series (there are 4 variants of the expansion that draw different formulas for the calculation).The even expansion is considered better than the periodic expansion in some applications because with the latter at the boundary between two periods sudden jumps may occur that lead to a wider spectrum (a larger number of frequencies is needed to faithfully describe the signal).
 
-\subsubsection{Fourier transform in 2D}
+## Fourier transform in 2D
 
 Let us now turn our attention to the two-dimensional function $f(x,y)$ where $x,y$ are the coordinates of the Cartesian coordinate system defined on a square with the center at the coordinate origin and the edges parallel to the coordinate axes. Protoperiodic functions in 2D, apart from the frequency, also have the property of the propagation direction (along one of the axes or a line between them). Let the vector that determines the direction of propagation of sinusoidal waves be determined by the angle $\theta$ that coincides with the positive direction of the x-axis, i.e. the unit vector $(\cos{\theta}, \sin{\theta})$, and the frequency by $\xi$. Then the wave, let's say a sinusoid, along that direction is analytically written as:
 
