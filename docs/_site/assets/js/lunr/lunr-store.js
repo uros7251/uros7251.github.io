@@ -46,4 +46,10 @@ var store = [{
         "tags": [],
         "url": "/posts/backprop-complex-numbers",
         "teaser": null
+      },{
+        "title": "Linear Regression",
+        "excerpt":"Orthodox statistics’ perspective In regression, we start from the model which proposes a conditional probability distribution of target variable given $p-1$ predictor variables (covariates). With linear regression, this is usually normal distribution with mean being the linear function of predictors and some, unknown, variance. That is, we have: \\[\\begin{equation*} P\\left(Y=y...","categories": [],
+        "tags": [],
+        "url": "/Linear-regression/",
+        "teaser": null
       }]

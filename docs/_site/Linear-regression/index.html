@@ -1,0 +1,743 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Linear Regression i don’t like infinite sets Uros Stojkovic</title>
+<meta name="description" content="Orthodox statistics’ perspective">
+
+
+  <meta name="author" content="Uros Stojkovic">
+  
+  <meta property="article:author" content="Uros Stojkovic">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Uros Stojkovic">
+<meta property="og:title" content="Linear Regression">
+<meta property="og:url" content="http://localhost:4000/Linear-regression/">
+
+
+  <meta property="og:description" content="Orthodox statistics’ perspective">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2023-09-14T00:00:00+02:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/Linear-regression/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Uros Stojkovic",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+  <meta name="google-site-verification" content="VMlYUCCQ1tP-YO1iVa230Fpi8YLFnWPjQZdiWFmrc_g" />
+
+
+  <meta name="msvalidate.01" content="796E42E6193A45A893E19381B8760CE4">
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Uros Stojkovic Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Poincare > Hilbert
+          <span class="site-subtitle">Notes in math and physics</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/posts">Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about">About</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Uros Stojkovic</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>Master student of Data Engineering and Analytics at Technical University of Munich</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Munich, Germany</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:uros.stojkovich@outlook.com" rel="nofollow noopener noreferrer me"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/uros7251" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">uros7251</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Linear Regression">
+    <meta itemprop="description" content="Orthodox statistics’ perspective">
+    <meta itemprop="datePublished" content="2023-09-14T00:00:00+02:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/Linear-regression/" class="u-url" itemprop="url">Linear Regression
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          20 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+        <h2 id="orthodox-statistics-perspective">Orthodox statistics’ perspective</h2>
+
+<p>In regression, we start from the model which proposes a conditional probability distribution of target variable given $p-1$ predictor variables (covariates). With linear regression, this is usually normal distribution with mean being the linear function of predictors and some, unknown, variance. That is, we have:</p>
+
+\[\begin{equation*}
+
+    P\left(Y=y | X_{1}=x_{1}, \cdots, X_{n}=x_{p-1}\right) = \mathcal{N}\left(\beta_{0} + \sum_{j=1}^{p-1}\beta_{j}x_{j}, \sigma^2\right)
+
+\end{equation*}\]
+
+<p>In case of $n$ samples, we can switch to vector notation in the following way:</p>
+
+<ul>
+  <li>
+    <p>We define a vector $y \in \mathrm{R}^{n}$ to be the vector whose $i^{th}$ element is a target value of the $i^{th}$ sample.</p>
+  </li>
+  <li>
+    <p>We define a matrix $X \in \mathrm{R}^{n\times p}$ to be the matrix whose $i^{th}$ row is a vector of predictor variables for $i^{th}$ sample prepended by 1.</p>
+  </li>
+  <li>
+    <p>We define a vector $\beta \in \mathrm{R}^{p}$ to be a vector whose $i^{th}$ element is $\beta_{i}$.</p>
+  </li>
+</ul>
+
+<p>Now, we can rewrite the above equation in vector-matrix form:</p>
+
+\[\begin{equation*}
+
+    P\left(Y=y | X\right) = \mathcal{N}\left(X\beta, \sigma^{2}I\right)
+
+\end{equation*}\]
+
+<p>We can estimate parameters $\beta$ by maximizing the likelihood of observed samples which, in case of normal distribution, comes down to least squares problem. That is, we ought to solve:</p>
+
+\[\begin{equation*}
+
+    \hat{\beta} = \arg \min_{\beta} \| X\beta - y\|^{2} 
+
+\end{equation*}\]
+
+<p>This is a well-known problem, but we’ll still briefly explain one way to solve it. The key thing to realize is that $X\beta$ is some vector in the space spanned by columns of $X$. Thus, we have to find a vector from that space which is closest to $y$. By geometric intuition it is obvious that this is the orthogonal projection of $y$ onto that space. Put differently, the difference $y-X\beta$ must be orthogonal to that space ie. it must be orthogonal to each column of matrix $X$. Thus, we arrive at the equation:</p>
+
+\[\begin{align*}
+
+    &amp;X^{T}\left(y - X\hat{\beta}\right) = o \\
+
+    &amp;\hat{\beta} = \left(X^{T}X\right)^{-1}X^{T}y
+
+\end{align*}\]
+
+<p>Of course, this works only if $X^{T}X$ is of full rank ie. $X$ has $p$ linearly independent columns. Otherwise, the solution is not unique.</p>
+
+<p>Since $y$ is a random vector variable, so is $\hat{\beta}$. We can inspect what its distribution is. Plugging $y = X\beta + \epsilon$ where $\epsilon \sim \mathcal{N}(0,\sigma^{2}I)$, we get:</p>
+
+\[\begin{align*}
+
+    \hat{\beta} &amp;= \left(X^{T}X\right)^{-1}X^{T}\left(X\beta + \epsilon\right) \\ &amp;= \beta + \left(X^{T}X\right)^{-1}X^{T}\epsilon
+
+\end{align*}\]
+
+<p>Here we can readily see that $E\left[\hat{\beta}\right] = \beta$. Furthermore, it’s obvious that the distribution is also normal since the second term is a vector whose elements are linear combinations of normally distributed random variables. On the other hand, how covariance matrix looks like is less clear, although it’s clear that it is not diagonal in general. It is nevertheless relatively simple to derive it:</p>
+
+\[\begin{align*}
+
+    \Sigma &amp;= E\left[\left(\hat{\beta} - \beta\right)\left(\hat{\beta} - \beta\right)^{T}\right] \\ &amp;= E\left[\left(\left(X^{T}X\right)^{-1}X^{T}\epsilon\right)\left(\left(X^{T}X\right)^{-1}X^{T}\epsilon\right)^{T}\right] \\ &amp;= \left(X^{T}X\right)^{-1}X^{T}E\left[\epsilon\epsilon^{T}\right]X\left(X^{T}X\right)^{-1} \\ &amp;= \left(X^{T}X\right)^{-1}X^{T}\sigma^{2}I X\left(X^{T}X\right)^{-1} \\ &amp;= \sigma^{2}\left(X^{T}X\right)^{-1}
+
+\end{align*}\]
+
+<p>Thus, we have $\hat{\beta} \sim \mathcal{N}\left(\beta, \sigma^{2}\left(X^{T}X\right)^{-1} \right)$.</p>
+
+<p>Naturally, we might want to calculate confidence interval, although at first it’s not really clear how to do it now that we are in high-dimensional space. Before we proceed, let’s see what is the distribution of a sum of squared residuals. Residuals can be represented as a vector:</p>
+
+\[\begin{align*}
+
+    \hat{r} &amp;= y - X\hat{\beta} \\ &amp;= y - X\left(X^{T}X\right)^{-1}X^{T}y \\ &amp;= \left(I-H\right)y \\ &amp;= \left(I-H\right)\left(X\hat{\beta}+\epsilon\right) \\ &amp;= (I-H)\epsilon
+
+\end{align*}\]
+
+<p>where $H = X\left(X^{T}X\right)^{-1}X^{T}$ is a projection matrix onto space spanned by columns of $X$. Thus, $(I-H)\epsilon$ is a projection of $\epsilon$ onto space orthogonal to that one - its dimension is $n-p$. Then, as we know from our earlier investigations:</p>
+
+\[\begin{equation*}
+
+    \frac{\|\hat{r}\|^{2}}{\sigma^{2}} \sim \chi_{n-p}
+
+\end{equation*}\]
+
+<p>Thus, we can use this fact to find unbiased estimator for $\sigma^{2}$:</p>
+
+\[\begin{equation*}
+
+    \hat{\sigma}^{2} = \frac{\|\hat{r}\|^{2}}{n-p}
+
+\end{equation*}\]
+
+<p>Returning back to the problem of finding confidence interval for $\beta$ coefficients, there’s an obvious generalization to interval estimation for the whole set of parameters. However, these won’t be independent intervals, but we could say with certain probability that parameters lie inside some hyper-ellipsoid determined by the covariance matrix $\Sigma$.</p>
+
+<p>The other approach is to find marginalized distribution for each parameter $\beta_{j}$. In that case, we have:</p>
+
+\[\begin{equation*}
+
+    \hat{\beta_{i}} \sim \mathcal{N}\left(\beta_{j}, \sigma^{2}\left(X^{T}X\right)^{-1}_{jj} \right)
+
+\end{equation*}\]
+
+<p>and $z$-score reads:</p>
+
+\[\begin{equation*}
+
+    \frac{\hat{\beta}_{j}-\beta_{j}}{\sqrt{\sigma^{2}\left(X^{T}X\right)^{-1}_{jj}}}.
+
+\end{equation*}\]
+
+<p>However, often times we don’t know $\sigma$. We must then revert to mean of squared residuals, expecting to arrive at student distribution. We now proceed to demonstrate that this is indeed the case.</p>
+
+<p>As we previously showed, student distribution arises when we look at the ratio between two projections of random vector which are mutually orthogonal. By substituting $|\hat{r}|^{2}/(n-p)$  for $\sigma^{2}$, we’ll have $|(I-H)\epsilon|^{2}$ in the denominator. That means that we “need” some projection belonging to the column space of $H$ in the numerator. Also, this projection should be proportional to $\hat{\beta_{j}}-\beta_{j}$. We already know that:</p>
+
+\[\begin{equation*}
+
+    X(\hat{\beta}-\beta) = H\epsilon
+
+\end{equation*}\]
+
+<p>We would like to find a vector $q$ such that $q^{T}X \propto e_{j}^{T}$ where $e_{j}$ is $j^{th}$ basis vector. This means that $q$ should be such that it is orthogonal to all the columns of $X$ except for the $j^{th}$ one. This essentially means that if we perform Gram-Schmidt process on columns of $X$ such that $j^{th}$ column comes last, then $q$ has to be a multiple of the last orthogonal vector. Without loss of generality, let’s assume that $j=p$ and let $X=QR$ be a QR decomposition of $X$ where $Q\in\mathrm{R}^{n\times p}, Q\in\mathrm{R}^{p\times p}$ (there’s really special in the order of covariates). Then, $q=q_{p}$ and consequently:</p>
+
+\[\begin{align*}
+
+    q^{T}X &amp;= q_{p}^{T}QR \\ &amp;= e_{p}^{T}R \\ &amp;= r_{pp}e_{n}^{T}.
+
+\end{align*}\]
+
+<p>At the same time, we have:</p>
+
+\[\begin{align*}
+
+    (X^{T}X)^{-1}_{pp} &amp;= (R^{T}R)^{-1}_{pp} \\ &amp;= \left(R^{-1}(R^{-1})^{T}\right)_{pp} \\ &amp;= \left(\frac{\prod_{k\neq p}r_{kk}}{\prod_{k}r_{kk}}\right)^{2} \\ &amp;= \frac{1}{r_{pp}^{2}},
+
+\end{align*}\]
+
+<p>where we exploited the fact that $R$ is full-rank and upper-triangular. Plugging all the pieces together, we get:</p>
+
+\[\begin{align*}
+
+    &amp;\frac{\hat{\beta}_{p}-\beta_{p}}{\sqrt{\frac{\|\hat{r}\|^{2}}{n-p}\left(X^{T}X\right)^{-1}_{pp}}} \\ =&amp; \sqrt{n-p}\frac{r_{pp}e_{n}^{T}(\hat{\beta}-\beta)}{\|\hat{r}\|} \\ =&amp; \sqrt{n-p}\frac{q^{T}H\epsilon}{\|(I-H)\epsilon\|}
+
+\end{align*}\]
+
+<p>Since $q$ belongs to column space of $H$, it holds that $H^{T}q = Hq = q$. Finally, we end up with a statistic:</p>
+
+\[\begin{equation*}
+
+    \sqrt{n-p}\frac{q^{T}\epsilon}{\|(I-H)\epsilon\|}
+
+\end{equation*}\]
+
+<p>In the numerator we have a projection on the space of dimension 1, whereas in the denominator we have a projection on the space of dimension $n-p$, orthogonal to the former. Again, in our earlier investigations, we saw that this leads to a Student distribution with $n-p$ degrees of freedom. Thus, we have:</p>
+
+\[\begin{equation*}
+
+    \frac{\hat{\beta}_{j}-\beta_{j}}{\sqrt{\hat{\sigma}^{2}\left(X^{T}X\right)^{-1}_{jj}}} \sim t_{n-p}
+
+\end{equation*}\]
+
+<p>This is the statistic commonly used to test the significance of $j^{th}$ predictor’s influence on the target variable.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2023-09-14T00:00:00+02:00">September 14, 2023</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Linear+Regression%20http%3A%2F%2Flocalhost%3A4000%2FLinear-regression%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2FLinear-regression%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2FLinear-regression%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/posts/backprop-complex-numbers" class="pagination--pager" title="Backprop with complex numbers
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">You may also enjoy</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/backprop-complex-numbers" rel="permalink">Backprop with complex numbers
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          14 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">One of the building blocks of my linear circuit solver is automatic differentiation which calculates the gradient of the loss function with respect to node v...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/fourier-analysis" rel="permalink">Fourier series, Fourier transforms and all that
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          63 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Review of trigonometric identities
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/odes" rel="permalink">Operator approach to solving differential equations
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          12 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">We will start by solving the following equation:
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/normal-dist-and-its-derivatives" rel="permalink">Normal distribution and its derivatives (+ volume of an n-ball)
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          39 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Elementary area and volume in the spherical coordinate system
+In the spherical coordinate system, the points of $n$ dimensional space are determined by the E...</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$']]
+        }
+      };
+    </script>
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2023 Uros Stojkovic. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
