@@ -1,10 +1,10 @@
 ---
 title:  "Linear Circuit Solver - part 2"
-date:   2023-09-22
-categories: electrical engineering
+date:   2023-09-29
+categories: electrical_engineering
 permalink: posts/linear-circuit-solver-2
 ---
-# Part 2 - Arbitrary topologies
+# Arbitrary topologies
 ## Pitfalls of the current solution
 The methodology discussed in the [previous part](/posts/linear-circuit-solver-1) works well for circuits represented as trees of series and parallel connections. However, its applicability is constrained when dealing with more intricate topologies, such as bridge circuits, where components are interconnected in more complex ways. Consequently, its scope is somewhat limited.
 
@@ -22,7 +22,7 @@ In the previous equations $V$ is a set of nodes, $E$ is a set of branches, $B$ i
 
 Since currents depend linearly on node voltages, the loss function takes the form of a quadratic function of node voltages. Moreover, since the loss function is the sum of squares, it is bounded from below by zero, rendering it a convex function. This advantageous property simplifies our optimization problem, allowing us to leverage a broad range of well-established methods for convex optimization.
 
-## Calculation of complex gradient
+## Gradient calculation
 To iteratively progress toward superior solutions, we need to compute the gradient of the loss function with respect to node voltages. Notably, we encounter the challenge of differentiating a real-valued function with respect to complex variables. The key lies in devising a mechanism to store these derivatives in a way that enables their backpropagation through the computational graph.
 
 If we denote real and imaginary parts by $x$ and $y$, respectively, an effective strategy is to store the gradient as follows:

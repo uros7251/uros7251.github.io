@@ -47,9 +47,21 @@ var store = [{
         "url": "/posts/backprop-complex-numbers",
         "teaser": null
       },{
-        "title": "Linear Regression",
-        "excerpt":"Orthodox statistics’ perspective In regression, we start from the model which proposes a conditional probability distribution of target variable given $p-1$ predictor variables (covariates). With linear regression, this is usually normal distribution with mean being the linear function of predictors and some, unknown, variance. That is, we have: \\[\\begin{equation*} P\\left(Y=y...","categories": [],
+        "title": "Linear regression",
+        "excerpt":"This post builds upon an earlier post about Chi-squared and Student distribution. You might want to check it out before proceeding. Orthodox statistics’ perspective In regression, we start from the model which proposes a conditional probability distribution of target variable given $p-1$ predictor variables (covariates). With linear regression, this is...","categories": ["probability","theory"],
         "tags": [],
-        "url": "/Linear-regression/",
+        "url": "/posts/linear-regression",
+        "teaser": null
+      },{
+        "title": "Linear Circuit Solver part 1",
+        "excerpt":"Simple topologies Intro The classical methods for circuit analysis, commonly taught in introductory electrical engineering courses, traditionally involve transforming the original system of differential equations into a system of algebraic equations. These equations are typically solved using methods such as Gaussian elimination or numerical optimization. Two well-known techniques are nodal...","categories": ["electrical_engineering"],
+        "tags": [],
+        "url": "/posts/linear-circuit-solver-1",
+        "teaser": null
+      },{
+        "title": "Linear Circuit Solver - part 2",
+        "excerpt":"Arbitrary topologies Pitfalls of the current solution The methodology discussed in the previous part works well for circuits represented as trees of series and parallel connections. However, its applicability is constrained when dealing with more intricate topologies, such as bridge circuits, where components are interconnected in more complex ways. Consequently,...","categories": ["electrical_engineering"],
+        "tags": [],
+        "url": "/posts/linear-circuit-solver-2",
         "teaser": null
       }]

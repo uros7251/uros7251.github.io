@@ -1,10 +1,200 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-09-14T23:47:41+02:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Uros Stojkovic</title><subtitle>Personal website with primarily math/physics content</subtitle><author><name>Uros Stojkovic</name></author><entry><title type="html">Linear Regression</title><link href="http://localhost:4000/Linear-regression/" rel="alternate" type="text/html" title="Linear Regression" /><published>2023-09-14T00:00:00+02:00</published><updated>2023-09-14T00:00:00+02:00</updated><id>http://localhost:4000/Linear-regression</id><content type="html" xml:base="http://localhost:4000/Linear-regression/"><![CDATA[<h2 id="orthodox-statistics-perspective">Orthodox statistics’ perspective</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-09-29T15:04:02+02:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Uros Stojkovic</title><subtitle>Personal website with primarily math/physics content</subtitle><author><name>Uros Stojkovic</name></author><entry><title type="html">Linear Circuit Solver - part 2</title><link href="http://localhost:4000/posts/linear-circuit-solver-2" rel="alternate" type="text/html" title="Linear Circuit Solver - part 2" /><published>2023-09-29T00:00:00+02:00</published><updated>2023-09-29T00:00:00+02:00</updated><id>http://localhost:4000/posts/Linear-Electric-Circuit-Solver-2</id><content type="html" xml:base="http://localhost:4000/posts/linear-circuit-solver-2"><![CDATA[<h1 id="arbitrary-topologies">Arbitrary topologies</h1>
+<h2 id="pitfalls-of-the-current-solution">Pitfalls of the current solution</h2>
+<p>The methodology discussed in the <a href="/posts/linear-circuit-solver-1">previous part</a> works well for circuits represented as trees of series and parallel connections. However, its applicability is constrained when dealing with more intricate topologies, such as bridge circuits, where components are interconnected in more complex ways. Consequently, its scope is somewhat limited.</p>
 
+<p>To extend our method to arbitrary circuits with diverse topologies, we must undergo a fundamental shift in our approach. Our solution entails reverting to nodal analysis, a well-established technique in electrical engineering. In our new method, we view the circuit as a graph composed of branches connecting nodes, where nodes serve as points of junction for three or more branches. Each branch, in turn, comprises one or more components connected in series.</p>
+
+<h2 id="ml-inspired-approach">ML-inspired approach</h2>
+<p>In nodal analysis, we construct a linear system by mandating that the net current flowing out of each node equals zero. However, instead of solving this linear system for exact solutions, our approach leans toward numerical methods. We define our solution as a set of node voltages and quantify the quality of a solution by calculating the sum of squares of net currents over each node, serving as our loss function. The objective is to find a solution that minimizes this loss, ideally reducing it to zero.</p>
+
+\[\begin{align*}
+L &amp;= \sum_{v \in V}I_{v}^{2} \\
+I_{v} &amp;= \sum_{e \in E}B_{ve}I_{e}
+\end{align*}\]
+
+<p>In the previous equations $V$ is a set of nodes, $E$ is a set of branches, $B$ is an incidence matrix, and $I_{e}$ is a current going through branch $e$. The latter is calculated using the method developed in the previous section.</p>
+
+<p>Since currents depend linearly on node voltages, the loss function takes the form of a quadratic function of node voltages. Moreover, since the loss function is the sum of squares, it is bounded from below by zero, rendering it a convex function. This advantageous property simplifies our optimization problem, allowing us to leverage a broad range of well-established methods for convex optimization.</p>
+
+<h2 id="gradient-calculation">Gradient calculation</h2>
+<p>To iteratively progress toward superior solutions, we need to compute the gradient of the loss function with respect to node voltages. Notably, we encounter the challenge of differentiating a real-valued function with respect to complex variables. The key lies in devising a mechanism to store these derivatives in a way that enables their backpropagation through the computational graph.</p>
+
+<p>If we denote real and imaginary parts by $x$ and $y$, respectively, an effective strategy is to store the gradient as follows:</p>
+
+\[\nabla = \frac{\partial}{\partial x} - j\frac{\partial}{\partial y}\]
+
+<p>Here, $j$ denotes the imaginary unit. This formulation allows us to apply the standard chain rule for differentiation, facilitating the propagation of gradients backward through the computational graph. Indeed, if we have two complex variables $z$ and $w$ such that $w$ is a function of $z$, it can be shown that the following equation hold:</p>
+
+\[\nabla_{z} = \frac{\partial w}{\partial z}\cdot \nabla_{w} + \cdots\]
+
+<p>As a result, we can efficiently compute the gradients of real-valued functions with respect to complex variables. For updates, we naturally use the complement of this gradient. For more detailed explanation, see <a href="/posts/backprop-complex-numbers">this post</a>.</p>
+
+<h2 id="sketch-of-the-implementation">Sketch of the implementation</h2>
+
+<p>To compute gradients, we implement a compact reverse mode automatic differentiation module, conceptually similar to those commonly found in deep learning frameworks like PyTorch.</p>
+
+<p>The algorithm for determining the node voltages is as follows:</p>
+
+<ol>
+  <li><strong>Initialization</strong>: Begin by initializing all node voltages to zero. This serves as the initial solution, assuming the circuit contains no active components.</li>
+  <li><strong>Forward Computation</strong>: Conduct a forward computation to calculate the loss associated with the current set of node voltages.</li>
+  <li><strong>Check Loss Value</strong>: If the computed loss value meets the predetermined satisfactory criteria (very close to zero for an ideal solution), return the current set of node voltages as the solution.</li>
+  <li><strong>Backward Computation</strong>: Perform a backward computation to calculate the gradients of the loss function with respect to the node voltages.</li>
+  <li><strong>Update Node Voltages</strong>: Utilize the calculated gradients to update the node voltages and proceed to step 2 for another iteration.</li>
+</ol>
+
+<p>Steps 2 to 5 are repeated until the algorithm terminates. Ideally, the loss should decrease with each iteration. At the end of this process, the correct node voltages are determined, enabling the subsequent calculation of current and voltage values for all components within the circuit. Concerning Step 5, many techniques could be used to perform an update including various variants of gradient descent.</p>
+
+<p>While our approach offers a robust framework for circuit analysis, there are a few caveats to discuss:</p>
+
+<ul>
+  <li><strong>Reference Node</strong>: One node voltage within the circuit can always be set as a reference, typically fixed to zero volts. This reference node provides a point of comparison for other voltage values in the circuit.</li>
+  <li><strong>Ideal Voltage Sources</strong>: In instances where a branch comprises solely an ideal voltage source, a unique constraint is introduced. Such a source imposes a specific relationship between the voltages at its terminal nodes. Consequently, it becomes less preferable to consider these voltages independently. Additionally, since the branch contains only an ideal voltage source, the current flowing through it remains undefined. As a result, we treat this current as a new parameter to be determined within the analysis. Thus, overall, the count of parameters we optimize over remains unchanged.</li>
+</ul>
+
+<p>Again, complete implementation in Python can be found <a href="https://github.com/uros7251/PyCircuitSolver">here</a>.</p>]]></content><author><name>Uros Stojkovic</name></author><category term="electrical_engineering" /><summary type="html"><![CDATA[Arbitrary topologies Pitfalls of the current solution The methodology discussed in the previous part works well for circuits represented as trees of series and parallel connections. However, its applicability is constrained when dealing with more intricate topologies, such as bridge circuits, where components are interconnected in more complex ways. Consequently, its scope is somewhat limited.]]></summary></entry><entry><title type="html">Linear Circuit Solver part 1</title><link href="http://localhost:4000/posts/linear-circuit-solver-1" rel="alternate" type="text/html" title="Linear Circuit Solver part 1" /><published>2023-09-28T00:00:00+02:00</published><updated>2023-09-28T00:00:00+02:00</updated><id>http://localhost:4000/posts/Linear-Electric-Circuit-Solver</id><content type="html" xml:base="http://localhost:4000/posts/linear-circuit-solver-1"><![CDATA[<h1 id="simple-topologies">Simple topologies</h1>
+<h2 id="intro">Intro</h2>
+<p>The classical methods for circuit analysis, commonly taught in introductory electrical engineering courses, traditionally involve transforming the original system of differential equations into a system of algebraic equations. These equations are typically solved using methods such as Gaussian elimination or numerical optimization. Two well-known techniques are nodal and mesh analysis.</p>
+
+<p>In specific cases where the circuit’s topology can be represented as a tree-like structure of series and parallel circuits, the solution process is notably simpler and doesn’t necessitate the setup of a complex equation system.</p>
+
+<p>In the first part of this blog post, we explore the application of polymorphism, a fundamental concept in object-oriented programming, to exploit this simplified scenario. Subsequently, in the second part, we address the need to generalize our solution method to encompass arbitrary circuit topologies. To achieve this, we return to nodal analysis while introducing automatic differentiation to enable numerical optimization. In the final section, we discuss the advantages and implications of adopting this approach.</p>
+
+<h2 id="current-voltage-characteristic">Current-voltage characteristic</h2>
+<p>The central insight lies in viewing circuit elements as linear two-terminal components. Linear two-terminal component is a building block of electrical circuits having only two connection points, or terminals. It exhibits a linear relationship between voltage and current across its terminals, meaning its behavior can be described by linear equations. This perspective is crucial for two reasons. Firstly, it aligns with the nature of simple linear electrical components such as resistors, capacitors, and ideal voltage sources, all of which inherently possess two-terminal characteristics. More complex two-terminal components can be formed by combining primitive elements or other complex components in series or parallel configurations. Effectively, this approach allows us to represent a portion, or at times, an entire circuit, as a tree structure, where inner nodes symbolize series or parallel connections, and leaf nodes represent primitive components.
+Secondly, linear two-terminal components can be precisely characterized by their current-voltage characteristic (CVC), which also exhibit linearity and follows a general form:
+\(aV+bI=c\)
+and thus, can be represented by a tuple $(a, b, c)$. Here, $V$ and $I$ are, in general, complex numbers representing effective voltage and current in either DC or AC mode (in DC mode imaginary part will play no role).</p>
+
+<p>When describing the current-voltage relationship, it’s essential to define a reference direction for both current and voltage, especially when active elements like voltage and current sources are involved. We adhere to a widely accepted rule called passive sign convention. According to this rule, the reference directions for voltage and current should be chosen so that when multiplied together to calculate power, we get a positive number for components that use up energy (like resistors) and a negative number for components that provide energy to the rest of the circuit (like voltage sources).</p>
+
+<p align="center">
+ <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Passive_sign_convention.svg/220px-Passive_sign_convention.svg.png" />
+</p>
+<p>Each type of primitive component possesses its unique CVC, and we can establish rules for calculating the CVC of composite components based on their constituent elements.</p>
+
+<h2 id="cvc-of-primitive-components">CVC of primitive components</h2>
+<p>In Table 1, CVCs of primitive two-terminal components are shown ($\omega$ stands for angular frequency, $j$ for imaginary unit).</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Component Type</th>
+      <th>CVC</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Resistor (R)</td>
+      <td>$V-RI=0$</td>
+    </tr>
+    <tr>
+      <td>Capacitor (C)</td>
+      <td>$V + j\frac{1}{\omega C}I = 0$</td>
+    </tr>
+    <tr>
+      <td>Inductor (L)</td>
+      <td>$V - j\omega LI = 0$</td>
+    </tr>
+    <tr>
+      <td>Impedance (Z)</td>
+      <td>$V-ZI=0$</td>
+    </tr>
+    <tr>
+      <td>Ideal Voltage Source (E)</td>
+      <td>$V = E$</td>
+    </tr>
+    <tr>
+      <td>Ideal Current Source (J)</td>
+      <td>$I = J$</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Naturally, for reactive components, impedance varies with angular velocity, meaning that CVC is, in general, not only a function of type of the component, but also of angular velocity.</p>
+
+<h2 id="cvc-of-composite-components">CVC of composite components</h2>
+<p>We proceed now to understand how combining two CVCs in series and parallel circuits works, and we begin with the series connection. Here, the rule is simple: the current is the same across both components, but their voltages add up. When connecting two CVCs in series, if at least one of them is of the form $I = J$, the resulting CVC remains the same. However, in cases where neither CVC follows this form, a relationship arises between the component parameters:</p>
+
+\[\begin{align*}
+b &amp;= b_{1} + b_{2} \\
+c &amp;= c_{1} + c_{2}
+\end{align*}\]
+
+<p>This elegant relationship implies that both the Thevenin equivalent impedance and voltage are obtained simply by summing the corresponding parameters.</p>
+
+<p>Conversely, in parallel connections, it is voltage that is equal and currents add up. If one of the CVCs takes the form $V = E$, the resulting CVC remains unchanged. However, when one CVC is of the form $I = J$, while the other is of the form $V + b_{1}I = c_{1}$, we find the following relationships:
+\(\begin{align*}
+b &amp;= b_{1}\\
+c &amp;= c_{1} + b_{1}J
+\end{align*}\)
+In the most general case where both CVCs are of the form $V + bI = c$, the following relationships apply:
+\(\begin{align*}
+b &amp;= \frac{b_{1}b_{2}}{b_{1}+b_{2}}\\
+c &amp;= \frac{c_{1}b_{2} + c_{2}b_{1}}{b_{1}+b_{2}}
+\end{align*}\)
+It is important to note that both series and parallel circuits can consist of more than two components. In such cases, these formulas are iteratively combined to determine the final CVC. Below, we provide an algorithm for calculating the CVC of a series circuit:</p>
+
+<ol>
+  <li>Initialize <code class="language-plaintext highlighter-rouge">cvc</code> as $(1, 0, 0)$.</li>
+  <li>For each child node, combine <code class="language-plaintext highlighter-rouge">cvc</code> in series with CVC of the child node.</li>
+  <li>Return <code class="language-plaintext highlighter-rouge">cvc</code>.</li>
+</ol>
+
+<p>The same algorithm for parallel circuits is practically identical except that <code class="language-plaintext highlighter-rouge">cvc</code> is initialized as $(0, 1, 0)$ which is a neutral element for combining in parallel. So, it is evident that to evaluate the CVC of a parent component, we rely on CVCs of its child components. Thus, the computation of CVCs goes from leaf nodes towards the root, following a post-order traversal.</p>
+
+<h2 id="using-cvcs-to-simulate-circuit-dynamics">Using CVCs to simulate circuit dynamics</h2>
+<p>As noted earlier, CVC provides us with means to calculate either voltage across a two-terminal component, given its current, or vice versa. Consequently, to compute voltages and currents across the entire circuit, we must initiate the process by applying either voltage or current to the root component. The choice depends on the nature of the root:</p>
+
+<ol>
+  <li>Series Circuit – we apply zero voltage, effectively short-circuiting the two terminals.</li>
+  <li>Parallel Circuit – we apply zero current, signifying that the only connection between the terminals exists through its child components.</li>
+</ol>
+
+<p>Once we have determined the current and voltage at the root, we can systematically propagate this information to its children, then to their children, and so forth, following a recursive pattern. Consequently, the computation of voltages and currents flows from the root towards the leaf nodes, adhering to a pre-order traversal approach.</p>
+
+<p>At the end of this section, we provided an example to illustrate how a circuit can be represented as a tree, as shown in Figures 1 and 2. In this example, the reference current direction is from point B to point A.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Circuit Scheme</th>
+      <th style="text-align: left">Circuit tree</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><img src="../assets/images/2023-09-28-circuit-solver/simple-circuit.png" alt="Circuit scheme" /></td>
+      <td style="text-align: left"><img src="../assets/images/2023-09-28-circuit-solver/circuit-tree.png" alt="Circuit tree" /></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="sketch-of-the-implementation">Sketch of the implementation</h2>
+
+<p>In the preceding subsection, we outlined the principles of our approach which can be readily translated to a programming language that supports the object-oriented paradigm. The implementation revolves around two class hierarchies.
+The foundation of our implementation is a CVC class, featuring methods like <code class="language-plaintext highlighter-rouge">current_at_voltage()</code> and <code class="language-plaintext highlighter-rouge">voltage_at_current()</code>, as well as methods for combination of two CVCs. In our implementation, the latter is done by overloading logical AND and OR operators.
+To manage various circuit components, we’ve established a hierarchy of classes. This hierarchy adheres to the composite pattern, consisting of:</p>
+
+<ul>
+  <li>Abstract Base Class: This base class declares critical methods such as <code class="language-plaintext highlighter-rouge">calc_cvc()</code>, <code class="language-plaintext highlighter-rouge">apply_current()</code>, <code class="language-plaintext highlighter-rouge">apply_voltage()</code>, <code class="language-plaintext highlighter-rouge">in_series_with()</code>, <code class="language-plaintext highlighter-rouge">in_parallel_with()</code>, and more. It serves as the blueprint for all component classes.</li>
+  <li>Intermediate Abstract Classes: We’ve introduced an extra layer of abstract classes that categorize components into three groups:
+    <ul>
+      <li>Real-Valued Components: These encompass components specified by real values, including resistors, capacitors, and inductors.</li>
+      <li>Complex-Valued Components: This category encompasses components specified by complex values, such as impedance and ideal voltage/current sources.</li>
+      <li>Composite Components: These are components specified by their child components, including series and parallel circuits. The logic within these classes revolves around managing the relationships between their constituents.</li>
+    </ul>
+  </li>
+  <li>Concrete Classes: These classes represent concrete component types, encompassing both primitive and composite components. They implement the declared functions according to the unique logic associated with each component type. This ensures that specific component behaviors are accurately captured within the framework.</li>
+</ul>
+
+<p>Python implementation can be found in this <a href="https://github.com/uros7251/PyCircuitSolver">GitHub repo</a>.</p>]]></content><author><name>Uros Stojkovic</name></author><category term="electrical_engineering" /><summary type="html"><![CDATA[Simple topologies Intro The classical methods for circuit analysis, commonly taught in introductory electrical engineering courses, traditionally involve transforming the original system of differential equations into a system of algebraic equations. These equations are typically solved using methods such as Gaussian elimination or numerical optimization. Two well-known techniques are nodal and mesh analysis.]]></summary></entry><entry><title type="html">Linear regression</title><link href="http://localhost:4000/posts/linear-regression" rel="alternate" type="text/html" title="Linear regression" /><published>2023-09-14T00:00:00+02:00</published><updated>2023-09-14T00:00:00+02:00</updated><id>http://localhost:4000/posts/Linear-regression</id><content type="html" xml:base="http://localhost:4000/posts/linear-regression"><![CDATA[<p>This post builds upon an <a href="/posts/normal-dist-and-its-derivatives">earlier post</a> about Chi-squared and Student distribution. You might want to check it out before proceeding.</p>
+<h2 id="orthodox-statistics-perspective">Orthodox statistics’ perspective</h2>
 <p>In regression, we start from the model which proposes a conditional probability distribution of target variable given $p-1$ predictor variables (covariates). With linear regression, this is usually normal distribution with mean being the linear function of predictors and some, unknown, variance. That is, we have:</p>
 
 \[\begin{equation*}
 
-    P\left(Y=y | X_{1}=x_{1}, \cdots, X_{n}=x_{p-1}\right) = \mathcal{N}\left(\beta_{0} + \sum_{j=1}^{p-1}\beta_{j}x_{j}, \sigma^2\right)
+    P\left(Y=y | X_{1}=x_{1}, \cdots, X_{p-1}=x_{p-1}\right) = \mathcal{N}\left(\beta_{0} + \sum_{j=1}^{p-1}\beta_{j}x_{j}, \sigma^2\right)
 
 \end{equation*}\]
 
@@ -160,7 +350,7 @@
 
 \end{equation*}\]
 
-<p>This is the statistic commonly used to test the significance of $j^{th}$ predictor’s influence on the target variable.</p>]]></content><author><name>Uros Stojkovic</name></author><summary type="html"><![CDATA[Orthodox statistics’ perspective]]></summary></entry><entry><title type="html">Backprop with complex numbers</title><link href="http://localhost:4000/posts/backprop-complex-numbers" rel="alternate" type="text/html" title="Backprop with complex numbers" /><published>2023-08-10T00:00:00+02:00</published><updated>2023-08-10T00:00:00+02:00</updated><id>http://localhost:4000/posts/Backprop-with-complex-numbers</id><content type="html" xml:base="http://localhost:4000/posts/backprop-complex-numbers"><![CDATA[<p>One of the building blocks of my <a href="https://github.com/uros7251/PyCircuitSolver">linear circuit solver</a> is automatic differentiation which calculates the gradient of the loss function with respect to node voltages. However, since node voltages are complex in general case, I needed to find a way to compute gradients with respect to complex values and propagate them through the computational graph. This seemed like a simple, yet interesting task, so I decided to tackle it without previously searching for already developed theory.</p>
+<p>This is the statistic commonly used to test the significance of $j^{th}$ predictor’s influence on the target variable.</p>]]></content><author><name>Uros Stojkovic</name></author><category term="probability" /><category term="theory" /><summary type="html"><![CDATA[This post builds upon an earlier post about Chi-squared and Student distribution. You might want to check it out before proceeding. Orthodox statistics’ perspective In regression, we start from the model which proposes a conditional probability distribution of target variable given $p-1$ predictor variables (covariates). With linear regression, this is usually normal distribution with mean being the linear function of predictors and some, unknown, variance. That is, we have:]]></summary></entry><entry><title type="html">Backprop with complex numbers</title><link href="http://localhost:4000/posts/backprop-complex-numbers" rel="alternate" type="text/html" title="Backprop with complex numbers" /><published>2023-08-10T00:00:00+02:00</published><updated>2023-08-10T00:00:00+02:00</updated><id>http://localhost:4000/posts/Backprop-with-complex-numbers</id><content type="html" xml:base="http://localhost:4000/posts/backprop-complex-numbers"><![CDATA[<p>One of the building blocks of my <a href="https://github.com/uros7251/PyCircuitSolver">linear circuit solver</a> is automatic differentiation which calculates the gradient of the loss function with respect to node voltages. However, since node voltages are complex in general case, I needed to find a way to compute gradients with respect to complex values and propagate them through the computational graph. This seemed like a simple, yet interesting task, so I decided to tackle it without previously searching for already developed theory.</p>
 <h2 id="chain-rule">Chain rule</h2>
 <p>If one briefly sits and thinks about this problem, one soon realizes that the biggest challenge is to figure out how chain rule works in this setting. After all, chain rule lies at the heart of automatic differentiation.</p>
 
@@ -253,7 +443,7 @@
      dA_{n}(r) = r^{n}\prod_{i=1}^{n}d\phi_{i}\sin^{i-1}{\phi_{i}}
 \end{equation*}\]
 
-<p>For $n = 2$, which represents an ordinary sphere (in 3D), the polar angle $\phi_{2}$ is usually denoted in physics by $\theta$, and the azimuth $\phi_{1}$ by $\phi$ , the formula $dA = r^{2}\sin{\theta}$ is obtained, which corresponds to the known expression.
+<p>For $n = 2$, which represents an ordinary sphere (in 3D), the polar angle $\phi_{2}$ is usually denoted in physics by $\theta$, and the azimuth $\phi_{1}$ by $\phi$ , the formula $dA = r^{2}\sin{\theta}$ is obtained, which corresponds to well-known result.
 The elementary volume in $n$-dimensional space is obtained as:</p>
 
 \[\begin{equation*}
@@ -309,12 +499,12 @@ The elementary volume in $n$-dimensional space is obtained as:</p>
 \[\begin{align*}E[S] &amp;= \frac{1}{I_{n-1}}\int_{0}^{\infty}se^{-\frac{s^{2}}{2 }}s^{n-1}ds = \frac{I_{n}}{I_{n-1}} = \sqrt{2}\frac{\Gamma\left ( \frac{n+1}{2 } \right )}{\Gamma\left ( \frac{n}{2} \right )} \\ E[S^{2}] &amp;= \frac{1}{I_{n-1}}\int_ {0}^{\infty}s^{2}e^{-\frac{s^{2}}{2}}s^{n-1}ds = \frac{I_{n+1}}{ I_{n-1}} = 2\frac{\Gamma\left ( \frac{n}{2} +1\right )}{\Gamma\left ( \frac{n}{2} \right )} = n\end{align*}\]
 
 <p>It should be noted that the probability distribution characterized by the mentioned law is called Chi distribution.
-In the literature, the so-called Chi-square distribution which represents the distribution of the squares of previously analyzed statistics - so $S^{2}$. We can easily derive it:</p>
+In the literature, one often encounters the so-called Chi-square distribution which represents the distribution of the squares of previously analyzed statistics - so $S^{2}$. We can easily derive it:</p>
 
 \[\begin{align*}\frac{d}{d(s^{2})}P(S^{2} &lt; s^{2}) &amp;= \frac{ds}{d(s^{2} )}\frac{d}{ds}P(S &lt; s) \\ &amp;= \frac{1}{2s} \frac{1}{2^{\frac{n}{2}-1}\Gamma \left(\frac{n}{2}\right)}e^{-\frac{s^{2}}{2}}s^{n-1} \\ \frac{d}{d(s ^{2})}P(S^{2} &lt; s^{2}) &amp;= \frac{1}{2^{\frac{n}{2}}\Gamma\left(\frac{n} {2}\right)}e^{-\frac{s^{2}}{2}}(s^{2})^{\frac{n}{2}-1}\end{align*}\]
 
 <h2 id="estimation-of-standard-deviation-given-mean-is-unknown">Estimation of standard deviation given mean is unknown</h2>
-<p>We still analyze the random variable $X \sim \mathcal{N}(\mu, \sigma^{2})$. This time we look at the statistics:</p>
+<p>We still analyze the random variable $X \sim \mathcal{N}(\mu, \sigma^{2})$. This time we look at a statistic:</p>
 
 \[\begin{equation*}
      S = \frac{\sqrt{\sum_{i=1}^{n}\left(X_{i} - \overline{X_{n}}\right)^{2}}}{\sigma}
@@ -364,7 +554,7 @@ In the literature, the so-called Chi-square distribution which represents the di
 \[\begin{align*} E\left [ \frac{1}{n-1}\sum_{i=1}^{n}\left(X_{i} - \overline{X_{n}}\right) ^{2}\right ] &amp;= E\left [ \frac{\sigma}{n-1} S^{2}\right ] \\ &amp;= \frac{\sigma}{n-1}E[S ^{2}] \\ &amp;= \sigma\end{align*}\]
 
 <h2 id="estimation-of-mean-given-standard-deviation-is-unknown">Estimation of mean given standard deviation is unknown</h2>
-<p>We once again consider the random variable $X \sim \mathcal{N}(\mu, \sigma)$. The subject of our analysis this time is statistics:</p>
+<p>We once again consider the random variable $X \sim \mathcal{N}(\mu, \sigma)$. The subject of our analysis this time a statistic:</p>
 
 \[\begin{equation*}
      S = \sqrt{n}\frac{\overline{X_{n}}-\mu}{\sqrt{\frac{1}{n-1}\sum_{i=1}^{n}\left( X_{i}-\overline{X_{n}}\right)^{2}}}
@@ -389,14 +579,14 @@ In the literature, the so-called Chi-square distribution which represents the di
      P(s \leq S &lt; s+ds) = \underset{s &lt; \sqrt{n}\frac{\overline{z_{n}}}{\sqrt{\frac{1}{n-1}\sum_ {i=1}^{n}\left(z_{i}-\overline{z_{n}}\right)^{2}}} &lt; s + ds }{\int\cdots\int}\frac{ 1}{\sqrt{2\pi}^{n}}e^{-\frac{z_{1}^{2}+\cdots+z_{n}^{2}}{2}}dz_{1 }\cdots dz_{n}
 \end{equation*}\]
 
-<p>We can present the numerator and denominator in vector form:</p>
+<p>We can present the numerator and denominator in the vector form:</p>
 
 \[\begin{align*}\sqrt{n}\overline{z_{n}} &amp;= \sqrt{e^{T}e}\frac{e^{T}z}{e^{T}e} = \frac{e^{T}z}{\left\| e\right\|} = z_{e} \\ \sqrt{\sum_{i=1}^{n}\left(z_{i}-\overline{z_{n}}\right)^{2} } &amp;= \left\|\left(I-\frac{ee^{T}}{e^{T}e}\right)z\right\|\end{align*}\]
 
-<p>Considering that the numerator is the projection of the vector $z$ onto the direction of vector $e$, and the denominator is the magnitude of the projection onto the hyperplane perpendicular to this direction, if we mark the angle between the vector $z$ and the vector $e$ with $\theta$, we get:</p>
+<p>Considering that the numerator is the projection of the vector $z$ onto the direction of vector $e$, and the denominator is the magnitude of the projection onto the hyperplane perpendicular to this direction, if we mark the angle between the vector $z$ and the vector $e$ with $\theta$, the statistic becomes:</p>
 
 \[\begin{equation*}
-     P(s \leq S &lt; s+ds) = \underset{s &lt; \sqrt{n-1}\cot{\theta} &lt; s + ds }{\int\cdots\int}\frac{1}{\sqrt{2\pi}^{n}}e^{-\frac{z_{1}^{2}+\cdots+z_{n}^{2}}{2}}dz_{1}\cdots dz_ {n}
+     S = \sqrt{n-1}\cot{\Theta}
 \end{equation*}\]
 
 <p>We can find the distribution for the angle $\theta$ by switching to spherical coordinates:</p>
@@ -407,7 +597,7 @@ In the literature, the so-called Chi-square distribution which represents the di
 
 \[\begin{align*}\frac{d}{ds}P(S &lt; s) &amp;\propto \left|\frac{d\theta}{ds}\right| \frac{d}{d\theta}P(\Theta &lt; \theta) \\ &amp;= \frac{d\theta}{\sqrt{n-1}\frac{d\theta}{\sin^{2 }{\theta}}}\sin^{n-2}{\theta} \\ &amp;= \frac{1}{\sqrt{n-1}}\sin^{n}{\theta} \\ \frac{d}{ds}P(S &lt; s) &amp;\propto \frac{1}{\sqrt{n-1}}\left ( 1+\frac{s^{2}}{n-1} \right )^{-\frac{n}{2}}\end{align*}\]
 
-<p>The number $n-1$ represents number of degrees of freedom and it often appears in literature denoted by $\nu$:</p>
+<p>The number $n-1$ represents the number of degrees of freedom and it often appears in literature denoted by $\nu$:</p>
 
 \[\begin{equation*}
     \frac{d}{ds}P(S &lt; s) \propto \frac{1}{\sqrt{\nu}}\left (1+s^{2}/\nu\right)^{-\frac {\nu+1}{2}}
@@ -442,17 +632,23 @@ In the literature, the so-called Chi-square distribution which represents the di
 <p>From here we can also infer something else about the Gamma function:</p>
 
 \[\begin{equation*}
-     \displaystyle \lim_{\nu \to \infty}\frac{\Gamma\left ( \frac{\nu+1}{2} \right )}{\sqrt{\nu}\Gamma\left ( \frac{ \nu}{2} \right )} = \frac{1}{\sqrt{2}}
+     \displaystyle \lim_{\nu \to \infty}\frac{\Gamma\left ( \frac{\nu+1}{2} \right )}{\sqrt{\frac{\nu}{2}}\Gamma\left ( \frac{ \nu}{2} \right )} = 1
+\end{equation*}\]
+
+<p>Or simpler put:</p>
+
+\[\begin{equation*}
+     \displaystyle \lim_{n \to \infty}\frac{\Gamma\left ( n+\frac{1}{2} \right )}{\sqrt{n}\Gamma\left ( n \right )} = 1
 \end{equation*}\]
 
 <h2 id="discussion">Discussion</h2>
-<p>The previous chapters may have been too abundant with mathematical formulas, symbols and expressions in which the reader can lose the idea of the very essence of the performance and the results reached. That’s why it’s always good to try to use a less formal and rigorous, but more comprehensible language to clarify what was meant to be conveyed by mathematical notation.</p>
+<p>The previous chapters may have been too abundant with mathematical formulas, symbols and expressions in which the reader can lose the idea of the very essence of the calculations and the results reached. That’s why it’s always good to try to use a less formal and rigorous, but more comprehensible language to clarify what was meant to be conveyed by mathematical notation.</p>
 
 <p>In the previous chapters, we considered certain statistics, that is, functions of several random variables where each of them had a normal probability distribution. The main subject of our research was the probability distribution of those statistics. In each of them, we treated a series of random variables as a vector in a high-dimensional space.</p>
 
-<p>First statistic we considered is the square root of the sum of squares of the random variables. This statistic is used in estimating the standard deviation. It geometrically represents the norm (length) of a vector of random variables. Again, taking into account the spherical symmetry of the Gaussian function, we arrive at a probability distribution density function that is proportional to $r^{n-1}\exp{(r^{2}/2)}$. The first factor comes from the fact that the volume of the thin spherical shell is proportional to exactly $r^{n-1}$. Although the Gaussian distribution gives a higher probability to smaller norm vectors, the more distant are more numerous so that the mode of the distribution (most likely value) is greater than zero.</p>
+<p>First statistic we considered is the square root of the sum of squares of the random variables. This statistic is used in estimating the standard deviation. It geometrically represents the norm (length) of a vector of random variables. Again, taking into account the spherical symmetry of the Gaussian function, we arrive at a probability distribution density function that is proportional to $r^{n-1}\exp{(r^{2}/2)}$. The first factor comes from the fact that the volume of the thin spherical shell is proportional to exactly $r^{n-1}$. Although the Gaussian distribution gives a higher probability to smaller norm vectors, the more distant are more numerous so that the mode of the distribution (most likely value) is actually greater than zero.</p>
 
-<p>The second statistic covered was the square root of the sum of the squares of the deviations of the variable values from their mean value. We have shown that this corresponds geometrically to the norm of the projection of the vector of random variables onto the space orthogonal to the vector $e = \begin{bmatrix}1 &amp; \cdots &amp; 1 \end{bmatrix}$. Considering that, we got almost the same probability distribution function, except that $n-1$ occured instead of $n$, considering that it is the length of the vector with one less dimension.</p>
+<p>The second statistic covered was the square root of the sum of the squares of the deviations of the variable values from their mean value. We have shown that this corresponds geometrically to the norm of the projection of the vector of random variables onto the space orthogonal to the vector $e = \begin{bmatrix}1 &amp; \cdots &amp; 1 \end{bmatrix}^{T}$. Considering that, we got almost the same probability distribution function, except that $n-1$ occured instead of $n$.</p>
 
 <p>The third statistic concerns the mean value of the random variables scaled by the corrected dispersion estimate instead of the true dispersion. We have shown that this statistic corresponds to the cotangent of the angle between the vector of random variables and the vector $e = \begin{bmatrix}1 &amp; \cdots &amp; 1 \end{bmatrix}$. Given that all vectors of fixed length that subtend the same angle $\theta$ form some kind of hypersphere (in 3 dimensions, it is a ring) whose radius is proportional to $\sin^{n-2}\theta$, the density of probability distribution of cotangent of the angle $\theta$ is proportional to $\sin^{n}\theta$. The resulting probability distribution is known as the Student’s distribution.</p>
 <h2 id="volume-of-hypersphere">Volume of Hypersphere</h2>
@@ -611,7 +807,7 @@ In the literature, the so-called Chi-square distribution which represents the di
 
 \[\frac{\cos{\alpha}+\cos{\beta}}{2}\]
 
-<p><img src="/assets/images/2023-08-02-fourier/trig-sum-identity.png" alt="Trig-sum-identity" /></p>
+<p><img src="../assets/images/2023-08-02-fourier/trig-sum-identity.png" alt="Trig-sum-identity" /></p>
 
 <p>It can be seen from the picture that the required value is given by the length of $OF$, that is, by the projection of the length of $OE$ on the x-axis. The point $E$, according to Thales’ theorem, is located halfway along the length $CD$. Since both $C$ and $D$ are on the unit circle, it is an isosceles triangle $\Delta OCD$, which implies that the angle $\measuredangle OED$ is right, as well as that along $OE$ the poles of the angle $\measuredangle COD$ . It follows:</p>
 
@@ -629,7 +825,7 @@ In the literature, the so-called Chi-square distribution which represents the di
 
 \[\cos{\alpha}-\cos{\beta}\]
 
-<p><img src="/assets/images/2023-08-02-fourier/trig-diff-identity.png" alt="Trig-diff-identity" /></p>
+<p><img src="../assets/images/2023-08-02-fourier/trig-diff-identity.png" alt="Trig-diff-identity" /></p>
 
 <p>It can be seen from the picture that it is a length of length $GH$, with a negative sign in front, and it is concluded that it is a projection of length $CE$ on the h-axis. Since $CE$ is the base of an isosceles triangle with the vertex angle $\alpha-\beta$ and legs of length one, it is easy to calculate:</p>
 
@@ -673,7 +869,7 @@ In the literature, the so-called Chi-square distribution which represents the di
 
 <p>Our interest shifts to periodic functions - functions for which $f(t) = f(t+T)$ holds for every $t$. The smallest non-negative number $T$ for which this equality holds is called the period of the function. The most famous periodic functions are certainly trigonometric functions - sine and cosine above all. The question arises whether it is possible to represent an arbitrary periodic function, such as the one in the picture below, as a weighted sum of sines and cosines.</p>
 
-<p><img src="/assets/images/2023-08-02-fourier/periodic-signal.png" alt="Periodic signal" /></p>
+<p><img src="../assets/images/2023-08-02-fourier/periodic-signal.png" alt="Periodic signal" /></p>
 
 <p>Let’s assume it’s possible. It is obvious that in that case only sine and cosine functions with a period that is an integer part of $T$ could participate in the sum. The circular frequency corresponding to the period $T/n$ is:</p>
 
@@ -811,7 +1007,7 @@ N, &amp; i=j \\
 
 \end{align*}\]
 
-<p><img src="/assets/images/2023-08-02-fourier/sine-2d.png" alt="Sine-2d" /></p>
+<p><img src="../assets/images/2023-08-02-fourier/sine-2d.png" alt="Sine-2d" /></p>
 
 <p>where $u=\xi \cos{\theta},\,v=\xi\sin{\theta}$.</p>
 
@@ -1052,7 +1248,7 @@ On the other hand, if we take a vector product of the above equation with the po
 
 \[\begin{align*} \rho&amp;=\frac{GM}{h^{2}} + \frac{1}{h}\sqrt{2E+\frac{G^{2}M^{2}}{h^{2}}}\cos{\theta} \\\frac{1}{r} &amp;= \frac{1+\sqrt{\frac{2Eh^{2}}{G^{2}M^{2}}+1}\cos{\theta}}{\frac{h^{2}}{GM}}\end{align*}\]
 
-<p>This is the equation of a conic section (see <a href="/posts/ellipse">this article</a>). We can read off its eccentricity from it:</p>
+<p>This is the equation of a conic section (see <a href="/posts/ellipse">this post</a>). We can read off its eccentricity from it:</p>
 
 \[\begin{equation*}
 e = \sqrt{\frac{2Eh^{2}}{G^{2}M^{2}}+1}
@@ -1112,27 +1308,4 @@ T &amp;= 2\pi \sqrt{\frac{a^{3}}{GM}}
       <p>Note that the numerical value of the gravitational constant depends on the units used. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
   </ol>
-</div>]]></content><author><name>Uros Stojkovic</name></author><summary type="html"><![CDATA[Assuming that a gravitational force acts on a material point (oriented towards the origin of coordinate system, inversely proportional to the square of the distance), the acceleration of the material point is given by:]]></summary></entry><entry><title type="html">Great books I’ve read</title><link href="http://localhost:4000/posts/great-books" rel="alternate" type="text/html" title="Great books I’ve read" /><published>2023-04-12T00:00:00+02:00</published><updated>2023-04-12T00:00:00+02:00</updated><id>http://localhost:4000/posts/Great-books</id><content type="html" xml:base="http://localhost:4000/posts/great-books"><![CDATA[<p>On Computer Systems:</p>
-<ul>
-  <li><a href="http://csapp.cs.cmu.edu/">Computer Systems: A Programmer’s Perspective</a>. This is a book every programmer should read.</li>
-</ul>
-
-<p>On Operating Systems:</p>
-<ul>
-  <li><a href="https://pages.cs.wisc.edu/~remzi/OSTEP/">Operating Systems - Three Easy Pieces</a>. Very good introductory book available for free online.</li>
-</ul>
-
-<p>On Computer Networks:</p>
-<ul>
-  <li><a href="https://gaia.cs.umass.edu/kurose_ross/index.php">Computer Networking: a Top Down Approach</a>. Very good introductory book. Unlike other books on Computer Networks, authors start their exposition from the application level instead of the link layer. For a more in-depth material, Steven’s books are classics.</li>
-</ul>
-
-<p>On Probability Theory:</p>
-<ul>
-  <li><a href="https://bayes.wustl.edu/">Probability Theory: The Logic of Science, Jaynes</a>. Very interesting exposition of Bayesian approach to probability theory. Requires basic knowledge of probability and uni-level math. Definitely not for beginners.</li>
-</ul>
-
-<p>On Classical Mechanics:</p>
-<ul>
-  <li><a href="https://archive.org/details/scienceofmechani005860mbp">Science of Mechanics, Mach</a>. Insightful book on the history of the development of mechanics. Interesting critique of Newton’s ideas. Not for complete beginners. English translation is a bit archaic.</li>
-</ul>]]></content><author><name>Uros Stojkovic</name></author><summary type="html"><![CDATA[On Computer Systems: Computer Systems: A Programmer’s Perspective. This is a book every programmer should read.]]></summary></entry></feed>
+</div>]]></content><author><name>Uros Stojkovic</name></author><summary type="html"><![CDATA[Assuming that a gravitational force acts on a material point (oriented towards the origin of coordinate system, inversely proportional to the square of the distance), the acceleration of the material point is given by:]]></summary></entry></feed>

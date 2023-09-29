@@ -318,7 +318,7 @@
      dA_{n}(r) = r^{n}\prod_{i=1}^{n}d\phi_{i}\sin^{i-1}{\phi_{i}}
 \end{equation*}\]
 
-<p>For $n = 2$, which represents an ordinary sphere (in 3D), the polar angle $\phi_{2}$ is usually denoted in physics by $\theta$, and the azimuth $\phi_{1}$ by $\phi$ , the formula $dA = r^{2}\sin{\theta}$ is obtained, which corresponds to the known expression.
+<p>For $n = 2$, which represents an ordinary sphere (in 3D), the polar angle $\phi_{2}$ is usually denoted in physics by $\theta$, and the azimuth $\phi_{1}$ by $\phi$ , the formula $dA = r^{2}\sin{\theta}$ is obtained, which corresponds to well-known result.
 The elementary volume in $n$-dimensional space is obtained as:</p>
 
 \[\begin{equation*}
@@ -374,12 +374,12 @@ The elementary volume in $n$-dimensional space is obtained as:</p>
 \[\begin{align*}E[S] &amp;= \frac{1}{I_{n-1}}\int_{0}^{\infty}se^{-\frac{s^{2}}{2 }}s^{n-1}ds = \frac{I_{n}}{I_{n-1}} = \sqrt{2}\frac{\Gamma\left ( \frac{n+1}{2 } \right )}{\Gamma\left ( \frac{n}{2} \right )} \\ E[S^{2}] &amp;= \frac{1}{I_{n-1}}\int_ {0}^{\infty}s^{2}e^{-\frac{s^{2}}{2}}s^{n-1}ds = \frac{I_{n+1}}{ I_{n-1}} = 2\frac{\Gamma\left ( \frac{n}{2} +1\right )}{\Gamma\left ( \frac{n}{2} \right )} = n\end{align*}\]
 
 <p>It should be noted that the probability distribution characterized by the mentioned law is called Chi distribution.
-In the literature, the so-called Chi-square distribution which represents the distribution of the squares of previously analyzed statistics - so $S^{2}$. We can easily derive it:</p>
+In the literature, one often encounters the so-called Chi-square distribution which represents the distribution of the squares of previously analyzed statistics - so $S^{2}$. We can easily derive it:</p>
 
 \[\begin{align*}\frac{d}{d(s^{2})}P(S^{2} &lt; s^{2}) &amp;= \frac{ds}{d(s^{2} )}\frac{d}{ds}P(S &lt; s) \\ &amp;= \frac{1}{2s} \frac{1}{2^{\frac{n}{2}-1}\Gamma \left(\frac{n}{2}\right)}e^{-\frac{s^{2}}{2}}s^{n-1} \\ \frac{d}{d(s ^{2})}P(S^{2} &lt; s^{2}) &amp;= \frac{1}{2^{\frac{n}{2}}\Gamma\left(\frac{n} {2}\right)}e^{-\frac{s^{2}}{2}}(s^{2})^{\frac{n}{2}-1}\end{align*}\]
 
 <h2 id="estimation-of-standard-deviation-given-mean-is-unknown">Estimation of standard deviation given mean is unknown</h2>
-<p>We still analyze the random variable $X \sim \mathcal{N}(\mu, \sigma^{2})$. This time we look at the statistics:</p>
+<p>We still analyze the random variable $X \sim \mathcal{N}(\mu, \sigma^{2})$. This time we look at a statistic:</p>
 
 \[\begin{equation*}
      S = \frac{\sqrt{\sum_{i=1}^{n}\left(X_{i} - \overline{X_{n}}\right)^{2}}}{\sigma}
@@ -429,7 +429,7 @@ In the literature, the so-called Chi-square distribution which represents the di
 \[\begin{align*} E\left [ \frac{1}{n-1}\sum_{i=1}^{n}\left(X_{i} - \overline{X_{n}}\right) ^{2}\right ] &amp;= E\left [ \frac{\sigma}{n-1} S^{2}\right ] \\ &amp;= \frac{\sigma}{n-1}E[S ^{2}] \\ &amp;= \sigma\end{align*}\]
 
 <h2 id="estimation-of-mean-given-standard-deviation-is-unknown">Estimation of mean given standard deviation is unknown</h2>
-<p>We once again consider the random variable $X \sim \mathcal{N}(\mu, \sigma)$. The subject of our analysis this time is statistics:</p>
+<p>We once again consider the random variable $X \sim \mathcal{N}(\mu, \sigma)$. The subject of our analysis this time a statistic:</p>
 
 \[\begin{equation*}
      S = \sqrt{n}\frac{\overline{X_{n}}-\mu}{\sqrt{\frac{1}{n-1}\sum_{i=1}^{n}\left( X_{i}-\overline{X_{n}}\right)^{2}}}
@@ -454,14 +454,14 @@ In the literature, the so-called Chi-square distribution which represents the di
      P(s \leq S &lt; s+ds) = \underset{s &lt; \sqrt{n}\frac{\overline{z_{n}}}{\sqrt{\frac{1}{n-1}\sum_ {i=1}^{n}\left(z_{i}-\overline{z_{n}}\right)^{2}}} &lt; s + ds }{\int\cdots\int}\frac{ 1}{\sqrt{2\pi}^{n}}e^{-\frac{z_{1}^{2}+\cdots+z_{n}^{2}}{2}}dz_{1 }\cdots dz_{n}
 \end{equation*}\]
 
-<p>We can present the numerator and denominator in vector form:</p>
+<p>We can present the numerator and denominator in the vector form:</p>
 
 \[\begin{align*}\sqrt{n}\overline{z_{n}} &amp;= \sqrt{e^{T}e}\frac{e^{T}z}{e^{T}e} = \frac{e^{T}z}{\left\| e\right\|} = z_{e} \\ \sqrt{\sum_{i=1}^{n}\left(z_{i}-\overline{z_{n}}\right)^{2} } &amp;= \left\|\left(I-\frac{ee^{T}}{e^{T}e}\right)z\right\|\end{align*}\]
 
-<p>Considering that the numerator is the projection of the vector $z$ onto the direction of vector $e$, and the denominator is the magnitude of the projection onto the hyperplane perpendicular to this direction, if we mark the angle between the vector $z$ and the vector $e$ with $\theta$, we get:</p>
+<p>Considering that the numerator is the projection of the vector $z$ onto the direction of vector $e$, and the denominator is the magnitude of the projection onto the hyperplane perpendicular to this direction, if we mark the angle between the vector $z$ and the vector $e$ with $\theta$, the statistic becomes:</p>
 
 \[\begin{equation*}
-     P(s \leq S &lt; s+ds) = \underset{s &lt; \sqrt{n-1}\cot{\theta} &lt; s + ds }{\int\cdots\int}\frac{1}{\sqrt{2\pi}^{n}}e^{-\frac{z_{1}^{2}+\cdots+z_{n}^{2}}{2}}dz_{1}\cdots dz_ {n}
+     S = \sqrt{n-1}\cot{\Theta}
 \end{equation*}\]
 
 <p>We can find the distribution for the angle $\theta$ by switching to spherical coordinates:</p>
@@ -472,7 +472,7 @@ In the literature, the so-called Chi-square distribution which represents the di
 
 \[\begin{align*}\frac{d}{ds}P(S &lt; s) &amp;\propto \left|\frac{d\theta}{ds}\right| \frac{d}{d\theta}P(\Theta &lt; \theta) \\ &amp;= \frac{d\theta}{\sqrt{n-1}\frac{d\theta}{\sin^{2 }{\theta}}}\sin^{n-2}{\theta} \\ &amp;= \frac{1}{\sqrt{n-1}}\sin^{n}{\theta} \\ \frac{d}{ds}P(S &lt; s) &amp;\propto \frac{1}{\sqrt{n-1}}\left ( 1+\frac{s^{2}}{n-1} \right )^{-\frac{n}{2}}\end{align*}\]
 
-<p>The number $n-1$ represents number of degrees of freedom and it often appears in literature denoted by $\nu$:</p>
+<p>The number $n-1$ represents the number of degrees of freedom and it often appears in literature denoted by $\nu$:</p>
 
 \[\begin{equation*}
     \frac{d}{ds}P(S &lt; s) \propto \frac{1}{\sqrt{\nu}}\left (1+s^{2}/\nu\right)^{-\frac {\nu+1}{2}}
@@ -507,17 +507,23 @@ In the literature, the so-called Chi-square distribution which represents the di
 <p>From here we can also infer something else about the Gamma function:</p>
 
 \[\begin{equation*}
-     \displaystyle \lim_{\nu \to \infty}\frac{\Gamma\left ( \frac{\nu+1}{2} \right )}{\sqrt{\nu}\Gamma\left ( \frac{ \nu}{2} \right )} = \frac{1}{\sqrt{2}}
+     \displaystyle \lim_{\nu \to \infty}\frac{\Gamma\left ( \frac{\nu+1}{2} \right )}{\sqrt{\frac{\nu}{2}}\Gamma\left ( \frac{ \nu}{2} \right )} = 1
+\end{equation*}\]
+
+<p>Or simpler put:</p>
+
+\[\begin{equation*}
+     \displaystyle \lim_{n \to \infty}\frac{\Gamma\left ( n+\frac{1}{2} \right )}{\sqrt{n}\Gamma\left ( n \right )} = 1
 \end{equation*}\]
 
 <h2 id="discussion">Discussion</h2>
-<p>The previous chapters may have been too abundant with mathematical formulas, symbols and expressions in which the reader can lose the idea of the very essence of the performance and the results reached. That’s why it’s always good to try to use a less formal and rigorous, but more comprehensible language to clarify what was meant to be conveyed by mathematical notation.</p>
+<p>The previous chapters may have been too abundant with mathematical formulas, symbols and expressions in which the reader can lose the idea of the very essence of the calculations and the results reached. That’s why it’s always good to try to use a less formal and rigorous, but more comprehensible language to clarify what was meant to be conveyed by mathematical notation.</p>
 
 <p>In the previous chapters, we considered certain statistics, that is, functions of several random variables where each of them had a normal probability distribution. The main subject of our research was the probability distribution of those statistics. In each of them, we treated a series of random variables as a vector in a high-dimensional space.</p>
 
-<p>First statistic we considered is the square root of the sum of squares of the random variables. This statistic is used in estimating the standard deviation. It geometrically represents the norm (length) of a vector of random variables. Again, taking into account the spherical symmetry of the Gaussian function, we arrive at a probability distribution density function that is proportional to $r^{n-1}\exp{(r^{2}/2)}$. The first factor comes from the fact that the volume of the thin spherical shell is proportional to exactly $r^{n-1}$. Although the Gaussian distribution gives a higher probability to smaller norm vectors, the more distant are more numerous so that the mode of the distribution (most likely value) is greater than zero.</p>
+<p>First statistic we considered is the square root of the sum of squares of the random variables. This statistic is used in estimating the standard deviation. It geometrically represents the norm (length) of a vector of random variables. Again, taking into account the spherical symmetry of the Gaussian function, we arrive at a probability distribution density function that is proportional to $r^{n-1}\exp{(r^{2}/2)}$. The first factor comes from the fact that the volume of the thin spherical shell is proportional to exactly $r^{n-1}$. Although the Gaussian distribution gives a higher probability to smaller norm vectors, the more distant are more numerous so that the mode of the distribution (most likely value) is actually greater than zero.</p>
 
-<p>The second statistic covered was the square root of the sum of the squares of the deviations of the variable values from their mean value. We have shown that this corresponds geometrically to the norm of the projection of the vector of random variables onto the space orthogonal to the vector $e = \begin{bmatrix}1 &amp; \cdots &amp; 1 \end{bmatrix}$. Considering that, we got almost the same probability distribution function, except that $n-1$ occured instead of $n$, considering that it is the length of the vector with one less dimension.</p>
+<p>The second statistic covered was the square root of the sum of the squares of the deviations of the variable values from their mean value. We have shown that this corresponds geometrically to the norm of the projection of the vector of random variables onto the space orthogonal to the vector $e = \begin{bmatrix}1 &amp; \cdots &amp; 1 \end{bmatrix}^{T}$. Considering that, we got almost the same probability distribution function, except that $n-1$ occured instead of $n$.</p>
 
 <p>The third statistic concerns the mean value of the random variables scaled by the corrected dispersion estimate instead of the true dispersion. We have shown that this statistic corresponds to the cotangent of the angle between the vector of random variables and the vector $e = \begin{bmatrix}1 &amp; \cdots &amp; 1 \end{bmatrix}$. Given that all vectors of fixed length that subtend the same angle $\theta$ form some kind of hypersphere (in 3 dimensions, it is a ring) whose radius is proportional to $\sin^{n-2}\theta$, the density of probability distribution of cotangent of the angle $\theta$ is proportional to $\sin^{n}\theta$. The resulting probability distribution is known as the Student’s distribution.</p>
 <h2 id="volume-of-hypersphere">Volume of Hypersphere</h2>
@@ -585,7 +591,7 @@ In the literature, the so-called Chi-square distribution which represents the di
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/Linear-regression/" rel="permalink">Linear Regression
+        <a href="/posts/linear-circuit-solver-2" rel="permalink">Linear Circuit Solver - part 2
 </a>
       
     </h2>
@@ -603,15 +609,97 @@ In the literature, the so-called Chi-square distribution which represents the di
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          20 minute read
+          17 minute read
         
       </span>
     
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">Orthodox statistics’ perspective
-</p>
+    <p class="archive__item-excerpt" itemprop="description">Arbitrary topologies
+Pitfalls of the current solution
+The methodology discussed in the previous part works well for circuits represented as trees of series a...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/linear-circuit-solver-1" rel="permalink">Linear Circuit Solver part 1
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          28 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Simple topologies
+Intro
+The classical methods for circuit analysis, commonly taught in introductory electrical engineering courses, traditionally involve tra...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/linear-regression" rel="permalink">Linear regression
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          21 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">This post builds upon an earlier post about Chi-squared and Student distribution. You might want to check it out before proceeding.
+Orthodox statistics’ pers...</p>
   </article>
 </div>
 
@@ -651,86 +739,6 @@ In the literature, the so-called Chi-square distribution which represents the di
 
 
     <p class="archive__item-excerpt" itemprop="description">One of the building blocks of my linear circuit solver is automatic differentiation which calculates the gradient of the loss function with respect to node v...</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/posts/fourier-analysis" rel="permalink">Fourier series, Fourier transforms and all that
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          63 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">Review of trigonometric identities
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/posts/odes" rel="permalink">Operator approach to solving differential equations
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          12 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">We will start by solving the following equation:
-</p>
   </article>
 </div>
 

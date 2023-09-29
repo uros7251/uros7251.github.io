@@ -1,0 +1,734 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Linear Circuit Solver part 1 i don’t like infinite sets Uros Stojkovic</title>
+<meta name="description" content="Simple topologies Intro The classical methods for circuit analysis, commonly taught in introductory electrical engineering courses, traditionally involve transforming the original system of differential equations into a system of algebraic equations. These equations are typically solved using methods such as Gaussian elimination or numerical optimization. Two well-known techniques are nodal and mesh analysis.">
+
+
+  <meta name="author" content="Uros Stojkovic">
+  
+  <meta property="article:author" content="Uros Stojkovic">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Uros Stojkovic">
+<meta property="og:title" content="Linear Circuit Solver part 1">
+<meta property="og:url" content="http://localhost:4000/posts/linear-circuit-solver-1">
+
+
+  <meta property="og:description" content="Simple topologies Intro The classical methods for circuit analysis, commonly taught in introductory electrical engineering courses, traditionally involve transforming the original system of differential equations into a system of algebraic equations. These equations are typically solved using methods such as Gaussian elimination or numerical optimization. Two well-known techniques are nodal and mesh analysis.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2023-09-28T00:00:00+02:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/posts/linear-circuit-solver-1">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Uros Stojkovic",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+  <meta name="google-site-verification" content="VMlYUCCQ1tP-YO1iVa230Fpi8YLFnWPjQZdiWFmrc_g" />
+
+
+  <meta name="msvalidate.01" content="796E42E6193A45A893E19381B8760CE4">
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Uros Stojkovic Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Poincare > Hilbert
+          <span class="site-subtitle">Notes in math and physics</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/posts">Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about">About</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Uros Stojkovic</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>Master student of Data Engineering and Analytics at Technical University of Munich</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Munich, Germany</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:uros.stojkovich@outlook.com" rel="nofollow noopener noreferrer me"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/uros7251" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">uros7251</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Linear Circuit Solver part 1">
+    <meta itemprop="description" content="Simple topologiesIntroThe classical methods for circuit analysis, commonly taught in introductory electrical engineering courses, traditionally involve transforming the original system of differential equations into a system of algebraic equations. These equations are typically solved using methods such as Gaussian elimination or numerical optimization. Two well-known techniques are nodal and mesh analysis.">
+    <meta itemprop="datePublished" content="2023-09-28T00:00:00+02:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/posts/linear-circuit-solver-1" class="u-url" itemprop="url">Linear Circuit Solver part 1
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          27 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+        <h1 id="simple-topologies">Simple topologies</h1>
+<h2 id="intro">Intro</h2>
+<p>The classical methods for circuit analysis, commonly taught in introductory electrical engineering courses, traditionally involve transforming the original system of differential equations into a system of algebraic equations. These equations are typically solved using methods such as Gaussian elimination or numerical optimization. Two well-known techniques are nodal and mesh analysis.</p>
+
+<p>In specific cases where the circuit’s topology can be represented as a tree-like structure of series and parallel circuits, the solution process is notably simpler and doesn’t necessitate the setup of a complex equation system.</p>
+
+<p>In the first part of this blog post, we explore the application of polymorphism, a fundamental concept in object-oriented programming, to exploit this simplified scenario. Subsequently, in the second part, we address the need to generalize our solution method to encompass arbitrary circuit topologies. To achieve this, we return to nodal analysis while introducing automatic differentiation to enable numerical optimization. In the final section, we discuss the advantages and implications of adopting this approach.</p>
+
+<h2 id="current-voltage-characteristic">Current-voltage characteristic</h2>
+<p>The central insight lies in viewing circuit elements as linear two-terminal components. Linear two-terminal component is a building block of electrical circuits having only two connection points, or terminals. It exhibits a linear relationship between voltage and current across its terminals, meaning its behavior can be described by linear equations. This perspective is crucial for two reasons. Firstly, it aligns with the nature of simple linear electrical components such as resistors, capacitors, and ideal voltage sources, all of which inherently possess two-terminal characteristics. More complex two-terminal components can be formed by combining primitive elements or other complex components in series or parallel configurations. Effectively, this approach allows us to represent a portion, or at times, an entire circuit, as a tree structure, where inner nodes symbolize series or parallel connections, and leaf nodes represent primitive components.
+Secondly, linear two-terminal components can be precisely characterized by their current-voltage characteristic (CVC), which also exhibit linearity and follows a general form:
+\(aV+bI=c\)
+and thus, can be represented by a tuple $(a, b, c)$. Here, $V$ and $I$ are, in general, complex numbers representing effective voltage and current in either DC or AC mode (in DC mode imaginary part will play no role).</p>
+
+<p>When describing the current-voltage relationship, it’s essential to define a reference direction for both current and voltage, especially when active elements like voltage and current sources are involved. We adhere to a widely accepted rule called passive sign convention. According to this rule, the reference directions for voltage and current should be chosen so that when multiplied together to calculate power, we get a positive number for components that use up energy (like resistors) and a negative number for components that provide energy to the rest of the circuit (like voltage sources).</p>
+
+<p align="center">
+ <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Passive_sign_convention.svg/220px-Passive_sign_convention.svg.png" />
+</p>
+<p>Each type of primitive component possesses its unique CVC, and we can establish rules for calculating the CVC of composite components based on their constituent elements.</p>
+
+<h2 id="cvc-of-primitive-components">CVC of primitive components</h2>
+<p>In Table 1, CVCs of primitive two-terminal components are shown ($\omega$ stands for angular frequency, $j$ for imaginary unit).</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Component Type</th>
+      <th>CVC</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Resistor (R)</td>
+      <td>$V-RI=0$</td>
+    </tr>
+    <tr>
+      <td>Capacitor (C)</td>
+      <td>$V + j\frac{1}{\omega C}I = 0$</td>
+    </tr>
+    <tr>
+      <td>Inductor (L)</td>
+      <td>$V - j\omega LI = 0$</td>
+    </tr>
+    <tr>
+      <td>Impedance (Z)</td>
+      <td>$V-ZI=0$</td>
+    </tr>
+    <tr>
+      <td>Ideal Voltage Source (E)</td>
+      <td>$V = E$</td>
+    </tr>
+    <tr>
+      <td>Ideal Current Source (J)</td>
+      <td>$I = J$</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Naturally, for reactive components, impedance varies with angular velocity, meaning that CVC is, in general, not only a function of type of the component, but also of angular velocity.</p>
+
+<h2 id="cvc-of-composite-components">CVC of composite components</h2>
+<p>We proceed now to understand how combining two CVCs in series and parallel circuits works, and we begin with the series connection. Here, the rule is simple: the current is the same across both components, but their voltages add up. When connecting two CVCs in series, if at least one of them is of the form $I = J$, the resulting CVC remains the same. However, in cases where neither CVC follows this form, a relationship arises between the component parameters:</p>
+
+\[\begin{align*}
+b &amp;= b_{1} + b_{2} \\
+c &amp;= c_{1} + c_{2}
+\end{align*}\]
+
+<p>This elegant relationship implies that both the Thevenin equivalent impedance and voltage are obtained simply by summing the corresponding parameters.</p>
+
+<p>Conversely, in parallel connections, it is voltage that is equal and currents add up. If one of the CVCs takes the form $V = E$, the resulting CVC remains unchanged. However, when one CVC is of the form $I = J$, while the other is of the form $V + b_{1}I = c_{1}$, we find the following relationships:
+\(\begin{align*}
+b &amp;= b_{1}\\
+c &amp;= c_{1} + b_{1}J
+\end{align*}\)
+In the most general case where both CVCs are of the form $V + bI = c$, the following relationships apply:
+\(\begin{align*}
+b &amp;= \frac{b_{1}b_{2}}{b_{1}+b_{2}}\\
+c &amp;= \frac{c_{1}b_{2} + c_{2}b_{1}}{b_{1}+b_{2}}
+\end{align*}\)
+It is important to note that both series and parallel circuits can consist of more than two components. In such cases, these formulas are iteratively combined to determine the final CVC. Below, we provide an algorithm for calculating the CVC of a series circuit:</p>
+
+<ol>
+  <li>Initialize <code class="language-plaintext highlighter-rouge">cvc</code> as $(1, 0, 0)$.</li>
+  <li>For each child node, combine <code class="language-plaintext highlighter-rouge">cvc</code> in series with CVC of the child node.</li>
+  <li>Return <code class="language-plaintext highlighter-rouge">cvc</code>.</li>
+</ol>
+
+<p>The same algorithm for parallel circuits is practically identical except that <code class="language-plaintext highlighter-rouge">cvc</code> is initialized as $(0, 1, 0)$ which is a neutral element for combining in parallel. So, it is evident that to evaluate the CVC of a parent component, we rely on CVCs of its child components. Thus, the computation of CVCs goes from leaf nodes towards the root, following a post-order traversal.</p>
+
+<h2 id="using-cvcs-to-simulate-circuit-dynamics">Using CVCs to simulate circuit dynamics</h2>
+<p>As noted earlier, CVC provides us with means to calculate either voltage across a two-terminal component, given its current, or vice versa. Consequently, to compute voltages and currents across the entire circuit, we must initiate the process by applying either voltage or current to the root component. The choice depends on the nature of the root:</p>
+
+<ol>
+  <li>Series Circuit – we apply zero voltage, effectively short-circuiting the two terminals.</li>
+  <li>Parallel Circuit – we apply zero current, signifying that the only connection between the terminals exists through its child components.</li>
+</ol>
+
+<p>Once we have determined the current and voltage at the root, we can systematically propagate this information to its children, then to their children, and so forth, following a recursive pattern. Consequently, the computation of voltages and currents flows from the root towards the leaf nodes, adhering to a pre-order traversal approach.</p>
+
+<p>At the end of this section, we provided an example to illustrate how a circuit can be represented as a tree, as shown in Figures 1 and 2. In this example, the reference current direction is from point B to point A.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Circuit Scheme</th>
+      <th style="text-align: left">Circuit tree</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><img src="../assets/images/2023-09-28-circuit-solver/simple-circuit.png" alt="Circuit scheme" /></td>
+      <td style="text-align: left"><img src="../assets/images/2023-09-28-circuit-solver/circuit-tree.png" alt="Circuit tree" /></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="sketch-of-the-implementation">Sketch of the implementation</h2>
+
+<p>In the preceding subsection, we outlined the principles of our approach which can be readily translated to a programming language that supports the object-oriented paradigm. The implementation revolves around two class hierarchies.
+The foundation of our implementation is a CVC class, featuring methods like <code class="language-plaintext highlighter-rouge">current_at_voltage()</code> and <code class="language-plaintext highlighter-rouge">voltage_at_current()</code>, as well as methods for combination of two CVCs. In our implementation, the latter is done by overloading logical AND and OR operators.
+To manage various circuit components, we’ve established a hierarchy of classes. This hierarchy adheres to the composite pattern, consisting of:</p>
+
+<ul>
+  <li>Abstract Base Class: This base class declares critical methods such as <code class="language-plaintext highlighter-rouge">calc_cvc()</code>, <code class="language-plaintext highlighter-rouge">apply_current()</code>, <code class="language-plaintext highlighter-rouge">apply_voltage()</code>, <code class="language-plaintext highlighter-rouge">in_series_with()</code>, <code class="language-plaintext highlighter-rouge">in_parallel_with()</code>, and more. It serves as the blueprint for all component classes.</li>
+  <li>Intermediate Abstract Classes: We’ve introduced an extra layer of abstract classes that categorize components into three groups:
+    <ul>
+      <li>Real-Valued Components: These encompass components specified by real values, including resistors, capacitors, and inductors.</li>
+      <li>Complex-Valued Components: This category encompasses components specified by complex values, such as impedance and ideal voltage/current sources.</li>
+      <li>Composite Components: These are components specified by their child components, including series and parallel circuits. The logic within these classes revolves around managing the relationships between their constituents.</li>
+    </ul>
+  </li>
+  <li>Concrete Classes: These classes represent concrete component types, encompassing both primitive and composite components. They implement the declared functions according to the unique logic associated with each component type. This ensures that specific component behaviors are accurately captured within the framework.</li>
+</ul>
+
+<p>Python implementation can be found in this <a href="https://github.com/uros7251/PyCircuitSolver">GitHub repo</a>.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#electrical-engineering" class="page__taxonomy-item p-category" rel="tag">electrical_engineering</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2023-09-28T00:00:00+02:00">September 28, 2023</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Linear+Circuit+Solver+part+1%20http%3A%2F%2Flocalhost%3A4000%2Fposts%2Flinear-circuit-solver-1" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fposts%2Flinear-circuit-solver-1" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2Flinear-circuit-solver-1" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/posts/linear-regression" class="pagination--pager" title="Linear regression
+">Previous</a>
+    
+    
+      <a href="/posts/linear-circuit-solver-2" class="pagination--pager" title="Linear Circuit Solver - part 2
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">You may also enjoy</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/linear-circuit-solver-2" rel="permalink">Linear Circuit Solver - part 2
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          17 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Arbitrary topologies
+Pitfalls of the current solution
+The methodology discussed in the previous part works well for circuits represented as trees of series a...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/linear-regression" rel="permalink">Linear regression
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          21 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">This post builds upon an earlier post about Chi-squared and Student distribution. You might want to check it out before proceeding.
+Orthodox statistics’ pers...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/backprop-complex-numbers" rel="permalink">Backprop with complex numbers
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          14 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">One of the building blocks of my linear circuit solver is automatic differentiation which calculates the gradient of the loss function with respect to node v...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/fourier-analysis" rel="permalink">Fourier series, Fourier transforms and all that
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          63 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Review of trigonometric identities
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$']]
+        }
+      };
+    </script>
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2023 Uros Stojkovic. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

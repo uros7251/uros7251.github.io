@@ -1,10 +1,10 @@
 ---
 title:  "Linear Circuit Solver part 1"
-date:   2023-09-22
-categories: electrical engineering
+date:   2023-09-28
+categories: electrical_engineering
 permalink: posts/linear-circuit-solver-1
 ---
-# Part 1 - Simple topologies
+# Simple topologies
 ## Intro
 The classical methods for circuit analysis, commonly taught in introductory electrical engineering courses, traditionally involve transforming the original system of differential equations into a system of algebraic equations. These equations are typically solved using methods such as Gaussian elimination or numerical optimization. Two well-known techniques are nodal and mesh analysis.
 
@@ -22,15 +22,14 @@ and thus, can be represented by a tuple $(a, b, c)$. Here, $V$ and $I$ are, in g
 
 When describing the current-voltage relationship, it's essential to define a reference direction for both current and voltage, especially when active elements like voltage and current sources are involved. We adhere to a widely accepted rule called passive sign convention. According to this rule, the reference directions for voltage and current should be chosen so that when multiplied together to calculate power, we get a positive number for components that use up energy (like resistors) and a negative number for components that provide energy to the rest of the circuit (like voltage sources).
 
-![Voltage and current reference direction as required by passive sign convention](https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Passive_sign_convention.svg/220px-Passive_sign_convention.svg.png)
-
-
+<p align="center">
+ <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Passive_sign_convention.svg/220px-Passive_sign_convention.svg.png"/>
+</p>
 Each type of primitive component possesses its unique CVC, and we can establish rules for calculating the CVC of composite components based on their constituent elements. 
 
 ## CVC of primitive components
 In Table 1, CVCs of primitive two-terminal components are shown ($\omega$ stands for angular frequency, $j$ for imaginary unit).
 
-<div align="center">
 
 | Component Type | CVC |
 | -- | -- |
@@ -41,7 +40,6 @@ In Table 1, CVCs of primitive two-terminal components are shown ($\omega$ stands
 | Ideal Voltage Source (E) | $V = E$ |
 | Ideal Current Source (J) | $I = J$ |
 
-</div>
 Naturally, for reactive components, impedance varies with angular velocity, meaning that CVC is, in general, not only a function of type of the component, but also of angular velocity. 
 
 ## CVC of composite components
@@ -66,11 +64,11 @@ c &= \frac{c_{1}b_{2} + c_{2}b_{1}}{b_{1}+b_{2}}
 \end{align*}$$
 It is important to note that both series and parallel circuits can consist of more than two components. In such cases, these formulas are iteratively combined to determine the final CVC. Below, we provide an algorithm for calculating the CVC of a series circuit:
 
-1. Initialize ```cvc``` as $(1, 0, 0)$.
-2. For each child node, combine ```cvc``` in series with CVC of the child node.
-3. Return ```cvc```.
+1. Initialize `cvc` as $(1, 0, 0)$.
+2. For each child node, combine `cvc` in series with CVC of the child node.
+3. Return `cvc`.
 
-The same algorithm for parallel circuits is practically identical except that ```cvc``` is initialized as $(0, 1, 0)$ which is a neutral element for combining in parallel. So, it is evident that to evaluate the CVC of a parent component, we rely on CVCs of its child components. Thus, the computation of CVCs goes from leaf nodes towards the root, following a post-order traversal.
+The same algorithm for parallel circuits is practically identical except that `cvc` is initialized as $(0, 1, 0)$ which is a neutral element for combining in parallel. So, it is evident that to evaluate the CVC of a parent component, we rely on CVCs of its child components. Thus, the computation of CVCs goes from leaf nodes towards the root, following a post-order traversal.
 
 ## Using CVCs to simulate circuit dynamics
 As noted earlier, CVC provides us with means to calculate either voltage across a two-terminal component, given its current, or vice versa. Consequently, to compute voltages and currents across the entire circuit, we must initiate the process by applying either voltage or current to the root component. The choice depends on the nature of the root:
@@ -82,21 +80,17 @@ Once we have determined the current and voltage at the root, we can systematical
 
 At the end of this section, we provided an example to illustrate how a circuit can be represented as a tree, as shown in Figures 1 and 2. In this example, the reference current direction is from point B to point A.
 
-<div align="center">
-
 | Circuit Scheme | Circuit tree |
 |:--------------:|:-------------|
-|![Circuit scheme](../assets/images/simple-circuit.png) | ![Circuit tree](../assets/images/circuit-tree.png)|
-
-</div>
+|![Circuit scheme](../assets/images/2023-09-28-circuit-solver/simple-circuit.png) | ![Circuit tree](../assets/images/2023-09-28-circuit-solver/circuit-tree.png)|
 
 ## Sketch of the implementation
 
 In the preceding subsection, we outlined the principles of our approach which can be readily translated to a programming language that supports the object-oriented paradigm. The implementation revolves around two class hierarchies.
-The foundation of our implementation is a CVC class, featuring methods like ```current_at_voltage()``` and ```voltage_at_current()```, as well as methods for combination of two CVCs. In our implementation, the latter is done by overloading logical AND and OR operators.
+The foundation of our implementation is a CVC class, featuring methods like `current_at_voltage()` and `voltage_at_current()`, as well as methods for combination of two CVCs. In our implementation, the latter is done by overloading logical AND and OR operators.
 To manage various circuit components, we've established a hierarchy of classes. This hierarchy adheres to the composite pattern, consisting of:
 
-- Abstract Base Class: This base class declares critical methods such as ```calc_cvc()```, ```apply_current()```, ```apply_voltage()```, ```in_series_with()```, ```in_parallel_with()```, and more. It serves as the blueprint for all component classes.
+- Abstract Base Class: This base class declares critical methods such as `calc_cvc()`, `apply_current()`, `apply_voltage()`, `in_series_with()`, `in_parallel_with()`, and more. It serves as the blueprint for all component classes.
 - Intermediate Abstract Classes: We've introduced an extra layer of abstract classes that categorize components into three groups:
     - Real-Valued Components: These encompass components specified by real values, including resistors, capacitors, and inductors.
     - Complex-Valued Components: This category encompasses components specified by complex values, such as impedance and ideal voltage/current sources.

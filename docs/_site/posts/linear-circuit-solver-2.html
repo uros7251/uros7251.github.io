@@ -1,0 +1,651 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Linear Circuit Solver - part 2 i don’t like infinite sets Uros Stojkovic</title>
+<meta name="description" content="Arbitrary topologies Pitfalls of the current solution The methodology discussed in the previous part works well for circuits represented as trees of series and parallel connections. However, its applicability is constrained when dealing with more intricate topologies, such as bridge circuits, where components are interconnected in more complex ways. Consequently, its scope is somewhat limited.">
+
+
+  <meta name="author" content="Uros Stojkovic">
+  
+  <meta property="article:author" content="Uros Stojkovic">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Uros Stojkovic">
+<meta property="og:title" content="Linear Circuit Solver - part 2">
+<meta property="og:url" content="http://localhost:4000/posts/linear-circuit-solver-2">
+
+
+  <meta property="og:description" content="Arbitrary topologies Pitfalls of the current solution The methodology discussed in the previous part works well for circuits represented as trees of series and parallel connections. However, its applicability is constrained when dealing with more intricate topologies, such as bridge circuits, where components are interconnected in more complex ways. Consequently, its scope is somewhat limited.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2023-09-29T00:00:00+02:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/posts/linear-circuit-solver-2">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Uros Stojkovic",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+  <meta name="google-site-verification" content="VMlYUCCQ1tP-YO1iVa230Fpi8YLFnWPjQZdiWFmrc_g" />
+
+
+  <meta name="msvalidate.01" content="796E42E6193A45A893E19381B8760CE4">
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Uros Stojkovic Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Poincare > Hilbert
+          <span class="site-subtitle">Notes in math and physics</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/posts">Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about">About</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Uros Stojkovic</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>Master student of Data Engineering and Analytics at Technical University of Munich</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Munich, Germany</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:uros.stojkovich@outlook.com" rel="nofollow noopener noreferrer me"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/uros7251" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">uros7251</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Linear Circuit Solver - part 2">
+    <meta itemprop="description" content="Arbitrary topologiesPitfalls of the current solutionThe methodology discussed in the previous part works well for circuits represented as trees of series and parallel connections. However, its applicability is constrained when dealing with more intricate topologies, such as bridge circuits, where components are interconnected in more complex ways. Consequently, its scope is somewhat limited.">
+    <meta itemprop="datePublished" content="2023-09-29T00:00:00+02:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/posts/linear-circuit-solver-2" class="u-url" itemprop="url">Linear Circuit Solver - part 2
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          17 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+        <h1 id="arbitrary-topologies">Arbitrary topologies</h1>
+<h2 id="pitfalls-of-the-current-solution">Pitfalls of the current solution</h2>
+<p>The methodology discussed in the <a href="/posts/linear-circuit-solver-1">previous part</a> works well for circuits represented as trees of series and parallel connections. However, its applicability is constrained when dealing with more intricate topologies, such as bridge circuits, where components are interconnected in more complex ways. Consequently, its scope is somewhat limited.</p>
+
+<p>To extend our method to arbitrary circuits with diverse topologies, we must undergo a fundamental shift in our approach. Our solution entails reverting to nodal analysis, a well-established technique in electrical engineering. In our new method, we view the circuit as a graph composed of branches connecting nodes, where nodes serve as points of junction for three or more branches. Each branch, in turn, comprises one or more components connected in series.</p>
+
+<h2 id="ml-inspired-approach">ML-inspired approach</h2>
+<p>In nodal analysis, we construct a linear system by mandating that the net current flowing out of each node equals zero. However, instead of solving this linear system for exact solutions, our approach leans toward numerical methods. We define our solution as a set of node voltages and quantify the quality of a solution by calculating the sum of squares of net currents over each node, serving as our loss function. The objective is to find a solution that minimizes this loss, ideally reducing it to zero.</p>
+
+\[\begin{align*}
+L &amp;= \sum_{v \in V}I_{v}^{2} \\
+I_{v} &amp;= \sum_{e \in E}B_{ve}I_{e}
+\end{align*}\]
+
+<p>In the previous equations $V$ is a set of nodes, $E$ is a set of branches, $B$ is an incidence matrix, and $I_{e}$ is a current going through branch $e$. The latter is calculated using the method developed in the previous section.</p>
+
+<p>Since currents depend linearly on node voltages, the loss function takes the form of a quadratic function of node voltages. Moreover, since the loss function is the sum of squares, it is bounded from below by zero, rendering it a convex function. This advantageous property simplifies our optimization problem, allowing us to leverage a broad range of well-established methods for convex optimization.</p>
+
+<h2 id="gradient-calculation">Gradient calculation</h2>
+<p>To iteratively progress toward superior solutions, we need to compute the gradient of the loss function with respect to node voltages. Notably, we encounter the challenge of differentiating a real-valued function with respect to complex variables. The key lies in devising a mechanism to store these derivatives in a way that enables their backpropagation through the computational graph.</p>
+
+<p>If we denote real and imaginary parts by $x$ and $y$, respectively, an effective strategy is to store the gradient as follows:</p>
+
+\[\nabla = \frac{\partial}{\partial x} - j\frac{\partial}{\partial y}\]
+
+<p>Here, $j$ denotes the imaginary unit. This formulation allows us to apply the standard chain rule for differentiation, facilitating the propagation of gradients backward through the computational graph. Indeed, if we have two complex variables $z$ and $w$ such that $w$ is a function of $z$, it can be shown that the following equation hold:</p>
+
+\[\nabla_{z} = \frac{\partial w}{\partial z}\cdot \nabla_{w} + \cdots\]
+
+<p>As a result, we can efficiently compute the gradients of real-valued functions with respect to complex variables. For updates, we naturally use the complement of this gradient. For more detailed explanation, see <a href="/posts/backprop-complex-numbers">this post</a>.</p>
+
+<h2 id="sketch-of-the-implementation">Sketch of the implementation</h2>
+
+<p>To compute gradients, we implement a compact reverse mode automatic differentiation module, conceptually similar to those commonly found in deep learning frameworks like PyTorch.</p>
+
+<p>The algorithm for determining the node voltages is as follows:</p>
+
+<ol>
+  <li><strong>Initialization</strong>: Begin by initializing all node voltages to zero. This serves as the initial solution, assuming the circuit contains no active components.</li>
+  <li><strong>Forward Computation</strong>: Conduct a forward computation to calculate the loss associated with the current set of node voltages.</li>
+  <li><strong>Check Loss Value</strong>: If the computed loss value meets the predetermined satisfactory criteria (very close to zero for an ideal solution), return the current set of node voltages as the solution.</li>
+  <li><strong>Backward Computation</strong>: Perform a backward computation to calculate the gradients of the loss function with respect to the node voltages.</li>
+  <li><strong>Update Node Voltages</strong>: Utilize the calculated gradients to update the node voltages and proceed to step 2 for another iteration.</li>
+</ol>
+
+<p>Steps 2 to 5 are repeated until the algorithm terminates. Ideally, the loss should decrease with each iteration. At the end of this process, the correct node voltages are determined, enabling the subsequent calculation of current and voltage values for all components within the circuit. Concerning Step 5, many techniques could be used to perform an update including various variants of gradient descent.</p>
+
+<p>While our approach offers a robust framework for circuit analysis, there are a few caveats to discuss:</p>
+
+<ul>
+  <li><strong>Reference Node</strong>: One node voltage within the circuit can always be set as a reference, typically fixed to zero volts. This reference node provides a point of comparison for other voltage values in the circuit.</li>
+  <li><strong>Ideal Voltage Sources</strong>: In instances where a branch comprises solely an ideal voltage source, a unique constraint is introduced. Such a source imposes a specific relationship between the voltages at its terminal nodes. Consequently, it becomes less preferable to consider these voltages independently. Additionally, since the branch contains only an ideal voltage source, the current flowing through it remains undefined. As a result, we treat this current as a new parameter to be determined within the analysis. Thus, overall, the count of parameters we optimize over remains unchanged.</li>
+</ul>
+
+<p>Again, complete implementation in Python can be found <a href="https://github.com/uros7251/PyCircuitSolver">here</a>.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#electrical-engineering" class="page__taxonomy-item p-category" rel="tag">electrical_engineering</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2023-09-29T00:00:00+02:00">September 29, 2023</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Linear+Circuit+Solver+-+part+2%20http%3A%2F%2Flocalhost%3A4000%2Fposts%2Flinear-circuit-solver-2" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fposts%2Flinear-circuit-solver-2" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2Flinear-circuit-solver-2" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/posts/linear-circuit-solver-1" class="pagination--pager" title="Linear Circuit Solver part 1
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">You may also enjoy</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/linear-circuit-solver-1" rel="permalink">Linear Circuit Solver part 1
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          27 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Simple topologies
+Intro
+The classical methods for circuit analysis, commonly taught in introductory electrical engineering courses, traditionally involve tra...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/linear-regression" rel="permalink">Linear regression
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          21 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">This post builds upon an earlier post about Chi-squared and Student distribution. You might want to check it out before proceeding.
+Orthodox statistics’ pers...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/backprop-complex-numbers" rel="permalink">Backprop with complex numbers
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          14 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">One of the building blocks of my linear circuit solver is automatic differentiation which calculates the gradient of the loss function with respect to node v...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/fourier-analysis" rel="permalink">Fourier series, Fourier transforms and all that
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          63 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Review of trigonometric identities
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$']]
+        }
+      };
+    </script>
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2023 Uros Stojkovic. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
