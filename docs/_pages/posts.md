@@ -4,7 +4,7 @@ permalink: /posts/
 author_profile: true
 ---
 
-Notes in mathematics and physics.
+Notes in mathematics and physics. More to come.
 
 ## Probability & Stats
  - [Normal distribution and its derivatives](/posts/normal-dist-and-its-derivatives)
@@ -26,4 +26,4 @@ Notes in mathematics and physics.
  - [Linear circuit solver, part 2](/posts/linear-circuit-solver-2)
 
 ## Other
- - [Great books I've read](posts/great-books)
+ - [Great books I've read](/posts/great-books)
