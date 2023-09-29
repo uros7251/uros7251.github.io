@@ -10,7 +10,7 @@ Let's start by deriving a couple of trigonometric identities that will be of cru
 
 $$\frac{\cos{\alpha}+\cos{\beta}}{2}$$
 
-![Trig-sum-identity](/assets/images/2023-08-02-fourier/trig-sum-identity.png)
+![Trig-sum-identity](../assets/images/2023-08-02-fourier/trig-sum-identity.png)
 
 It can be seen from the picture that the required value is given by the length of $OF$, that is, by the projection of the length of $OE$ on the x-axis. The point $E$, according to Thales' theorem, is located halfway along the length $CD$. Since both $C$ and $D$ are on the unit circle, it is an isosceles triangle $\Delta OCD$, which implies that the angle $\measuredangle OED$ is right, as well as that along $OE$ the poles of the angle $\measuredangle COD$ . It follows:
 
@@ -28,7 +28,7 @@ Let us now consider the difference of cosines of two angles:
 
 $$\cos{\alpha}-\cos{\beta}$$
 
-![Trig-diff-identity](/assets/images/2023-08-02-fourier/trig-diff-identity.png)
+![Trig-diff-identity](../assets/images/2023-08-02-fourier/trig-diff-identity.png)
 
 It can be seen from the picture that it is a length of length $GH$, with a negative sign in front, and it is concluded that it is a projection of length $CE$ on the h-axis. Since $CE$ is the base of an isosceles triangle with the vertex angle $\alpha-\beta$ and legs of length one, it is easy to calculate:
 
@@ -72,7 +72,7 @@ $$\begin{align*}
 
 Our interest shifts to periodic functions - functions for which $f(t) = f(t+T)$ holds for every $t$. The smallest non-negative number $T$ for which this equality holds is called the period of the function. The most famous periodic functions are certainly trigonometric functions - sine and cosine above all. The question arises whether it is possible to represent an arbitrary periodic function, such as the one in the picture below, as a weighted sum of sines and cosines.
 
-![Periodic signal](/assets/images/2023-08-02-fourier/periodic-signal.png)
+![Periodic signal](../assets/images/2023-08-02-fourier/periodic-signal.png)
 
 Let's assume it's possible. It is obvious that in that case only sine and cosine functions with a period that is an integer part of $T$ could participate in the sum. The circular frequency corresponding to the period $T/n$ is:
 
@@ -213,7 +213,7 @@ $$\begin{align*}
 
 \end{align*}$$
 
-![Sine-2d](/assets/images/2023-08-02-fourier/sine-2d.png)
+![Sine-2d](../assets/images/2023-08-02-fourier/sine-2d.png)
 
 where $u=\xi \cos{\theta},\,v=\xi\sin{\theta}$.
 

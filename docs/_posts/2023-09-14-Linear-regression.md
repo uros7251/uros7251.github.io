@@ -1,10 +1,16 @@
+---
+title:  "Linear regression"
+date:   2023-09-14
+categories: probability theory
+permalink: posts/linear-regression
+---
+This post builds upon an [earlier post](/posts/normal-dist-and-its-derivatives) about Chi-squared and Student distribution. You might want to check it out before proceeding.
 ## Orthodox statistics' perspective
-
 In regression, we start from the model which proposes a conditional probability distribution of target variable given $p-1$ predictor variables (covariates). With linear regression, this is usually normal distribution with mean being the linear function of predictors and some, unknown, variance. That is, we have:
 
 $$\begin{equation*}
 
-    P\left(Y=y | X_{1}=x_{1}, \cdots, X_{n}=x_{p-1}\right) = \mathcal{N}\left(\beta_{0} + \sum_{j=1}^{p-1}\beta_{j}x_{j}, \sigma^2\right)
+    P\left(Y=y | X_{1}=x_{1}, \cdots, X_{p-1}=x_{p-1}\right) = \mathcal{N}\left(\beta_{0} + \sum_{j=1}^{p-1}\beta_{j}x_{j}, \sigma^2\right)
 
 \end{equation*}$$
 

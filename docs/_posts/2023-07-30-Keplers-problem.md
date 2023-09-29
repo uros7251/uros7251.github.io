@@ -98,7 +98,7 @@ and the above equation is indeed satisfied. Therefore, one of the possible solut
 
 $$\begin{align*} \rho&=\frac{GM}{h^{2}} + \frac{1}{h}\sqrt{2E+\frac{G^{2}M^{2}}{h^{2}}}\cos{\theta} \\\frac{1}{r} &= \frac{1+\sqrt{\frac{2Eh^{2}}{G^{2}M^{2}}+1}\cos{\theta}}{\frac{h^{2}}{GM}}\end{align*}$$
 
-This is the equation of a conic section (see [this article](/posts/ellipse)). We can read off its eccentricity from it:
+This is the equation of a conic section (see [this post](/posts/ellipse)). We can read off its eccentricity from it:
 
 $$\begin{equation*}
 e = \sqrt{\frac{2Eh^{2}}{G^{2}M^{2}}+1}

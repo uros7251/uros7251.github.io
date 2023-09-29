@@ -6,7 +6,7 @@ permalink: posts/linear-circuit-solver-2
 ---
 # Part 2 - Arbitrary topologies
 ## Pitfalls of the current solution
-The methodology discussed in the [previous part](posts/linear-circuit-solver-1) works well for circuits represented as trees of series and parallel connections. However, its applicability is constrained when dealing with more intricate topologies, such as bridge circuits, where components are interconnected in more complex ways. Consequently, its scope is somewhat limited.
+The methodology discussed in the [previous part](/posts/linear-circuit-solver-1) works well for circuits represented as trees of series and parallel connections. However, its applicability is constrained when dealing with more intricate topologies, such as bridge circuits, where components are interconnected in more complex ways. Consequently, its scope is somewhat limited.
 
 To extend our method to arbitrary circuits with diverse topologies, we must undergo a fundamental shift in our approach. Our solution entails reverting to nodal analysis, a well-established technique in electrical engineering. In our new method, we view the circuit as a graph composed of branches connecting nodes, where nodes serve as points of junction for three or more branches. Each branch, in turn, comprises one or more components connected in series.
 
@@ -33,7 +33,7 @@ Here, $j$ denotes the imaginary unit. This formulation allows us to apply the st
 
 $$\nabla_{z} = \frac{\partial w}{\partial z}\cdot \nabla_{w} + \cdots$$
 
-As a result, we can efficiently compute the gradients of real-valued functions with respect to complex variables. For updates, we naturally use the complement of this gradient. For more detailed explanation, see [this post](posts/backprop-complex-numbers).
+As a result, we can efficiently compute the gradients of real-valued functions with respect to complex variables. For updates, we naturally use the complement of this gradient. For more detailed explanation, see [this post](/posts/backprop-complex-numbers).
 
 ## Sketch of the implementation
 

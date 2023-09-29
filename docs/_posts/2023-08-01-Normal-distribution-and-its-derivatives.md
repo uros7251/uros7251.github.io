@@ -30,7 +30,7 @@ $$\begin{equation*}
 \end{equation*}$$
 
 
-For $n = 2$, which represents an ordinary sphere (in 3D), the polar angle $\phi_{2}$ is usually denoted in physics by $\theta$, and the azimuth $\phi_{1}$ by $\phi$ , the formula $dA = r^{2}\sin{\theta}$ is obtained, which corresponds to the known expression.
+For $n = 2$, which represents an ordinary sphere (in 3D), the polar angle $\phi_{2}$ is usually denoted in physics by $\theta$, and the azimuth $\phi_{1}$ by $\phi$ , the formula $dA = r^{2}\sin{\theta}$ is obtained, which corresponds to well-known result.
 The elementary volume in $n$-dimensional space is obtained as:
 
 
@@ -105,14 +105,14 @@ $$\begin{align*}E[S] &= \frac{1}{I_{n-1}}\int_{0}^{\infty}se^{-\frac{s^{2}}{2 }}
 
 
 It should be noted that the probability distribution characterized by the mentioned law is called Chi distribution.
-In the literature, the so-called Chi-square distribution which represents the distribution of the squares of previously analyzed statistics - so $S^{2}$. We can easily derive it:
+In the literature, one often encounters the so-called Chi-square distribution which represents the distribution of the squares of previously analyzed statistics - so $S^{2}$. We can easily derive it:
 
 
 $$\begin{align*}\frac{d}{d(s^{2})}P(S^{2} < s^{2}) &= \frac{ds}{d(s^{2} )}\frac{d}{ds}P(S < s) \\ &= \frac{1}{2s} \frac{1}{2^{\frac{n}{2}-1}\Gamma \left(\frac{n}{2}\right)}e^{-\frac{s^{2}}{2}}s^{n-1} \\ \frac{d}{d(s ^{2})}P(S^{2} < s^{2}) &= \frac{1}{2^{\frac{n}{2}}\Gamma\left(\frac{n} {2}\right)}e^{-\frac{s^{2}}{2}}(s^{2})^{\frac{n}{2}-1}\end{align*}$$
 
 
 ## Estimation of standard deviation given mean is unknown
-We still analyze the random variable $X \sim \mathcal{N}(\mu, \sigma^{2})$. This time we look at the statistics:
+We still analyze the random variable $X \sim \mathcal{N}(\mu, \sigma^{2})$. This time we look at a statistic:
 
 
 $$\begin{equation*}
@@ -180,7 +180,7 @@ $$\begin{align*} E\left [ \frac{1}{n-1}\sum_{i=1}^{n}\left(X_{i} - \overline{X_{
 
 
 ## Estimation of mean given standard deviation is unknown
-We once again consider the random variable $X \sim \mathcal{N}(\mu, \sigma)$. The subject of our analysis this time is statistics:
+We once again consider the random variable $X \sim \mathcal{N}(\mu, \sigma)$. The subject of our analysis this time a statistic:
 
 
 $$\begin{equation*}
@@ -213,18 +213,18 @@ $$\begin{equation*}
 \end{equation*}$$
 
 
-We can present the numerator and denominator in vector form:
+We can present the numerator and denominator in the vector form:
 
 
 $$\begin{align*}\sqrt{n}\overline{z_{n}} &= \sqrt{e^{T}e}\frac{e^{T}z}{e^{T}e} = \frac{e^{T}z}{\left\| e\right\|} = z_{e} \\ \sqrt{\sum_{i=1}^{n}\left(z_{i}-\overline{z_{n}}\right)^{2} } &= \left\|\left(I-\frac{ee^{T}}{e^{T}e}\right)z\right\|\end{align*}$$
 
 
-Considering that the numerator is the projection of the vector $z$ onto the direction of vector $e$, and the denominator is the magnitude of the projection onto the hyperplane perpendicular to this direction, if we mark the angle between the vector $z$ and the vector $e$ with $\theta$, we get:
-
+Considering that the numerator is the projection of the vector $z$ onto the direction of vector $e$, and the denominator is the magnitude of the projection onto the hyperplane perpendicular to this direction, if we mark the angle between the vector $z$ and the vector $e$ with $\theta$, the statistic becomes:
 
 $$\begin{equation*}
-     P(s \leq S < s+ds) = \underset{s < \sqrt{n-1}\cot{\theta} < s + ds }{\int\cdots\int}\frac{1}{\sqrt{2\pi}^{n}}e^{-\frac{z_{1}^{2}+\cdots+z_{n}^{2}}{2}}dz_{1}\cdots dz_ {n}
+     S = \sqrt{n-1}\cot{\Theta}
 \end{equation*}$$
+
 
 
 We can find the distribution for the angle $\theta$ by switching to spherical coordinates:
@@ -239,7 +239,7 @@ Then we easily find the distribution for the statistic $S$ itself:
 $$\begin{align*}\frac{d}{ds}P(S < s) &\propto \left|\frac{d\theta}{ds}\right| \frac{d}{d\theta}P(\Theta < \theta) \\ &= \frac{d\theta}{\sqrt{n-1}\frac{d\theta}{\sin^{2 }{\theta}}}\sin^{n-2}{\theta} \\ &= \frac{1}{\sqrt{n-1}}\sin^{n}{\theta} \\ \frac{d}{ds}P(S < s) &\propto \frac{1}{\sqrt{n-1}}\left ( 1+\frac{s^{2}}{n-1} \right )^{-\frac{n}{2}}\end{align*}$$
 
 
-The number $n-1$ represents number of degrees of freedom and it often appears in literature denoted by $\nu$:
+The number $n-1$ represents the number of degrees of freedom and it often appears in literature denoted by $\nu$:
 
 
 $$\begin{equation*}
@@ -287,18 +287,23 @@ From here we can also infer something else about the Gamma function:
 
 
 $$\begin{equation*}
-     \displaystyle \lim_{\nu \to \infty}\frac{\Gamma\left ( \frac{\nu+1}{2} \right )}{\sqrt{\nu}\Gamma\left ( \frac{ \nu}{2} \right )} = \frac{1}{\sqrt{2}}
+     \displaystyle \lim_{\nu \to \infty}\frac{\Gamma\left ( \frac{\nu+1}{2} \right )}{\sqrt{\frac{\nu}{2}}\Gamma\left ( \frac{ \nu}{2} \right )} = 1
 \end{equation*}$$
 
+Or simpler put:
+
+$$\begin{equation*}
+     \displaystyle \lim_{n \to \infty}\frac{\Gamma\left ( n+\frac{1}{2} \right )}{\sqrt{n}\Gamma\left ( n \right )} = 1
+\end{equation*}$$
 
 ## Discussion
-The previous chapters may have been too abundant with mathematical formulas, symbols and expressions in which the reader can lose the idea of the very essence of the performance and the results reached. That's why it's always good to try to use a less formal and rigorous, but more comprehensible language to clarify what was meant to be conveyed by mathematical notation.
+The previous chapters may have been too abundant with mathematical formulas, symbols and expressions in which the reader can lose the idea of the very essence of the calculations and the results reached. That's why it's always good to try to use a less formal and rigorous, but more comprehensible language to clarify what was meant to be conveyed by mathematical notation.
 
 In the previous chapters, we considered certain statistics, that is, functions of several random variables where each of them had a normal probability distribution. The main subject of our research was the probability distribution of those statistics. In each of them, we treated a series of random variables as a vector in a high-dimensional space.
 
-First statistic we considered is the square root of the sum of squares of the random variables. This statistic is used in estimating the standard deviation. It geometrically represents the norm (length) of a vector of random variables. Again, taking into account the spherical symmetry of the Gaussian function, we arrive at a probability distribution density function that is proportional to $r^{n-1}\exp{(r^{2}/2)}$. The first factor comes from the fact that the volume of the thin spherical shell is proportional to exactly $r^{n-1}$. Although the Gaussian distribution gives a higher probability to smaller norm vectors, the more distant are more numerous so that the mode of the distribution (most likely value) is greater than zero.
+First statistic we considered is the square root of the sum of squares of the random variables. This statistic is used in estimating the standard deviation. It geometrically represents the norm (length) of a vector of random variables. Again, taking into account the spherical symmetry of the Gaussian function, we arrive at a probability distribution density function that is proportional to $r^{n-1}\exp{(r^{2}/2)}$. The first factor comes from the fact that the volume of the thin spherical shell is proportional to exactly $r^{n-1}$. Although the Gaussian distribution gives a higher probability to smaller norm vectors, the more distant are more numerous so that the mode of the distribution (most likely value) is actually greater than zero.
 
-The second statistic covered was the square root of the sum of the squares of the deviations of the variable values from their mean value. We have shown that this corresponds geometrically to the norm of the projection of the vector of random variables onto the space orthogonal to the vector $e = \begin{bmatrix}1 & \cdots & 1 \end{bmatrix}$. Considering that, we got almost the same probability distribution function, except that $n-1$ occured instead of $n$, considering that it is the length of the vector with one less dimension.
+The second statistic covered was the square root of the sum of the squares of the deviations of the variable values from their mean value. We have shown that this corresponds geometrically to the norm of the projection of the vector of random variables onto the space orthogonal to the vector $e = \begin{bmatrix}1 & \cdots & 1 \end{bmatrix}^{T}$. Considering that, we got almost the same probability distribution function, except that $n-1$ occured instead of $n$.
 
 The third statistic concerns the mean value of the random variables scaled by the corrected dispersion estimate instead of the true dispersion. We have shown that this statistic corresponds to the cotangent of the angle between the vector of random variables and the vector $e = \begin{bmatrix}1 & \cdots & 1 \end{bmatrix}$. Given that all vectors of fixed length that subtend the same angle $\theta$ form some kind of hypersphere (in 3 dimensions, it is a ring) whose radius is proportional to $\sin^{n-2}\theta$, the density of probability distribution of cotangent of the angle $\theta$ is proportional to $\sin^{n}\theta$. The resulting probability distribution is known as the Student's distribution.
 ## Volume of Hypersphere
