@@ -23,10 +23,7 @@ In case of $n$ samples, we can switch to vector notation in the following way:
 
 - We define a matrix $X \in \mathrm{R}^{n\times p}$ to be the matrix whose $i^{th}$ row is a vector of predictor variables for $i^{th}$ sample prepended by 1.
 
-- We define a vector $\beta \in \mathrm{R}^{p}$ to be a vector whose $i^{th}$ element is $\beta_{i}$. 
-
-
-
+- We define a vector $\beta \in \mathrm{R}^{p}$ to be a vector whose $j^{th}$ element is $\beta_{j-1}$ (first element is $\beta_{0}$).
 
 Now, we can rewrite the above equation in vector-matrix form:
 

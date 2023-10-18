@@ -1,4 +1,189 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-09-29T15:41:23+02:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Uros Stojkovic</title><subtitle>Personal website with primarily math/physics content</subtitle><author><name>Uros Stojkovic</name></author><entry><title type="html">Linear Circuit Solver - part 2</title><link href="http://localhost:4000/posts/linear-circuit-solver-2" rel="alternate" type="text/html" title="Linear Circuit Solver - part 2" /><published>2023-09-29T00:00:00+02:00</published><updated>2023-09-29T00:00:00+02:00</updated><id>http://localhost:4000/posts/Linear-Electric-Circuit-Solver-2</id><content type="html" xml:base="http://localhost:4000/posts/linear-circuit-solver-2"><![CDATA[<h1 id="arbitrary-topologies">Arbitrary topologies</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-10-18T23:07:54+02:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Uros Stojkovic</title><subtitle>Personal website with primarily math/physics content</subtitle><author><name>Uros Stojkovic</name></author><entry><title type="html">On the Theory of Relativity</title><link href="http://localhost:4000/posts/relativity" rel="alternate" type="text/html" title="On the Theory of Relativity" /><published>2023-10-18T00:00:00+02:00</published><updated>2023-10-18T00:00:00+02:00</updated><id>http://localhost:4000/posts/Special-relativity</id><content type="html" xml:base="http://localhost:4000/posts/relativity"><![CDATA[<blockquote>
+  <p><em>There is no absolute space, and we    only conceive of relative motion; and yet in most cases mechanical facts are enunciated as if there is an absolute space to which they can be referred. There is no absolute time. When we say that two periods are equal, the statement has no meaning, and can only acquire a meaning by a convention. Not only have we no direct intuition of the equality of two periods, but we have not even direct intuition of the simultaneity of two events occurring in two different places. I have explained this in an article entitled “Mesure du Temps”. Finally, is not our Euclidean geometry in itself only a kind of convention of language?”</em> - Henri Poincare</p>
+</blockquote>
+
+<p><em>This article is not completed, but is a work in progress. I cannot guarantee that everyting written is true.</em></p>
+
+<h2 id="discussion-of-newtons-laws-and-motivations-for-relativity-theory">Discussion of Newton’s laws and motivations for relativity theory</h2>
+
+<p>Newton was the one who propelled the idea of absolute space and time. However, his laws could only allow one to determine if one is accelerating by experiencing a force in the opposite direction, not if one is moving in uniform rectilinear fashion or is stationary with respect to absolute space.</p>
+
+<p>With the emergence of Maxwell’s theory of electromagnetism, which assumed the existence of the aether (a strong candidate for absolute space), the means to measure one’s state of motion with respect to aether emerged as well. However, after performing several experiments that demonstrated no movement whatsoever, some physicists, notably Poincare, started to consider an idea: that it is a fundamental law of nature that one cannot determine one’s state of motion in any way whatsoever. This is the principle of relativity, later stated by Einstein and used as a starting point for his rewriting of the equations of mechanics.</p>
+
+<p>From this principle, and the postulate about the constancy of the speed of light in all reference frames (which can also be regarded as a convention), one can proceed to derive the transformations between inertial reference frames, time dilation, length contraction, the law for the composition of velocities, etc. This is the way Einstein originally followed in his famous paper in 1905. There is, however, an alternative way to introduce the subject. Although it is somewhat more mathematically involved, it does provide a useful perspective.</p>
+
+<h2 id="concept-of-time">Concept of time</h2>
+
+<p>Before we start the exposition, it is crucial to first consider the concept of time. We are so accustomed to the idea of time that critically analyzing it becomes challenging. What do we mean by time? It would be fair to say that time is nothing but a useful abstraction. First, we must acknowledge that the concept of time requires change - if nothing were changing, we could not perceive the passing of time. Second, when we quantify time, we essentially associate two events - one being the event we want to measure in terms of time and the other being some conveniently chosen reference event. For instance, when you say, “My plane landed at 2 o’clock,” you mean the landing of the plane coincided with your watch showing 2 o’clock. Or when you say something like, “It took me 6 months to finish my Master’s thesis,” you are relating the start and finish of your writing to specific positions of Earth along its orbit around the Sun. Thus, measuring time involves comparisons with the state of some reference physical processes. These processes are typically periodic, such as Earth’s movement around the Sun, oscillations of a pendulum clock, or oscillations of electric and magnetic fields. Time, in this sense, plays a role in physics akin to that of money in economics.</p>
+
+<h2 id="principle-of-stationary-action">Principle of stationary action</h2>
+<p>We would like to start from a variational principle. The motion of a material point can be described by a trajectory in a 4D spacetime coordinate system. One can define a formula for calculating lengths in this coordinate system. It turns out that the metric which is physically meaningful (thus useful) is:</p>
+
+\[ds^{2} = c^{2}dt^{2} - dx^{2}-dy^{2}-dz^{2}\]
+
+<p>Now, consider that during its motion, a material point passes through points A and B in spacetime. Among all possible trajectories, the one that occurs in the physical world has the characteristic that, for it, the following integral attains the maximum value:</p>
+
+\[S = \int_{A}^{B}\sqrt{c^{2}dt^{2} - dx^{2}-dy^{2}-dz^{2}}\]
+
+<p>If we parametrize the trajectory with respect to time ie. define $x(t)$ such that $x(t_{0}) = x_{0},\,x(t_{1}) = x_{1}$, and similarly for $y, z$ we can express it as follows:</p>
+
+\[\begin{align*}
+S &amp;= \int_{t_{0}}^{t_{1}}\sqrt{c^{2}-\dot{x}^{2} - \dot{y}^{2} - \dot{z}^{2}}dt \\ &amp;=\int_{t_{0}}^{t_{1}}\sqrt{c^{2}-v^{2}}dt 
+\end{align*}\]
+
+<p><a href="https://en.wikipedia.org/wiki/Calculus_of_variations">Euler-Lagrange equations</a> corresponding to $x,y,z$ combined yield:</p>
+
+\[\frac{\vec{v}}{\sqrt{c^{2}-v^{2}}} = \frac{\vec{p}}{c} = \text{const.}\]
+
+<p>which corresponds to the conservation of momentum (we know to extract $\vec{p}$ because of units). It also shows that extremal trajectory is a straight line in $x,t$ coordinate system. Another invariant which can be derived from Euler-Lagrange equations is:</p>
+
+\[\begin{align*}
+\sqrt{c^{2}-v^{2}}-\frac{v^{2}}{\sqrt{c^{2}-v^{2}}} &amp;= \text{const.} \\ \frac{c^{2}}{\sqrt{c^{2}-v^{2}}} = \frac{E}{c} &amp;= \text{const.}
+\end{align*}\]
+
+<p>which corresponds to the conservation of kinetic energy (again up to a scale factor $c$). Indeed, for speeds negligible compared to the speed of light, we can expand the expression for energy in terms of $v^{2}/c^{2}$:</p>
+
+\[\begin{align*}
+E &amp;= \frac{c^{2}}{\sqrt{1-v^{2}/c^{2}}} \\ &amp;\approx c^{2}\left ( \frac{1}{\sqrt{1-v^{2}/c^{2}}}\bigg|_{v/c = 0} + \frac{d}{d(v^{2}/c^{2})}\frac{1}{\sqrt{1-v^{2}/c^{2}}}\bigg |_{v/c = 0}\frac{v^{2}}{c^{2}}\right ) \\ &amp;= c^{2} + \frac{v^{2}}{2}
+\end{align*}\]
+
+<p>From here one can infer $v^{2}/2$ is a constant, which is a well-known expression for kinetic energy per unit mass in classical mechanics.</p>
+
+<h2 id="derivation-of-lorentz-transformations-from-invariance">Derivation of Lorentz transformations from invariance</h2>
+<p>In the next part of the exposition, we will confine ourselves to one spatial dimension to simplify and clarify the concepts, although the procedure remains the same for all three dimensions.</p>
+
+<p>We find transformation equations by equivalence of reference frames ie. requiring that the metric is invariant:</p>
+
+\[c^{2}dt^{2} - dx^{2} = c^{2}dt'^{2} - dx'^{2}\]
+
+<p>where $x’, t’$ are space and time coordinates in another inertial reference frame. Since the equation of hyperbola is $y^{2}-x^{2} = \text{const.}$, we can interpret pairs $(dx, cdt)$ and $(dx’, cdt’)$ as points on a single hyperbola. The transformation between reference frames then amounts to moving along the curve.</p>
+
+<p>From analytical geometry it is known that hyperbola  can be parametrized by:</p>
+
+\[\begin{align*}
+x &amp;= A\sinh{\theta}, \\
+y &amp;= A\cosh{\theta}
+\end{align*}\]
+
+<p>for $\theta \in \mathbb{R}$ which follows from the hyperbolic identity:</p>
+
+\[\cosh^{2}{\theta}-\sin^{2}{\theta} = 1.\]
+
+<p>Actually, by using the fact that:</p>
+
+\[\begin{align*}
+\cosh{\theta} &amp;= \cos{i\theta} \\
+\sinh{\theta} &amp;= -i\sin{i\theta}
+\end{align*}\]
+
+<p>and trigonometric identities (just as if the argument was a real number), one can derive analogous identities for hyperbolic functions. Two of them will be important to us:</p>
+
+\[\begin{align*}
+\sinh{(\theta+\phi)} &amp;= \sinh{\theta}\cosh{\phi}+\cosh{\theta}\sinh{\phi} \\ 
+\cosh{(\theta+\phi)} &amp;= \cosh{\theta}\cosh{\phi}+\sinh{\theta}\sinh{\phi}
+\end{align*}\]
+
+<p>Thus, if we introduce a transformation:</p>
+
+\[\begin{bmatrix}
+dx' \\ cdt'
+\end{bmatrix} = \begin{bmatrix}
+\cosh{\phi} &amp; \sinh{\phi} \\
+\sinh{\phi} &amp; \cosh{\phi} 
+\end{bmatrix}\begin{bmatrix}
+dx \\ cdt
+\end{bmatrix}\]
+
+<p>then $(dx’, cdt’)$ is shifted along a hyperbola from $(dx, cdt)$ by $\phi$. Consider that one reference frame is moving with respect to other with speed $v$, that is, we have:</p>
+
+\[\begin{bmatrix}
+0 \\ cdt'
+\end{bmatrix} = \begin{bmatrix}
+\cosh{\phi} &amp; \sinh{\phi} \\
+\sinh{\phi} &amp; \cosh{\phi} 
+\end{bmatrix}\begin{bmatrix}
+vdt \\ cdt
+\end{bmatrix}\]
+
+<p>Taking just the first equation ($v\cosh{\phi} + c\sinh{\phi} = 0$) coupled with the identity $\cosh^{2}{\theta}-\sin^{2}{\theta} = 1$, we get:</p>
+
+\[\begin{align*}
+\cosh{\phi} &amp;= \frac{1}{\sqrt{1-v^{2}/c^{2}}} \\
+\sinh{\phi} &amp;= -\frac{v/c}{\sqrt{1-v^{2}/c^{2}}}
+\end{align*}\]
+
+<p>We finally arrive at Lorentz transformations:</p>
+
+\[\begin{align}
+dx' &amp;= \frac{dx-vdt}{\sqrt{1-v^{2}/c^{2}}} \\
+dt' &amp;= \frac{dt-v/c^{2}\,dx}{\sqrt{1-v^{2}/c^{2}}}
+\end{align}\]
+
+<p>Finally, let us express the parameter $\phi$, commonly referred to as rapidity, in terms of velocity $v$:</p>
+
+\[\begin{align*}
+e^{\phi} &amp;= \cosh{\phi}+\sinh{\phi} \\
+e^{\phi} &amp;= \frac{1-v/c}{\sqrt{1-v^{2}/c^{2}}} \\ e^{\phi} &amp;= \sqrt{\frac{1-v/c}{1+v/c}} \\ \phi &amp;= \frac{1}{2}\log{\frac{1-v/c}{1+v/c}}
+\end{align*}\]
+
+<h2 id="simultaneity">Simultaneity</h2>
+<p>Lorentz transformations have some interesting consequences. The first we will discuss is abolishing the concept of absolute simultaneity between two events, independent of the observer’s frame of reference. Consider two events, seen as simultaneous from the reference frame $S$, yet occuring at different locations ie. $\Delta t = 0, \Delta x \neq 0$. From the Lorentz transformations, we observe that, from the perspective of an observer fixed to reference frame $S’$, these events are not simultaneous, but $\Delta t’ = -v\Delta x/c^{2}$.</p>
+<h2 id="length-contraction">Length contraction</h2>
+<p>Another consequence is the apparent length contraction in the direction of motion. Let us imagine a rigid body moving along $x$ axis with a uniform velocity $v$ with respect to some reference system $S$. In its own frame of reference, denoted as $S’$, fixed with it, the body is stationary. To measure its extension along the $x$ axis from the reference frame $S$, one can record the $x$ coordinate of its endpoints at the <strong>same</strong> time and find the difference. On the other hand, to measure the same length from the reference frame $S’$, the observer can make these recordings at any two time instants and subtract - the measurement will still be valid because the body doesn’t move in this frame. If we denote the length in $S$ as $L$, and the length in $S’$ as $L_{0}$, from Lorentz transformations we get:</p>
+
+\[L = L_{0}\sqrt{1-v^{2}/c^{2}}\]
+
+<p>This result could also be obtained from the invariance of the spacetime interval between the measuring events. Qualitatively, spacetime interval in $S$ is simply a negative length squared, while in $S’$ it has extra component involving the time difference because, for the observer from $S’$, the two measurements are not simultaneous. We have thus $L_{0}^{2} = c\Delta t’^{2} + L^{2}$ which clearly shows that $L$ must be smaller than $L_{0}$. Hence, moving objects appear shorter in the direction of their motion compared to their length in their own reference frame.</p>
+<h2 id="time-dilation">Time dilation</h2>
+<p>Yet another consequence of special relativity is time dilation. Imagine two observers each with a clock, moving uniformly relative to each other. Here, it’s crucial to remember that a ‘clock’ refers to a device housing a physical phenomenon whose state can be measured. Let’s establish reference frames $S$ and $S’$ for these observers respectively. Now, consider two events – two ticks of a clock that’s stationary in $S’$. In $S’$, the spatial distance between these events is zero, and let’s denote time difference by $\Delta t’$. However, in $S$, where the same two events occur with a time difference $\Delta t$, their spatial separation is $v\Delta t$. Lorentz transformations reveal:</p>
+
+\[\begin{align*}
+\Delta t' &amp;= \frac{\Delta t-v^{2}/c^{2}\,\Delta t}{\sqrt{1-v^{2}/c^{2}}} \\ \Delta t' &amp;= \Delta t \sqrt{1-v^{2}/c^{2}}
+\end{align*}\]
+
+<p>Again, the conclusion that $\Delta t’ \leq \Delta t$ can be qualitatively deduced by demanding the invariance of spacetime intervals.</p>
+
+<p>Crucially, it’s important to note that this result doesn’t imply that time passes slower in $S’$ than in $S$. There exists a perfect symmetry between $S$ and $S’$. It simply means that, from the perspective of an observer fixed in $S$, the clock stationary in $S’$ appears to tick slower, and vice versa. In simpler terms, the progression of the same physical process seems to slow down (takes more time) when it’s in motion relative to the observer compared to when it’s stationary. However, as emphasized, the terms ‘slower’ or ‘faster’ are always relative and require a specified reference frame to be meaningful.</p>
+<h2 id="velocity-addition-formula">Velocity-addition formula</h2>
+<p>Lorentz transformations also influence the way velocities combine. Let’s consider two reference frames, $S$ and $S’$, where the latter moves with velocity $v$ relative to the former. Now, envision a material point moving with velocity $u’$ relative to $S’$. What is its velocity $u$ relative to $S$?</p>
+
+\[\begin{align*}
+u &amp;= \frac{dx}{dt} \\ &amp;= \frac{dx'+vdt'}{dt' + v/c^{2}\,dx'} \\ &amp;= \frac{u'dt'+vdt'}{dt' + v/c^{2}\,u'dt'} \\ u &amp;= \frac{u'+v}{1+u'v/c^{2}}
+\end{align*}\]
+
+<p>Thus, simply adding velocities is a valid approximation only for speeds significantly smaller than the speed of light.</p>
+<h2 id="causality">Causality</h2>
+<p>We have established that absolute simultaneity is non-existent and, generally, observers moving relative to each other measure different time intervals between two events. Lorentz transformations also allow for different event orders in different reference frames. However, if event A causally triggers event B, A must occur before B in all reference frames; otherwise, the concept of causality conflicts with relativity. Let the spacetime interval between $A$ and $B$ be $(\Delta x, \Delta t)$ and $(\Delta x’, \Delta t’)$ from $S$ and $S’$, respectively, and let $u$ be the velocity of propagation of the causal affection. We have then:</p>
+
+\[\begin{align*}
+\Delta t' &amp;= \frac{\Delta t - v/c^{2}\,\Delta x}{\sqrt{1-v^{2}/c^{2}}} \\ &amp;= \Delta t \frac{1-uv/c^{2}}{\sqrt{1-v^{2}/c^{2}}}
+\end{align*}\]
+
+<p>Since both $\Delta t$ and $\Delta t’$ must be positive (in both frames $A$ happened before $B$), it follows that:</p>
+
+\[uv &lt; c^{2}\]
+
+<p>Since the theory of relativity doesn’t allow for speeds greater than $c$, ie. $v &lt; c$, it follows that the velocity of signal’s propagation has to be at most $c$ as well. If it weren’t, ie. if $u &gt; c$, then we could imagine a frame of reference moving with a velocity $v = c^{2}/u &lt; c$, where the cause and effect would change order. Thus, the theory of relativity requires that the propagation of causal effect doesn’t surpass $c$.</p>
+
+<h2 id="four-vectors">Four-vectors</h2>
+<p>We saw how we can specify each event by 1 temporal and 3 spatial coordinates. We can write it compactly as a 4-tuple $(t, x, y, z)$ or more compactly $(t, \vec{x})$. We also defined a measure of distance between two tuples representing events to be the spacetime interval. Such 4-tuples are called 4-vectors.</p>
+
+<p>Looking back at the formulas for energy and momentum we derived, it is interesting to note the relationship between them:</p>
+
+\[\begin{align*}
+E^{2}-p^{2}c^{2} &amp;= \frac{c^{6}-v^{2}c^{4}}{c^{2}-v^{2}} \\ E^{2}/c^{2}-p^{2} &amp;=c^{2}
+\end{align*}\]
+
+<p>It turns out that $E^{2}/c^{2}-p^{2}$ is independent of $v$ and thus invariant under the change of reference frame. Also, this formula bears a striking resemblance to the spacetime interval. Furthermore, it can be demonstrated that energy and momentum transform in the same way as temporal and spatial coordinates. In fact, it turns out that $(E/c, \vec{p})$ is also a 4-vector - we call it energy-momentum vector. Since we have:</p>
+
+\[\begin{align*}E/c &amp;= \frac{c}{\sqrt{1-v^{2}/c^{2}}} \\ \vec{p} &amp;= \frac{\vec{v}}{\sqrt{1-v^{2}/c^{2}}} \end{align*}\]
+
+<p>it is easily shown that energy-momentum vector is tangential to the trajectory in spacetime:</p>
+
+\[\begin{align*} (E/c, \vec{p}) &amp;\propto (c, \vec{v}) \\ &amp;\propto (cdt, d\vec{x}) \end{align*}\]
+
+<h2 id="path-towards-general-relativity">Path towards General Relativity</h2>
+<p>There’s one caveat concerning all the derivations so far: certain reference frames exist where the principle of stationary action, as we defined it, doesn’t hold true and consequently all the equations which mathematically follow are also invalid. These we call non-inertial reference frames. The distinction between them and inertial frames are just that laws of physics are much simpler in latter. To accomodate the former, we must modify the formula for the length of the spacetime interval. This is indeed done in General Relativity.</p>]]></content><author><name>Uros Stojkovic</name></author><category term="physics" /><summary type="html"><![CDATA[There is no absolute space, and we only conceive of relative motion; and yet in most cases mechanical facts are enunciated as if there is an absolute space to which they can be referred. There is no absolute time. When we say that two periods are equal, the statement has no meaning, and can only acquire a meaning by a convention. Not only have we no direct intuition of the equality of two periods, but we have not even direct intuition of the simultaneity of two events occurring in two different places. I have explained this in an article entitled “Mesure du Temps”. Finally, is not our Euclidean geometry in itself only a kind of convention of language?” - Henri Poincare]]></summary></entry><entry><title type="html">Linear Circuit Solver - part 2</title><link href="http://localhost:4000/posts/linear-circuit-solver-2" rel="alternate" type="text/html" title="Linear Circuit Solver - part 2" /><published>2023-09-29T00:00:00+02:00</published><updated>2023-09-29T00:00:00+02:00</updated><id>http://localhost:4000/posts/Linear-Electric-Circuit-Solver-2</id><content type="html" xml:base="http://localhost:4000/posts/linear-circuit-solver-2"><![CDATA[<h1 id="arbitrary-topologies">Arbitrary topologies</h1>
 <h2 id="pitfalls-of-the-current-solution">Pitfalls of the current solution</h2>
 <p>The methodology discussed in the <a href="/posts/linear-circuit-solver-1">previous part</a> works well for circuits represented as trees of series and parallel connections. However, its applicability is constrained when dealing with more intricate topologies, such as bridge circuits, where components are interconnected in more complex ways. Consequently, its scope is somewhat limited.</p>
 
@@ -62,9 +247,11 @@ I_{v} &amp;= \sum_{e \in E}B_{ve}I_{e}
 
 <h2 id="current-voltage-characteristic">Current-voltage characteristic</h2>
 <p>The central insight lies in viewing circuit elements as linear two-terminal components. Linear two-terminal component is a building block of electrical circuits having only two connection points, or terminals. It exhibits a linear relationship between voltage and current across its terminals, meaning its behavior can be described by linear equations. This perspective is crucial for two reasons. Firstly, it aligns with the nature of simple linear electrical components such as resistors, capacitors, and ideal voltage sources, all of which inherently possess two-terminal characteristics. More complex two-terminal components can be formed by combining primitive elements or other complex components in series or parallel configurations. Effectively, this approach allows us to represent a portion, or at times, an entire circuit, as a tree structure, where inner nodes symbolize series or parallel connections, and leaf nodes represent primitive components.
-Secondly, linear two-terminal components can be precisely characterized by their current-voltage characteristic (CVC), which also exhibit linearity and follows a general form:
-\(aV+bI=c\)
-and thus, can be represented by a tuple $(a, b, c)$. Here, $V$ and $I$ are, in general, complex numbers representing effective voltage and current in either DC or AC mode (in DC mode imaginary part will play no role).</p>
+Secondly, linear two-terminal components can be precisely characterized by their current-voltage characteristic (CVC), which also exhibit linearity and follows a general form:</p>
+
+\[aV+bI=c\]
+
+<p>and thus, can be represented by a tuple $(a, b, c)$. Here, $V$ and $I$ are, in general, complex numbers representing effective voltage and current in either DC or AC mode (in DC mode imaginary part will play no role).</p>
 
 <p>When describing the current-voltage relationship, it’s essential to define a reference direction for both current and voltage, especially when active elements like voltage and current sources are involved. We adhere to a widely accepted rule called passive sign convention. According to this rule, the reference directions for voltage and current should be chosen so that when multiplied together to calculate power, we get a positive number for components that use up energy (like resistors) and a negative number for components that provide energy to the rest of the circuit (like voltage sources).</p>
 
@@ -123,17 +310,21 @@ c &amp;= c_{1} + c_{2}
 
 <p>This elegant relationship implies that both the Thevenin equivalent impedance and voltage are obtained simply by summing the corresponding parameters.</p>
 
-<p>Conversely, in parallel connections, it is voltage that is equal and currents add up. If one of the CVCs takes the form $V = E$, the resulting CVC remains unchanged. However, when one CVC is of the form $I = J$, while the other is of the form $V + b_{1}I = c_{1}$, we find the following relationships:
-\(\begin{align*}
+<p>Conversely, in parallel connections, it is voltage that is equal and currents add up. If one of the CVCs takes the form $V = E$, the resulting CVC remains unchanged. However, when one CVC is of the form $I = J$, while the other is of the form $V + b_{1}I = c_{1}$, we find the following relationships:</p>
+
+\[\begin{align*}
 b &amp;= b_{1}\\
 c &amp;= c_{1} + b_{1}J
-\end{align*}\)
-In the most general case where both CVCs are of the form $V + bI = c$, the following relationships apply:
-\(\begin{align*}
+\end{align*}\]
+
+<p>In the most general case where both CVCs are of the form $V + bI = c$, the following relationships apply:</p>
+
+\[\begin{align*}
 b &amp;= \frac{b_{1}b_{2}}{b_{1}+b_{2}}\\
 c &amp;= \frac{c_{1}b_{2} + c_{2}b_{1}}{b_{1}+b_{2}}
-\end{align*}\)
-It is important to note that both series and parallel circuits can consist of more than two components. In such cases, these formulas are iteratively combined to determine the final CVC. Below, we provide an algorithm for calculating the CVC of a series circuit:</p>
+\end{align*}\]
+
+<p>It is important to note that both series and parallel circuits can consist of more than two components. In such cases, these formulas are iteratively combined to determine the final CVC. Below, we provide an algorithm for calculating the CVC of a series circuit:</p>
 
 <ol>
   <li>Initialize <code class="language-plaintext highlighter-rouge">cvc</code> as $(1, 0, 0)$.</li>
@@ -208,7 +399,7 @@ To manage various circuit components, we’ve established a hierarchy of classes
     <p>We define a matrix $X \in \mathrm{R}^{n\times p}$ to be the matrix whose $i^{th}$ row is a vector of predictor variables for $i^{th}$ sample prepended by 1.</p>
   </li>
   <li>
-    <p>We define a vector $\beta \in \mathrm{R}^{p}$ to be a vector whose $i^{th}$ element is $\beta_{i}$.</p>
+    <p>We define a vector $\beta \in \mathrm{R}^{p}$ to be a vector whose $j^{th}$ element is $\beta_{j-1}$ (first element is $\beta_{0}$).</p>
   </li>
 </ul>
 
@@ -1163,149 +1354,4 @@ If the length of the major axis is equal to $2a$, then we have $l=2a$, and if we
 
 \[\begin{align*}
 \left(\frac{d\rho}{d\theta}\right)^{2}+\rho^{2} &amp;= C\left(2\rho-\frac{1}{a}\right) \\
-\left(\frac{d\rho}{d\theta}\right)^{2}+ (\rho - C)^{2} &amp;= C\left(C-\frac{1}{a}\right)\end{align*}\]]]></content><author><name>Uros Stojkovic</name></author><category term="geometry" /><summary type="html"><![CDATA[Ellipse can be defined in several ways. One of them is to say that an ellipse represents the locus of all points whose sum of distances from two fixed points - foci - is a constant. Here is the derivation of the equation of an ellipse in polar coordinates. If we place the origin of the coordinate system at one of the foci, denote the sum of distances with $l$, the distance between the two foci with $2f$, and use the cosine theorem, we have:]]></summary></entry><entry><title type="html">Kepler’s problem</title><link href="http://localhost:4000/posts/keplers-problem" rel="alternate" type="text/html" title="Kepler’s problem" /><published>2023-07-30T00:00:00+02:00</published><updated>2023-07-30T00:00:00+02:00</updated><id>http://localhost:4000/posts/Keplers-problem</id><content type="html" xml:base="http://localhost:4000/posts/keplers-problem"><![CDATA[<p>Assuming that a gravitational force acts on a material point (oriented towards the origin of coordinate system, inversely proportional to the square of the distance), the acceleration of the material point is given by:</p>
-
-\[\begin{equation*}
-\frac{d^{2}\vec{r}}{dt^{2}} = -G\frac{M}{r^{2}}\hat{r}
-\end{equation*}\]
-
-<p>where $M$ is the mass of the body fixed at the coordinate origin.
-Right-hand side can be written as a gradient:</p>
-
-\[\begin{align*}\hat{r} &amp;= \nabla r\\
--G\frac{M}{r^{2}}\hat{r} &amp;= \nabla \left(\frac{GM}{r}\right)\end{align*}\]
-
-<p>If we project the above equation onto the direction of the tangent and multiply it by the velocity (effectively taking a dot product of both sides with the velocity vector), we get:</p>
-
-\[\begin{align*}\frac{d^{2}\vec{r}}{dt^{2}}\cdot \frac{d\vec{r}}{dt} &amp;= \nabla \left(\frac{GM}{r}\right)\cdot \frac{d\vec{r}}{dt}\\
-\frac{d}{dt}\left(\frac{1}{2}\left(\frac{d\vec{r}}{dt}\cdot \frac{d\vec{r}}{dt}\right) \right) &amp;= \frac{d}{dt}\left(\frac{GM}{r}\right)\\
-\frac{v^{2}}{2}-\frac{GM}{r} &amp;= \text{const.}\end{align*}\]
-
-<p>This represents the conservation of energy.
-On the other hand, if we take a vector product of the above equation with the position vector, the right-hand side of the equation is zero, and we get:</p>
-
-\[\begin{align*}\vec{r}\times\frac{d^{2}\vec{r}}{dt^{2}} &amp;= -\vec{r}\times G\frac{M}{r^{2}}\hat{r}\\
-\frac{d}{dt}\left(\vec{r}\times \frac{d\vec{r}}{dt}\right)-\frac{d\vec{r}}{dt}\times \frac{d\vec{r}}{dt} &amp;= 0\\
-\vec{r}\times \frac{d\vec{r}}{dt} &amp;= \text{const.}\end{align*}\]
-
-<p>This is the conservation of angular momentum. Since we only used the fact that the force field is central to cancel out the right-hand side, this result holds for all central fields, including those that do not follow Newtonian form. From this, we can conclude that during the motion, the material point remains in a plane whose normal is represented by the angular momentum vector. If we now introduce a cylindrical coordinate system whose $z$-axis coincides with the normal to the plane of motion, the above equation becomes:</p>
-
-\[\begin{align*}r\hat{r}\times \left(\dot{r}\hat{r}+r\dot{\theta}\hat{\theta}\right) &amp;= h\hat{z} \\r^{2}\dot{\theta} &amp;= h\end{align*}\]
-
-<p>The product of the square of the distance and the angular velocity, which represents both double sectorial velocity and the moment of momentum, is constant during motion. The law of conservation of energy in cylindrical coordinates is:</p>
-
-\[\begin{equation*}
-\frac{1}{2}\left(\dot{r}^{2}+r^{2}\dot{\theta}^{2}\right)-\frac{GM}{r} = E
-\end{equation*}\]
-
-<p>Using the law of conservation of momentum, we can eliminate the angular velocity from the equation, so we get:</p>
-
-\[\begin{equation*}
-\frac{\dot{r}^{2}}{2} + \underbrace{\frac{h^{2}}{2r^{2}}-\frac{GM}{r}}_{U_{eff}} = E
-\end{equation*}\]
-
-<p>This reduces the problem to a one-dimensional problem with a different potential energy function(see figure). The energy of the material point determines the limits of its motion.</p>
-
-<p><img src="../assets/images/2023-07-30-central-field-dynamics/potential-well.png" alt="Potential well" /></p>
-
-<p>To study the geometry of motion, it is necessary to eliminate time from the equations (i.e. derivatives with respect to time). The radial velocity can be written as:</p>
-
-\[\dot{r}=\frac{dr}{d\theta}\dot{\theta}\]
-
-<p>This is not possible only when the angular velocity is zero, but then the trajectory is trivial - a straight line connecting the material point and the center.</p>
-
-<p>Substituting in the conservation of energy equation, we get:</p>
-
-\[\begin{align*}\frac{1}{2}\left(\left(\frac{dr}{d\theta}\right)^{2}+r^{2}\right)\frac{h^{2}}{r^{4}}-\frac{GM}{r} &amp;= E \\
-\frac{h^{2}}{2}\left(\left(\frac{1}{r^{2}}\frac{dr}{d\theta}\right)^{2}+\frac{1}{r^{2}}\right)-\frac{GM}{r} &amp;= E \\
-\frac{h^{2}}{2}\left ( \left ( \frac{d}{d\theta}\frac{1}{r} \right )^{2}+\frac{1}{r^{2}} \right )-\frac{GM}{r} &amp;= E\end{align*}\]
-
-<p>The last equation provides us with a reason to consider the reciprocal value of the distance and introduce:</p>
-
-\[\begin{equation*}
-\rho = \frac{1}{r}
-\end{equation*}\]
-
-<p>and the equation becomes:</p>
-
-\[\begin{align*}\frac{h^{2}}{2}\left(\left(\frac{d\rho}{d\theta}\right)^{2}+\rho^{2}\right)-GM\rho &amp;= E \\
-\left(\frac{d\rho}{d\theta}\right)^{2}+\rho^{2}-2\frac{GM}{h^{2}}\rho &amp;= \frac{2E}{h^{2}} \\
-\left(\frac{d\rho}{d\theta}\right)^{2}+\left(\rho-\frac{GM}{h^{2}}\right)^{2} &amp;= \frac{1}{h^{2}}\left(2E+\frac{G^{2}M^{2}}{h^{2}}\right)\end{align*}\]
-
-<p>The last equation represents a circle in the coordinate system $\left(\rho, d\rho/d\theta\right)$ with a center at point $\left(GM/h^{2}, 0\right)$. If we put:</p>
-
-\[\begin{equation*}
-\rho-\frac{GM}{h^{2}} = \frac{1}{h}\sqrt{2E+\frac{G^{2}M^{2}}{h^{2}}}\cos{\theta}
-\end{equation*}\]
-
-<p>then it follows:</p>
-
-\[\begin{equation*}
-\frac{d\rho}{d\theta} = -\frac{1}{h}\sqrt{2E+\frac{G^{2}M^{2}}{h^{2}}}\sin{\theta}
-\end{equation*}\]
-
-<p>and the above equation is indeed satisfied. Therefore, one of the possible solutions is:</p>
-
-\[\begin{align*} \rho&amp;=\frac{GM}{h^{2}} + \frac{1}{h}\sqrt{2E+\frac{G^{2}M^{2}}{h^{2}}}\cos{\theta} \\\frac{1}{r} &amp;= \frac{1+\sqrt{\frac{2Eh^{2}}{G^{2}M^{2}}+1}\cos{\theta}}{\frac{h^{2}}{GM}}\end{align*}\]
-
-<p>This is the equation of a conic section (see <a href="/posts/ellipse">this post</a>). We can read off its eccentricity from it:</p>
-
-\[\begin{equation*}
-e = \sqrt{\frac{2Eh^{2}}{G^{2}M^{2}}+1}
-\end{equation*}\]
-
-<p>And indeed, the fraction inside the square root is a dimensionless quantity (all units cancel out). When the energy of the particle is less than zero, the eccentricity is less than one, so the path is an ellipse. When the energy is equal to zero, the path is a parabola, while in the opposite case, it is a hyperbola. In each of these cases, one of the foci lies at the origin of the coordinate system. The length of the longer semiaxis can also be calculated using the well-known expression for an ellipse:</p>
-
-\[\begin{align*}a(1-e^{2}) &amp;= \frac{h^{2}}{GM} \\-a\frac{2Eh^{2}}{G^{2}M^{2}} &amp;= \frac{h^{2}}{GM} \\a &amp;= -\frac{GM}{2E}\end{align*}\]
-
-<p>Recall that we have established that sectorial velocity is a constant, so the period of revolution can be calculated by dividing the area of the ellipse by this value. We obtain:</p>
-
-\[\begin{align*}
-T &amp;= \frac{2\pi ab}{h} \\
-T &amp;= \frac{2\pi a^{2}\sqrt{1-e^2}}{h}\\
-T &amp;= \frac{2\pi a}{h} \sqrt{\frac{ah^{2}}{GM}} \\
-T &amp;= 2\pi \sqrt{\frac{a^{3}}{GM}}
-\end{align*}\]
-
-<h2 id="mechanical-similarity">Mechanical similarity</h2>
-<p>Let us continue with our analysis of Kepler’s problem, i.e. the motion of a material point in a central force field whose intensity is inversely proportional to the square of the distance:</p>
-
-\[\begin{equation*}
-
-\frac{d^{2}\vec{r}}{dt^{2}} = -G\frac{M}{r^{2}}\hat{r}
-
-\end{equation*}\]
-
-<p>As we have seen, this law leads (in certain cases) to a path in the shape of an ellipse. Let there be a trajectory for which the length of the major axis is $a$ meters, and the period of a complete circle is $T$ seconds. If we were to use other units, such that $a$ and $T$ of old units correspond to $\alpha a$ and $\beta T$ of new units, respectively, the above law would become:</p>
-
-\[\begin{equation*}
-
-\alpha \frac{d^{2}\vec{r}}{\beta^{2}dt^{2}} = -G\frac{M}{\alpha^{2} r^{2}}\hat{r}
-
-\end{equation*}\]
-
-<p>Only if:</p>
-
-\[\begin{align*}\frac{\alpha}{\beta^{2}} &amp;= \frac{1}{\alpha^{2}}  \\
-
-\alpha^{3} &amp;= \beta^{2}\end{align*}\]
-
-<p>would the law retain the same form as in natural units<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>. This means that the same numerical solutions would hold for units selected in this way. Therefore, there would also exist a trajectory for which the length of the major axis would be $a$ of the new spatial units, and the period of a complete circle would be $T$ of the new temporal units. In standard units, these values would be $a/\alpha$ and $T/\beta$, respectively, or when the substitution $\beta = \alpha^{3/2}$ is introduced, we obtain pairs of values:</p>
-
-\[\begin{equation*}
-
-\frac{a}{\alpha},\frac{T}{\alpha^{3/2}}
-
-\end{equation*}\]
-
-<p>Since $\alpha$ is arbitrary (it is only important to determine the corresponding $\beta$ that does not change the equations of motion), we can infer the relationship between the period and the length of the major axis - namely the one suggested by the third Kepler’s law.</p>
-
-<p>To provide a rather silly example, say that Earth completes its revolution around the Sun in 1 second tracing an ellipse with major-semiaxis of length 1 meter. It turns out that the governing equation of motion remains unchanged if we instead decide to measure distance and time in centimeters and milliseconds, respectively. Thus, they “allow” existence of another planet which goes around the Sun in 1 ms along the ellipse with major semi-axis of lenght 1 cm.</p>
-
-<div class="footnotes" role="doc-endnotes">
-  <ol>
-    <li id="fn:1" role="doc-endnote">
-      <p>Note that the numerical value of the gravitational constant depends on the units used. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
-    </li>
-  </ol>
-</div>]]></content><author><name>Uros Stojkovic</name></author><summary type="html"><![CDATA[Assuming that a gravitational force acts on a material point (oriented towards the origin of coordinate system, inversely proportional to the square of the distance), the acceleration of the material point is given by:]]></summary></entry></feed>
+\left(\frac{d\rho}{d\theta}\right)^{2}+ (\rho - C)^{2} &amp;= C\left(C-\frac{1}{a}\right)\end{align*}\]]]></content><author><name>Uros Stojkovic</name></author><category term="geometry" /><summary type="html"><![CDATA[Ellipse can be defined in several ways. One of them is to say that an ellipse represents the locus of all points whose sum of distances from two fixed points - foci - is a constant. Here is the derivation of the equation of an ellipse in polar coordinates. If we place the origin of the coordinate system at one of the foci, denote the sum of distances with $l$, the distance between the two foci with $2f$, and use the cosine theorem, we have:]]></summary></entry></feed>

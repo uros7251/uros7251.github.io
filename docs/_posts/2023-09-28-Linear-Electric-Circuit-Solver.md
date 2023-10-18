@@ -15,9 +15,11 @@ In the first part of this blog post, we explore the application of polymorphism,
 ## Current-voltage characteristic
 The central insight lies in viewing circuit elements as linear two-terminal components. Linear two-terminal component is a building block of electrical circuits having only two connection points, or terminals. It exhibits a linear relationship between voltage and current across its terminals, meaning its behavior can be described by linear equations. This perspective is crucial for two reasons. Firstly, it aligns with the nature of simple linear electrical components such as resistors, capacitors, and ideal voltage sources, all of which inherently possess two-terminal characteristics. More complex two-terminal components can be formed by combining primitive elements or other complex components in series or parallel configurations. Effectively, this approach allows us to represent a portion, or at times, an entire circuit, as a tree structure, where inner nodes symbolize series or parallel connections, and leaf nodes represent primitive components.
 Secondly, linear two-terminal components can be precisely characterized by their current-voltage characteristic (CVC), which also exhibit linearity and follows a general form:
+
 $$
 aV+bI=c
 $$
+
 and thus, can be represented by a tuple $(a, b, c)$. Here, $V$ and $I$ are, in general, complex numbers representing effective voltage and current in either DC or AC mode (in DC mode imaginary part will play no role).
 
 When describing the current-voltage relationship, it's essential to define a reference direction for both current and voltage, especially when active elements like voltage and current sources are involved. We adhere to a widely accepted rule called passive sign convention. According to this rule, the reference directions for voltage and current should be chosen so that when multiplied together to calculate power, we get a positive number for components that use up energy (like resistors) and a negative number for components that provide energy to the rest of the circuit (like voltage sources).
@@ -53,15 +55,19 @@ c &= c_{1} + c_{2}
 This elegant relationship implies that both the Thevenin equivalent impedance and voltage are obtained simply by summing the corresponding parameters.
 
 Conversely, in parallel connections, it is voltage that is equal and currents add up. If one of the CVCs takes the form $V = E$, the resulting CVC remains unchanged. However, when one CVC is of the form $I = J$, while the other is of the form $V + b_{1}I = c_{1}$, we find the following relationships:
+
 $$\begin{align*}
 b &= b_{1}\\
 c &= c_{1} + b_{1}J
 \end{align*}$$
+
 In the most general case where both CVCs are of the form $V + bI = c$, the following relationships apply:
+
 $$\begin{align*}
 b &= \frac{b_{1}b_{2}}{b_{1}+b_{2}}\\
 c &= \frac{c_{1}b_{2} + c_{2}b_{1}}{b_{1}+b_{2}}
 \end{align*}$$
+
 It is important to note that both series and parallel circuits can consist of more than two components. In such cases, these formulas are iteratively combined to determine the final CVC. Below, we provide an algorithm for calculating the CVC of a series circuit:
 
 1. Initialize `cvc` as $(1, 0, 0)$.

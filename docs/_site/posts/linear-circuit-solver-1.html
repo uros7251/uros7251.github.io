@@ -153,6 +153,12 @@
 <div itemscope itemtype="https://schema.org/Person" class="h-card">
 
   
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="/assets/images/20231013_190904.jpg" alt="Uros Stojkovic" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
 
   <div class="author__content">
     <h3 class="author__name p-name" itemprop="name">
@@ -308,9 +314,11 @@
 
 <h2 id="current-voltage-characteristic">Current-voltage characteristic</h2>
 <p>The central insight lies in viewing circuit elements as linear two-terminal components. Linear two-terminal component is a building block of electrical circuits having only two connection points, or terminals. It exhibits a linear relationship between voltage and current across its terminals, meaning its behavior can be described by linear equations. This perspective is crucial for two reasons. Firstly, it aligns with the nature of simple linear electrical components such as resistors, capacitors, and ideal voltage sources, all of which inherently possess two-terminal characteristics. More complex two-terminal components can be formed by combining primitive elements or other complex components in series or parallel configurations. Effectively, this approach allows us to represent a portion, or at times, an entire circuit, as a tree structure, where inner nodes symbolize series or parallel connections, and leaf nodes represent primitive components.
-Secondly, linear two-terminal components can be precisely characterized by their current-voltage characteristic (CVC), which also exhibit linearity and follows a general form:
-\(aV+bI=c\)
-and thus, can be represented by a tuple $(a, b, c)$. Here, $V$ and $I$ are, in general, complex numbers representing effective voltage and current in either DC or AC mode (in DC mode imaginary part will play no role).</p>
+Secondly, linear two-terminal components can be precisely characterized by their current-voltage characteristic (CVC), which also exhibit linearity and follows a general form:</p>
+
+\[aV+bI=c\]
+
+<p>and thus, can be represented by a tuple $(a, b, c)$. Here, $V$ and $I$ are, in general, complex numbers representing effective voltage and current in either DC or AC mode (in DC mode imaginary part will play no role).</p>
 
 <p>When describing the current-voltage relationship, it’s essential to define a reference direction for both current and voltage, especially when active elements like voltage and current sources are involved. We adhere to a widely accepted rule called passive sign convention. According to this rule, the reference directions for voltage and current should be chosen so that when multiplied together to calculate power, we get a positive number for components that use up energy (like resistors) and a negative number for components that provide energy to the rest of the circuit (like voltage sources).</p>
 
@@ -369,17 +377,21 @@ c &amp;= c_{1} + c_{2}
 
 <p>This elegant relationship implies that both the Thevenin equivalent impedance and voltage are obtained simply by summing the corresponding parameters.</p>
 
-<p>Conversely, in parallel connections, it is voltage that is equal and currents add up. If one of the CVCs takes the form $V = E$, the resulting CVC remains unchanged. However, when one CVC is of the form $I = J$, while the other is of the form $V + b_{1}I = c_{1}$, we find the following relationships:
-\(\begin{align*}
+<p>Conversely, in parallel connections, it is voltage that is equal and currents add up. If one of the CVCs takes the form $V = E$, the resulting CVC remains unchanged. However, when one CVC is of the form $I = J$, while the other is of the form $V + b_{1}I = c_{1}$, we find the following relationships:</p>
+
+\[\begin{align*}
 b &amp;= b_{1}\\
 c &amp;= c_{1} + b_{1}J
-\end{align*}\)
-In the most general case where both CVCs are of the form $V + bI = c$, the following relationships apply:
-\(\begin{align*}
+\end{align*}\]
+
+<p>In the most general case where both CVCs are of the form $V + bI = c$, the following relationships apply:</p>
+
+\[\begin{align*}
 b &amp;= \frac{b_{1}b_{2}}{b_{1}+b_{2}}\\
 c &amp;= \frac{c_{1}b_{2} + c_{2}b_{1}}{b_{1}+b_{2}}
-\end{align*}\)
-It is important to note that both series and parallel circuits can consist of more than two components. In such cases, these formulas are iteratively combined to determine the final CVC. Below, we provide an algorithm for calculating the CVC of a series circuit:</p>
+\end{align*}\]
+
+<p>It is important to note that both series and parallel circuits can consist of more than two components. In such cases, these formulas are iteratively combined to determine the final CVC. Below, we provide an algorithm for calculating the CVC of a series circuit:</p>
 
 <ol>
   <li>Initialize <code class="language-plaintext highlighter-rouge">cvc</code> as $(1, 0, 0)$.</li>
@@ -510,6 +522,46 @@ To manage various circuit components, we’ve established a hierarchy of classes
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
+        <a href="/posts/relativity" rel="permalink">On the Theory of Relativity
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          47 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+  There is no absolute space, and we    only conceive of relative motion; and yet in most cases mechanical facts are enunciated as if there is an absolute s...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
         <a href="/posts/linear-circuit-solver-2" rel="permalink">Linear Circuit Solver - part 2
 </a>
       
@@ -617,46 +669,6 @@ Orthodox statistics’ pers...</p>
 
 
     <p class="archive__item-excerpt" itemprop="description">One of the building blocks of my linear circuit solver is automatic differentiation which calculates the gradient of the loss function with respect to node v...</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/posts/fourier-analysis" rel="permalink">Fourier series, Fourier transforms and all that
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          63 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">Review of trigonometric identities
-</p>
   </article>
 </div>
 

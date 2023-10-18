@@ -1,0 +1,789 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>On the Theory of Relativity - Uros Stojkovic</title>
+<meta name="description" content="There is no absolute space, and we    only conceive of relative motion; and yet in most cases mechanical facts are enunciated as if there is an absolute space to which they can be referred. There is no absolute time. When we say that two periods are equal, the statement has no meaning, and can only acquire a meaning by a convention. Not only have we no direct intuition of the equality of two periods, but we have not even direct intuition of the simultaneity of two events occurring in two different places. I have explained this in an article entitled “Mesure du Temps”. Finally, is not our Euclidean geometry in itself only a kind of convention of language?” - Henri Poincare">
+
+
+  <meta name="author" content="Uros Stojkovic">
+  
+  <meta property="article:author" content="Uros Stojkovic">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Uros Stojkovic">
+<meta property="og:title" content="On the Theory of Relativity">
+<meta property="og:url" content="http://localhost:4000/posts/relativity">
+
+
+  <meta property="og:description" content="There is no absolute space, and we    only conceive of relative motion; and yet in most cases mechanical facts are enunciated as if there is an absolute space to which they can be referred. There is no absolute time. When we say that two periods are equal, the statement has no meaning, and can only acquire a meaning by a convention. Not only have we no direct intuition of the equality of two periods, but we have not even direct intuition of the simultaneity of two events occurring in two different places. I have explained this in an article entitled “Mesure du Temps”. Finally, is not our Euclidean geometry in itself only a kind of convention of language?” - Henri Poincare">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2023-10-18T00:00:00+02:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/posts/relativity">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Uros Stojkovic",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+  <meta name="google-site-verification" content="VMlYUCCQ1tP-YO1iVa230Fpi8YLFnWPjQZdiWFmrc_g" />
+
+
+  <meta name="msvalidate.01" content="796E42E6193A45A893E19381B8760CE4">
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Uros Stojkovic Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          i don't like infinite sets
+          <span class="site-subtitle">Notes in math and physics</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/posts">Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about">About</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="/assets/images/20231013_190904.jpg" alt="Uros Stojkovic" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Uros Stojkovic</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>Master student of Data Engineering and Analytics at Technical University of Munich</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Munich, Germany</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:uros.stojkovich@outlook.com" rel="nofollow noopener noreferrer me"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/uros7251" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">uros7251</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="On the Theory of Relativity">
+    <meta itemprop="description" content="  There is no absolute space, and we    only conceive of relative motion; and yet in most cases mechanical facts are enunciated as if there is an absolute space to which they can be referred. There is no absolute time. When we say that two periods are equal, the statement has no meaning, and can only acquire a meaning by a convention. Not only have we no direct intuition of the equality of two periods, but we have not even direct intuition of the simultaneity of two events occurring in two different places. I have explained this in an article entitled “Mesure du Temps”. Finally, is not our Euclidean geometry in itself only a kind of convention of language?” - Henri Poincare">
+    <meta itemprop="datePublished" content="2023-10-18T00:00:00+02:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/posts/relativity" class="u-url" itemprop="url">On the Theory of Relativity
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          47 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+        <blockquote>
+  <p><em>There is no absolute space, and we    only conceive of relative motion; and yet in most cases mechanical facts are enunciated as if there is an absolute space to which they can be referred. There is no absolute time. When we say that two periods are equal, the statement has no meaning, and can only acquire a meaning by a convention. Not only have we no direct intuition of the equality of two periods, but we have not even direct intuition of the simultaneity of two events occurring in two different places. I have explained this in an article entitled “Mesure du Temps”. Finally, is not our Euclidean geometry in itself only a kind of convention of language?”</em> - Henri Poincare</p>
+</blockquote>
+
+<p><em>This article is not completed, but is a work in progress. I cannot guarantee that everyting written is true.</em></p>
+
+<h2 id="discussion-of-newtons-laws-and-motivations-for-relativity-theory">Discussion of Newton’s laws and motivations for relativity theory</h2>
+
+<p>Newton was the one who propelled the idea of absolute space and time. However, his laws could only allow one to determine if one is accelerating by experiencing a force in the opposite direction, not if one is moving in uniform rectilinear fashion or is stationary with respect to absolute space.</p>
+
+<p>With the emergence of Maxwell’s theory of electromagnetism, which assumed the existence of the aether (a strong candidate for absolute space), the means to measure one’s state of motion with respect to aether emerged as well. However, after performing several experiments that demonstrated no movement whatsoever, some physicists, notably Poincare, started to consider an idea: that it is a fundamental law of nature that one cannot determine one’s state of motion in any way whatsoever. This is the principle of relativity, later stated by Einstein and used as a starting point for his rewriting of the equations of mechanics.</p>
+
+<p>From this principle, and the postulate about the constancy of the speed of light in all reference frames (which can also be regarded as a convention), one can proceed to derive the transformations between inertial reference frames, time dilation, length contraction, the law for the composition of velocities, etc. This is the way Einstein originally followed in his famous paper in 1905. There is, however, an alternative way to introduce the subject. Although it is somewhat more mathematically involved, it does provide a useful perspective.</p>
+
+<h2 id="concept-of-time">Concept of time</h2>
+
+<p>Before we start the exposition, it is crucial to first consider the concept of time. We are so accustomed to the idea of time that critically analyzing it becomes challenging. What do we mean by time? It would be fair to say that time is nothing but a useful abstraction. First, we must acknowledge that the concept of time requires change - if nothing were changing, we could not perceive the passing of time. Second, when we quantify time, we essentially associate two events - one being the event we want to measure in terms of time and the other being some conveniently chosen reference event. For instance, when you say, “My plane landed at 2 o’clock,” you mean the landing of the plane coincided with your watch showing 2 o’clock. Or when you say something like, “It took me 6 months to finish my Master’s thesis,” you are relating the start and finish of your writing to specific positions of Earth along its orbit around the Sun. Thus, measuring time involves comparisons with the state of some reference physical processes. These processes are typically periodic, such as Earth’s movement around the Sun, oscillations of a pendulum clock, or oscillations of electric and magnetic fields. Time, in this sense, plays a role in physics akin to that of money in economics.</p>
+
+<h2 id="principle-of-stationary-action">Principle of stationary action</h2>
+<p>We would like to start from a variational principle. The motion of a material point can be described by a trajectory in a 4D spacetime coordinate system. One can define a formula for calculating lengths in this coordinate system. It turns out that the metric which is physically meaningful (thus useful) is:</p>
+
+\[ds^{2} = c^{2}dt^{2} - dx^{2}-dy^{2}-dz^{2}\]
+
+<p>Now, consider that during its motion, a material point passes through points A and B in spacetime. Among all possible trajectories, the one that occurs in the physical world has the characteristic that, for it, the following integral attains the maximum value:</p>
+
+\[S = \int_{A}^{B}\sqrt{c^{2}dt^{2} - dx^{2}-dy^{2}-dz^{2}}\]
+
+<p>If we parametrize the trajectory with respect to time ie. define $x(t)$ such that $x(t_{0}) = x_{0},\,x(t_{1}) = x_{1}$, and similarly for $y, z$ we can express it as follows:</p>
+
+\[\begin{align*}
+S &amp;= \int_{t_{0}}^{t_{1}}\sqrt{c^{2}-\dot{x}^{2} - \dot{y}^{2} - \dot{z}^{2}}dt \\ &amp;=\int_{t_{0}}^{t_{1}}\sqrt{c^{2}-v^{2}}dt 
+\end{align*}\]
+
+<p><a href="https://en.wikipedia.org/wiki/Calculus_of_variations">Euler-Lagrange equations</a> corresponding to $x,y,z$ combined yield:</p>
+
+\[\frac{\vec{v}}{\sqrt{c^{2}-v^{2}}} = \frac{\vec{p}}{c} = \text{const.}\]
+
+<p>which corresponds to the conservation of momentum (we know to extract $\vec{p}$ because of units). It also shows that extremal trajectory is a straight line in $x,t$ coordinate system. Another invariant which can be derived from Euler-Lagrange equations is:</p>
+
+\[\begin{align*}
+\sqrt{c^{2}-v^{2}}-\frac{v^{2}}{\sqrt{c^{2}-v^{2}}} &amp;= \text{const.} \\ \frac{c^{2}}{\sqrt{c^{2}-v^{2}}} = \frac{E}{c} &amp;= \text{const.}
+\end{align*}\]
+
+<p>which corresponds to the conservation of kinetic energy (again up to a scale factor $c$). Indeed, for speeds negligible compared to the speed of light, we can expand the expression for energy in terms of $v^{2}/c^{2}$:</p>
+
+\[\begin{align*}
+E &amp;= \frac{c^{2}}{\sqrt{1-v^{2}/c^{2}}} \\ &amp;\approx c^{2}\left ( \frac{1}{\sqrt{1-v^{2}/c^{2}}}\bigg|_{v/c = 0} + \frac{d}{d(v^{2}/c^{2})}\frac{1}{\sqrt{1-v^{2}/c^{2}}}\bigg |_{v/c = 0}\frac{v^{2}}{c^{2}}\right ) \\ &amp;= c^{2} + \frac{v^{2}}{2}
+\end{align*}\]
+
+<p>From here one can infer $v^{2}/2$ is a constant, which is a well-known expression for kinetic energy per unit mass in classical mechanics.</p>
+
+<h2 id="derivation-of-lorentz-transformations-from-invariance">Derivation of Lorentz transformations from invariance</h2>
+<p>In the next part of the exposition, we will confine ourselves to one spatial dimension to simplify and clarify the concepts, although the procedure remains the same for all three dimensions.</p>
+
+<p>We find transformation equations by equivalence of reference frames ie. requiring that the metric is invariant:</p>
+
+\[c^{2}dt^{2} - dx^{2} = c^{2}dt'^{2} - dx'^{2}\]
+
+<p>where $x’, t’$ are space and time coordinates in another inertial reference frame. Since the equation of hyperbola is $y^{2}-x^{2} = \text{const.}$, we can interpret pairs $(dx, cdt)$ and $(dx’, cdt’)$ as points on a single hyperbola. The transformation between reference frames then amounts to moving along the curve.</p>
+
+<p>From analytical geometry it is known that hyperbola  can be parametrized by:</p>
+
+\[\begin{align*}
+x &amp;= A\sinh{\theta}, \\
+y &amp;= A\cosh{\theta}
+\end{align*}\]
+
+<p>for $\theta \in \mathbb{R}$ which follows from the hyperbolic identity:</p>
+
+\[\cosh^{2}{\theta}-\sin^{2}{\theta} = 1.\]
+
+<p>Actually, by using the fact that:</p>
+
+\[\begin{align*}
+\cosh{\theta} &amp;= \cos{i\theta} \\
+\sinh{\theta} &amp;= -i\sin{i\theta}
+\end{align*}\]
+
+<p>and trigonometric identities (just as if the argument was a real number), one can derive analogous identities for hyperbolic functions. Two of them will be important to us:</p>
+
+\[\begin{align*}
+\sinh{(\theta+\phi)} &amp;= \sinh{\theta}\cosh{\phi}+\cosh{\theta}\sinh{\phi} \\ 
+\cosh{(\theta+\phi)} &amp;= \cosh{\theta}\cosh{\phi}+\sinh{\theta}\sinh{\phi}
+\end{align*}\]
+
+<p>Thus, if we introduce a transformation:</p>
+
+\[\begin{bmatrix}
+dx' \\ cdt'
+\end{bmatrix} = \begin{bmatrix}
+\cosh{\phi} &amp; \sinh{\phi} \\
+\sinh{\phi} &amp; \cosh{\phi} 
+\end{bmatrix}\begin{bmatrix}
+dx \\ cdt
+\end{bmatrix}\]
+
+<p>then $(dx’, cdt’)$ is shifted along a hyperbola from $(dx, cdt)$ by $\phi$. Consider that one reference frame is moving with respect to other with speed $v$, that is, we have:</p>
+
+\[\begin{bmatrix}
+0 \\ cdt'
+\end{bmatrix} = \begin{bmatrix}
+\cosh{\phi} &amp; \sinh{\phi} \\
+\sinh{\phi} &amp; \cosh{\phi} 
+\end{bmatrix}\begin{bmatrix}
+vdt \\ cdt
+\end{bmatrix}\]
+
+<p>Taking just the first equation ($v\cosh{\phi} + c\sinh{\phi} = 0$) coupled with the identity $\cosh^{2}{\theta}-\sin^{2}{\theta} = 1$, we get:</p>
+
+\[\begin{align*}
+\cosh{\phi} &amp;= \frac{1}{\sqrt{1-v^{2}/c^{2}}} \\
+\sinh{\phi} &amp;= -\frac{v/c}{\sqrt{1-v^{2}/c^{2}}}
+\end{align*}\]
+
+<p>We finally arrive at Lorentz transformations:</p>
+
+\[\begin{align}
+dx' &amp;= \frac{dx-vdt}{\sqrt{1-v^{2}/c^{2}}} \\
+dt' &amp;= \frac{dt-v/c^{2}\,dx}{\sqrt{1-v^{2}/c^{2}}}
+\end{align}\]
+
+<p>Finally, let us express the parameter $\phi$, commonly referred to as rapidity, in terms of velocity $v$:</p>
+
+\[\begin{align*}
+e^{\phi} &amp;= \cosh{\phi}+\sinh{\phi} \\
+e^{\phi} &amp;= \frac{1-v/c}{\sqrt{1-v^{2}/c^{2}}} \\ e^{\phi} &amp;= \sqrt{\frac{1-v/c}{1+v/c}} \\ \phi &amp;= \frac{1}{2}\log{\frac{1-v/c}{1+v/c}}
+\end{align*}\]
+
+<h2 id="simultaneity">Simultaneity</h2>
+<p>Lorentz transformations have some interesting consequences. The first we will discuss is abolishing the concept of absolute simultaneity between two events, independent of the observer’s frame of reference. Consider two events, seen as simultaneous from the reference frame $S$, yet occuring at different locations ie. $\Delta t = 0, \Delta x \neq 0$. From the Lorentz transformations, we observe that, from the perspective of an observer fixed to reference frame $S’$, these events are not simultaneous, but $\Delta t’ = -v\Delta x/c^{2}$.</p>
+<h2 id="length-contraction">Length contraction</h2>
+<p>Another consequence is the apparent length contraction in the direction of motion. Let us imagine a rigid body moving along $x$ axis with a uniform velocity $v$ with respect to some reference system $S$. In its own frame of reference, denoted as $S’$, fixed with it, the body is stationary. To measure its extension along the $x$ axis from the reference frame $S$, one can record the $x$ coordinate of its endpoints at the <strong>same</strong> time and find the difference. On the other hand, to measure the same length from the reference frame $S’$, the observer can make these recordings at any two time instants and subtract - the measurement will still be valid because the body doesn’t move in this frame. If we denote the length in $S$ as $L$, and the length in $S’$ as $L_{0}$, from Lorentz transformations we get:</p>
+
+\[L = L_{0}\sqrt{1-v^{2}/c^{2}}\]
+
+<p>This result could also be obtained from the invariance of the spacetime interval between the measuring events. Qualitatively, spacetime interval in $S$ is simply a negative length squared, while in $S’$ it has extra component involving the time difference because, for the observer from $S’$, the two measurements are not simultaneous. We have thus $L_{0}^{2} = c\Delta t’^{2} + L^{2}$ which clearly shows that $L$ must be smaller than $L_{0}$. Hence, moving objects appear shorter in the direction of their motion compared to their length in their own reference frame.</p>
+<h2 id="time-dilation">Time dilation</h2>
+<p>Yet another consequence of special relativity is time dilation. Imagine two observers each with a clock, moving uniformly relative to each other. Here, it’s crucial to remember that a ‘clock’ refers to a device housing a physical phenomenon whose state can be measured. Let’s establish reference frames $S$ and $S’$ for these observers respectively. Now, consider two events – two ticks of a clock that’s stationary in $S’$. In $S’$, the spatial distance between these events is zero, and let’s denote time difference by $\Delta t’$. However, in $S$, where the same two events occur with a time difference $\Delta t$, their spatial separation is $v\Delta t$. Lorentz transformations reveal:</p>
+
+\[\begin{align*}
+\Delta t' &amp;= \frac{\Delta t-v^{2}/c^{2}\,\Delta t}{\sqrt{1-v^{2}/c^{2}}} \\ \Delta t' &amp;= \Delta t \sqrt{1-v^{2}/c^{2}}
+\end{align*}\]
+
+<p>Again, the conclusion that $\Delta t’ \leq \Delta t$ can be qualitatively deduced by demanding the invariance of spacetime intervals.</p>
+
+<p>Crucially, it’s important to note that this result doesn’t imply that time passes slower in $S’$ than in $S$. There exists a perfect symmetry between $S$ and $S’$. It simply means that, from the perspective of an observer fixed in $S$, the clock stationary in $S’$ appears to tick slower, and vice versa. In simpler terms, the progression of the same physical process seems to slow down (takes more time) when it’s in motion relative to the observer compared to when it’s stationary. However, as emphasized, the terms ‘slower’ or ‘faster’ are always relative and require a specified reference frame to be meaningful.</p>
+<h2 id="velocity-addition-formula">Velocity-addition formula</h2>
+<p>Lorentz transformations also influence the way velocities combine. Let’s consider two reference frames, $S$ and $S’$, where the latter moves with velocity $v$ relative to the former. Now, envision a material point moving with velocity $u’$ relative to $S’$. What is its velocity $u$ relative to $S$?</p>
+
+\[\begin{align*}
+u &amp;= \frac{dx}{dt} \\ &amp;= \frac{dx'+vdt'}{dt' + v/c^{2}\,dx'} \\ &amp;= \frac{u'dt'+vdt'}{dt' + v/c^{2}\,u'dt'} \\ u &amp;= \frac{u'+v}{1+u'v/c^{2}}
+\end{align*}\]
+
+<p>Thus, simply adding velocities is a valid approximation only for speeds significantly smaller than the speed of light.</p>
+<h2 id="causality">Causality</h2>
+<p>We have established that absolute simultaneity is non-existent and, generally, observers moving relative to each other measure different time intervals between two events. Lorentz transformations also allow for different event orders in different reference frames. However, if event A causally triggers event B, A must occur before B in all reference frames; otherwise, the concept of causality conflicts with relativity. Let the spacetime interval between $A$ and $B$ be $(\Delta x, \Delta t)$ and $(\Delta x’, \Delta t’)$ from $S$ and $S’$, respectively, and let $u$ be the velocity of propagation of the causal affection. We have then:</p>
+
+\[\begin{align*}
+\Delta t' &amp;= \frac{\Delta t - v/c^{2}\,\Delta x}{\sqrt{1-v^{2}/c^{2}}} \\ &amp;= \Delta t \frac{1-uv/c^{2}}{\sqrt{1-v^{2}/c^{2}}}
+\end{align*}\]
+
+<p>Since both $\Delta t$ and $\Delta t’$ must be positive (in both frames $A$ happened before $B$), it follows that:</p>
+
+\[uv &lt; c^{2}\]
+
+<p>Since the theory of relativity doesn’t allow for speeds greater than $c$, ie. $v &lt; c$, it follows that the velocity of signal’s propagation has to be at most $c$ as well. If it weren’t, ie. if $u &gt; c$, then we could imagine a frame of reference moving with a velocity $v = c^{2}/u &lt; c$, where the cause and effect would change order. Thus, the theory of relativity requires that the propagation of causal effect doesn’t surpass $c$.</p>
+
+<h2 id="four-vectors">Four-vectors</h2>
+<p>We saw how we can specify each event by 1 temporal and 3 spatial coordinates. We can write it compactly as a 4-tuple $(t, x, y, z)$ or more compactly $(t, \vec{x})$. We also defined a measure of distance between two tuples representing events to be the spacetime interval. Such 4-tuples are called 4-vectors.</p>
+
+<p>Looking back at the formulas for energy and momentum we derived, it is interesting to note the relationship between them:</p>
+
+\[\begin{align*}
+E^{2}-p^{2}c^{2} &amp;= \frac{c^{6}-v^{2}c^{4}}{c^{2}-v^{2}} \\ E^{2}/c^{2}-p^{2} &amp;=c^{2}
+\end{align*}\]
+
+<p>It turns out that $E^{2}/c^{2}-p^{2}$ is independent of $v$ and thus invariant under the change of reference frame. Also, this formula bears a striking resemblance to the spacetime interval. Furthermore, it can be demonstrated that energy and momentum transform in the same way as temporal and spatial coordinates. In fact, it turns out that $(E/c, \vec{p})$ is also a 4-vector - we call it energy-momentum vector. Since we have:</p>
+
+\[\begin{align*}E/c &amp;= \frac{c}{\sqrt{1-v^{2}/c^{2}}} \\ \vec{p} &amp;= \frac{\vec{v}}{\sqrt{1-v^{2}/c^{2}}} \end{align*}\]
+
+<p>it is easily shown that energy-momentum vector is tangential to the trajectory in spacetime:</p>
+
+\[\begin{align*} (E/c, \vec{p}) &amp;\propto (c, \vec{v}) \\ &amp;\propto (cdt, d\vec{x}) \end{align*}\]
+
+<h2 id="path-towards-general-relativity">Path towards General Relativity</h2>
+<p>There’s one caveat concerning all the derivations so far: certain reference frames exist where the principle of stationary action, as we defined it, doesn’t hold true and consequently all the equations which mathematically follow are also invalid. These we call non-inertial reference frames. The distinction between them and inertial frames are just that laws of physics are much simpler in latter. To accomodate the former, we must modify the formula for the length of the spacetime interval. This is indeed done in General Relativity.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#physics" class="page__taxonomy-item p-category" rel="tag">physics</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2023-10-18T00:00:00+02:00">October 18, 2023</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=On+the+Theory+of+Relativity%20http%3A%2F%2Flocalhost%3A4000%2Fposts%2Frelativity" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fposts%2Frelativity" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2Frelativity" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/posts/linear-circuit-solver-2" class="pagination--pager" title="Linear Circuit Solver - part 2
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">You may also enjoy</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/linear-circuit-solver-2" rel="permalink">Linear Circuit Solver - part 2
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          17 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Arbitrary topologies
+Pitfalls of the current solution
+The methodology discussed in the previous part works well for circuits represented as trees of series a...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/linear-circuit-solver-1" rel="permalink">Linear Circuit Solver part 1
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          27 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Simple topologies
+Intro
+The classical methods for circuit analysis, commonly taught in introductory electrical engineering courses, traditionally involve tra...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/linear-regression" rel="permalink">Linear regression
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          21 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">This post builds upon an earlier post about Chi-squared and Student distribution. You might want to check it out before proceeding.
+Orthodox statistics’ pers...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/posts/backprop-complex-numbers" rel="permalink">Backprop with complex numbers
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          14 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">One of the building blocks of my linear circuit solver is automatic differentiation which calculates the gradient of the loss function with respect to node v...</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$']]
+        }
+      };
+    </script>
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2023 Uros Stojkovic. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

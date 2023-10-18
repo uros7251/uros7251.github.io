@@ -64,4 +64,10 @@ var store = [{
         "tags": [],
         "url": "/posts/linear-circuit-solver-2",
         "teaser": null
+      },{
+        "title": "On the Theory of Relativity",
+        "excerpt":"There is no absolute space, and we only conceive of relative motion; and yet in most cases mechanical facts are enunciated as if there is an absolute space to which they can be referred. There is no absolute time. When we say that two periods are equal, the statement has...","categories": ["physics"],
+        "tags": [],
+        "url": "/posts/relativity",
+        "teaser": null
       }]

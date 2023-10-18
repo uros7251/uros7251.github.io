@@ -10,16 +10,19 @@ Notes in mathematics and physics. More to come.
  - [Normal distribution and its derivatives](/posts/normal-dist-and-its-derivatives)
  - [Linear regression](/posts/linear-regression)
 
-## Classical Mechanics
- - [Frenet formulas](/posts/frenet-formulas)
- - [Kepler's problem](/posts/keplers-problem)
+## Analysis
+ - [Fourier series, Fourier transform and all that](/posts/fourier-analysis)
+ - [Backprop with complex numbers](/posts/backprop-complex-numbers)
 
 ## Geometry
  - [Ellipse](/posts/ellipse)
 
-## Analysis
- - [Fourier series, Fourier transform and all that](/posts/fourier-analysis)
- - [Backprop with complex numbers](/posts/backprop-complex-numbers)
+## Classical Mechanics
+ - [Frenet formulas](/posts/frenet-formulas)
+ - [Kepler's problem](/posts/keplers-problem)
+
+## Modern Physics
+ - [On the Theory of Relativity](/posts/relativity)
 
 ## Electrical Engineering
  - [Linear circuit solver, part 1](/posts/linear-circuit-solver-1)
