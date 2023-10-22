@@ -4,6 +4,8 @@ date:   2023-08-01
 permalink: posts/fourier-analysis
 ---
 
+*This post grew out of the explanation I had once prepared for my friend. He didn't find it very clear, but maybe you will. Feel free to skip to the [second section](#fourier-series) if you are comfortable with basic trigonometric identities.*
+
 ## Review of trigonometric identities
 
 Let's start by deriving a couple of trigonometric identities that will be of crucial use to us. The most beautiful thing about trigonometry is that everything can be reduced to triangles and simple Euclidean geometry. Let's first consider the mean value of the cosine of two angles:
@@ -84,7 +86,7 @@ $$f(t) = \frac{A_{0}}{2} + \sum_{n = 1}^{\infty} A_{n}\cos{\omega_{n}t} + B_{n} 
 
 This form is called the Fourier series. The basic problem consists in determining the coefficients $A_{n}$ and $B_{n}$. For this purpose, the specificity of integrating the product of sine and cosine along one period is used. Let's look at the integral first:
 
-$$\begin{align*}&\int_{-T/2}^{T/2}\cos{\left ( \frac{2\pi it}{T} \right )}\cos{\left ( \frac {2\pi jt}{T} \right )}\, dt \\ \frac{1}{2}&\int_{-T/2}^{T/2} \left [ \cos{\left ( \frac{2\pi (i+j)t}{T} \right )}+\cos{\left ( \frac{2\pi (i-j)t}{T} \right )}\right ]\, dt\end{align*}$$
+$$\begin{align*}&\int_{-T/2}^{T/2}\cos{\left ( \frac{2\pi it}{T} \right )}\cos{\left ( \frac {2\pi jt}{T} \right )}\, dt = \\ \frac{1}{2}&\int_{-T/2}^{T/2} \left [ \cos{\left ( \frac{2\pi (i+j)t}{T} \right )}+\cos{\left ( \frac{2\pi (i-j)t}{T} \right )}\right ]\, dt\end{align*}$$
 
 for positive numbers $i,\,j$.
 
@@ -122,7 +124,7 @@ Often, the frequency is taken instead of the circular frequency This ends the st
 
 ## Fourier transform
 
-The Fourier transform can be seen as a formula for determining the spectrum of arbitrary functions, including non-periodic ones, relying on the assumption that non-periodic functions can be represented as the limit value of periodic ones with a period tending to infinity. Given that frequency and period are inversely proportional, it is true that the fundamental frequency tends to zero. This means that the spectrum will become more and more dense with the growth of the period and in the limiting case it will tend towards the continuum (although it will never really be a continuum just as the infinitesimal never reaches zero, the essence is a limiting process). Accordingly, from now on we will talk about the spectral density so that the infinitesimal frequency interval around $\omega$ has the weight $\hat{f}_{\omega}(\omega)d\omega$. Therefore, converting the sum into a Riemann integral, we write the function as:
+The Fourier transform can be seen as a formula for determining the spectrum of arbitrary functions, including non-periodic ones, relying on the assumption that non-periodic functions can be represented as the limit value of periodic ones with a period tending to infinity. Given that frequency and period are inversely proportional, the fundamental frequency tends to zero. This means that the spectrum will become more and more dense with the growth of the period and in the limiting case it will tend towards the continuum (although it will never really be a continuum just as the infinitesimal never reaches zero, the essence is a limiting process). Accordingly, from now on we will talk about the spectral density so that the infinitesimal frequency interval around $\omega$ has the weight $\hat{f}_{\omega}(\omega)d\omega$. Therefore, converting the sum into a Riemann integral, we write the function as:
 
 $$f(t) = \int_{-\infty}^{\infty}\hat{f}_{\omega}(\omega)e^{i\omega t}d\omega$$
 

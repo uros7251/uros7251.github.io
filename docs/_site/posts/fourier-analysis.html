@@ -10,7 +10,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>Fourier series, Fourier transforms and all that - Uros Stojkovic</title>
-<meta name="description" content="Review of trigonometric identities">
+<meta name="description" content="This post grew out of the explanation I had once prepared for my friend. He didn’t find it very clear, but maybe you will. Feel free to skip to the second section if you are comfortable with basic trigonometric identities.">
 
 
   <meta name="author" content="Uros Stojkovic">
@@ -26,7 +26,7 @@
 <meta property="og:url" content="http://localhost:4000/posts/fourier-analysis">
 
 
-  <meta property="og:description" content="Review of trigonometric identities">
+  <meta property="og:description" content="This post grew out of the explanation I had once prepared for my friend. He didn’t find it very clear, but maybe you will. Feel free to skip to the second section if you are comfortable with basic trigonometric identities.">
 
 
 
@@ -116,8 +116,10 @@
     <div class="masthead__menu">
       <nav id="site-nav" class="greedy-nav">
         
+          <a class="site-logo" href="/"><img src="/assets/images/icons8-physics-50.png" alt="I don't like infinite sets"></a>
+        
         <a class="site-title" href="/">
-          i don't like infinite sets
+          I don't like infinite sets
           <span class="site-subtitle">Notes in math and physics</span>
         </a>
         <ul class="visible-links"><li class="masthead__menu-item">
@@ -125,6 +127,11 @@
             </li><li class="masthead__menu-item">
               <a href="/about">About</a>
             </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
         
         <button class="greedy-nav__toggle hidden" type="button">
           <span class="visually-hidden">Toggle menu</span>
@@ -155,7 +162,7 @@
   
     <div class="author__avatar">
       <a href="http://localhost:4000/">
-        <img src="/assets/images/20231013_190904.jpg" alt="Uros Stojkovic" itemprop="image" class="u-photo">
+        <img src="/assets/images/profile-pic.jpg" alt="Uros Stojkovic" itemprop="image" class="u-photo">
       </a>
     </div>
   
@@ -267,7 +274,7 @@
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="Fourier series, Fourier transforms and all that">
-    <meta itemprop="description" content="Review of trigonometric identities">
+    <meta itemprop="description" content="This post grew out of the explanation I had once prepared for my friend. He didn’t find it very clear, but maybe you will. Feel free to skip to the second section if you are comfortable with basic trigonometric identities.">
     <meta itemprop="datePublished" content="2023-08-01T00:00:00+02:00">
     
 
@@ -292,7 +299,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          63 minute read
+          64 minute read
         
       </span>
     
@@ -304,7 +311,9 @@
 
       <section class="page__content e-content" itemprop="text">
         
-        <h2 id="review-of-trigonometric-identities">Review of trigonometric identities</h2>
+        <p><em>This post grew out of the explanation I had once prepared for my friend. He didn’t find it very clear, but maybe you will. Feel free to skip to the <a href="#fourier-series">second section</a> if you are comfortable with basic trigonometric identities.</em></p>
+
+<h2 id="review-of-trigonometric-identities">Review of trigonometric identities</h2>
 
 <p>Let’s start by deriving a couple of trigonometric identities that will be of crucial use to us. The most beautiful thing about trigonometry is that everything can be reduced to triangles and simple Euclidean geometry. Let’s first consider the mean value of the cosine of two angles:</p>
 
@@ -384,7 +393,7 @@
 
 <p>This form is called the Fourier series. The basic problem consists in determining the coefficients $A_{n}$ and $B_{n}$. For this purpose, the specificity of integrating the product of sine and cosine along one period is used. Let’s look at the integral first:</p>
 
-\[\begin{align*}&amp;\int_{-T/2}^{T/2}\cos{\left ( \frac{2\pi it}{T} \right )}\cos{\left ( \frac {2\pi jt}{T} \right )}\, dt \\ \frac{1}{2}&amp;\int_{-T/2}^{T/2} \left [ \cos{\left ( \frac{2\pi (i+j)t}{T} \right )}+\cos{\left ( \frac{2\pi (i-j)t}{T} \right )}\right ]\, dt\end{align*}\]
+\[\begin{align*}&amp;\int_{-T/2}^{T/2}\cos{\left ( \frac{2\pi it}{T} \right )}\cos{\left ( \frac {2\pi jt}{T} \right )}\, dt = \\ \frac{1}{2}&amp;\int_{-T/2}^{T/2} \left [ \cos{\left ( \frac{2\pi (i+j)t}{T} \right )}+\cos{\left ( \frac{2\pi (i-j)t}{T} \right )}\right ]\, dt\end{align*}\]
 
 <p>for positive numbers $i,\,j$.</p>
 
@@ -422,7 +431,7 @@
 
 <h2 id="fourier-transform">Fourier transform</h2>
 
-<p>The Fourier transform can be seen as a formula for determining the spectrum of arbitrary functions, including non-periodic ones, relying on the assumption that non-periodic functions can be represented as the limit value of periodic ones with a period tending to infinity. Given that frequency and period are inversely proportional, it is true that the fundamental frequency tends to zero. This means that the spectrum will become more and more dense with the growth of the period and in the limiting case it will tend towards the continuum (although it will never really be a continuum just as the infinitesimal never reaches zero, the essence is a limiting process). Accordingly, from now on we will talk about the spectral density so that the infinitesimal frequency interval around $\omega$ has the weight $\hat{f}_{\omega}(\omega)d\omega$. Therefore, converting the sum into a Riemann integral, we write the function as:</p>
+<p>The Fourier transform can be seen as a formula for determining the spectrum of arbitrary functions, including non-periodic ones, relying on the assumption that non-periodic functions can be represented as the limit value of periodic ones with a period tending to infinity. Given that frequency and period are inversely proportional, the fundamental frequency tends to zero. This means that the spectrum will become more and more dense with the growth of the period and in the limiting case it will tend towards the continuum (although it will never really be a continuum just as the infinitesimal never reaches zero, the essence is a limiting process). Accordingly, from now on we will talk about the spectral density so that the infinitesimal frequency interval around $\omega$ has the weight $\hat{f}_{\omega}(\omega)d\omega$. Therefore, converting the sum into a Riemann integral, we write the function as:</p>
 
 \[f(t) = \int_{-\infty}^{\infty}\hat{f}_{\omega}(\omega)e^{i\omega t}d\omega\]
 
@@ -648,7 +657,7 @@ N, &amp; i=j \\
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          47 minute read
+          48 minute read
         
       </span>
     
@@ -688,7 +697,7 @@ N, &amp; i=j \\
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          17 minute read
+          18 minute read
         
       </span>
     
@@ -792,6 +801,17 @@ Orthodox statistics’ pers...</p>
     </div>
 
     
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
 
     <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>
@@ -845,6 +865,10 @@ Orthodox statistics’ pers...</p>
 
 
 
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
 
 
 

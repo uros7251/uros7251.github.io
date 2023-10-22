@@ -116,8 +116,10 @@
     <div class="masthead__menu">
       <nav id="site-nav" class="greedy-nav">
         
+          <a class="site-logo" href="/"><img src="/assets/images/icons8-physics-50.png" alt="I don't like infinite sets"></a>
+        
         <a class="site-title" href="/">
-          i don't like infinite sets
+          I don't like infinite sets
           <span class="site-subtitle">Notes in math and physics</span>
         </a>
         <ul class="visible-links"><li class="masthead__menu-item">
@@ -125,6 +127,11 @@
             </li><li class="masthead__menu-item">
               <a href="/about">About</a>
             </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
         
         <button class="greedy-nav__toggle hidden" type="button">
           <span class="visually-hidden">Toggle menu</span>
@@ -155,7 +162,7 @@
   
     <div class="author__avatar">
       <a href="http://localhost:4000/">
-        <img src="/assets/images/20231013_190904.jpg" alt="Uros Stojkovic" itemprop="image" class="u-photo">
+        <img src="/assets/images/profile-pic.jpg" alt="Uros Stojkovic" itemprop="image" class="u-photo">
       </a>
     </div>
   
@@ -292,7 +299,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          47 minute read
+          49 minute read
         
       </span>
     
@@ -341,7 +348,7 @@ S &amp;= \int_{t_{0}}^{t_{1}}\sqrt{c^{2}-\dot{x}^{2} - \dot{y}^{2} - \dot{z}^{2}
 
 \[\frac{\vec{v}}{\sqrt{c^{2}-v^{2}}} = \frac{\vec{p}}{c} = \text{const.}\]
 
-<p>which corresponds to the conservation of momentum (we know to extract $\vec{p}$ because of units). It also shows that extremal trajectory is a straight line in $x,t$ coordinate system. Another invariant which can be derived from Euler-Lagrange equations is:</p>
+<p>which corresponds to the conservation of momentum (we know to extract $\vec{p}$ because of units). The above equation clearly shows that the extremal trajectory is a straight line in $x,t$ coordinate system, but it also illustrates that inertia of a body is not a constant, but depends on its speed. Another invariant which can be derived from Euler-Lagrange equations is:</p>
 
 \[\begin{align*}
 \sqrt{c^{2}-v^{2}}-\frac{v^{2}}{\sqrt{c^{2}-v^{2}}} &amp;= \text{const.} \\ \frac{c^{2}}{\sqrt{c^{2}-v^{2}}} = \frac{E}{c} &amp;= \text{const.}
@@ -433,7 +440,7 @@ e^{\phi} &amp;= \frac{1-v/c}{\sqrt{1-v^{2}/c^{2}}} \\ e^{\phi} &amp;= \sqrt{\fra
 \end{align*}\]
 
 <h2 id="simultaneity">Simultaneity</h2>
-<p>Lorentz transformations have some interesting consequences. The first we will discuss is abolishing the concept of absolute simultaneity between two events, independent of the observer’s frame of reference. Consider two events, seen as simultaneous from the reference frame $S$, yet occuring at different locations ie. $\Delta t = 0, \Delta x \neq 0$. From the Lorentz transformations, we observe that, from the perspective of an observer fixed to reference frame $S’$, these events are not simultaneous, but $\Delta t’ = -v\Delta x/c^{2}$.</p>
+<p>Lorentz transformations have some interesting consequences. The first we will discuss is abolishing the concept of absolute simultaneity between two events, independent of the observer’s frame of reference. Consider two events, seen as simultaneous from the reference frame $S$, yet occuring at different locations ie. $\Delta t = 0, \Delta x \neq 0$. From the Lorentz transformations, we observe that, from the perspective of an observer fixed to reference frame $S’$, these events are not simultaneous, but $\Delta t’ = -\gamma v\Delta x/c^{2}$.</p>
 <h2 id="length-contraction">Length contraction</h2>
 <p>Another consequence is the apparent length contraction in the direction of motion. Let us imagine a rigid body moving along $x$ axis with a uniform velocity $v$ with respect to some reference system $S$. In its own frame of reference, denoted as $S’$, fixed with it, the body is stationary. To measure its extension along the $x$ axis from the reference frame $S$, one can record the $x$ coordinate of its endpoints at the <strong>same</strong> time and find the difference. On the other hand, to measure the same length from the reference frame $S’$, the observer can make these recordings at any two time instants and subtract - the measurement will still be valid because the body doesn’t move in this frame. If we denote the length in $S$ as $L$, and the length in $S’$ as $L_{0}$, from Lorentz transformations we get:</p>
 
@@ -488,8 +495,10 @@ E^{2}-p^{2}c^{2} &amp;= \frac{c^{6}-v^{2}c^{4}}{c^{2}-v^{2}} \\ E^{2}/c^{2}-p^{2
 
 \[\begin{align*} (E/c, \vec{p}) &amp;\propto (c, \vec{v}) \\ &amp;\propto (cdt, d\vec{x}) \end{align*}\]
 
+<p>Another set of physical quantities that transform like 4-vectors are electric potential and magnetic vector potential combined into a single tuple. In this form, it’s called electromagnetic four-potential.</p>
+
 <h2 id="path-towards-general-relativity">Path towards General Relativity</h2>
-<p>There’s one caveat concerning all the derivations so far: certain reference frames exist where the principle of stationary action, as we defined it, doesn’t hold true and consequently all the equations which mathematically follow are also invalid. These we call non-inertial reference frames. The distinction between them and inertial frames are just that laws of physics are much simpler in latter. To accomodate the former, we must modify the formula for the length of the spacetime interval. This is indeed done in General Relativity.</p>
+<p>There’s one caveat concerning all the derivations so far: certain reference frames exist where the principle of stationary action, as we defined it, doesn’t hold true and consequently all the equations which mathematically follow are also invalid. These we call non-inertial reference frames. The distinction between them and inertial frames are just that laws of physics are much simpler in latter. To accomodate the former, we must modify the formula for the length of the spacetime interval. This is indeed done in General Relativity. The resulting preferred trajectory is then no longer a straight line in spacetime ie. uniform rectilinear motion, but some curve.</p>
 
         
       </section>
@@ -582,7 +591,7 @@ E^{2}-p^{2}c^{2} &amp;= \frac{c^{6}-v^{2}c^{4}}{c^{2}-v^{2}} \\ E^{2}/c^{2}-p^{2
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          17 minute read
+          18 minute read
         
       </span>
     
@@ -725,6 +734,17 @@ Orthodox statistics’ pers...</p>
     </div>
 
     
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
 
     <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>
@@ -778,6 +798,10 @@ Orthodox statistics’ pers...</p>
 
 
 
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
 
 
 

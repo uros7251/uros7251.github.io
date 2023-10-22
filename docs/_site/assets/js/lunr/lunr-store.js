@@ -36,7 +36,7 @@ var store = [{
         "teaser": null
       },{
         "title": "Fourier series, Fourier transforms and all that",
-        "excerpt":"Review of trigonometric identities Let’s start by deriving a couple of trigonometric identities that will be of crucial use to us. The most beautiful thing about trigonometry is that everything can be reduced to triangles and simple Euclidean geometry. Let’s first consider the mean value of the cosine of two...","categories": [],
+        "excerpt":"This post grew out of the explanation I had once prepared for my friend. He didn’t find it very clear, but maybe you will. Feel free to skip to the second section if you are comfortable with basic trigonometric identities. Review of trigonometric identities Let’s start by deriving a couple...","categories": [],
         "tags": [],
         "url": "/posts/fourier-analysis",
         "teaser": null

@@ -55,3 +55,7 @@ While our approach offers a robust framework for circuit analysis, there are a f
 - **Ideal Voltage Sources**: In instances where a branch comprises solely an ideal voltage source, a unique constraint is introduced. Such a source imposes a specific relationship between the voltages at its terminal nodes. Consequently, it becomes less preferable to consider these voltages independently. Additionally, since the branch contains only an ideal voltage source, the current flowing through it remains undefined. As a result, we treat this current as a new parameter to be determined within the analysis. Thus, overall, the count of parameters we optimize over remains unchanged.
 
 Again, complete implementation in Python can be found [here](https://github.com/uros7251/PyCircuitSolver).
+
+---
+
+*If you found these two texts interesting and you are proficient in front-end technologies, please contact me for a joint project proposal.*

@@ -40,7 +40,7 @@ S &= \int_{t_{0}}^{t_{1}}\sqrt{c^{2}-\dot{x}^{2} - \dot{y}^{2} - \dot{z}^{2}}dt 
 
 $$\frac{\vec{v}}{\sqrt{c^{2}-v^{2}}} = \frac{\vec{p}}{c} = \text{const.}$$
 
-which corresponds to the conservation of momentum (we know to extract $\vec{p}$ because of units). It also shows that extremal trajectory is a straight line in $x,t$ coordinate system. Another invariant which can be derived from Euler-Lagrange equations is:
+which corresponds to the conservation of momentum (we know to extract $\vec{p}$ because of units). The above equation clearly shows that the extremal trajectory is a straight line in $x,t$ coordinate system, but it also illustrates that inertia of a body is not a constant, but depends on its speed. Another invariant which can be derived from Euler-Lagrange equations is:
 
 $$\begin{align*}
 \sqrt{c^{2}-v^{2}}-\frac{v^{2}}{\sqrt{c^{2}-v^{2}}} &= \text{const.} \\ \frac{c^{2}}{\sqrt{c^{2}-v^{2}}} = \frac{E}{c} &= \text{const.}
@@ -132,7 +132,7 @@ e^{\phi} &= \frac{1-v/c}{\sqrt{1-v^{2}/c^{2}}} \\ e^{\phi} &= \sqrt{\frac{1-v/c}
 \end{align*}$$
 
 ## Simultaneity
-Lorentz transformations have some interesting consequences. The first we will discuss is abolishing the concept of absolute simultaneity between two events, independent of the observer's frame of reference. Consider two events, seen as simultaneous from the reference frame $S$, yet occuring at different locations ie. $\Delta t = 0, \Delta x \neq 0$. From the Lorentz transformations, we observe that, from the perspective of an observer fixed to reference frame $S'$, these events are not simultaneous, but $\Delta t' = -v\Delta x/c^{2}$.
+Lorentz transformations have some interesting consequences. The first we will discuss is abolishing the concept of absolute simultaneity between two events, independent of the observer's frame of reference. Consider two events, seen as simultaneous from the reference frame $S$, yet occuring at different locations ie. $\Delta t = 0, \Delta x \neq 0$. From the Lorentz transformations, we observe that, from the perspective of an observer fixed to reference frame $S'$, these events are not simultaneous, but $\Delta t' = -\gamma v\Delta x/c^{2}$.
 ## Length contraction
 Another consequence is the apparent length contraction in the direction of motion. Let us imagine a rigid body moving along $x$ axis with a uniform velocity $v$ with respect to some reference system $S$. In its own frame of reference, denoted as $S'$, fixed with it, the body is stationary. To measure its extension along the $x$ axis from the reference frame $S$, one can record the $x$ coordinate of its endpoints at the **same** time and find the difference. On the other hand, to measure the same length from the reference frame $S'$, the observer can make these recordings at any two time instants and subtract - the measurement will still be valid because the body doesn't move in this frame. If we denote the length in $S$ as $L$, and the length in $S'$ as $L_{0}$, from Lorentz transformations we get:
 
@@ -187,5 +187,7 @@ it is easily shown that energy-momentum vector is tangential to the trajectory i
 
 $$\begin{align*} (E/c, \vec{p}) &\propto (c, \vec{v}) \\ &\propto (cdt, d\vec{x}) \end{align*}$$
 
+Another set of physical quantities that transform like 4-vectors are electric potential and magnetic vector potential combined into a single tuple. In this form, it's called electromagnetic four-potential.
+
 ## Path towards General Relativity
-There's one caveat concerning all the derivations so far: certain reference frames exist where the principle of stationary action, as we defined it, doesn't hold true and consequently all the equations which mathematically follow are also invalid. These we call non-inertial reference frames. The distinction between them and inertial frames are just that laws of physics are much simpler in latter. To accomodate the former, we must modify the formula for the length of the spacetime interval. This is indeed done in General Relativity.
+There's one caveat concerning all the derivations so far: certain reference frames exist where the principle of stationary action, as we defined it, doesn't hold true and consequently all the equations which mathematically follow are also invalid. These we call non-inertial reference frames. The distinction between them and inertial frames are just that laws of physics are much simpler in latter. To accomodate the former, we must modify the formula for the length of the spacetime interval. This is indeed done in General Relativity. The resulting preferred trajectory is then no longer a straight line in spacetime ie. uniform rectilinear motion, but some curve. 
