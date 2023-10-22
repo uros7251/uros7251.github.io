@@ -53,7 +53,7 @@ var store = [{
         "url": "/posts/linear-regression",
         "teaser": null
       },{
-        "title": "Linear Circuit Solver part 1",
+        "title": "Linear Circuit Solver - part 1",
         "excerpt":"Simple topologies Intro The classical methods for circuit analysis, commonly taught in introductory electrical engineering courses, traditionally involve transforming the original system of differential equations into a system of algebraic equations. These equations are typically solved using methods such as Gaussian elimination or numerical optimization. Two well-known techniques are nodal...","categories": ["electrical_engineering"],
         "tags": [],
         "url": "/posts/linear-circuit-solver-1",
