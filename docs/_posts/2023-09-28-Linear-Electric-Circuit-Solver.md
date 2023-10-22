@@ -1,5 +1,5 @@
 ---
-title:  "Linear Circuit Solver part 1"
+title:  "Linear Circuit Solver - part 1"
 date:   2023-09-28
 categories: electrical_engineering
 permalink: posts/linear-circuit-solver-1
