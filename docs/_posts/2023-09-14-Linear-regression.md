@@ -128,7 +128,7 @@ We would like to find a vector $q$ such that $q^{T}X \propto e_{j}^{T}$ where $e
 
 $$\begin{align*}
 
-    q^{T}X &= q_{p}^{T}QR \\ &= e_{p}^{T}R \\ &= r_{pp}e_{n}^{T}.
+    q^{T}X &= q_{p}^{T}QR \\ &= e_{p}^{T}R \\ &= r_{pp}e_{p}^{T}.
 
 \end{align*}$$
 
@@ -144,7 +144,7 @@ where we exploited the fact that $R$ is full-rank and upper-triangular. Plugging
 
 $$\begin{align*}
 
-    &\frac{\hat{\beta}_{p}-\beta_{p}}{\sqrt{\frac{\|\hat{r}\|^{2}}{n-p}\left(X^{T}X\right)^{-1}_{pp}}} \\ =& \sqrt{n-p}\frac{r_{pp}e_{n}^{T}(\hat{\beta}-\beta)}{\|\hat{r}\|} \\ =& \sqrt{n-p}\frac{q^{T}H\epsilon}{\|(I-H)\epsilon\|}
+    &\frac{\hat{\beta}_{p}-\beta_{p}}{\sqrt{\frac{\|\hat{r}\|^{2}}{n-p}\left(X^{T}X\right)^{-1}_{pp}}} \\ =& \sqrt{n-p}\frac{r_{pp}e_{p}^{T}(\hat{\beta}-\beta)}{\|\hat{r}\|} \\ =& \sqrt{n-p}\frac{q^{T}H\epsilon}{\|(I-H)\epsilon\|}
 
 \end{align*}$$
 

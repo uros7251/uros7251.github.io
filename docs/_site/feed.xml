@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-12-10T23:07:08+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Uros Stojkovic</title><subtitle>Personal website with primarily math/physics content</subtitle><author><name>Uros Stojkovic</name></author><entry><title type="html">On the Theory of Relativity</title><link href="http://localhost:4000/posts/relativity" rel="alternate" type="text/html" title="On the Theory of Relativity" /><published>2023-10-18T00:00:00+02:00</published><updated>2023-10-18T00:00:00+02:00</updated><id>http://localhost:4000/posts/Special-relativity</id><content type="html" xml:base="http://localhost:4000/posts/relativity"><![CDATA[<blockquote>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-03-10T21:26:02+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Uros Stojkovic</title><subtitle>Personal website with primarily math/physics content</subtitle><author><name>Uros Stojkovic</name></author><entry><title type="html">On the Theory of Relativity</title><link href="http://localhost:4000/posts/relativity" rel="alternate" type="text/html" title="On the Theory of Relativity" /><published>2023-10-18T00:00:00+02:00</published><updated>2023-10-18T00:00:00+02:00</updated><id>http://localhost:4000/posts/Special-relativity</id><content type="html" xml:base="http://localhost:4000/posts/relativity"><![CDATA[<blockquote>
   <p><em>There is no absolute space, and we    only conceive of relative motion; and yet in most cases mechanical facts are enunciated as if there is an absolute space to which they can be referred. There is no absolute time. When we say that two periods are equal, the statement has no meaning, and can only acquire a meaning by a convention. Not only have we no direct intuition of the equality of two periods, but we have not even direct intuition of the simultaneity of two events occurring in two different places. I have explained this in an article entitled “Mesure du Temps”. Finally, is not our Euclidean geometry in itself only a kind of convention of language?”</em> - Henri Poincare</p>
 </blockquote>
 
@@ -511,7 +511,7 @@ To manage various circuit components, we’ve established a hierarchy of classes
 
 \[\begin{align*}
 
-    q^{T}X &amp;= q_{p}^{T}QR \\ &amp;= e_{p}^{T}R \\ &amp;= r_{pp}e_{n}^{T}.
+    q^{T}X &amp;= q_{p}^{T}QR \\ &amp;= e_{p}^{T}R \\ &amp;= r_{pp}e_{p}^{T}.
 
 \end{align*}\]
 
@@ -527,7 +527,7 @@ To manage various circuit components, we’ve established a hierarchy of classes
 
 \[\begin{align*}
 
-    &amp;\frac{\hat{\beta}_{p}-\beta_{p}}{\sqrt{\frac{\|\hat{r}\|^{2}}{n-p}\left(X^{T}X\right)^{-1}_{pp}}} \\ =&amp; \sqrt{n-p}\frac{r_{pp}e_{n}^{T}(\hat{\beta}-\beta)}{\|\hat{r}\|} \\ =&amp; \sqrt{n-p}\frac{q^{T}H\epsilon}{\|(I-H)\epsilon\|}
+    &amp;\frac{\hat{\beta}_{p}-\beta_{p}}{\sqrt{\frac{\|\hat{r}\|^{2}}{n-p}\left(X^{T}X\right)^{-1}_{pp}}} \\ =&amp; \sqrt{n-p}\frac{r_{pp}e_{p}^{T}(\hat{\beta}-\beta)}{\|\hat{r}\|} \\ =&amp; \sqrt{n-p}\frac{q^{T}H\epsilon}{\|(I-H)\epsilon\|}
 
 \end{align*}\]
 
