@@ -110,21 +110,21 @@ $$\begin{bmatrix}
 vdt \\ cdt
 \end{bmatrix}$$
 
-Taking just the first equation ($v\cosh{\phi} + c\sinh{\phi} = 0$) coupled with the identity $\cosh^{2}{\theta}-\sin^{2}{\theta} = 1$, we get:
+Taking just the first equation ($v\cosh{\phi} + c\sinh{\phi} = 0$) coupled with the identity $\cosh^{2}{\theta}-\sinh^{2}{\theta} = 1$, we get:
 
 $$\begin{align*}
 \cosh{\phi} &= \frac{1}{\sqrt{1-v^{2}/c^{2}}} \\
 \sinh{\phi} &= -\frac{v/c}{\sqrt{1-v^{2}/c^{2}}}
 \end{align*}$$
 
-We finally arrive at Lorentz transformations:
+We arrive at Lorentz transformations:
 
 $$\begin{align}
 dx' &= \frac{dx-vdt}{\sqrt{1-v^{2}/c^{2}}} \\
 dt' &= \frac{dt-v/c^{2}\,dx}{\sqrt{1-v^{2}/c^{2}}}
 \end{align}$$
 
-Finally, let us express the parameter $\phi$, commonly referred to as rapidity, in terms of velocity $v$:
+The factor $\left(1-v^{2}/c^{2}\right)^{-1/2}$ is often abbreviated as $\gamma$. Finally, let us express the parameter $\phi$, commonly referred to as rapidity, in terms of velocity $v$:
 
 $$\begin{align*}
 e^{\phi} &= \cosh{\phi}+\sinh{\phi} \\
@@ -138,7 +138,7 @@ Another consequence is the apparent length contraction in the direction of motio
 
 $$ L = L_{0}\sqrt{1-v^{2}/c^{2}}$$
 
-This result could also be obtained from the invariance of the spacetime interval between the measuring events. Qualitatively, spacetime interval in $S$ is simply a negative length squared, while in $S'$ it has extra component involving the time difference because, for the observer from $S'$, the two measurements are not simultaneous. We have thus $L_{0}^{2} = c\Delta t'^{2} + L^{2}$ which clearly shows that $L$ must be smaller than $L_{0}$. Hence, moving objects appear shorter in the direction of their motion compared to their length in their own reference frame.
+This result could also be obtained from the invariance of the spacetime interval between the measuring events. Qualitatively, spacetime interval in $S$ is simply a negative length squared, while in $S'$ it has extra component involving the time difference because, for the observer from $S'$, the two measurements are not simultaneous. We have thus $L_{0}^{2} = c^{2}\Delta t'^{2} + L^{2}$ which clearly shows that $L$ must be smaller than $L_{0}$. Hence, moving objects appear shorter in the direction of their motion compared to their length in their own reference frame.
 ## Time dilation
 Yet another consequence of special relativity is time dilation. Imagine two observers each with a clock, moving uniformly relative to each other. Here, it's crucial to remember that a 'clock' refers to a device housing a physical phenomenon whose state can be measured. Let's establish reference frames $S$ and $S'$ for these observers respectively. Now, consider two events – two ticks of a clock that's stationary in $S'$. In $S'$, the spatial distance between these events is zero, and let's denote time difference by $\Delta t'$. However, in $S$, where the same two events occur with a time difference $\Delta t$, their spatial separation is $v\Delta t$. Lorentz transformations reveal:
 

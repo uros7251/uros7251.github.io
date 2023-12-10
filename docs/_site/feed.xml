@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-10-22T21:56:54+02:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Uros Stojkovic</title><subtitle>Personal website with primarily math/physics content</subtitle><author><name>Uros Stojkovic</name></author><entry><title type="html">On the Theory of Relativity</title><link href="http://localhost:4000/posts/relativity" rel="alternate" type="text/html" title="On the Theory of Relativity" /><published>2023-10-18T00:00:00+02:00</published><updated>2023-10-18T00:00:00+02:00</updated><id>http://localhost:4000/posts/Special-relativity</id><content type="html" xml:base="http://localhost:4000/posts/relativity"><![CDATA[<blockquote>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-12-10T23:07:08+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Uros Stojkovic</title><subtitle>Personal website with primarily math/physics content</subtitle><author><name>Uros Stojkovic</name></author><entry><title type="html">On the Theory of Relativity</title><link href="http://localhost:4000/posts/relativity" rel="alternate" type="text/html" title="On the Theory of Relativity" /><published>2023-10-18T00:00:00+02:00</published><updated>2023-10-18T00:00:00+02:00</updated><id>http://localhost:4000/posts/Special-relativity</id><content type="html" xml:base="http://localhost:4000/posts/relativity"><![CDATA[<blockquote>
   <p><em>There is no absolute space, and we    only conceive of relative motion; and yet in most cases mechanical facts are enunciated as if there is an absolute space to which they can be referred. There is no absolute time. When we say that two periods are equal, the statement has no meaning, and can only acquire a meaning by a convention. Not only have we no direct intuition of the equality of two periods, but we have not even direct intuition of the simultaneity of two events occurring in two different places. I have explained this in an article entitled “Mesure du Temps”. Finally, is not our Euclidean geometry in itself only a kind of convention of language?”</em> - Henri Poincare</p>
 </blockquote>
 
@@ -105,21 +105,21 @@ dx \\ cdt
 vdt \\ cdt
 \end{bmatrix}\]
 
-<p>Taking just the first equation ($v\cosh{\phi} + c\sinh{\phi} = 0$) coupled with the identity $\cosh^{2}{\theta}-\sin^{2}{\theta} = 1$, we get:</p>
+<p>Taking just the first equation ($v\cosh{\phi} + c\sinh{\phi} = 0$) coupled with the identity $\cosh^{2}{\theta}-\sinh^{2}{\theta} = 1$, we get:</p>
 
 \[\begin{align*}
 \cosh{\phi} &amp;= \frac{1}{\sqrt{1-v^{2}/c^{2}}} \\
 \sinh{\phi} &amp;= -\frac{v/c}{\sqrt{1-v^{2}/c^{2}}}
 \end{align*}\]
 
-<p>We finally arrive at Lorentz transformations:</p>
+<p>We arrive at Lorentz transformations:</p>
 
 \[\begin{align}
 dx' &amp;= \frac{dx-vdt}{\sqrt{1-v^{2}/c^{2}}} \\
 dt' &amp;= \frac{dt-v/c^{2}\,dx}{\sqrt{1-v^{2}/c^{2}}}
 \end{align}\]
 
-<p>Finally, let us express the parameter $\phi$, commonly referred to as rapidity, in terms of velocity $v$:</p>
+<p>The factor $\left(1-v^{2}/c^{2}\right)^{-1/2}$ is often abbreviated as $\gamma$. Finally, let us express the parameter $\phi$, commonly referred to as rapidity, in terms of velocity $v$:</p>
 
 \[\begin{align*}
 e^{\phi} &amp;= \cosh{\phi}+\sinh{\phi} \\
@@ -133,7 +133,7 @@ e^{\phi} &amp;= \frac{1-v/c}{\sqrt{1-v^{2}/c^{2}}} \\ e^{\phi} &amp;= \sqrt{\fra
 
 \[L = L_{0}\sqrt{1-v^{2}/c^{2}}\]
 
-<p>This result could also be obtained from the invariance of the spacetime interval between the measuring events. Qualitatively, spacetime interval in $S$ is simply a negative length squared, while in $S’$ it has extra component involving the time difference because, for the observer from $S’$, the two measurements are not simultaneous. We have thus $L_{0}^{2} = c\Delta t’^{2} + L^{2}$ which clearly shows that $L$ must be smaller than $L_{0}$. Hence, moving objects appear shorter in the direction of their motion compared to their length in their own reference frame.</p>
+<p>This result could also be obtained from the invariance of the spacetime interval between the measuring events. Qualitatively, spacetime interval in $S$ is simply a negative length squared, while in $S’$ it has extra component involving the time difference because, for the observer from $S’$, the two measurements are not simultaneous. We have thus $L_{0}^{2} = c^{2}\Delta t’^{2} + L^{2}$ which clearly shows that $L$ must be smaller than $L_{0}$. Hence, moving objects appear shorter in the direction of their motion compared to their length in their own reference frame.</p>
 <h2 id="time-dilation">Time dilation</h2>
 <p>Yet another consequence of special relativity is time dilation. Imagine two observers each with a clock, moving uniformly relative to each other. Here, it’s crucial to remember that a ‘clock’ refers to a device housing a physical phenomenon whose state can be measured. Let’s establish reference frames $S$ and $S’$ for these observers respectively. Now, consider two events – two ticks of a clock that’s stationary in $S’$. In $S’$, the spatial distance between these events is zero, and let’s denote time difference by $\Delta t’$. However, in $S$, where the same two events occur with a time difference $\Delta t$, their spatial separation is $v\Delta t$. Lorentz transformations reveal:</p>
 
@@ -1008,7 +1008,7 @@ In the literature, one often encounters the so-called Chi-square distribution wh
 
 <p><img src="../assets/images/2023-08-02-fourier/trig-sum-identity.png" alt="Trig-sum-identity" /></p>
 
-<p>It can be seen from the picture that the required value is given by the length of $OF$, that is, by the projection of the length of $OE$ on the x-axis. The point $E$, according to Thales’ theorem, is located halfway along the length $CD$. Since both $C$ and $D$ are on the unit circle, it is an isosceles triangle $\Delta OCD$, which implies that the angle $\measuredangle OED$ is right, as well as that along $OE$ the poles of the angle $\measuredangle COD$ . It follows:</p>
+<p>It can be seen from the picture that the required value is given by the length of $OF$, that is, by the projection of the length of $OE$ on the x-axis. The point $E$, according to Thales’ theorem, is located halfway along the length $CD$. Since both $C$ and $D$ are on the unit circle, the triangle $\Delta OCD$ is isosceles, which implies that the angle $\measuredangle OED$ is right, as well as that line segment $OE$ bisects the angle $\measuredangle COD$ . It follows that:</p>
 
 \[\overline{OE} = \cos{\frac{\alpha-\beta}{2}},\]
 
@@ -1046,7 +1046,7 @@ In the literature, one often encounters the so-called Chi-square distribution wh
 
 \[\sin{\alpha}-\sin{\beta} = 2\sin{\frac{\alpha-\beta}{2}}\cos{\frac{\alpha+\beta}{2}}\]
 
-<p>It should be noted that the last formula could be obtained from the sum formula if the sign of $\beta$ were changed. For further work, we will actually need a slightly different form of the previous formulas - the transformation of the product into the sum. With shifts:</p>
+<p>It should be noted that the last formula could be obtained from the sum formula if the sign of $\beta$ were changed. For further work, we will actually need a slightly different form of the previous formulas - the transformation of the product into the sum. Introducing change of variables:</p>
 
 \[\begin{align*}
 
@@ -1138,9 +1138,9 @@ In the literature, one often encounters the so-called Chi-square distribution wh
 
 <p>It is a good moment to pause and comment on previous research. In the previous sections, we showed how it is possible to represent an arbitrary function<sup id="fnref:2" role="doc-noteref"><a href="#fn:2" class="footnote" rel="footnote">2</a></sup> by a unique superposition of simple periodic functions - sines and cosines. Let’s try to make an analogy with geometric vectors. Each vector can be represented as a linear combination of base vectors. In the case of periodic functions, for example, that basis consists of sines and cosines of precisely determined frequencies - there are infinitely many of them, of course, but countably many. In the case of geometric vectors, we obtain the components of the vector by the scalar product, which is defined as the product of the length of the vector and the cosine of the angle between them. In our case, the components are obtained by a somewhat more complex procedure - integration. Actually, the structure we built should correspond to what mathematicians call a unitary vector space.</p>
 
-<p>One of the advantages of the Fourier transform, that is, the representation of functions by the sum of simple periodic functions, is that the latter are suitable for solving various problems. Differential equations are one obvious example; Fourier himself “invented” Fourier series to find solutions to the heat equation. Here is a closer example. In the first year of electrical engineering, we studied the basics of electrical circuits and the concept of impedance was key. Impedance is, of course, unlike resistance, inductance and capacitance, which are physical terms, a purely mathematical construct that is useful in the case of periodic excitation, i.e. of alternating current and voltage sources with sinusoidal dependence on time. In that case, the differential equations describing the dynamics of the circuit can be reduced to algebraic equations over complex numbers and easily solved. In electrical engineering, especially power engineering, one often works with simple periodic excitation, so this technique is certainly useful. On the other hand, in the case of an arbitrary periodic or aperiodic signal, the Fourier transform can be useful to us. The strategy consists in representing the original signal with sines and cosines, then finding a solution for each of the frequencies, and later superimposing where each solution participates with the appropriate weight.</p>
+<p>One of the advantages of the Fourier transform, that is, the representation of functions by the sum of simple periodic functions, is that the latter are suitable for solving various problems. Differential equations are one obvious example; Fourier himself “invented” Fourier series to find solutions to the heat equation. Here is a more familiar example. In the introductory courses of electrical engineering, one studies electrical circuits and the concept of impedance is critical. Impedance is, of course, unlike resistance, inductance and capacitance, which are physical terms, a purely mathematical construct which is useful in the case of periodic excitation, i.e. of alternating current and voltage sources with sinusoidal dependence on time. Then, the differential equations describing the dynamics of the circuit can be reduced to algebraic equations over complex numbers and easily solved. In electrical engineering, especially power engineering, one often works with simple periodic excitation, so this technique is certainly useful. On the other hand, in the case of an arbitrary periodic or aperiodic signal, the Fourier transform can be useful. The strategy consists of representing the original signal with sines and cosines, then finding a solution for each of the frequencies, and later superimposing where each solution participates with the appropriate weight.</p>
 
-<p>Another well-known example is the characteristic function in probability theory, which is defined as:</p>
+<p>Another well-known example is the characteristic function, used in probability theory, which is defined as:</p>
 
 \[\varphi_{X}(t) = \mathbb{E}\left [ e^{itX} \right ]\]
 
